@@ -1,0 +1,19 @@
+{
+  "name": "pala-marathon-website",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "npm --prefix client run dev",
+    "start:backend": "npm --prefix server run dev",
+    "ci:all": "npm install --prefix client && npm install --prefix server"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
