@@ -7,7 +7,7 @@
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "npm --prefix client run dev",
     "start:backend": "npm --prefix server run dev",
-    "ci:all": "npm install --prefix client && npm install --prefix server"
+    "ci:all": "npm ci --prefix client && npm ci --prefix server"
 
   },
   "keywords": [],
