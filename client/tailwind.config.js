@@ -6,6 +6,7 @@ export default {
       colors: {
         custom: {
           'purple-1000': '#330A48',
+          'purple-1001': '#330A48'
       },
       },
     },
