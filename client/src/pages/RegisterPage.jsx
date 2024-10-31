@@ -40,23 +40,20 @@ function RegisterPage() {
           <span className="font-semibold">E-Mail</span> will be sent to the
           e-mail address provided during registration within 24 hours. Please
           ensure that the e-mail address you enter is correct, as the{" "}
-          <span className="font-semibold">E-ticket</span> and other registration
-          details will be sent to this email address. Additionally, double-check
-          all registration details to avoid any mistakes. For race rules and
-          regulations, please{" "}
+          <span className="font-semibold">E-ticket</span> will be sent to this
+          email address. Additionally, double-check all registration details to
+          avoid any mistakes. For race rules and regulations, please{" "}
           <Link to="/rules" className="text-purple-600 underline">
             click here
           </Link>
-          . BIB numbers will be assigned on a first-come, first-served basis. If
-          your preferred number is already taken, an alternate number will be
-          assigned at random. Please note that registration fees are
+          . Please note that registration fees are
           non-refundable and registration details, cannot be changed once
           registration is completed.
         </p>
       </div>
 
       {/*//! form  */}
-      {/* <RegistrationForm/> */}
+      <RegistrationForm />
     </>
   );
 }
