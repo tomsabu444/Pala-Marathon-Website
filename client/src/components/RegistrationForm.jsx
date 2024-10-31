@@ -17,19 +17,23 @@ function RegistrationForm() {
           padding: "20px",
           justifyContent: "center",
           width: "100%",
-          ".MuiStepConnector-line": {
-            borderColor: "#9D356D",
-            marginTop: ".5rem",
+          "& .MuiStepConnector-root": {
+           
+            ".MuiStepConnector-line": {
+              borderColor: "#9D356D",
+              marginTop: ".5rem",
+              borderWidth: "2px",
+            },
           },
         }}
       >
-        {steps.map((label) => (
+        {steps.map((label, index) => (
           <Step
             key={label}
             sx={{
               "& .MuiStepIcon-root": {
                 fontSize: "2.5rem",
-                color: "#9D356D",
+
                 "&.Mui-active": {
                   color: "#9D356D",
                 },
@@ -46,7 +50,7 @@ function RegistrationForm() {
                 whiteSpace: "normal",
                 overflowWrap: "break-word",
                 textAlign: "center",
-                color: "#000080",
+                color: index === 0 ? "#8484ac" : "grey", // Active label in blue, others grey
               }}
             >
               {label}
