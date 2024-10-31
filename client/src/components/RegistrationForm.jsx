@@ -11,16 +11,22 @@ function RegistrationForm() {
   return (
     <div className="py-7 mx-auto">
       <Stepper
-        activeStep={0}
+        activeStep={1}
         alternativeLabel
         sx={{
           padding: "20px",
           justifyContent: "center",
           width: "100%",
           "& .MuiStepConnector-root": {
-           
-            ".MuiStepConnector-line": {
-              borderColor: "#9D356D",
+            "&.Mui-active, &.Mui-completed": {
+              "& .MuiStepConnector-line": {
+                borderColor: "#9D356D",
+                marginTop: ".5rem",
+                borderWidth: "2px",
+              },
+            },
+            "& .MuiStepConnector-line": {
+              borderColor: "#E0E0E0", // Grey color for inactive lines
               marginTop: ".5rem",
               borderWidth: "2px",
             },
@@ -33,7 +39,6 @@ function RegistrationForm() {
             sx={{
               "& .MuiStepIcon-root": {
                 fontSize: "2.5rem",
-
                 "&.Mui-active": {
                   color: "#9D356D",
                 },
@@ -50,7 +55,7 @@ function RegistrationForm() {
                 whiteSpace: "normal",
                 overflowWrap: "break-word",
                 textAlign: "center",
-                color: index === 0 ? "#8484ac" : "grey", // Active label in blue, others grey
+                color: index === 0 ? "#8484ac" : "grey",
               }}
             >
               {label}
