@@ -50,7 +50,8 @@ function RegisterPage() {
           . BIB numbers will be assigned on a first-come, first-served basis. If
           your preferred number is already taken, an alternate number will be
           assigned at random. Please note that registration fees are
-          non-refundable, and BIB numbers cannot be changed once assigned.
+          non-refundable and registration details, cannot be changed once
+          registration is completed.
         </p>
       </div>
 
