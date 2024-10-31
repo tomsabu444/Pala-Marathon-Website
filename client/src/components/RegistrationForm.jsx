@@ -10,6 +10,7 @@ function RegistrationForm() {
 
   return (
     <div className="py-7 mx-auto">
+      {/* //! stepper  start */}
       <Stepper
         activeStep={1}
         alternativeLabel
@@ -63,6 +64,7 @@ function RegistrationForm() {
           </Step>
         ))}
       </Stepper>
+      {/* //? stepper end */}
     </div>
   );
 }
