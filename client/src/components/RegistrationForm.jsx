@@ -273,7 +273,6 @@ function RegistrationForm() {
                   }}
                 />
 
-                {/* Gender Selection */}
                 <FormControl
                   required
                   error={!!errors.gender}
@@ -284,11 +283,11 @@ function RegistrationForm() {
                   }}
                 >
                   <FormLabel
+                    component="legend" // Acts as a legend for the fieldset for accessibility
                     sx={{
-                      "&.Mui-focused": { color: "#330A48" }, // Focused color
+                      "&.Mui-focused": { color: "#330A48" },
                       "&.MuiFormLabel-root.Mui-focused": { color: "#330A48" },
                     }}
-                    id="gender"
                   >
                     Gender
                   </FormLabel>
@@ -302,7 +301,7 @@ function RegistrationForm() {
                           value="male"
                           control={
                             <Radio
-                            id="gender-male" 
+                              id="gender-male" // Unique id for accessibility
                               sx={{
                                 color: "#9D356D",
                                 "&.Mui-checked": {
@@ -317,7 +316,7 @@ function RegistrationForm() {
                           value="female"
                           control={
                             <Radio
-                             id="gender-female"
+                              id="gender-female" // Unique id for accessibility
                               sx={{
                                 color: "#9D356D",
                                 "&.Mui-checked": {
@@ -332,7 +331,7 @@ function RegistrationForm() {
                           value="other"
                           control={
                             <Radio
-                            id="gender-other" 
+                              id="gender-other" // Unique id for accessibility
                               sx={{
                                 color: "#9D356D",
                                 "&.Mui-checked": {
@@ -366,7 +365,7 @@ function RegistrationForm() {
                   }
                   {...register("dateOfBirth")}
                   id="dateOfBirth"
-                  autoComplete="dateOfBirth"
+                  autoComplete="bday"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -685,6 +684,7 @@ function RegistrationForm() {
                 </Box>
               </Box>
             )}
+
             {/* //? step 1 end */}
 
             {/* //! step 2 start */}
@@ -853,6 +853,8 @@ function RegistrationForm() {
               </Box>
             )}
 
+            {/* //! step 2 end */}
+
             <Box sx={{ display: "flex", justifyContent: "end", gap: 3, mt: 3 }}>
               <Button
                 sx={{
@@ -879,8 +881,6 @@ function RegistrationForm() {
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             </Box>
-
-            {/* //! step 2 start */}
           </form>
         </FormProvider>
       </div>
