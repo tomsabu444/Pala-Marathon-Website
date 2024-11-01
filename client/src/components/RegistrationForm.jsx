@@ -117,7 +117,7 @@ function RegistrationForm() {
     resolver: zodResolver(stepSchemas[activeStep]),
     mode: "onChange",
     defaultValues: {
-      gender: "",
+      gender: null,
       category: "",
       clubParticipation: "no",
       consent: false,
@@ -218,12 +218,21 @@ function RegistrationForm() {
             {activeStep === 0 && (
               <Box sx={{ my: 3 }}>
                 <TextField
+                
                   label="Full Name *"
                   variant="outlined"
                   margin="normal"
                   error={!!errors.name}
                   helperText={errors.name ? errors.name.message : ""}
                   {...register("name")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="Phone Number *"
@@ -232,6 +241,15 @@ function RegistrationForm() {
                   error={!!errors.phone}
                   helperText={errors.phone ? errors.phone.message : ""}
                   {...register("phone")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
+                  
                 />
                 <TextField
                   label="Email *"
@@ -240,6 +258,14 @@ function RegistrationForm() {
                   error={!!errors.email}
                   helperText={errors.email ? errors.email.message : ""}
                   {...register("email")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
 
                 {/* Gender Selection */}
@@ -252,7 +278,14 @@ function RegistrationForm() {
                     my: 2,
                   }}
                 >
-                  <FormLabel>Gender</FormLabel>
+                  <FormLabel
+                     sx={{
+                      "&.Mui-focused": { color: "#330A48" }, // Focused color
+                      "&.MuiFormLabel-root.Mui-focused": { color: "#330A48" },
+                    }}
+                  >
+                    Gender
+                  </FormLabel>
                   <Controller
                     name="gender"
                     control={methods.control}
@@ -261,17 +294,44 @@ function RegistrationForm() {
                       <RadioGroup row {...field}>
                         <FormControlLabel
                           value="male"
-                          control={<Radio />}
+                          control={
+                            <Radio
+                              sx={{
+                                color: "#9D356D",
+                                "&.Mui-checked": {
+                                  color: "#9D356D",
+                                },
+                              }}
+                            />
+                          }
                           label="Male"
                         />
                         <FormControlLabel
                           value="female"
-                          control={<Radio />}
+                          control={
+                            <Radio
+                              sx={{
+                                color: "#9D356D",
+                                "&.Mui-checked": {
+                                  color: "#9D356D",
+                                },
+                              }}
+                            />
+                          }
                           label="Female"
                         />
                         <FormControlLabel
                           value="other"
-                          control={<Radio />}
+                          control={
+                            <Radio
+                              sx={{
+                                color: "#9D356D",
+                                "&.Mui-checked": {
+                                  color: "#9D356D",
+                                },
+                              }}
+                            />
+                          }
                           label="Other"
                         />
                       </RadioGroup>
@@ -296,6 +356,14 @@ function RegistrationForm() {
                     errors.dateOfBirth ? errors.dateOfBirth.message : ""
                   }
                   {...register("dateOfBirth")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="Address Line 1 *"
@@ -306,6 +374,14 @@ function RegistrationForm() {
                     errors.address?.line1 ? errors.address.line1.message : ""
                   }
                   {...register("address.line1")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="City *"
@@ -316,6 +392,14 @@ function RegistrationForm() {
                     errors.address?.city ? errors.address.city.message : ""
                   }
                   {...register("address.city")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="State *"
@@ -326,6 +410,14 @@ function RegistrationForm() {
                     errors.address?.state ? errors.address.state.message : ""
                   }
                   {...register("address.state")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="PIN Code *"
@@ -338,6 +430,14 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("address.pinCode")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="Country *"
@@ -350,6 +450,14 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("address.country")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
               </Box>
             )}
@@ -371,6 +479,14 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("emergencyContact.name")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="Relation With Emergency Contact *"
@@ -384,6 +500,14 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("emergencyContact.relation")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="Emergency Contact Number *"
@@ -397,6 +521,14 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("emergencyContact.contactNumber")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 <TextField
                   label="Medical Information (optional)"
@@ -404,6 +536,14 @@ function RegistrationForm() {
                   fullWidth
                   margin="normal"
                   {...register("medicalInfo")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
                 {/* Medical Questions */}
                 <Box
@@ -457,7 +597,9 @@ function RegistrationForm() {
                           color: errors.questions?.[question.name.split(".")[1]]
                             ? "#d32f2f"
                             : "inherit",
-                        }}
+                            "&.Mui-focused": { color: "#330A48" }, // Focused color
+                            "&.MuiFormLabel-root.Mui-focused": { color: "#330A48" },
+                          }}
                       >
                         {question.label}
                       </FormLabel>
@@ -470,12 +612,30 @@ function RegistrationForm() {
                           <RadioGroup row {...field}>
                             <FormControlLabel
                               value="yes"
-                              control={<Radio />}
+                              control={
+                                <Radio
+                                  sx={{
+                                    color: "#9D356D",
+                                    "&.Mui-checked": {
+                                      color: "#9D356D",
+                                    },
+                                  }}
+                                />
+                              }
                               label="Yes"
                             />
                             <FormControlLabel
                               value="no"
-                              control={<Radio />}
+                              control={
+                                <Radio
+                                  sx={{
+                                    color: "#9D356D",
+                                    "&.Mui-checked": {
+                                      color: "#9D356D",
+                                    },
+                                  }}
+                                />
+                              }
                               label="No"
                             />
                           </RadioGroup>
@@ -510,6 +670,14 @@ function RegistrationForm() {
                   helperText={errors.category ? errors.category.message : ""}
                   {...register("category")}
                   value={methods.watch("category") ?? ""}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 >
                   <MenuItem value="fullMarathon">
                     Full Marathon – 21 Kms
@@ -530,6 +698,14 @@ function RegistrationForm() {
                   error={!!errors.nameOnBib}
                   helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
                   {...register("nameOnBib")}
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 />
 
                 {/* Club Participation Dropdown */}
@@ -546,6 +722,14 @@ function RegistrationForm() {
                       ? errors.clubParticipation.message
                       : ""
                   }
+                  sx={{
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                    "& .MuiOutlinedInput-root": {
+                      "&.Mui-focused fieldset": {
+                        borderColor: "#9D356D", 
+                      },
+                    },
+                  }}
                 >
                   <MenuItem value="no">No</MenuItem>
                   <MenuItem value="club1">Club 1</MenuItem>
