@@ -21,20 +21,39 @@ function RegisterPage() {
           Engineers’ Forum and Engineer's Forum, Pala. There are three
           categories that the runners can choose from:
         </p>
-        <ul className="list-disc text-lg list-inside text-gray-700 mb-4">
-          <li>
-            <span className="font-semibold text-gray-800">Full Marathon</span> –
-            21 Kms
-          </li>
-          <li>
-            <span className="font-semibold text-gray-800">Half Marathon</span> –
-            10 Kms
-          </li>
-          <li>
-            <span className="font-semibold text-gray-800">Family Fun Run</span>{" "}
-            – 3 Kms
-          </li>
-        </ul>
+        <table className="table-auto text-lg text-gray-700 text-center mb-4 border-collapse w-full">
+          <thead>
+            <tr className="h-16 ">
+              <th className="border border-gray-300 p-2  font-semibold text-gray-800">
+                Category
+              </th>
+              <th className="border border-gray-300 p-2  font-semibold text-gray-800">
+                Kilometer
+              </th>
+              <th className="border border-gray-300 p-2  font-semibold text-gray-800">
+                Price
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border border-gray-300 p-2">Full Marathon</td>
+              <td className="border border-gray-300 p-2">21 Kms</td>
+              <td className="border border-gray-300 p-2">₹ 1,000</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 p-2">Half Marathon</td>
+              <td className="border border-gray-300 p-2">10 Kms</td>
+              <td className="border border-gray-300 p-2">₹ 800</td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 p-2">Family Fun Run</td>
+              <td className="border border-gray-300 p-2">3 Kms</td>
+              <td className="border border-gray-300 p-2">₹ 500</td>
+            </tr>
+          </tbody>
+        </table>
+
         <p className="text-gray-600 text-lg">
           Post Registration, a confirmation{" "}
           <span className="font-semibold">E-Mail</span> will be sent to the
@@ -46,11 +65,12 @@ function RegisterPage() {
           <Link to="/rules" className="text-purple-600 underline">
             click here
           </Link>
-          . Please note that registration fees are
-          non-refundable and registration details, cannot be changed once
-          registration is completed.
+          . Please note that registration fees are non-refundable and
+          registration details, cannot be changed once registration is
+          completed.
         </p>
       </div>
+      <hr className="mt-7 mx-auto border-2 w-11/12" />
 
       {/*//! form  */}
       <RegistrationForm />

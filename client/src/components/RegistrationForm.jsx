@@ -20,7 +20,6 @@ import { useForm, FormProvider, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-// Updated Zod schema with more explicit fields for emergency contact in Step 1
 const basicDetailsSchema = z.object({
   name: z.string().min(1, "Name is required"),
   phone: z
@@ -93,7 +92,7 @@ const medicalDetailsSchema = z.object({
 const categoryConsentSchema = z.object({
   category: z.string().min(1, "Category is required"),
   consent: z.boolean().refine((val) => val === true, "Consent is required"),
-  nameOnBib: z.string().min(1, "Name on BIB is required"),
+  nameOnBib: z.string().max(4, "Name on BIB should be less that 4 characters"),
 });
 
 const stepSchemas = [
@@ -142,7 +141,7 @@ function RegistrationForm() {
   const [formData, setFormData] = useState({});
 
   const onSubmit = async (data) => {
-    // Merge current step data with formData
+    //! Merge current step data with formData
     setFormData((prev) => ({ ...prev, ...data }));
 
     if (activeStep < steps.length - 1) {
@@ -210,7 +209,7 @@ function RegistrationForm() {
         ))}
       </Stepper>
 
-      <div className="mx-6">
+      <div className="mx-6 md:px-10 lg:mx-auto max-w-screen-2xl ">
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
             {activeStep === 0 && (
@@ -280,7 +279,7 @@ function RegistrationForm() {
                   }}
                 >
                   <FormLabel
-                    component="legend" // Acts as a legend for the fieldset for accessibility
+                    component="legend" //? Acts as a legend for the fieldset for accessibility
                     sx={{
                       "&.Mui-focused": { color: "#330A48" },
                       "&.MuiFormLabel-root.Mui-focused": { color: "#330A48" },
@@ -711,13 +710,13 @@ function RegistrationForm() {
                   }}
                 >
                   <MenuItem value="fullMarathon">
-                    Full Marathon – 21 Kms
+                    Full Marathon (21 Kms) - 1000 INR
                   </MenuItem>
                   <MenuItem value="halfMarathon">
-                    Half Marathon – 10 Kms
+                    Half Marathon (10 Kms) - 800 INR
                   </MenuItem>
-                  <MenuItem value="familyFunRun">
-                    Family Fun Run – 3 Kms
+                  <MenuItem value="familyFunRun"> 
+                    Family Fun Run (3 Kms) - 500 INR
                   </MenuItem>
                 </TextField>
 
