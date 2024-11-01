@@ -26,8 +26,7 @@ const basicDetailsSchema = z.object({
   name: z.string().min(1, "Name is required"),
   phone: z
     .string()
-    .min(10, "Phone number should be at least 10 digits")
-    .regex(/^\d+$/, "Phone number must be numeric"),
+    .regex(/^\+91\d{10}$/, "Phone number be +91xxxxxxxxxx"),
   email: z.string().email("Invalid email address"),
   gender: z
     .enum(["male", "female", "other"], {
@@ -620,7 +619,8 @@ function RegistrationForm() {
                       error={!!errors.questions?.[question.name.split(".")[1]]} // Access nested field directly
                       sx={{ my: 2 }}
                     >
-                      <FormLabel component="legend" // Acts as a legend for the fieldset for accessibility
+                      <FormLabel
+                        component="legend" // Acts as a legend for the fieldset for accessibility
                         sx={{
                           color: errors.questions?.[question.name.split(".")[1]]
                             ? "#d32f2f"
@@ -630,7 +630,6 @@ function RegistrationForm() {
                             color: "#330A48",
                           },
                         }}
-
                       >
                         {question.label}
                       </FormLabel>
