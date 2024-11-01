@@ -18,7 +18,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-// Updated Zod schema with more explicit gender requirement message
+// Updated Zod schema with more explicit fields for emergency contact in Step 1
 const basicDetailsSchema = z.object({
   name: z.string().min(1, "Name is required"),
   phone: z
@@ -33,7 +33,7 @@ const basicDetailsSchema = z.object({
     message: "Gender selection is required"
   }),
   dateOfBirth: z.string().min(1, "Date of Birth is required"),
-  nameOnBib: z.string().min(1, "Name on BIB is required"),
+  // nameOnBib: z.string().min(1, "Name on BIB is required"),
   address: z.object({
     line1: z.string().min(1, "Address line 1 is required"),
     city: z.string().min(1, "City is required"),
@@ -47,7 +47,14 @@ const basicDetailsSchema = z.object({
 });
 
 const medicalDetailsSchema = z.object({
-  emergencyContact: z.string().min(1, "Emergency Contact is required"),
+  emergencyContact: z.object({
+    name: z.string().min(1, "Emergency Contact Name is required"),
+    relation: z.string().min(1, "Relation with Emergency Contact is required"),
+    contactNumber: z
+      .string()
+      .min(10, "Emergency Contact Number must be at least 10 digits")
+      .regex(/^\d+$/, "Emergency Contact Number must be numeric"),
+  }),
   medicalInfo: z.string().optional(),
 });
 
@@ -179,7 +186,7 @@ function RegistrationForm() {
                   {...register("email")}
                 />
                 
-                {/* Updated Gender Selection with Required Indication */}
+                {/* Gender Selection */}
                 <FormControl 
                   required
                   error={!!errors.gender}
@@ -187,57 +194,28 @@ function RegistrationForm() {
                   sx={{ 
                     display: 'block', 
                     my: 2,
-                    '& .MuiFormLabel-asterisk': {
-                      color: errors.gender ? '#d32f2f' : 'inherit'
-                    }
                   }}
                 >
-                  <FormLabel 
-                    component="legend"
-                    sx={{
-                      color: errors.gender ? '#d32f2f' : 'inherit',
-                      '&.Mui-focused': {
-                        color: errors.gender ? '#d32f2f' : '#9D356D'
-                      }
-                    }}
-                  >
-                    Gender
-                  </FormLabel>
-                  <RadioGroup 
-                    row 
-                    aria-required="true"
-                    sx={{ mt: 1 }}
-                  >
+                  <FormLabel>Gender </FormLabel>
+                  <RadioGroup row>
                     <FormControlLabel
                       value="male"
-                      control={
-                        <Radio 
-                          {...register("gender", { required: "Gender selection is required" })}
-                        />
-                      }
+                      control={<Radio {...register("gender")} />}
                       label="Male"
                     />
                     <FormControlLabel
                       value="female"
-                      control={
-                        <Radio 
-                          {...register("gender", { required: "Gender selection is required" })}
-                        />
-                      }
+                      control={<Radio {...register("gender")} />}
                       label="Female"
                     />
                     <FormControlLabel
                       value="other"
-                      control={
-                        <Radio 
-                          {...register("gender", { required: "Gender selection is required" })}
-                        />
-                      }
+                      control={<Radio {...register("gender")} />}
                       label="Other"
                     />
                   </RadioGroup>
                   {errors.gender && (
-                    <FormHelperText sx={{ color: '#d32f2f', ml: 0 }}>
+                    <FormHelperText sx={{ color: '#d32f2f' }}>
                       {errors.gender.message}
                     </FormHelperText>
                   )}
@@ -246,6 +224,7 @@ function RegistrationForm() {
                 <TextField
                   label="Date of Birth *"
                   variant="outlined"
+                  fullWidth
                   margin="normal"
                   type="date"
                   InputLabelProps={{ shrink: true }}
@@ -253,14 +232,14 @@ function RegistrationForm() {
                   helperText={errors.dateOfBirth ? errors.dateOfBirth.message : ""}
                   {...register("dateOfBirth")}
                 />
-                <TextField
-                  label="Name on BIB *"
-                  variant="outlined"
-                  margin="normal"
-                  error={!!errors.nameOnBib}
-                  helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
-                  {...register("nameOnBib")}
-                />
+                  {/* <TextField
+                    label="Name on BIB *"
+                    variant="outlined"
+                    margin="normal"
+                    error={!!errors.nameOnBib}
+                    helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
+                    {...register("nameOnBib")}
+                  /> */}
                 <TextField
                   label="Address Line 1 *"
                   variant="outlined"
@@ -303,24 +282,47 @@ function RegistrationForm() {
                 />
               </Box>
             )}
+            {/*//! setp 0 end */}
+
+            {/* //? step 1 start */}
 
             {activeStep === 1 && (
               <Box sx={{ my: 3 }}>
                 <TextField
-                  label="Emergency Contact"
+                  label="Emergency Contact Name *"
                   variant="outlined"
                   fullWidth
                   margin="normal"
-                  error={!!errors.emergencyContact}
+                  error={!!errors.emergencyContact?.name}
                   helperText={
-                    errors.emergencyContact
-                      ? errors.emergencyContact.message
-                      : ""
+                    errors.emergencyContact?.name ? errors.emergencyContact.name.message : ""
                   }
-                  {...register("emergencyContact")}
+                  {...register("emergencyContact.name")}
                 />
                 <TextField
-                  label="Medical Information"
+                  label="Relation With Emergency Contact *"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  error={!!errors.emergencyContact?.relation}
+                  helperText={
+                    errors.emergencyContact?.relation ? errors.emergencyContact.relation.message : ""
+                  }
+                  {...register("emergencyContact.relation")}
+                />
+                <TextField
+                  label="Emergency Contact Number *"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  error={!!errors.emergencyContact?.contactNumber}
+                  helperText={
+                    errors.emergencyContact?.contactNumber ? errors.emergencyContact.contactNumber.message : ""
+                  }
+                  {...register("emergencyContact.contactNumber")}
+                />
+                <TextField
+                  label="Medical Information (optional)"
                   variant="outlined"
                   fullWidth
                   margin="normal"
@@ -380,3 +382,4 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
+  
