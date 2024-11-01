@@ -225,6 +225,8 @@ function RegistrationForm() {
                   error={!!errors.name}
                   helperText={errors.name ? errors.name.message : ""}
                   {...register("name")}
+                  id="name"
+                  autoComplete="name"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -241,6 +243,8 @@ function RegistrationForm() {
                   error={!!errors.phone}
                   helperText={errors.phone ? errors.phone.message : ""}
                   {...register("phone")}
+                  id="phone"
+                  autoComplete="phone"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -257,6 +261,8 @@ function RegistrationForm() {
                   error={!!errors.email}
                   helperText={errors.email ? errors.email.message : ""}
                   {...register("email")}
+                  id="email"
+                  autoComplete="email"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -282,6 +288,7 @@ function RegistrationForm() {
                       "&.Mui-focused": { color: "#330A48" }, // Focused color
                       "&.MuiFormLabel-root.Mui-focused": { color: "#330A48" },
                     }}
+                    id="gender"
                   >
                     Gender
                   </FormLabel>
@@ -295,6 +302,7 @@ function RegistrationForm() {
                           value="male"
                           control={
                             <Radio
+                            id="gender-male" 
                               sx={{
                                 color: "#9D356D",
                                 "&.Mui-checked": {
@@ -309,6 +317,7 @@ function RegistrationForm() {
                           value="female"
                           control={
                             <Radio
+                             id="gender-female"
                               sx={{
                                 color: "#9D356D",
                                 "&.Mui-checked": {
@@ -323,6 +332,7 @@ function RegistrationForm() {
                           value="other"
                           control={
                             <Radio
+                            id="gender-other" 
                               sx={{
                                 color: "#9D356D",
                                 "&.Mui-checked": {
@@ -355,6 +365,8 @@ function RegistrationForm() {
                     errors.dateOfBirth ? errors.dateOfBirth.message : ""
                   }
                   {...register("dateOfBirth")}
+                  id="dateOfBirth"
+                  autoComplete="dateOfBirth"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -373,6 +385,8 @@ function RegistrationForm() {
                     errors.address?.line1 ? errors.address.line1.message : ""
                   }
                   {...register("address.line1")}
+                  id="addressLine1"
+                  autoComplete="address-line1"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -391,6 +405,8 @@ function RegistrationForm() {
                     errors.address?.city ? errors.address.city.message : ""
                   }
                   {...register("address.city")}
+                  id="city"
+                  autoComplete="address-level2"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -409,6 +425,8 @@ function RegistrationForm() {
                     errors.address?.state ? errors.address.state.message : ""
                   }
                   {...register("address.state")}
+                  id="state"
+                  autoComplete="address-level1"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -429,6 +447,8 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("address.pinCode")}
+                  id="pinCode"
+                  autoComplete="postal-code"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -449,6 +469,8 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("address.country")}
+                  id="country"
+                  autoComplete="country"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -478,6 +500,8 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("emergencyContact.name")}
+                  id="emergencyContactName"
+                  autoComplete="emergencyContactName"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -499,6 +523,8 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("emergencyContact.relation")}
+                  id="relationWithEmergencyContact"
+                  autoComplete="relationWithEmergencyContact"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -520,6 +546,8 @@ function RegistrationForm() {
                       : ""
                   }
                   {...register("emergencyContact.contactNumber")}
+                  id="emergencyContactNumber"
+                  autoComplete="emergencyContactNumber"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -535,6 +563,8 @@ function RegistrationForm() {
                   fullWidth
                   margin="normal"
                   {...register("medicalInfo")}
+                  id="medicalInfo"
+                  autoComplete="medicalInfo"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -671,6 +701,9 @@ function RegistrationForm() {
                   helperText={errors.category ? errors.category.message : ""}
                   {...register("category")}
                   value={methods.watch("category") ?? ""}
+                  id="category"
+                  name="category"
+                  autoComplete="category"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
