@@ -26,12 +26,14 @@ const basicDetailsSchema = z.object({
     .min(10, "Phone number should be at least 10 digits")
     .regex(/^\d+$/, "Phone number must be numeric"),
   email: z.string().email("Invalid email address"),
-  gender: z.enum(["male", "female", "other"], {
-    required_error: "Please select your gender",
-    invalid_type_error: "Please select a valid gender option",
-  }).refine((val) => val !== undefined && val !== null, {
-    message: "Gender selection is required"
-  }),
+  gender: z
+    .enum(["male", "female", "other"], {
+      required_error: "Please select your gender",
+      invalid_type_error: "Please select a valid gender option",
+    })
+    .refine((val) => val !== undefined && val !== null, {
+      message: "Gender selection is required",
+    }),
   dateOfBirth: z.string().min(1, "Date of Birth is required"),
   // nameOnBib: z.string().min(1, "Name on BIB is required"),
   address: z.object({
@@ -56,6 +58,18 @@ const medicalDetailsSchema = z.object({
       .regex(/^\d+$/, "Emergency Contact Number must be numeric"),
   }),
   medicalInfo: z.string().optional(),
+  questions: z.object({
+    heartCondition: z.enum(["yes", "no"], "Please answer this question"),
+    chestPainActivity: z.enum(["yes", "no"], "Please answer this question"),
+    chestPainRest: z.enum(["yes", "no"], "Please answer this question"),
+    dizziness: z.enum(["yes", "no"], "Please answer this question"),
+    boneOrJointProblem: z.enum(["yes", "no"], "Please answer this question"),
+    bloodPressureMedication: z.enum(
+      ["yes", "no"],
+      "Please answer this question"
+    ),
+    otherReason: z.enum(["yes", "no"], "Please answer this question"),
+  }),
 });
 
 const categoryConsentSchema = z.object({
@@ -185,14 +199,14 @@ function RegistrationForm() {
                   helperText={errors.email ? errors.email.message : ""}
                   {...register("email")}
                 />
-                
+
                 {/* Gender Selection */}
-                <FormControl 
+                <FormControl
                   required
                   error={!!errors.gender}
                   component="fieldset"
-                  sx={{ 
-                    display: 'block', 
+                  sx={{
+                    display: "block",
                     my: 2,
                   }}
                 >
@@ -215,7 +229,7 @@ function RegistrationForm() {
                     />
                   </RadioGroup>
                   {errors.gender && (
-                    <FormHelperText sx={{ color: '#d32f2f' }}>
+                    <FormHelperText sx={{ color: "#d32f2f" }}>
                       {errors.gender.message}
                     </FormHelperText>
                   )}
@@ -229,10 +243,12 @@ function RegistrationForm() {
                   type="date"
                   InputLabelProps={{ shrink: true }}
                   error={!!errors.dateOfBirth}
-                  helperText={errors.dateOfBirth ? errors.dateOfBirth.message : ""}
+                  helperText={
+                    errors.dateOfBirth ? errors.dateOfBirth.message : ""
+                  }
                   {...register("dateOfBirth")}
                 />
-                  {/* <TextField
+                {/* <TextField
                     label="Name on BIB *"
                     variant="outlined"
                     margin="normal"
@@ -245,7 +261,9 @@ function RegistrationForm() {
                   variant="outlined"
                   margin="normal"
                   error={!!errors.address?.line1}
-                  helperText={errors.address?.line1 ? errors.address.line1.message : ""}
+                  helperText={
+                    errors.address?.line1 ? errors.address.line1.message : ""
+                  }
                   {...register("address.line1")}
                 />
                 <TextField
@@ -253,7 +271,9 @@ function RegistrationForm() {
                   variant="outlined"
                   margin="normal"
                   error={!!errors.address?.city}
-                  helperText={errors.address?.city ? errors.address.city.message : ""}
+                  helperText={
+                    errors.address?.city ? errors.address.city.message : ""
+                  }
                   {...register("address.city")}
                 />
                 <TextField
@@ -261,7 +281,9 @@ function RegistrationForm() {
                   variant="outlined"
                   margin="normal"
                   error={!!errors.address?.state}
-                  helperText={errors.address?.state ? errors.address.state.message : ""}
+                  helperText={
+                    errors.address?.state ? errors.address.state.message : ""
+                  }
                   {...register("address.state")}
                 />
                 <TextField
@@ -269,7 +291,11 @@ function RegistrationForm() {
                   variant="outlined"
                   margin="normal"
                   error={!!errors.address?.pinCode}
-                  helperText={errors.address?.pinCode ? errors.address.pinCode.message : ""}
+                  helperText={
+                    errors.address?.pinCode
+                      ? errors.address.pinCode.message
+                      : ""
+                  }
                   {...register("address.pinCode")}
                 />
                 <TextField
@@ -277,7 +303,11 @@ function RegistrationForm() {
                   variant="outlined"
                   margin="normal"
                   error={!!errors.address?.country}
-                  helperText={errors.address?.country ? errors.address.country.message : ""}
+                  helperText={
+                    errors.address?.country
+                      ? errors.address.country.message
+                      : ""
+                  }
                   {...register("address.country")}
                 />
               </Box>
@@ -295,7 +325,9 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.emergencyContact?.name}
                   helperText={
-                    errors.emergencyContact?.name ? errors.emergencyContact.name.message : ""
+                    errors.emergencyContact?.name
+                      ? errors.emergencyContact.name.message
+                      : ""
                   }
                   {...register("emergencyContact.name")}
                 />
@@ -306,7 +338,9 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.emergencyContact?.relation}
                   helperText={
-                    errors.emergencyContact?.relation ? errors.emergencyContact.relation.message : ""
+                    errors.emergencyContact?.relation
+                      ? errors.emergencyContact.relation.message
+                      : ""
                   }
                   {...register("emergencyContact.relation")}
                 />
@@ -317,7 +351,9 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.emergencyContact?.contactNumber}
                   helperText={
-                    errors.emergencyContact?.contactNumber ? errors.emergencyContact.contactNumber.message : ""
+                    errors.emergencyContact?.contactNumber
+                      ? errors.emergencyContact.contactNumber.message
+                      : ""
                   }
                   {...register("emergencyContact.contactNumber")}
                 />
@@ -328,6 +364,91 @@ function RegistrationForm() {
                   margin="normal"
                   {...register("medicalInfo")}
                 />
+                {/* Medical Questions */}
+                {[
+                  {
+                    label:
+                      "Has your doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?",
+                    name: "questions.heartCondition",
+                  },
+                  {
+                    label:
+                      "Do you feel pain in your chest when you do physical activity?",
+                    name: "questions.chestPainActivity",
+                  },
+                  {
+                    label:
+                      "In the past month, have you had chest pain when you were not doing physical activity?",
+                    name: "questions.chestPainRest",
+                  },
+                  {
+                    label:
+                      "Do you lose your balance because of dizziness or do you ever lose consciousness?",
+                    name: "questions.dizziness",
+                  },
+                  {
+                    label:
+                      "Do you have a bone or joint problem that could be made worse by a change in your physical activity?",
+                    name: "questions.boneOrJointProblem",
+                  },
+                  {
+                    label:
+                      "Is your doctor currently prescribing drugs (for example, water pills) for your blood pressure or heart condition?",
+                    name: "questions.bloodPressureMedication",
+                  },
+                  {
+                    label:
+                      "Do you know of any other reason why you should not do physical activity?",
+                    name: "questions.otherReason",
+                  },
+                ].map((question, index) => (
+                  <FormControl
+                    key={index}
+                    component="fieldset"
+                    error={!!errors.questions?.[question.name]}
+                  >
+                    <FormLabel
+                      sx={{
+                        color: errors.questions?.[question.name]
+                          ? "#d32f2f"
+                          : "inherit",
+                      }}
+                    >
+                      {question.label}
+                    </FormLabel>
+
+                    <RadioGroup row>
+                      <FormControlLabel
+                        value="yes"
+                        control={<Radio />}
+                        label="Yes"
+                        {...register(question.name, {
+                          required: "This question is required",
+                        })}
+                      />
+                      <FormControlLabel
+                        value="no"
+                        control={<Radio />}
+                        label="No"
+                        {...register(question.name, {
+                          required: "This question is required",
+                        })}
+                      />
+                    </RadioGroup>
+                    {errors.questions?.[question.name] && (
+                      <FormHelperText sx={{ color: "#d32f2f" }}>
+                        {errors.questions[question.name].message}
+                      </FormHelperText>
+                    )}
+                  </FormControl>
+                ))}
+
+                {/* Note */}
+                <Box sx={{ mt: 2, color: "#d32f2f" }}>
+                  *If you answered YES to any of the above questions, please
+                  talk with your doctor by phone or in person BEFORE you start
+                  becoming physically active or participating in the event.
+                </Box>
               </Box>
             )}
 
@@ -382,4 +503,3 @@ function RegistrationForm() {
 }
 
 export default RegistrationForm;
-  
