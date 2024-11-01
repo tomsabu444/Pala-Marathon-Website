@@ -750,6 +750,14 @@ function RegistrationForm() {
                       errors.couponCode ? errors.couponCode.message : ""
                     }
                     {...register("couponCode")}
+                    sx={{
+                      "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
+                      "& .MuiOutlinedInput-root": {
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#9D356D", 
+                        },
+                      },
+                    }}
                   />
                 )}
 
