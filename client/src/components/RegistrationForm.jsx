@@ -6,13 +6,19 @@ import {
   TextField,
   Box,
   MenuItem,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  FormHelperText,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-// Updated Zod schema for Step 0 with additional fields
+// Updated Zod schema with more explicit gender requirement message
 const basicDetailsSchema = z.object({
   name: z.string().min(1, "Name is required"),
   phone: z
@@ -20,7 +26,12 @@ const basicDetailsSchema = z.object({
     .min(10, "Phone number should be at least 10 digits")
     .regex(/^\d+$/, "Phone number must be numeric"),
   email: z.string().email("Invalid email address"),
-  gender: z.string().min(1, "Gender is required"),
+  gender: z.enum(["male", "female", "other"], {
+    required_error: "Please select your gender",
+    invalid_type_error: "Please select a valid gender option",
+  }).refine((val) => val !== undefined && val !== null, {
+    message: "Gender selection is required"
+  }),
   dateOfBirth: z.string().min(1, "Date of Birth is required"),
   nameOnBib: z.string().min(1, "Name on BIB is required"),
   address: z.object({
@@ -69,6 +80,7 @@ function RegistrationForm() {
     handleSubmit,
     trigger,
     formState: { errors },
+    register,
   } = methods;
 
   const onSubmit = async (data) => {
@@ -136,9 +148,7 @@ function RegistrationForm() {
           </Step>
         ))}
       </Stepper>
-      {/* Stepper end */}
 
-      {/* Form Starting */}
       <div className="mx-5">
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -150,7 +160,7 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.name}
                   helperText={errors.name ? errors.name.message : ""}
-                  {...methods.register("name")}
+                  {...register("name")}
                 />
                 <TextField
                   label="Phone Number *"
@@ -158,7 +168,7 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.phone}
                   helperText={errors.phone ? errors.phone.message : ""}
-                  {...methods.register("phone")}
+                  {...register("phone")}
                 />
                 <TextField
                   label="Email *"
@@ -166,21 +176,73 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.email}
                   helperText={errors.email ? errors.email.message : ""}
-                  {...methods.register("email")}
+                  {...register("email")}
                 />
-                <TextField
-                  label="Gender *"
-                  variant="outlined"
-                  margin="normal"
-                  select
+                
+                {/* Updated Gender Selection with Required Indication */}
+                <FormControl 
+                  required
                   error={!!errors.gender}
-                  helperText={errors.gender ? errors.gender.message : ""}
-                  {...methods.register("gender")}
+                  component="fieldset"
+                  sx={{ 
+                    display: 'block', 
+                    my: 2,
+                    '& .MuiFormLabel-asterisk': {
+                      color: errors.gender ? '#d32f2f' : 'inherit'
+                    }
+                  }}
                 >
-                  <MenuItem value="Male">Male</MenuItem>
-                  <MenuItem value="Female">Female</MenuItem>
-                  <MenuItem value="Other">Other</MenuItem>
-                </TextField>
+                  <FormLabel 
+                    component="legend"
+                    sx={{
+                      color: errors.gender ? '#d32f2f' : 'inherit',
+                      '&.Mui-focused': {
+                        color: errors.gender ? '#d32f2f' : '#9D356D'
+                      }
+                    }}
+                  >
+                    Gender
+                  </FormLabel>
+                  <RadioGroup 
+                    row 
+                    aria-required="true"
+                    sx={{ mt: 1 }}
+                  >
+                    <FormControlLabel
+                      value="male"
+                      control={
+                        <Radio 
+                          {...register("gender", { required: "Gender selection is required" })}
+                        />
+                      }
+                      label="Male"
+                    />
+                    <FormControlLabel
+                      value="female"
+                      control={
+                        <Radio 
+                          {...register("gender", { required: "Gender selection is required" })}
+                        />
+                      }
+                      label="Female"
+                    />
+                    <FormControlLabel
+                      value="other"
+                      control={
+                        <Radio 
+                          {...register("gender", { required: "Gender selection is required" })}
+                        />
+                      }
+                      label="Other"
+                    />
+                  </RadioGroup>
+                  {errors.gender && (
+                    <FormHelperText sx={{ color: '#d32f2f', ml: 0 }}>
+                      {errors.gender.message}
+                    </FormHelperText>
+                  )}
+                </FormControl>
+
                 <TextField
                   label="Date of Birth *"
                   variant="outlined"
@@ -189,7 +251,7 @@ function RegistrationForm() {
                   InputLabelProps={{ shrink: true }}
                   error={!!errors.dateOfBirth}
                   helperText={errors.dateOfBirth ? errors.dateOfBirth.message : ""}
-                  {...methods.register("dateOfBirth")}
+                  {...register("dateOfBirth")}
                 />
                 <TextField
                   label="Name on BIB *"
@@ -197,7 +259,7 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.nameOnBib}
                   helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
-                  {...methods.register("nameOnBib")}
+                  {...register("nameOnBib")}
                 />
                 <TextField
                   label="Address Line 1 *"
@@ -205,7 +267,7 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.address?.line1}
                   helperText={errors.address?.line1 ? errors.address.line1.message : ""}
-                  {...methods.register("address.line1")}
+                  {...register("address.line1")}
                 />
                 <TextField
                   label="City *"
@@ -213,7 +275,7 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.address?.city}
                   helperText={errors.address?.city ? errors.address.city.message : ""}
-                  {...methods.register("address.city")}
+                  {...register("address.city")}
                 />
                 <TextField
                   label="State *"
@@ -221,7 +283,7 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.address?.state}
                   helperText={errors.address?.state ? errors.address.state.message : ""}
-                  {...methods.register("address.state")}
+                  {...register("address.state")}
                 />
                 <TextField
                   label="PIN Code *"
@@ -229,7 +291,7 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.address?.pinCode}
                   helperText={errors.address?.pinCode ? errors.address.pinCode.message : ""}
-                  {...methods.register("address.pinCode")}
+                  {...register("address.pinCode")}
                 />
                 <TextField
                   label="Country *"
@@ -237,12 +299,11 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.address?.country}
                   helperText={errors.address?.country ? errors.address.country.message : ""}
-                  {...methods.register("address.country")}
+                  {...register("address.country")}
                 />
               </Box>
             )}
 
-            {/* Step 1 and Step 2 remain unchanged */}
             {activeStep === 1 && (
               <Box sx={{ my: 3 }}>
                 <TextField
@@ -256,14 +317,14 @@ function RegistrationForm() {
                       ? errors.emergencyContact.message
                       : ""
                   }
-                  {...methods.register("emergencyContact")}
+                  {...register("emergencyContact")}
                 />
                 <TextField
                   label="Medical Information"
                   variant="outlined"
                   fullWidth
                   margin="normal"
-                  {...methods.register("medicalInfo")}
+                  {...register("medicalInfo")}
                 />
               </Box>
             )}
@@ -277,13 +338,13 @@ function RegistrationForm() {
                   margin="normal"
                   error={!!errors.category}
                   helperText={errors.category ? errors.category.message : ""}
-                  {...methods.register("category")}
+                  {...register("category")}
                 />
                 <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
                   <label>
                     <input
                       type="checkbox"
-                      {...methods.register("consent")}
+                      {...register("consent")}
                       style={{ marginRight: "0.5rem" }}
                     />
                     Consent
@@ -314,7 +375,6 @@ function RegistrationForm() {
           </form>
         </FormProvider>
       </div>
-      {/* Form ending */}
     </div>
   );
 }
