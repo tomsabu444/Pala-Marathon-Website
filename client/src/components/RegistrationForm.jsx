@@ -12,6 +12,7 @@ import {
   FormControlLabel,
   Radio,
   FormHelperText,
+  Checkbox,
 } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -218,7 +219,6 @@ function RegistrationForm() {
             {activeStep === 0 && (
               <Box sx={{ my: 3 }}>
                 <TextField
-                
                   label="Full Name *"
                   variant="outlined"
                   margin="normal"
@@ -229,7 +229,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -245,11 +245,10 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
-                  
                 />
                 <TextField
                   label="Email *"
@@ -262,7 +261,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -279,7 +278,7 @@ function RegistrationForm() {
                   }}
                 >
                   <FormLabel
-                     sx={{
+                    sx={{
                       "&.Mui-focused": { color: "#330A48" }, // Focused color
                       "&.MuiFormLabel-root.Mui-focused": { color: "#330A48" },
                     }}
@@ -360,7 +359,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -378,7 +377,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -396,7 +395,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -414,7 +413,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -434,7 +433,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -454,7 +453,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -483,7 +482,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -504,7 +503,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -525,7 +524,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -540,7 +539,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -597,9 +596,11 @@ function RegistrationForm() {
                           color: errors.questions?.[question.name.split(".")[1]]
                             ? "#d32f2f"
                             : "inherit",
-                            "&.Mui-focused": { color: "#330A48" }, // Focused color
-                            "&.MuiFormLabel-root.Mui-focused": { color: "#330A48" },
-                          }}
+                          "&.Mui-focused": { color: "#330A48" }, // Focused color
+                          "&.MuiFormLabel-root.Mui-focused": {
+                            color: "#330A48",
+                          },
+                        }}
                       >
                         {question.label}
                       </FormLabel>
@@ -674,7 +675,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -702,7 +703,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -726,7 +727,7 @@ function RegistrationForm() {
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
                       "&.Mui-focused fieldset": {
-                        borderColor: "#9D356D", 
+                        borderColor: "#9D356D",
                       },
                     },
                   }}
@@ -754,7 +755,7 @@ function RegistrationForm() {
                       "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                       "& .MuiOutlinedInput-root": {
                         "&.Mui-focused fieldset": {
-                          borderColor: "#9D356D", 
+                          borderColor: "#9D356D",
                         },
                       },
                     }}
@@ -763,44 +764,57 @@ function RegistrationForm() {
 
                 {/* Printed Name Acknowledgment */}
                 <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      {...register("printedNameAcknowledgment", {
-                        required: "Acknowledgment is required",
-                      })}
-                      style={{ marginRight: "0.5rem" }}
-                    />
-                    I understand and acknowledge that it is less than a week
-                    before the race and it may not be possible to have my name
-                    printed on the BIB and that I will be given a blank BIB with
-                    a BIB number (& Chip in case of Half & Full Marathon
-                    Runners).
-                  </label>
+                  <Controller
+                    name="printedNameAcknowledgment"
+                    control={methods.control}
+                    render={({ field }) => (
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            {...field}
+                            checked={field.value}
+                            sx={{
+                              color: "#9D356D",
+                              "&.Mui-checked": { color: "#9D356D" },
+                            }}
+                          />
+                        }
+                        label="I understand and acknowledge that it is less than a week before the race and it may not be possible to have my name printed on the BIB. I will be given a blank BIB with a BIB number (and Chip for Half & Full Marathon Runners)."
+                      />
+                    )}
+                  />
                   {errors.printedNameAcknowledgment && (
-                    <p style={{ color: "red", marginLeft: "1rem" }}>
+                    <FormHelperText sx={{ color: "#d32f2f", ml: 3 }}>
                       {errors.printedNameAcknowledgment.message}
-                    </p>
+                    </FormHelperText>
                   )}
                 </Box>
 
                 {/* Consent to Terms & Conditions */}
                 <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      {...register("consent", {
-                        required:
-                          "You must accept the Terms & Conditions to proceed",
-                      })}
-                      style={{ marginRight: "0.5rem" }}
-                    />
-                    I have read and accept the Terms & Conditions of the race.
-                  </label>
+                  <Controller
+                    name="consent"
+                    control={methods.control}
+                    render={({ field }) => (
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            {...field}
+                            checked={field.value}
+                            sx={{
+                              color: "#9D356D",
+                              "&.Mui-checked": { color: "#9D356D" },
+                            }}
+                          />
+                        }
+                        label="I have read and accept the Terms & Conditions of the race."
+                      />
+                    )}
+                  />
                   {errors.consent && (
-                    <p style={{ color: "red", marginLeft: "0.8rem" }}>
+                    <FormHelperText sx={{ color: "#d32f2f", ml: 3 }}>
                       {errors.consent.message}
-                    </p>
+                    </FormHelperText>
                   )}
                 </Box>
               </Box>
