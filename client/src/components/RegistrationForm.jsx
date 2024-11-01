@@ -465,35 +465,114 @@ function RegistrationForm() {
               </Box>
             )}
             {/* //? step 1 end */}
-            
-             {/* //! step 2 start */}
+
+            {/* //! step 2 start */}
             {activeStep === 2 && (
               <Box sx={{ my: 3 }}>
+                {/* Race Category Dropdown */}
                 <TextField
-                  label="Category"
+                  select
+                  label="Race Category *"
                   variant="outlined"
                   fullWidth
                   margin="normal"
                   error={!!errors.category}
                   helperText={errors.category ? errors.category.message : ""}
                   {...register("category")}
-                />
+                >
+                  <MenuItem value="fullMarathon">
+                    Full Marathon – 21 Kms
+                  </MenuItem>
+                  <MenuItem value="halfMarathon">
+                    Half Marathon – 10 Kms
+                  </MenuItem>
+                  <MenuItem value="familyFunRun">
+                    Family Fun Run – 3 Kms
+                  </MenuItem>
+                </TextField>
+
+                {/* Name on BIB */}
                 <TextField
-                    label="Name on BIB *"
+                  label="Name on BIB *"
+                  variant="outlined"
+                  margin="normal"
+                  error={!!errors.nameOnBib}
+                  helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
+                  {...register("nameOnBib")}
+                />
+
+                {/* Club Participation Dropdown */}
+                <TextField
+                  select
+                  label="Are you part of any Club?"
+                  fullWidth
+                  margin="normal"
+                  {...register("clubParticipation")}
+                  defaultValue="no"
+                  error={!!errors.clubParticipation}
+                  helperText={
+                    errors.clubParticipation
+                      ? errors.clubParticipation.message
+                      : ""
+                  }
+                >
+                  <MenuItem value="no">No</MenuItem>
+                  <MenuItem value="club1">Club 1</MenuItem>
+                  <MenuItem value="club2">Club 2</MenuItem>
+                  <MenuItem value="club3">Club 3</MenuItem>
+                  {/* Add more club options as needed */}
+                </TextField>
+
+                {/* Conditional Coupon Code Field */}
+                {methods.watch("clubParticipation") !== "no" && (
+                  <TextField
+                    label="Coupon Code"
                     variant="outlined"
                     margin="normal"
-                    error={!!errors.nameOnBib}
-                    helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
-                    {...register("nameOnBib")}
+                    fullWidth
+                    error={!!errors.couponCode}
+                    helperText={
+                      errors.couponCode ? errors.couponCode.message : ""
+                    }
+                    {...register("couponCode")}
                   />
+                )}
+
+                {/* Printed Name Acknowledgment */}
                 <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
                   <label>
                     <input
                       type="checkbox"
-                      {...register("consent")}
+                      {...register("printedNameAcknowledgment", {
+                        required: "Acknowledgment is required",
+                      })}
                       style={{ marginRight: "0.5rem" }}
                     />
-                    Consent
+                    I understand and acknowledge that it is less than a week
+                    before the race and it may not be possible to have my name
+                    printed on the BIB and that I will be given a blank BIB with
+                    a BIB number (& Chip in case of Half & Full Marathon
+                    Runners).
+                  </label>
+                  {errors.printedNameAcknowledgment && (
+                    <p style={{ color: "red", marginLeft: "1rem" }}>
+                      {errors.printedNameAcknowledgment.message}
+                    </p>
+                  )}
+                </Box>
+
+                {/* Consent to Terms & Conditions */}
+                <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      {...register("consent", {
+                        required:
+                          "You must accept the Terms & Conditions to proceed",
+                      })}
+                      style={{ marginRight: "0.5rem" }}
+                    />
+                    I have read and accept the Terms & Conditions of the race.
                   </label>
                   {errors.consent && (
                     <p style={{ color: "red", marginLeft: "1rem" }}>
@@ -518,6 +597,8 @@ function RegistrationForm() {
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             </Box>
+
+            {/* //! step 2 start */}
           </form>
         </FormProvider>
       </div>
