@@ -13,8 +13,8 @@ import {
   Radio,
   FormHelperText,
 } from "@mui/material";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import React, { useState } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -63,24 +63,31 @@ const medicalDetailsSchema = z.object({
   questions: z.object({
     heartCondition: z.enum(["yes", "no"], {
       required_error: "This question is required",
+      invalid_type_error: "Please select yes or no",
     }),
     chestPainActivity: z.enum(["yes", "no"], {
       required_error: "This question is required",
+      invalid_type_error: "This question is required",
     }),
     chestPainRest: z.enum(["yes", "no"], {
       required_error: "This question is required",
+      invalid_type_error: "This question is required",
     }),
     dizziness: z.enum(["yes", "no"], {
       required_error: "This question is required",
+      invalid_type_error: "This question is required",
     }),
     boneOrJointProblem: z.enum(["yes", "no"], {
       required_error: "This question is required",
+      invalid_type_error: "This question is required",
     }),
     bloodPressureMedication: z.enum(["yes", "no"], {
       required_error: "This question is required",
+      invalid_type_error: "This question is required",
     }),
     otherReason: z.enum(["yes", "no"], {
       required_error: "This question is required",
+      invalid_type_error: "This question is required",
     }),
   }),
 });
@@ -110,7 +117,7 @@ function RegistrationForm() {
     resolver: zodResolver(stepSchemas[activeStep]),
     mode: "onChange",
     defaultValues: {
-      gender: null,
+      gender: "",
       category: "",
       clubParticipation: "no",
       consent: false,
@@ -628,7 +635,7 @@ function RegistrationForm() {
                 }}
                 type="submit"
                 variant="contained"
-                endIcon={<ArrowForwardIosIcon/>}
+                endIcon={<ArrowForwardIosIcon />}
               >
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
