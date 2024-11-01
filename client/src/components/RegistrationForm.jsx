@@ -500,7 +500,7 @@ function RegistrationForm() {
                   }
                   {...register("emergencyContact.name")}
                   id="emergencyContactName"
-                  autoComplete="emergencyContactName"
+                  autoComplete="name"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -523,7 +523,7 @@ function RegistrationForm() {
                   }
                   {...register("emergencyContact.relation")}
                   id="relationWithEmergencyContact"
-                  autoComplete="relationWithEmergencyContact"
+                  autoComplete="relationship"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -546,7 +546,7 @@ function RegistrationForm() {
                   }
                   {...register("emergencyContact.contactNumber")}
                   id="emergencyContactNumber"
-                  autoComplete="emergencyContactNumber"
+                  autoComplete="tel"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -563,7 +563,7 @@ function RegistrationForm() {
                   margin="normal"
                   {...register("medicalInfo")}
                   id="medicalInfo"
-                  autoComplete="medicalInfo"
+                  autoComplete="off"
                   sx={{
                     "& .MuiInputLabel-root.Mui-focused": { color: "#9D356D" },
                     "& .MuiOutlinedInput-root": {
@@ -620,16 +620,17 @@ function RegistrationForm() {
                       error={!!errors.questions?.[question.name.split(".")[1]]} // Access nested field directly
                       sx={{ my: 2 }}
                     >
-                      <FormLabel
+                      <FormLabel component="legend" // Acts as a legend for the fieldset for accessibility
                         sx={{
                           color: errors.questions?.[question.name.split(".")[1]]
                             ? "#d32f2f"
                             : "inherit",
-                          "&.Mui-focused": { color: "#330A48" }, // Focused color
+                          "&.Mui-focused": { color: "#330A48" },
                           "&.MuiFormLabel-root.Mui-focused": {
                             color: "#330A48",
                           },
                         }}
+
                       >
                         {question.label}
                       </FormLabel>
@@ -644,6 +645,7 @@ function RegistrationForm() {
                               value="yes"
                               control={
                                 <Radio
+                                  id={`${question.name}-yes`} //? Unique id for accessibility
                                   sx={{
                                     color: "#9D356D",
                                     "&.Mui-checked": {
@@ -658,6 +660,7 @@ function RegistrationForm() {
                               value="no"
                               control={
                                 <Radio
+                                  id={`${question.name}-no`} //? Unique id for accessibility
                                   sx={{
                                     color: "#9D356D",
                                     "&.Mui-checked": {
