@@ -7,6 +7,7 @@ export default {
         'custom-purple-1000': '#330A48',
         'custom-purple-1001': '#330A48',
         'custom-pink': '#8D1455',
+        'custom-lightpink': '#FFCDE8',
       },
       fontFamily: {
         outfit: ["Outfit", "sans-serif"],

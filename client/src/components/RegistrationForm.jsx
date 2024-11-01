@@ -568,8 +568,18 @@ function RegistrationForm() {
                     },
                   }}
                 />
+                <hr className="mt-10 mx-auto border-1 w-full  border-custom-pink" />
                 {/* Medical Questions */}
-                <div className="flex flex-col mt-2">
+                <div className="flex flex-col">
+                <div className=" bg-custom-lightpink p-7  rounded-lg my-10 ">
+                  <p className=" text-custom-pink">
+                    Medical Questions listed below are very important aspects of
+                    the race registration and must be filled honestly and to the
+                    best of the knowledge. If you are registering for another
+                    participant, then you must consult with the participant
+                    before filling in the questionnaire.
+                  </p>
+                </div>
                   {[
                     {
                       label:
