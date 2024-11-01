@@ -107,6 +107,22 @@ function RegistrationForm() {
   const methods = useForm({
     resolver: zodResolver(stepSchemas[activeStep]),
     mode: "onChange",
+    defaultValues: {
+      gender: null,
+      category: "",
+      clubParticipation: "no",
+      consent: false,
+      printedNameAcknowledgment: false,
+      questions: {
+        heartCondition: null,
+        chestPainActivity: null,
+        chestPainRest: null,
+        dizziness: null,
+        boneOrJointProblem: null,
+        bloodPressureMedication: null,
+        otherReason: null,
+      },
+    },
   });
 
   const {
@@ -479,6 +495,7 @@ function RegistrationForm() {
                   error={!!errors.category}
                   helperText={errors.category ? errors.category.message : ""}
                   {...register("category")}
+                  value={methods.watch("category") ?? ""}
                 >
                   <MenuItem value="fullMarathon">
                     Full Marathon – 21 Kms
