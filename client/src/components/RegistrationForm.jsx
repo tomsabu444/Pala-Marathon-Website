@@ -13,6 +13,8 @@ import {
   Radio,
   FormHelperText,
 } from "@mui/material";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import React, { useState } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -597,7 +599,7 @@ function RegistrationForm() {
                     I have read and accept the Terms & Conditions of the race.
                   </label>
                   {errors.consent && (
-                    <p style={{ color: "red", marginLeft: "1rem" }}>
+                    <p style={{ color: "red", marginLeft: "0.8rem" }}>
                       {errors.consent.message}
                     </p>
                   )}
@@ -605,17 +607,29 @@ function RegistrationForm() {
               </Box>
             )}
 
-            <Box
-              sx={{ display: "flex", justifyContent: "space-between", mt: 3 }}
-            >
+            <Box sx={{ display: "flex", justifyContent: "end", gap: 3, mt: 3 }}>
               <Button
+                sx={{
+                  borderColor: "#9D356D",
+                  color: "#9D356D",
+                  "&:hover": { Color: "#822C59" },
+                }}
                 disabled={activeStep === 0}
                 onClick={handleBack}
-                variant="contained"
+                variant="outlined"
+                startIcon={<ArrowBackIosIcon />}
               >
                 Back
               </Button>
-              <Button type="submit" variant="contained" color="primary">
+              <Button
+                sx={{
+                  backgroundColor: "#9D356D",
+                  "&:hover": { backgroundColor: "#822C59" },
+                }}
+                type="submit"
+                variant="contained"
+                endIcon={<ArrowForwardIosIcon/>}
+              >
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             </Box>
