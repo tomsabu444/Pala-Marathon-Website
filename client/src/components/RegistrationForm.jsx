@@ -132,12 +132,17 @@ function RegistrationForm() {
     register,
   } = methods;
 
+  const [formData, setFormData] = useState({});
+
   const onSubmit = async (data) => {
+    // Merge current step data with formData
+    setFormData((prev) => ({ ...prev, ...data }));
+
     if (activeStep < steps.length - 1) {
       const isStepValid = await trigger();
       if (isStepValid) setActiveStep((prev) => prev + 1);
     } else {
-      console.log("Form submitted", data);
+      console.log("Final Form Submission Data:", { ...formData, ...data });
     }
   };
 
