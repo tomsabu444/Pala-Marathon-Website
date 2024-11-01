@@ -14,7 +14,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -35,7 +35,7 @@ const basicDetailsSchema = z.object({
       message: "Gender selection is required",
     }),
   dateOfBirth: z.string().min(1, "Date of Birth is required"),
-  // nameOnBib: z.string().min(1, "Name on BIB is required"),
+
   address: z.object({
     line1: z.string().min(1, "Address line 1 is required"),
     city: z.string().min(1, "City is required"),
@@ -59,22 +59,34 @@ const medicalDetailsSchema = z.object({
   }),
   medicalInfo: z.string().optional(),
   questions: z.object({
-    heartCondition: z.enum(["yes", "no"], "Please answer this question"),
-    chestPainActivity: z.enum(["yes", "no"], "Please answer this question"),
-    chestPainRest: z.enum(["yes", "no"], "Please answer this question"),
-    dizziness: z.enum(["yes", "no"], "Please answer this question"),
-    boneOrJointProblem: z.enum(["yes", "no"], "Please answer this question"),
-    bloodPressureMedication: z.enum(
-      ["yes", "no"],
-      "Please answer this question"
-    ),
-    otherReason: z.enum(["yes", "no"], "Please answer this question"),
+    heartCondition: z.enum(["yes", "no"], {
+      required_error: "This question is required",
+    }),
+    chestPainActivity: z.enum(["yes", "no"], {
+      required_error: "This question is required",
+    }),
+    chestPainRest: z.enum(["yes", "no"], {
+      required_error: "This question is required",
+    }),
+    dizziness: z.enum(["yes", "no"], {
+      required_error: "This question is required",
+    }),
+    boneOrJointProblem: z.enum(["yes", "no"], {
+      required_error: "This question is required",
+    }),
+    bloodPressureMedication: z.enum(["yes", "no"], {
+      required_error: "This question is required",
+    }),
+    otherReason: z.enum(["yes", "no"], {
+      required_error: "This question is required",
+    }),
   }),
 });
 
 const categoryConsentSchema = z.object({
   category: z.string().min(1, "Category is required"),
   consent: z.boolean().refine((val) => val === true, "Consent is required"),
+  nameOnBib: z.string().min(1, "Name on BIB is required"),
 });
 
 const stepSchemas = [
@@ -210,24 +222,31 @@ function RegistrationForm() {
                     my: 2,
                   }}
                 >
-                  <FormLabel>Gender </FormLabel>
-                  <RadioGroup row>
-                    <FormControlLabel
-                      value="male"
-                      control={<Radio {...register("gender")} />}
-                      label="Male"
-                    />
-                    <FormControlLabel
-                      value="female"
-                      control={<Radio {...register("gender")} />}
-                      label="Female"
-                    />
-                    <FormControlLabel
-                      value="other"
-                      control={<Radio {...register("gender")} />}
-                      label="Other"
-                    />
-                  </RadioGroup>
+                  <FormLabel>Gender</FormLabel>
+                  <Controller
+                    name="gender"
+                    control={methods.control}
+                    rules={{ required: "Please select your gender" }}
+                    render={({ field }) => (
+                      <RadioGroup row {...field}>
+                        <FormControlLabel
+                          value="male"
+                          control={<Radio />}
+                          label="Male"
+                        />
+                        <FormControlLabel
+                          value="female"
+                          control={<Radio />}
+                          label="Female"
+                        />
+                        <FormControlLabel
+                          value="other"
+                          control={<Radio />}
+                          label="Other"
+                        />
+                      </RadioGroup>
+                    )}
+                  />
                   {errors.gender && (
                     <FormHelperText sx={{ color: "#d32f2f" }}>
                       {errors.gender.message}
@@ -248,14 +267,6 @@ function RegistrationForm() {
                   }
                   {...register("dateOfBirth")}
                 />
-                {/* <TextField
-                    label="Name on BIB *"
-                    variant="outlined"
-                    margin="normal"
-                    error={!!errors.nameOnBib}
-                    helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
-                    {...register("nameOnBib")}
-                  /> */}
                 <TextField
                   label="Address Line 1 *"
                   variant="outlined"
@@ -317,9 +328,7 @@ function RegistrationForm() {
             {/* //? step 1 start */}
 
             {activeStep === 1 && (
-              <Box
-                sx={{ display: "flex", flexDirection: "column", gap: 2, my: 3 }}
-              >
+              <Box sx={{ my: 3 }}>
                 <TextField
                   label="Emergency Contact Name *"
                   variant="outlined"
@@ -367,93 +376,97 @@ function RegistrationForm() {
                   {...register("medicalInfo")}
                 />
                 {/* Medical Questions */}
-                {[
-                  {
-                    label:
-                      "Has your doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?",
-                    name: "questions.heartCondition",
-                  },
-                  {
-                    label:
-                      "Do you feel pain in your chest when you do physical activity?",
-                    name: "questions.chestPainActivity",
-                  },
-                  {
-                    label:
-                      "In the past month, have you had chest pain when you were not doing physical activity?",
-                    name: "questions.chestPainRest",
-                  },
-                  {
-                    label:
-                      "Do you lose your balance because of dizziness or do you ever lose consciousness?",
-                    name: "questions.dizziness",
-                  },
-                  {
-                    label:
-                      "Do you have a bone or joint problem that could be made worse by a change in your physical activity?",
-                    name: "questions.boneOrJointProblem",
-                  },
-                  {
-                    label:
-                      "Is your doctor currently prescribing drugs (for example, water pills) for your blood pressure or heart condition?",
-                    name: "questions.bloodPressureMedication",
-                  },
-                  {
-                    label:
-                      "Do you know of any other reason why you should not do physical activity?",
-                    name: "questions.otherReason",
-                  },
-                ].map((question, index) => (
-                  <FormControl
-                    key={index}
-                    component="fieldset"
-                    error={!!errors.questions?.[question.name]}
-                  >
-                    <FormLabel
-                      sx={{
-                        color: errors.questions?.[question.name]
-                          ? "#d32f2f"
-                          : "inherit",
-                      }}
+                <Box
+                  sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
+                >
+                  {[
+                    {
+                      label:
+                        "Has your doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?",
+                      name: "questions.heartCondition",
+                    },
+                    {
+                      label:
+                        "Do you feel pain in your chest when you do physical activity?",
+                      name: "questions.chestPainActivity",
+                    },
+                    {
+                      label:
+                        "In the past month, have you had chest pain when you were not doing physical activity?",
+                      name: "questions.chestPainRest",
+                    },
+                    {
+                      label:
+                        "Do you lose your balance because of dizziness or do you ever lose consciousness?",
+                      name: "questions.dizziness",
+                    },
+                    {
+                      label:
+                        "Do you have a bone or joint problem that could be made worse by a change in your physical activity?",
+                      name: "questions.boneOrJointProblem",
+                    },
+                    {
+                      label:
+                        "Is your doctor currently prescribing drugs (for example, water pills) for your blood pressure or heart condition?",
+                      name: "questions.bloodPressureMedication",
+                    },
+                    {
+                      label:
+                        "Do you know of any other reason why you should not do physical activity?",
+                      name: "questions.otherReason",
+                    },
+                  ].map((question, index) => (
+                    <FormControl
+                      key={index}
+                      component="fieldset"
+                      error={!!errors.questions?.[question.name.split(".")[1]]} // Access nested field directly
+                      sx={{ my: 2 }}
                     >
-                      {question.label}
-                    </FormLabel>
+                      <FormLabel
+                        sx={{
+                          color: errors.questions?.[question.name.split(".")[1]]
+                            ? "#d32f2f"
+                            : "inherit",
+                        }}
+                      >
+                        {question.label}
+                      </FormLabel>
 
-                    <RadioGroup row>
-                      <FormControlLabel
-                        value="yes"
-                        control={<Radio />}
-                        label="Yes"
-                        {...register(question.name, {
-                          required: "This question is required",
-                        })}
+                      <Controller
+                        name={question.name}
+                        control={methods.control}
+                        rules={{ required: "This question is required" }}
+                        render={({ field }) => (
+                          <RadioGroup row {...field}>
+                            <FormControlLabel
+                              value="yes"
+                              control={<Radio />}
+                              label="Yes"
+                            />
+                            <FormControlLabel
+                              value="no"
+                              control={<Radio />}
+                              label="No"
+                            />
+                          </RadioGroup>
+                        )}
                       />
-                      <FormControlLabel
-                        value="no"
-                        control={<Radio />}
-                        label="No"
-                        {...register(question.name, {
-                          required: "This question is required",
-                        })}
-                      />
-                    </RadioGroup>
-                    {errors.questions?.[question.name] && (
-                      <FormHelperText sx={{ color: "#d32f2f" }}>
-                        {errors.questions[question.name].message}
-                      </FormHelperText>
-                    )}
-                  </FormControl>
-                ))}
-
-                {/* Note */}
-                <Box sx={{ mt: 2, color: "#d32f2f" }}>
-                  *If you answered YES to any of the above questions, please
-                  talk with your doctor by phone or in person BEFORE you start
-                  becoming physically active or participating in the event.
+                      {errors.questions?.[question.name.split(".")[1]] && (
+                        <FormHelperText sx={{ color: "#d32f2f" }}>
+                          {
+                            errors.questions[question.name.split(".")[1]]
+                              .message
+                          }
+                        </FormHelperText>
+                      )}
+                    </FormControl>
+                  ))}
                 </Box>
               </Box>
             )}
-
+            {/* //? step 1 end */}
+            
+             {/* //! step 2 start */}
             {activeStep === 2 && (
               <Box sx={{ my: 3 }}>
                 <TextField
@@ -465,6 +478,14 @@ function RegistrationForm() {
                   helperText={errors.category ? errors.category.message : ""}
                   {...register("category")}
                 />
+                <TextField
+                    label="Name on BIB *"
+                    variant="outlined"
+                    margin="normal"
+                    error={!!errors.nameOnBib}
+                    helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
+                    {...register("nameOnBib")}
+                  />
                 <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
                   <label>
                     <input
