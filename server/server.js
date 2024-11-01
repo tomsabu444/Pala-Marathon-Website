@@ -15,6 +15,7 @@ connectDB(); //! Initialize MongoDB connection
 
 //* Define routes
 const registrationRoutes = require('./routes/Registration');
+//? API routes
 app.use('/api', registrationRoutes);
 
 const PORT = process.env.PORT || 5000;
