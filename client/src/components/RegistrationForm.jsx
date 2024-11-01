@@ -4,7 +4,6 @@ import {
   Stepper,
   Button,
   TextField,
-  Box,
   MenuItem,
   FormControl,
   FormLabel,
@@ -56,8 +55,7 @@ const medicalDetailsSchema = z.object({
     relation: z.string().min(1, "Relation with Emergency Contact is required"),
     contactNumber: z
       .string()
-      .min(10, "Emergency Contact Number must be at least 10 digits")
-      .regex(/^\d+$/, "Emergency Contact Number must be numeric"),
+      .regex(/^\+91\d{10}$/, "Emergency Contact Number Phone number be +91xxxxxxxxxx"),
   }),
   medicalInfo: z.string().optional(),
   questions: z.object({
@@ -212,11 +210,11 @@ function RegistrationForm() {
         ))}
       </Stepper>
 
-      <div className="mx-5">
+      <div className="mx-6">
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
             {activeStep === 0 && (
-              <Box sx={{ my: 3 }}>
+              <div className="my-1 flex flex-col">
                 <TextField
                   label="Full Name *"
                   variant="outlined"
@@ -354,8 +352,7 @@ function RegistrationForm() {
                 <TextField
                   label="Date of Birth *"
                   variant="outlined"
-                  fullWidth
-                  margin="normal"
+                  margin="normal" 
                   type="date"
                   InputLabelProps={{ shrink: true }}
                   error={!!errors.dateOfBirth}
@@ -478,14 +475,14 @@ function RegistrationForm() {
                     },
                   }}
                 />
-              </Box>
+              </div>
             )}
             {/*//! setp 0 end */}
 
             {/* //? step 1 start */}
 
             {activeStep === 1 && (
-              <Box sx={{ my: 3 }}>
+              <div className="my-1 flex flex-col">
                 <TextField
                   label="Emergency Contact Name *"
                   variant="outlined"
@@ -573,7 +570,7 @@ function RegistrationForm() {
                   }}
                 />
                 {/* Medical Questions */}
-                <Box
+                <div
                   sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
                 >
                   {[
@@ -683,15 +680,15 @@ function RegistrationForm() {
                       )}
                     </FormControl>
                   ))}
-                </Box>
-              </Box>
+                </div>
+              </div>
             )}
 
             {/* //? step 1 end */}
 
             {/* //! step 2 start */}
             {activeStep === 2 && (
-              <Box sx={{ my: 3 }}>
+              <div className="my-1 flex flex-col">
                 {/* Race Category Dropdown */}
                 <TextField
                   select
@@ -798,7 +795,7 @@ function RegistrationForm() {
                 )}
 
                 {/* Printed Name Acknowledgment */}
-                <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                <div className="flex mt-2 items-center" >
                   <Controller
                     name="printedNameAcknowledgment"
                     control={methods.control}
@@ -823,10 +820,10 @@ function RegistrationForm() {
                       {errors.printedNameAcknowledgment.message}
                     </FormHelperText>
                   )}
-                </Box>
+                </div>
 
                 {/* Consent to Terms & Conditions */}
-                <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
+                <div className="flex items-center mt-2">
                   <Controller
                     name="consent"
                     control={methods.control}
@@ -851,13 +848,13 @@ function RegistrationForm() {
                       {errors.consent.message}
                     </FormHelperText>
                   )}
-                </Box>
-              </Box>
+                </div>
+              </div>
             )}
 
             {/* //! step 2 end */}
 
-            <Box sx={{ display: "flex", justifyContent: "end", gap: 3, mt: 3 }}>
+            <div className="flex justify-end gap-3 mt-3">
               <Button
                 sx={{
                   borderColor: "#9D356D",
@@ -882,7 +879,7 @@ function RegistrationForm() {
               >
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
-            </Box>
+            </div>
           </form>
         </FormProvider>
       </div>
