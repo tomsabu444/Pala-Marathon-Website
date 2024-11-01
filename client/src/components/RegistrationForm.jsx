@@ -570,9 +570,7 @@ function RegistrationForm() {
                   }}
                 />
                 {/* Medical Questions */}
-                <div
-                  sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}
-                >
+                <div className="flex flex-col mt-2">
                   {[
                     {
                       label:
