@@ -317,7 +317,9 @@ function RegistrationForm() {
             {/* //? step 1 start */}
 
             {activeStep === 1 && (
-              <Box sx={{ my: 3 }}>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: 2, my: 3 }}
+              >
                 <TextField
                   label="Emergency Contact Name *"
                   variant="outlined"
