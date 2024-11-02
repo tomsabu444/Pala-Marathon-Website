@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -93,7 +93,8 @@ const medicalDetailsSchema = z.object({
 const categoryConsentSchema = z.object({
   category: z.string().min(1, "Category is required"),
   consent: z.boolean().refine((val) => val === true, "Consent is Required"),
-  nameOnBib: z.string().max(4, "Name on BIB should be less that 4 characters"),
+  nameOnBib: z.string().min(1, "Name on BIB is required").max(4, "Name on BIB should be less that 4 characters"),
+  clubParticipation: z.string().optional(), 
   couponCode: z.string().optional(),
 });
 
@@ -121,6 +122,7 @@ function RegistrationForm() {
       clubParticipation: "no",
       consent: false,
       printedNameAcknowledgment: false,
+      couponCode: "",
       questions: {
         heartCondition: null,
         chestPainActivity: null,
@@ -138,12 +140,25 @@ function RegistrationForm() {
     trigger,
     formState: { errors },
     register,
+    watch,
+    setValue,
   } = methods;
+
+
+  // Use an effect to reset couponCode when clubParticipation changes
+  const clubParticipation = watch("clubParticipation");
+  useEffect(() => {
+    if (clubParticipation === "no") {
+      setValue("couponCode", "");
+    }
+  }, [clubParticipation, setValue]);
 
   const [formData, setFormData] = useState({});
 
+
+  //! On form submission
   const onSubmit = async (data) => {
-    //! Merge current step data with formData
+    //? Merge current step data with formData
     setFormData((prev) => ({ ...prev, ...data }));
 
     if (activeStep < steps.length - 1) {
@@ -817,7 +832,7 @@ function RegistrationForm() {
                   />
                 )}
 
-                {/* Printed Name Acknowledgment */}
+                {/* Printed Name Acknowledgment 
                 <div className="flex mt-2 items-center">
                   <Controller
                     name="printedNameAcknowledgment"
@@ -843,17 +858,20 @@ function RegistrationForm() {
                       {errors.printedNameAcknowledgment.message}
                     </FormHelperText>
                   )}
-                </div>
+                </div> */}
 
                 <hr className="mt-10 mx-auto border-1 w-full  border-custom-pink" />
 
                 {/* Consent to Terms & Conditions */}
                 <div className="flex flex-col my-2">
-                  <label className=" flex gap-3 font-medium mb-2 text-custom-purple-1001">Consent      {errors.consent && (
-                    <p className="text-red-600 mt-1 text-sm">
-                      {errors.consent.message}
-                    </p>
-                  )}</label>
+                  <label className=" flex gap-3 font-medium mb-2 text-custom-purple-1001">
+                    Consent
+                    {errors.consent && (
+                      <p className="text-red-600 my-auto text-sm">
+                        {errors.consent.message}
+                      </p>
+                    )}
+                  </label>
 
                   <div className="flex items-start">
                     <Controller
@@ -880,16 +898,13 @@ function RegistrationForm() {
                     />
                   </div>
 
-             
-
                   {/* Scrollable Terms and Conditions */}
                   <div className="mt-4 p-4 border border-[#9D356D] rounded-sm h-36 overflow-y-scroll bg-[#f7e7eb] text-[#9D356D]">
                     <p className="text-sm leading-relaxed">
-                      By registering for the <b> Pala
-                      Marathon</b>, the participant agrees to abide by the
-                      conditions of entry listed below, as well as any
-                      instructions given by the race organizer and officials of
-                      the race.
+                      By registering for the <b> Pala Marathon</b>, the
+                      participant agrees to abide by the conditions of entry
+                      listed below, as well as any instructions given by the
+                      race organizer and officials of the race.
                       {/* Add the rest of your Terms & Conditions here */}
                     </p>
                   </div>
