@@ -3,22 +3,12 @@ import {
   StepLabel,
   Stepper,
   Button,
-  TextField,
-  MenuItem,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  FormHelperText,
-  Checkbox,
 } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import React, { useEffect, useState } from "react";
-import { useForm, FormProvider, Controller } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import BasicDetails from "./BasicDetails";
 import MedicalDetails from "./MedicalDetails";
 import CategoryConsent from "./CategoryConsent";
