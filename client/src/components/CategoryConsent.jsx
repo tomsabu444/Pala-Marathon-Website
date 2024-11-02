@@ -43,10 +43,10 @@ function CategoryConsent() {
           },
         }}
       >
-        <MenuItem value="fullMarathon">
+        <MenuItem value="halfMarathon">
           Half Marathon (21 Kms) - 900 INR
         </MenuItem>
-        <MenuItem value="halfMarathon">
+        <MenuItem value="10KmMarathon">
           10 Km Marathon (10 Kms) - 700 INR
         </MenuItem>
         <MenuItem value="familyFunRun">
