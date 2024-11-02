@@ -11,7 +11,6 @@ const Navbar = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  
   // Define the navigation links and dropdowns
   const navLinks = [
     { path: "/", label: "HOME" },
@@ -33,11 +32,15 @@ const Navbar = () => {
       ],
     },
   ];
-  
+
   const location = useLocation();
-  
+
   return (
-    <nav className={`w-full z-20 top-0 start-0 border-b border-gray-200 bg-custom-purple-1000 ${location.pathname === "/" ? "fixed" : "static"}`}>
+    <nav
+      className={`w-full z-20 top-0 start-0 border-b border-gray-200 bg-custom-purple-1000 ${
+        location.pathname === "/" ? "fixed" : "static"
+      }`}
+    >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-end  mx-auto p-4 md:justify-between">
         {/* <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse"> */}
         {/* <img src="" className="h-9" alt="Running Logo" /> */}
@@ -47,9 +50,13 @@ const Navbar = () => {
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <Link
             to="/register"
-            className="text-white bg-pink-800 hover:bg-pink-700 font-medium rounded-md text-lg px-6 py-2 md:pb-3 text-center dark:bg-pink-700 dark:hover:bg-pink-700 dark:focus:ring-purple-800"
+            className="cursor-pointer font-semibold overflow-hidden relative z-100 border bg-custom-pink border-custom-pink group px-7 py-2 text-lg rounded-md text-center"
           >
-            Register
+            <span className="relative z-10 text-white group-hover:text-white text-lg duration-500">
+              Register
+            </span>
+            <span className="absolute w-full h-full bg-pink-700 -left-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:left-0 duration-500" />
+            <span className="absolute w-full h-full bg-pink-700 -right-32 top-0 -rotate-45 group-hover:rotate-0 group-hover:right-0 duration-500" />
           </Link>
 
           {/* Menu Button - Now properly hidden on larger screens */}
