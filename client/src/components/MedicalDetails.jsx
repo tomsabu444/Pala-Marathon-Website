@@ -18,22 +18,7 @@ function MedicalDetails() {
     control,
   } = useFormContext();
 
-  const medicalQuestions = [
-    { label: "Heart Condition?", name: "questions.heartCondition" },
-    {
-      label: "Chest Pain during activity?",
-      name: "questions.chestPainActivity",
-    },
-    { label: "Chest Pain at rest?", name: "questions.chestPainRest" },
-    { label: "Dizziness?", name: "questions.dizziness" },
-    { label: "Bone or Joint Problem?", name: "questions.boneOrJointProblem" },
-    {
-      label: "Blood Pressure Medication?",
-      name: "questions.bloodPressureMedication",
-    },
-    { label: "Any other reason?", name: "questions.otherReason" },
-  ];
-
+  
   return (
     <div className="my-1 flex flex-col">
       <TextField
