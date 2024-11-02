@@ -92,7 +92,7 @@ const medicalDetailsSchema = z.object({
 
 const categoryConsentSchema = z.object({
   category: z.string().min(1, "Category is required"),
-  consent: z.boolean().refine((val) => val === true, "Consent is required"),
+  consent: z.boolean().refine((val) => val === true, "Consent is Required"),
   nameOnBib: z.string().max(4, "Name on BIB should be less that 4 characters"),
   couponCode: z.string().optional(),
 });
@@ -845,32 +845,54 @@ function RegistrationForm() {
                   )}
                 </div>
 
+                <hr className="mt-10 mx-auto border-1 w-full  border-custom-pink" />
+
                 {/* Consent to Terms & Conditions */}
-                <div className="flex items-center mt-2">
-                  <Controller
-                    name="consent"
-                    control={methods.control}
-                    render={({ field }) => (
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            {...field}
-                            checked={field.value}
-                            sx={{
-                              color: "#9D356D",
-                              "&.Mui-checked": { color: "#9D356D" },
-                            }}
-                          />
-                        }
-                        label="I have read and accept the Terms & Conditions of the race."
-                      />
-                    )}
-                  />
-                  {errors.consent && (
-                    <FormHelperText sx={{ color: "#d32f2f", ml: 3 }}>
+                <div className="flex flex-col my-2">
+                  <label className=" flex gap-3 font-medium mb-2 text-custom-purple-1001">Consent      {errors.consent && (
+                    <p className="text-red-600 mt-1 text-sm">
                       {errors.consent.message}
-                    </FormHelperText>
-                  )}
+                    </p>
+                  )}</label>
+
+                  <div className="flex items-start">
+                    <Controller
+                      name="consent"
+                      control={methods.control}
+                      rules={{
+                        required: "You must accept the terms and conditions",
+                      }}
+                      render={({ field }) => (
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              {...field}
+                              checked={field.value}
+                              sx={{
+                                color: "#9D356D",
+                                "&.Mui-checked": { color: "#9D356D" },
+                              }}
+                            />
+                          }
+                          label="I have read and accept the Terms & Conditions of the race."
+                        />
+                      )}
+                    />
+                  </div>
+
+             
+
+                  {/* Scrollable Terms and Conditions */}
+                  <div className="mt-4 p-4 border border-[#9D356D] rounded-sm h-36 overflow-y-scroll bg-[#f7e7eb] text-[#9D356D]">
+                    <p className="text-sm leading-relaxed">
+                      By registering for the <b> Pala
+                      Marathon</b>, the participant agrees to abide by the
+                      conditions of entry listed below, as well as any
+                      instructions given by the race organizer and officials of
+                      the race.
+                      {/* Add the rest of your Terms & Conditions here */}
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
