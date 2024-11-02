@@ -32,7 +32,25 @@ const basicDetailsSchema = z.object({
     .refine((val) => val !== undefined && val !== null, {
       message: "Gender selection is required",
     }),
-  dateOfBirth: z.string().min(1, "Date of Birth is required"),
+  dateOfBirth: z
+    .string()
+    .min(1, "Date of Birth is required")
+    .refine(
+      (date) => {
+        const currentDate = new Date();
+        const birthDate = new Date(date);
+        const age = currentDate.getFullYear() - birthDate.getFullYear();
+        // Check if the user is at least 12 years old
+        return (
+          age > 12 ||
+          (age === 12 &&
+            currentDate >= birthDate.setFullYear(birthDate.getFullYear() + 12))
+        );
+      },
+      {
+        message: "Participant must be at least 12 years old",
+      }
+    ),
 
   address: z.object({
     line1: z.string().min(1, "Address line 1 is required"),
@@ -93,8 +111,11 @@ const medicalDetailsSchema = z.object({
 const categoryConsentSchema = z.object({
   category: z.string().min(1, "Category is required"),
   consent: z.boolean().refine((val) => val === true, "Consent is Required"),
-  nameOnBib: z.string().min(1, "Name on BIB is required").max(4, "Name on BIB should be less that 4 characters"),
-  clubParticipation: z.string().optional(), 
+  nameOnBib: z
+    .string()
+    .min(1, "Name on BIB is required")
+    .max(4, "Name on BIB should be less that 4 characters"),
+  clubParticipation: z.string().optional(),
   couponCode: z.string().optional(),
 });
 
@@ -144,7 +165,6 @@ function RegistrationForm() {
     setValue,
   } = methods;
 
-
   // Use an effect to reset couponCode when clubParticipation changes
   const clubParticipation = watch("clubParticipation");
   useEffect(() => {
@@ -154,7 +174,6 @@ function RegistrationForm() {
   }, [clubParticipation, setValue]);
 
   const [formData, setFormData] = useState({});
-
 
   //! On form submission
   const onSubmit = async (data) => {
@@ -252,6 +271,7 @@ function RegistrationForm() {
                 <TextField
                   label="Phone Number *"
                   variant="outlined"
+                  type="tel"
                   margin="normal"
                   error={!!errors.phone}
                   helperText={errors.phone ? errors.phone.message : ""}
@@ -751,10 +771,10 @@ function RegistrationForm() {
                   }}
                 >
                   <MenuItem value="fullMarathon">
-                    Full Marathon (21 Kms) - 1000 INR
+                    Half Marathon (21 Kms) - 900 INR
                   </MenuItem>
                   <MenuItem value="halfMarathon">
-                    Half Marathon (10 Kms) - 800 INR
+                    10 Km Marathon (10 Kms) - 700 INR
                   </MenuItem>
                   <MenuItem value="familyFunRun">
                     Family Fun Run (3 Kms) - 500 INR
