@@ -24,8 +24,6 @@ import MedicalDetails from "./MedicalDetails";
 import CategoryConsent from "./CategoryConsent";
 import { stepSchemas } from "../Schema/Schemas";
 
-
-
 function RegistrationForm() {
   const steps = [
     "Basic details",
@@ -149,22 +147,16 @@ function RegistrationForm() {
       <div className="mx-6 md:px-10 lg:mx-auto max-w-screen-2xl ">
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
-             {/*//! setp 0 start */}
-            {activeStep === 0 && (
-              <BasicDetails />
-            )}
+            {/*//! setp 0 start */}
+            {activeStep === 0 && <BasicDetails />}
             {/*//! setp 0 end */}
 
             {/* //? step 1 start */}
-            {activeStep === 1 && (
-              <MedicalDetails />
-            )}
+            {activeStep === 1 && <MedicalDetails />}
             {/* //? step 1 end */}
 
             {/* //! step 2 start */}
-            {activeStep === 2 && (
-                <CategoryConsent />
-            )}
+            {activeStep === 2 && <CategoryConsent />}
             {/* //! step 2 end */}
 
             <div className="flex justify-end gap-3 mt-3">
