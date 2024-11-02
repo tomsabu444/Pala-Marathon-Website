@@ -17,9 +17,9 @@ function RegisterPage() {
         <p className="text-gray-600 text-lg mb-4">
           <b> Pala Marathon </b> will be held on <b> 19th January 2024 </b>.
           This annual running event is organized by Lions Club International
-          district 318b, St. Thomas College, Pala 75th jubilee celebrations and
-          Engineers’ Forum and Engineer's Forum, Pala. There are three
-          categories that the runners can choose from:
+          district 318b, St. Thomas College Palai (Autonomous) 75th jubilee
+          celebrations and Engineer's Forum, Pala. There are three categories
+          that the runners can choose from:
         </p>
         <table className="table-auto text-lg text-gray-700 text-center mb-4 border-collapse w-full">
           <thead>
@@ -37,18 +37,18 @@ function RegisterPage() {
           </thead>
           <tbody>
             <tr>
-              <td className="border border-gray-300 p-2">Full Marathon</td>
-              <td className="border border-gray-300 p-2">21 Kms</td>
-              <td className="border border-gray-300 p-2">₹ 1,000</td>
+              <td className="border border-gray-300 p-2">Half Marathon</td>
+              <td className="border border-gray-300 p-2">21 km</td>
+              <td className="border border-gray-300 p-2">₹ 900</td>
             </tr>
             <tr>
-              <td className="border border-gray-300 p-2">Half Marathon</td>
-              <td className="border border-gray-300 p-2">10 Kms</td>
-              <td className="border border-gray-300 p-2">₹ 800</td>
+              <td className="border border-gray-300 p-2">10 km Marathon</td>
+              <td className="border border-gray-300 p-2">10 km</td>
+              <td className="border border-gray-300 p-2">₹ 700</td>
             </tr>
             <tr>
               <td className="border border-gray-300 p-2">Family Fun Run</td>
-              <td className="border border-gray-300 p-2">3 Kms</td>
+              <td className="border border-gray-300 p-2">3 km</td>
               <td className="border border-gray-300 p-2">₹ 500</td>
             </tr>
           </tbody>
