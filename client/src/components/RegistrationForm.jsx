@@ -22,9 +22,7 @@ import { z } from "zod";
 
 const basicDetailsSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  phone: z
-    .string()
-    .regex(/^\+91\d{10}$/, "Phone number be +91xxxxxxxxxx"),
+  phone: z.string().regex(/^\+91\d{10}$/, "Phone number be +91xxxxxxxxxx"),
   email: z.string().email("Invalid email address"),
   gender: z
     .enum(["male", "female", "other"], {
@@ -54,7 +52,10 @@ const medicalDetailsSchema = z.object({
     relation: z.string().min(1, "Relation with Emergency Contact is required"),
     contactNumber: z
       .string()
-      .regex(/^\+91\d{10}$/, "Emergency Contact Number Phone number be +91xxxxxxxxxx"),
+      .regex(
+        /^\+91\d{10}$/,
+        "Emergency Contact Number Phone number be +91xxxxxxxxxx"
+      ),
   }),
   medicalInfo: z.string().optional(),
   questions: z.object({
@@ -91,8 +92,9 @@ const medicalDetailsSchema = z.object({
 
 const categoryConsentSchema = z.object({
   category: z.string().min(1, "Category is required"),
-  consent: z.boolean().refine((val) => val === true, "Consent is required"),
+  consent: z.boolean().refine((val) => val === true, "Consent is Required"),
   nameOnBib: z.string().max(4, "Name on BIB should be less that 4 characters"),
+  couponCode: z.string().optional(),
 });
 
 const stepSchemas = [
@@ -351,7 +353,7 @@ function RegistrationForm() {
                 <TextField
                   label="Date of Birth *"
                   variant="outlined"
-                  margin="normal" 
+                  margin="normal"
                   type="date"
                   InputLabelProps={{ shrink: true }}
                   error={!!errors.dateOfBirth}
@@ -568,8 +570,18 @@ function RegistrationForm() {
                     },
                   }}
                 />
+                <hr className="mt-10 mx-auto border-1 w-full  border-custom-pink" />
                 {/* Medical Questions */}
-                <div className="flex flex-col mt-2">
+                <div className="flex flex-col">
+                  <div className=" bg-custom-lightpink p-6  border  border-custom-pink rounded-lg my-10 ">
+                    <p className=" text-custom-purple-1001">
+                      Medical Questions listed below are very important aspects
+                      of the race registration and must be filled honestly and
+                      to the best of the knowledge. If you are registering for
+                      another participant, then you must consult with the
+                      participant before filling in the questionnaire.
+                    </p>
+                  </div>
                   {[
                     {
                       label:
@@ -610,11 +622,11 @@ function RegistrationForm() {
                     <FormControl
                       key={index}
                       component="fieldset"
-                      error={!!errors.questions?.[question.name.split(".")[1]]} // Access nested field directly
+                      error={!!errors.questions?.[question.name.split(".")[1]]}
                       sx={{ my: 2 }}
                     >
                       <FormLabel
-                        component="legend" // Acts as a legend for the fieldset for accessibility
+                        component="legend"
                         sx={{
                           color: errors.questions?.[question.name.split(".")[1]]
                             ? "#d32f2f"
@@ -625,7 +637,8 @@ function RegistrationForm() {
                           },
                         }}
                       >
-                        {question.label}
+                        {`${index + 1}. ${question.label}`}{" "}
+                        <span style={{ color: "#d32f2f" }}>(Required)</span>
                       </FormLabel>
 
                       <Controller
@@ -638,7 +651,7 @@ function RegistrationForm() {
                               value="yes"
                               control={
                                 <Radio
-                                  id={`${question.name}-yes`} //? Unique id for accessibility
+                                  id={`${question.name}-yes`}
                                   sx={{
                                     color: "#9D356D",
                                     "&.Mui-checked": {
@@ -653,7 +666,7 @@ function RegistrationForm() {
                               value="no"
                               control={
                                 <Radio
-                                  id={`${question.name}-no`} //? Unique id for accessibility
+                                  id={`${question.name}-no`}
                                   sx={{
                                     color: "#9D356D",
                                     "&.Mui-checked": {
@@ -677,6 +690,19 @@ function RegistrationForm() {
                       )}
                     </FormControl>
                   ))}
+                </div>
+                <div className=" bg-custom-lightpink p-6 border  border-custom-pink rounded-lg my-5 ">
+                  <p className=" text-custom-purple-1001 ">
+                    If you answered <b> YES </b> to any of the above questions,
+                    please talk with your doctor by phone or in person
+                    <b> BEFORE </b> you start becoming physically active or
+                    <b> BEFORE </b> coming to participate in the Spice Coast
+                    Marathon. Even if you answered NO to any of the questions
+                    and the situation changes after registration to a
+                    <b> YES </b> , then also you must consult with your doctor
+                    before doing any physical exercise or participating in this
+                    or any other race.
+                  </p>
                 </div>
               </div>
             )}
@@ -715,7 +741,7 @@ function RegistrationForm() {
                   <MenuItem value="halfMarathon">
                     Half Marathon (10 Kms) - 800 INR
                   </MenuItem>
-                  <MenuItem value="familyFunRun"> 
+                  <MenuItem value="familyFunRun">
                     Family Fun Run (3 Kms) - 500 INR
                   </MenuItem>
                 </TextField>
@@ -792,7 +818,7 @@ function RegistrationForm() {
                 )}
 
                 {/* Printed Name Acknowledgment */}
-                <div className="flex mt-2 items-center" >
+                <div className="flex mt-2 items-center">
                   <Controller
                     name="printedNameAcknowledgment"
                     control={methods.control}
@@ -819,32 +845,54 @@ function RegistrationForm() {
                   )}
                 </div>
 
+                <hr className="mt-10 mx-auto border-1 w-full  border-custom-pink" />
+
                 {/* Consent to Terms & Conditions */}
-                <div className="flex items-center mt-2">
-                  <Controller
-                    name="consent"
-                    control={methods.control}
-                    render={({ field }) => (
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            {...field}
-                            checked={field.value}
-                            sx={{
-                              color: "#9D356D",
-                              "&.Mui-checked": { color: "#9D356D" },
-                            }}
-                          />
-                        }
-                        label="I have read and accept the Terms & Conditions of the race."
-                      />
-                    )}
-                  />
-                  {errors.consent && (
-                    <FormHelperText sx={{ color: "#d32f2f", ml: 3 }}>
+                <div className="flex flex-col my-2">
+                  <label className=" flex gap-3 font-medium mb-2 text-custom-purple-1001">Consent      {errors.consent && (
+                    <p className="text-red-600 mt-1 text-sm">
                       {errors.consent.message}
-                    </FormHelperText>
-                  )}
+                    </p>
+                  )}</label>
+
+                  <div className="flex items-start">
+                    <Controller
+                      name="consent"
+                      control={methods.control}
+                      rules={{
+                        required: "You must accept the terms and conditions",
+                      }}
+                      render={({ field }) => (
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              {...field}
+                              checked={field.value}
+                              sx={{
+                                color: "#9D356D",
+                                "&.Mui-checked": { color: "#9D356D" },
+                              }}
+                            />
+                          }
+                          label="I have read and accept the Terms & Conditions of the race."
+                        />
+                      )}
+                    />
+                  </div>
+
+             
+
+                  {/* Scrollable Terms and Conditions */}
+                  <div className="mt-4 p-4 border border-[#9D356D] rounded-sm h-36 overflow-y-scroll bg-[#f7e7eb] text-[#9D356D]">
+                    <p className="text-sm leading-relaxed">
+                      By registering for the <b> Pala
+                      Marathon</b>, the participant agrees to abide by the
+                      conditions of entry listed below, as well as any
+                      instructions given by the race organizer and officials of
+                      the race.
+                      {/* Add the rest of your Terms & Conditions here */}
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
