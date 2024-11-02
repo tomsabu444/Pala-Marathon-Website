@@ -832,7 +832,7 @@ function RegistrationForm() {
                   />
                 )}
 
-                {/* Printed Name Acknowledgment */}
+                {/* Printed Name Acknowledgment 
                 <div className="flex mt-2 items-center">
                   <Controller
                     name="printedNameAcknowledgment"
@@ -858,7 +858,7 @@ function RegistrationForm() {
                       {errors.printedNameAcknowledgment.message}
                     </FormHelperText>
                   )}
-                </div>
+                </div> */}
 
                 <hr className="mt-10 mx-auto border-1 w-full  border-custom-pink" />
 
