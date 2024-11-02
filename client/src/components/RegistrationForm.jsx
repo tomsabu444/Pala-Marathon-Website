@@ -32,7 +32,25 @@ const basicDetailsSchema = z.object({
     .refine((val) => val !== undefined && val !== null, {
       message: "Gender selection is required",
     }),
-  dateOfBirth: z.string().min(1, "Date of Birth is required"),
+  dateOfBirth: z
+    .string()
+    .min(1, "Date of Birth is required")
+    .refine(
+      (date) => {
+        const currentDate = new Date();
+        const birthDate = new Date(date);
+        const age = currentDate.getFullYear() - birthDate.getFullYear();
+        // Check if the user is at least 12 years old
+        return (
+          age > 12 ||
+          (age === 12 &&
+            currentDate >= birthDate.setFullYear(birthDate.getFullYear() + 12))
+        );
+      },
+      {
+        message: "Participant must be at least 12 years old",
+      }
+    ),
 
   address: z.object({
     line1: z.string().min(1, "Address line 1 is required"),
