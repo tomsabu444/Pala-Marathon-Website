@@ -62,7 +62,17 @@ const formSchema = z.object({
       required_error: "This question is required",
     }),
   }),
-  category: z.string().min(1, "Category is required"),
+
+  category: z.enum(["HalfMarathon", "FamilyFunRun", "10KmMarathon"], {
+    errorMap: (issue, ctx) => {
+      if (issue.code === "invalid_enum_value") {
+        return {
+          message: `Invalid category !`,
+        };
+      }
+      return { message: ctx.defaultError };
+    },
+  }),
   nameOnBib: z
     .string()
     .min(1, "Name on BIB is required")
