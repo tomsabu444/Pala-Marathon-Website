@@ -27,22 +27,13 @@ router.post("/register", FormValidationMiddleware, async (req, res) => {
       consent
     } = req.body;
 
-    // Generate the `register_id` based on category and unique ID
-    let categoryCode;
-    switch (category) {
-      case "HalfMarathon":
-        categoryCode = "HALF";
-        break;
-      case "10KmMarathon":
-        categoryCode = "10KM";
-        break;
-      case "FamilyFunRun":
-        categoryCode = "FAMILY";
-        break;
-      default:
-        return res.status(400).json({ error: "Invalid category" });
-    }
-
+    //! Generate the `register_id` based on category and unique ID
+    const categoryCodes = {
+      HalfMarathon: "HALF",
+      "10KmMarathon": "10KM",
+      FamilyFunRun: "FAMILY"
+    };
+    const categoryCode = categoryCodes[category];
     const uniqueId = nanoid(10);
     const register_id = `PALAMARATHON-${categoryCode}-${uniqueId}`;
 
