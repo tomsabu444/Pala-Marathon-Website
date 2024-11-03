@@ -12,7 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import BasicDetails from "./BasicDetails";
 import MedicalDetails from "./MedicalDetails";
 import CategoryConsent from "./CategoryConsent";
-import { stepSchemas } from "../Schema/Schemas";
+import { stepSchemas } from "../Schema/FormValidation";
 
 function RegistrationForm() {
   const steps = [

@@ -13,7 +13,7 @@ const basicDetailsSchema = z.object({
       message: "Gender selection is required",
     }),
   dateOfBirth: z
-    .string()
+    .string().date("Date of Birth is required")
     .min(1, "Date of Birth is required")
     .refine(
       (date) => {
