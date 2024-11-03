@@ -38,7 +38,7 @@ const basicDetailsSchema = z.object({
     state: z.string().min(1, "State is required"),
     pinCode: z
       .string()
-      .min(5, "PIN code must be at least 5 digits")
+      .min(6, "PIN code is not valid")
       .regex(/^\d+$/, "PIN code must be numeric"),
     country: z.string().min(1, "Country is required"),
   }),
