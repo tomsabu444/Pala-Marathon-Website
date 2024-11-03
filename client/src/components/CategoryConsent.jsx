@@ -43,13 +43,13 @@ function CategoryConsent() {
           },
         }}
       >
-        <MenuItem value="halfMarathon">
+        <MenuItem value="HalfMarathon">
           Half Marathon (21 Kms) - 900 INR
         </MenuItem>
         <MenuItem value="10KmMarathon">
           10 Km Marathon (10 Kms) - 700 INR
         </MenuItem>
-        <MenuItem value="familyFunRun">
+        <MenuItem value="FamilyFunRun">
           Family Fun Run (3 Kms) - 500 INR
         </MenuItem>
       </TextField>
