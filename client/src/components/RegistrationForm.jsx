@@ -1,12 +1,17 @@
+import React, { useEffect, useState } from "react";
 import {
   Step,
   StepLabel,
   Stepper,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
 } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import React, { useEffect, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import BasicDetails from "./BasicDetails";
@@ -22,6 +27,7 @@ function RegistrationForm() {
   ];
 
   const [activeStep, setActiveStep] = useState(0);
+  const [dialogOpen, setDialogOpen] = useState(false); // Dialog state
 
   const methods = useForm({
     resolver: zodResolver(stepSchemas[activeStep]),
@@ -54,7 +60,6 @@ function RegistrationForm() {
     setValue,
   } = methods;
 
-  // Use an effect to reset couponCode when clubParticipation changes
   const clubParticipation = watch("clubParticipation");
   useEffect(() => {
     if (clubParticipation === "no") {
@@ -66,14 +71,14 @@ function RegistrationForm() {
 
   //! On form submission
   const onSubmit = async (data) => {
-    //? Merge current step data with formData
     setFormData((prev) => ({ ...prev, ...data }));
 
     if (activeStep < steps.length - 1) {
       const isStepValid = await trigger();
       if (isStepValid) setActiveStep((prev) => prev + 1);
     } else {
-      console.log("Final Form Submission Data:", { ...formData, ...data });
+      // Final step: open dialog
+      setDialogOpen(true);
     }
   };
 
@@ -81,9 +86,19 @@ function RegistrationForm() {
     setActiveStep((prev) => prev - 1);
   };
 
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleProceedToPayment = () => {
+    setDialogOpen(false);
+    console.log("Proceed to Payment with data:", formData);
+    // Place logic to navigate to payment or submit the form data
+  };
+
   return (
     <div className="py-7 mx-auto">
-      {/* Stepper start */}
+      {/* Stepper */}
       <Stepper
         activeStep={activeStep}
         alternativeLabel
@@ -137,17 +152,9 @@ function RegistrationForm() {
       <div className="mx-6 md:px-10 lg:mx-auto max-w-screen-2xl ">
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/*//! setp 0 start */}
             {activeStep === 0 && <BasicDetails />}
-            {/*//! setp 0 end */}
-
-            {/* //? step 1 start */}
             {activeStep === 1 && <MedicalDetails />}
-            {/* //? step 1 end */}
-
-            {/* //! step 2 start */}
             {activeStep === 2 && <CategoryConsent />}
-            {/* //! step 2 end */}
 
             <div className="flex justify-end gap-3 mt-3">
               <Button
@@ -178,6 +185,46 @@ function RegistrationForm() {
           </form>
         </FormProvider>
       </div>
+
+      {/* //! Dialog for Proceeding to Payment */}
+      <Dialog open={dialogOpen} onClose={handleDialogClose}>
+        <DialogTitle>Proceed to Payment</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            You're almost done! Please confirm that all provided information is
+            accurate. By clicking "Pay Now," you'll be redirected to the payment
+            gateway to complete your registration.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            paddingX: "30px",
+            paddingBottom: "20px",
+          }}
+        >
+          <Button
+            sx={{ borderColor: "#9D356D", color: "#9D356D" }}
+            onClick={handleDialogClose}
+            color="secondary"
+            variant="outlined"
+          >
+            Cancel
+          </Button>
+          <Button
+            sx={{
+              backgroundColor: "#9D356D",
+              "&:hover": { backgroundColor: "#822C59" },
+            }}
+            onClick={handleProceedToPayment}
+            color="primary"
+            variant="contained"
+          >
+            Pay Now
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
