@@ -18,6 +18,11 @@ import BasicDetails from "./BasicDetails";
 import MedicalDetails from "./MedicalDetails";
 import CategoryConsent from "./CategoryConsent";
 import { stepSchemas } from "../Schema/FormValidation";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import { SERVER_BASE_URL } from "../config/Backend_URL";
+
 
 function RegistrationForm() {
   const steps = [
@@ -28,6 +33,7 @@ function RegistrationForm() {
 
   const [activeStep, setActiveStep] = useState(0);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const navigate = useNavigate();
 
   const methods = useForm({
     resolver: zodResolver(stepSchemas[activeStep]),
@@ -90,11 +96,20 @@ function RegistrationForm() {
     setDialogOpen(false);
   };
 
-  const handleProceedToPayment = () => {
-    setDialogOpen(false);
-    console.log("Proceed to Payment with data:", formData);
-    // Place logic to navigate to payment or submit the form data
+  const handleProceedToPayment = async () => {
+    try {
+      console.log(formData);
+      const response = await axios.post(`${SERVER_BASE_URL}/register`, formData);
+      const registrationId = response.data.registrationId;
+      log("Registration ID:", registrationId);
+      setDialogOpen(false);
+      // navigate(`/payment?registrationId=${registrationId}`);
+    } catch (error) {
+      console.error("Error during registration:", error);
+      // Optional: display an error message to the user
+    }
   };
+
 
   return (
     <div className="py-7 mx-auto">
