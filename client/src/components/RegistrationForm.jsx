@@ -192,8 +192,8 @@ function RegistrationForm() {
         <DialogContent>
           <DialogContentText>
             You're almost done! Please confirm that all provided information is
-            accurate. By clicking "Pay Now," you'll be redirected to the payment
-            gateway to complete your registration.
+            accurate. By clicking <b> "Pay Now," </b> you'll be redirected to
+            the payment gateway to complete your registration.
           </DialogContentText>
         </DialogContent>
         <DialogActions
