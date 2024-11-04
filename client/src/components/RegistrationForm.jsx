@@ -22,7 +22,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { SERVER_BASE_URL } from "../config/Backend_URL";
-
+import Loading from "./Loading";
 
 function RegistrationForm() {
   const steps = [
@@ -33,6 +33,8 @@ function RegistrationForm() {
 
   const [activeStep, setActiveStep] = useState(0);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const methods = useForm({
@@ -94,22 +96,30 @@ function RegistrationForm() {
 
   const handleDialogClose = () => {
     setDialogOpen(false);
+    setError("");
   };
 
   const handleProceedToPayment = async () => {
+    setLoading(true);
+    setError("");
     try {
-      console.log(formData);
-      const response = await axios.post(`${SERVER_BASE_URL}/register`, formData);
+      console.log("Form Data:", formData);
+      const response = await axios.post(
+        `${SERVER_BASE_URL}/register`,
+        formData
+      );
       const registrationId = response.data.registrationId;
-      log("Registration ID:", registrationId);
-      setDialogOpen(false);
+      console.log("Registration ID:", registrationId);
+
       // navigate(`/payment?registrationId=${registrationId}`);
     } catch (error) {
       console.error("Error during registration:", error);
-      // Optional: display an error message to the user
+      setError("There was an error processing your payment. Please try again.");
+    } finally {
+      setLoading(false); // Always stop loading after request completes
+      //! setDialogOpen(false);
     }
   };
-
 
   return (
     <div className="py-7 mx-auto">
@@ -201,44 +211,73 @@ function RegistrationForm() {
         </FormProvider>
       </div>
 
-      {/* //! Dialog for Proceeding to Payment */}
-      <Dialog open={dialogOpen} onClose={handleDialogClose}>
-        <DialogTitle>Proceed to Payment</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            You're almost done! Please confirm that all provided information is
-            accurate. By clicking <b> "Pay Now," </b> you'll be redirected to
-            the payment gateway to complete your registration.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions
+      {/* Dialog for Proceeding to Payment */}
+      <Dialog open={dialogOpen} onClose={loading ? null : handleDialogClose}>
+        <DialogTitle>
+          {loading ? "Processing Payment..." : "Proceed to Payment"}
+        </DialogTitle>
+        <DialogContent
           sx={{
             display: "flex",
-            justifyContent: "space-between",
-            paddingX: "30px",
-            paddingBottom: "20px",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            textAlign: "center",
           }}
         >
-          <Button
-            sx={{ borderColor: "#9D356D", color: "#9D356D" }}
-            onClick={handleDialogClose}
-            color="secondary"
-            variant="outlined"
-          >
-            Cancel
-          </Button>
-          <Button
+          {loading ? (
+            <Loading />
+          ) : (
+            <div>
+              {error ? (
+                <p className="text-red-500 mt-1  text-lg">
+                  There was an error processing your payment. This could be due
+                  to a network issue or a problem with the payment gateway.
+                  Please try again. If the issue persists, you can contact
+                  support for further assistance. We apologize for the
+                  inconvenience.
+                </p>
+              ) : (
+                <p>
+                  You're almost done! Please confirm that all provided
+                  information is accurate. By clicking <b>"Pay Now,"</b> you'll
+                  be redirected to the payment gateway to complete your
+                  registration.
+                </p>
+              )}
+            </div>
+          )}
+        </DialogContent>
+        {!loading && (
+          <DialogActions
             sx={{
-              backgroundColor: "#9D356D",
-              "&:hover": { backgroundColor: "#822C59" },
+              display: "flex",
+              justifyContent: "space-between",
+              paddingX: "30px",
+              paddingBottom: "20px",
             }}
-            onClick={handleProceedToPayment}
-            color="primary"
-            variant="contained"
           >
-            Pay Now
-          </Button>
-        </DialogActions>
+            <Button
+              sx={{ borderColor: "#9D356D", color: "#9D356D" }}
+              onClick={handleDialogClose}
+              color="secondary"
+              variant="outlined"
+            >
+              Cancel
+            </Button>
+            <Button
+              sx={{
+                backgroundColor: "#9D356D",
+                "&:hover": { backgroundColor: "#822C59" },
+              }}
+              onClick={handleProceedToPayment}
+              color="primary"
+              variant="contained"
+            >
+              Pay Now
+            </Button>
+          </DialogActions>
+        )}
       </Dialog>
     </div>
   );
