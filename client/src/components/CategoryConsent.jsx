@@ -16,7 +16,6 @@ function CategoryConsent() {
     control,
     watch,
   } = useFormContext();
-  const clubParticipation = watch("clubParticipation");
 
   return (
     <div className="my-1 flex flex-col">
