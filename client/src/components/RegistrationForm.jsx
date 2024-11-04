@@ -27,7 +27,7 @@ function RegistrationForm() {
   ];
 
   const [activeStep, setActiveStep] = useState(0);
-  const [dialogOpen, setDialogOpen] = useState(false); // Dialog state
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const methods = useForm({
     resolver: zodResolver(stepSchemas[activeStep]),
