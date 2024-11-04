@@ -16,7 +16,6 @@ function CategoryConsent() {
     control,
     watch,
   } = useFormContext();
-  const clubParticipation = watch("clubParticipation");
 
   return (
     <div className="my-1 flex flex-col">
@@ -59,6 +58,7 @@ function CategoryConsent() {
         label="Name on BIB *"
         variant="outlined"
         margin="normal"
+        autoComplete="off"
         error={!!errors.nameOnBib}
         helperText={errors.nameOnBib ? errors.nameOnBib.message : ""}
         {...register("nameOnBib")}
