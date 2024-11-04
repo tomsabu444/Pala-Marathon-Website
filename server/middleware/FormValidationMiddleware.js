@@ -41,22 +41,22 @@ const formSchema = z.object({
   medicalInfo: z.string().optional(),
   questions: z.object({
     heartCondition: z.enum(["yes", "no"], {
-      required_error: "This question is required",
+      required_error: "Heart Condition question is required",
     }),
     chestPainActivity: z.enum(["yes", "no"], {
-      required_error: "This question is required",
+      required_error: "Chest Pain Activity question is required",
     }),
     chestPainRest: z.enum(["yes", "no"], {
-      required_error: "This question is required",
+      required_error: "Chest Pain Rest question is required",
     }),
     dizziness: z.enum(["yes", "no"], {
-      required_error: "This question is required",
+      required_error: "dizziness question is required",
     }),
     boneOrJointProblem: z.enum(["yes", "no"], {
-      required_error: "This question is required",
+      required_error: "Bone Or Joint Problem question is required",
     }),
     bloodPressureMedication: z.enum(["yes", "no"], {
-      required_error: "This question is required",
+      required_error: "Blood Pressure Medication question is required",
     }),
     otherReason: z.enum(["yes", "no"], {
       required_error: "This question is required",
