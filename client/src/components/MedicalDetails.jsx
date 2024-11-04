@@ -8,6 +8,7 @@ import {
   FormControlLabel,
   Radio,
   FormHelperText,
+  MenuItem,
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
@@ -16,15 +17,14 @@ function MedicalDetails() {
     register,
     formState: { errors },
     control,
+    watch
   } = useFormContext();
 
-  
   return (
     <div className="my-1 flex flex-col">
       <TextField
         label="Emergency Contact Name *"
         variant="outlined"
-        fullWidth
         margin="normal"
         error={!!errors.emergencyContact?.name}
         helperText={
@@ -45,6 +45,7 @@ function MedicalDetails() {
         }}
       />
       <TextField
+        select
         label="Relation With Emergency Contact *"
         variant="outlined"
         fullWidth
@@ -56,6 +57,7 @@ function MedicalDetails() {
             : ""
         }
         {...register("emergencyContact.relation")}
+        value={watch("emergencyContact.relation") ?? ""}
         id="relationWithEmergencyContact"
         autoComplete="relationship"
         sx={{
@@ -66,7 +68,22 @@ function MedicalDetails() {
             },
           },
         }}
-      />
+      >
+        <MenuItem value="Mother">Mother</MenuItem>
+        <MenuItem value="Father">Father</MenuItem>
+        <MenuItem value="Parent">Parent</MenuItem>
+        <MenuItem value="Sibling">Sibling</MenuItem>
+        <MenuItem value="Spouse">Spouse</MenuItem>
+        <MenuItem value="Friend">Friend</MenuItem>
+        <MenuItem value="Partner">Partner</MenuItem>
+        <MenuItem value="Aunt">Aunt</MenuItem>
+        <MenuItem value="Uncle">Uncle</MenuItem>
+        <MenuItem value="Cousin">Cousin</MenuItem>
+        <MenuItem value="Grandparent">Grandparent</MenuItem>
+        <MenuItem value="Child">Child</MenuItem>
+        <MenuItem value="Neighbor">Neighbour</MenuItem>
+        <MenuItem value="Other">Other</MenuItem>
+      </TextField>
       <TextField
         label="Emergency Contact Number *"
         variant="outlined"
