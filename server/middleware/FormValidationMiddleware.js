@@ -59,7 +59,7 @@ const formSchema = z.object({
       required_error: "Blood Pressure Medication question is required",
     }),
     otherReason: z.enum(["yes", "no"], {
-      required_error: "This question is required",
+      required_error: "other Reason question is required",
     }),
   }),
 
