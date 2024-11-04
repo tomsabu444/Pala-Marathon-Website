@@ -10,7 +10,7 @@ const formSchema = z.object({
     required_error: "Please select your gender",
   }),
   dateOfBirth: z
-    .string()
+    .string().date("Invalid date format")
     .min(1, "Date of Birth is required")
     .refine(
       (date) => {
