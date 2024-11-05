@@ -18,8 +18,8 @@ const registrationRoutes = require('./routes/Registration');
 //? API routes
 app.use('/api', registrationRoutes);
 
-const emailRouter = require('./routes/emailtest');
-app.use('/email', emailRouter);
+// const emailNotificationRouter = require('./routes/EmailNotification');
+// app.use('/email', emailNotificationRouter);
 
 
 const PORT = process.env.PORT || 5000;
