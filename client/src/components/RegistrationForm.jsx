@@ -211,7 +211,7 @@ function RegistrationForm() {
         </FormProvider>
       </div>
 
-      {/* Dialog for Proceeding to Payment */}
+      {/* //! Dialog for Proceeding to Payment */}
       <Dialog open={dialogOpen} onClose={loading ? null : handleDialogClose}>
         <DialogTitle>
           {loading ? "Processing Payment..." : "Proceed to Payment"}
