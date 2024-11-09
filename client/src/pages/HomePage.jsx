@@ -1,9 +1,21 @@
-import React from 'react'
+import React from "react";
 
 function HomePage() {
   return (
-    <div>HomePage</div>
-  )
+    <main className="bg-[#FFCDE8]">
+      {/* landing page */}
+      <section></section>
+
+      {/* about us */}
+      <section></section>
+
+      {/* services */}
+      <section></section>
+
+      {/* contact us */}
+      <section></section>
+    </main>
+  );
 }
 
-export default HomePage
+export default HomePage;
