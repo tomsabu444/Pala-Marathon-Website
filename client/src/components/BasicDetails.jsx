@@ -19,7 +19,7 @@ function BasicDetails() {
   } = useFormContext();
 
   return (
-    <div className="my-1 flex flex-col  md:gap-y-5">
+    <div className="my-1 flex flex-col  md:gap-y-1">
       <div className=" md:flex md:gap-10">
         <TextField
           className="w-full md:w-1/2"
