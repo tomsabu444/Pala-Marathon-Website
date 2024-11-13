@@ -24,7 +24,7 @@ function HomePage() {
             className="mb-4 opacity-70 w-48 sm:w-64 md:w-72 lg:w-80 xl:w-96"
           />
           <div className="flex flex-col">
-            <h1 className="text-7xl sm:text-8xl md:text-[140px] lg:text-[180px] xl:text-[240px] font-bold leading-none">
+            <h1 className="text-7xl sm:text-8xl md:text-[140px] lg:text-[130px] xl:text-[200px] font-bold leading-none">
               PALA
             </h1>
             <p className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold">
@@ -36,9 +36,11 @@ function HomePage() {
             19th January 2025
           </p>
 
-          <button className="mt-8 px-4 py-2 sm:px-6 sm:py-3 bg-custom-pink rounded-md text-white font-semibold text-base sm:text-lg md:text-xl lg:text-2xl">
-            Register Now
-          </button>
+          <button className="mt-8 h-[48px] w-[70%] sm:h-[52px] sm:w-[300px] md:h-[60px] md:w-[400px] lg:h-[72px] lg:w-[555px] bg-custom-pink rounded-full text-white font-semibold text-base sm:text-lg md:text-xl lg:text-2xl">
+  Register Now
+</button>
+
+
         </div>
       </section>
 
