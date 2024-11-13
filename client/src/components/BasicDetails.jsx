@@ -19,8 +19,8 @@ function BasicDetails() {
   } = useFormContext();
 
   return (
-    <div className="my-1 flex flex-col  md:gap-y-1">
-      <div className=" md:flex md:gap-10">
+    <div className="my-1 flex flex-col  md:gap-y-4">
+      <div className=" md:flex md:gap-20">
         <TextField
           className="w-full md:w-1/2"
           label="Full Name *"
@@ -80,7 +80,7 @@ function BasicDetails() {
         }}
       />
 
-      <div className=" md:flex md:gap-10">
+      <div className=" md:flex md:gap-20">
         <FormControl
           className="w-full md:w-1/2"
           required
@@ -202,7 +202,7 @@ function BasicDetails() {
         }}
       />
 
-      <div className="md:flex md:gap-10">
+      <div className="md:flex md:gap-20">
         <TextField
           className="w-full md:w-1/2"
           label="City *"
@@ -243,7 +243,7 @@ function BasicDetails() {
         />
       </div>
 
-      <div className=" md:flex md:gap-10">
+      <div className=" md:flex md:gap-20">
         <TextField
           className="w-full md:w-1/2"
           label="PIN Code *"
