@@ -37,8 +37,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full z-20 top-0 start-0 border-b border-gray-200 bg-custom-purple-1000 ${
-        location.pathname === "/" ? "sticky" : "static"
+      className={`w-full z-20 top-0 start-0  bg-custom-purple-1000 ${
+        location.pathname === "/" ? "fixed" : "static"
       }`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-end  mx-auto p-4 md:justify-between">
