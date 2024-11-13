@@ -32,11 +32,11 @@ function HomePage() {
             </p>
           </div>
 
-          <p className="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-semibold">
+          <p className="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-semibold rounded-md">
             19th January 2025
           </p>
 
-          <button className="mt-8 px-4 py-2 sm:px-6 sm:py-3 bg-custom-pink rounded-full text-white font-semibold text-base sm:text-lg md:text-xl lg:text-2xl">
+          <button className="mt-8 px-4 py-2 sm:px-6 sm:py-3 bg-custom-pink rounded-md text-white font-semibold text-base sm:text-lg md:text-xl lg:text-2xl">
             Register Now
           </button>
         </div>
