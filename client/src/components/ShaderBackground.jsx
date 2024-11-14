@@ -89,7 +89,7 @@ function ShaderBackground() {
         width: "100%",
         height: "100%",
         zIndex: -1,
-        borderRadius: "20px",
+        borderRadius: "16px",
       }}
       camera={{ fov: 75, position: [0, 0, 1] }}
     >
