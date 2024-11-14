@@ -38,7 +38,7 @@ const Navbar = () => {
   return (
     <nav
       className={`w-full z-20 top-0 start-0 border-b border-gray-200 bg-custom-purple-1000 ${
-        location.pathname === "/" ? "fixed" : "static"
+        location.pathname === "/" ? "sticky" : "static"
       }`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-end  mx-auto p-4 md:justify-between">
@@ -93,12 +93,12 @@ const Navbar = () => {
       </div>
 
       {/* Drawer for Smaller Screens */}
-      <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
+      <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer}>
         <div className="w-max p-4 flex flex-col items-end bg-gray-50  h-full">
           <IconButton onClick={toggleDrawer} aria-label="close drawer">
             <CloseIcon fontSize="large" />
           </IconButton>
-          <ul className="w-96 flex flex-col items-center justify-around font-medium  text-xl h-1/2 mt-4 space-y-4">
+          <ul className="w-screen md:w-96  flex flex-col items-center justify-around font-medium  text-xl h-1/2 mt-4 space-y-4">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <Link
