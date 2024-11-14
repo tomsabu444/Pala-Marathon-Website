@@ -1,10 +1,11 @@
 import React from "react";
 import runners_img from "../assets/runners-image.png";
 import ShaderBackground from "./ShaderBackground";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import registern_now_bg from "../assets/register-now-bg.png";
 
 function MarathonBanner() {
+  const location = useLocation();
   return (
     <div className="relative flex justify-between flex-col  items-center mx-2 h-52 md:flex-row  md:mx-6 2xl:mx-auto mt-3 xl:max-w-screen-2xl">
       {/* Add the ShaderBackground component */}
@@ -30,9 +31,10 @@ function MarathonBanner() {
         </p>
       </div>
       <div className="flex md:flex w-3/6 h-full mx-auto items-center">
+      {location.pathname !== "/register" && (
         <Link
           to="/register"
-          className="px-6  mx-auto md:mx-0  py-3 font-outfit text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
+          className="px-6 mx-auto md:mx-0 py-3 font-outfit text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
           style={{
             backgroundImage: `url(${registern_now_bg})`,
             filter: "sepia(0.3) hue-rotate(30deg) brightness(1.1)",
@@ -40,6 +42,7 @@ function MarathonBanner() {
         >
           REGISTER NOW
         </Link>
+      )}
       </div>
     </div>
   );
