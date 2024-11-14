@@ -39,14 +39,14 @@ const DisclaimerPage = () => {
         <section className="mb-4">
           <h2 className="text-xl font-semibold text-gray-700 mb-2">Sponsorship and Advertising Disclaimer</h2>
           <p className="text-gray-600">
-            The Pala Marathon event may feature sponsorships by various organizations, including but not limited to 
-            title sponsors, T-shirt sponsors, and other supporters. Sponsors are acknowledged on race materials, 
-            T-shirts, and other promotional media as specified by sponsorship agreements. These sponsorships do not 
-            imply endorsement by the marathon organizers of the sponsors' products or services.
+            The Pala Marathon event may feature sponsorships by various organizations, including title sponsors and other 
+            supporters. Sponsors are acknowledged on race materials and other promotional media as specified by sponsorship 
+            agreements. These sponsorships do not imply endorsement by the marathon organizers of the sponsors' products or 
+            services.
           </p>
           <p className="text-gray-600">
-            Sponsor logos and branding placements are handled according to prior agreements, such as positioning on 
-            T-shirts and banners, and are in line with community event standards.
+            Sponsor logos and branding placements are handled according to prior agreements and are in line with community 
+            event standards.
           </p>
         </section>
 
