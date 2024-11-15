@@ -12,7 +12,7 @@ function MarathonBanner() {
       <ShaderBackground />
 
       <div className="hidden w-2/4 md:block">
-        <div className="  w-80 absolute bottom-0 -left-8">
+        <div className="  w-80 absolute -z-10 bottom-0 -left-8">
           <img src={runners_img} alt="Runners img" />
         </div>
       </div>
@@ -34,7 +34,7 @@ function MarathonBanner() {
       {location.pathname !== "/register" && (
         <Link
           to="/register"
-          className="px-6 mx-auto md:mx-0 py-3 font-outfit text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
+          className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
           style={{
             backgroundImage: `url(${registern_now_bg})`,
             filter: "sepia(0.3) hue-rotate(30deg) brightness(1.1)",

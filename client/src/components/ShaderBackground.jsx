@@ -68,7 +68,7 @@ function TextureMesh() {
         uniforms={{
           u_color: { value: new THREE.Color(0.3137254901960784, 0, 1) },
           u_background: { value: new THREE.Vector4(0, 0, 0, 1) },
-          u_speed: { value: 0.4 },
+          u_speed: { value: 1.4 },
           u_detail: { value: 0.4 },
           u_time: { value: 0 },
           u_mouse: { value: [0, 0] },
@@ -88,7 +88,7 @@ function ShaderBackground() {
         left: 0,
         width: "100%",
         height: "100%",
-        zIndex: -1,
+        zIndex: -11,
         borderRadius: "16px",
       }}
       camera={{ fov: 75, position: [0, 0, 1] }}
