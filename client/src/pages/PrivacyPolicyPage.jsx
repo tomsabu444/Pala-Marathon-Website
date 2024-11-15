@@ -1,7 +1,10 @@
 import React from "react";
+import MarathonBanner from "../components/MarathonBanner2.0";
 
 const PrivacyPolicyPage = () => {
   return (
+    <>
+    <MarathonBanner/>
     <div className="flex font-outfit mx-auto flex-col p-8 w-full max-w-7xl">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 text-shadow">
         Privacy Policy
@@ -118,6 +121,7 @@ const PrivacyPolicyPage = () => {
         </p>
       </section>
     </div>
+    </>
   );
 };
 
