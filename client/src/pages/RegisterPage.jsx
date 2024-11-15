@@ -1,6 +1,6 @@
 import React from "react";
 import RegistrationForm from "../components/RegistrationForm";
-import MarathonBanner from "../components/MarathonBanner";
+import MarathonBanner from "../components/MarathonBanner2.0";
 import { Link } from "react-router-dom";
 
 function RegisterPage() {

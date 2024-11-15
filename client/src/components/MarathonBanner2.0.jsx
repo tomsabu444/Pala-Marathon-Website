@@ -23,10 +23,10 @@ function MarathonBanner() {
           className="mx-auto mb-2"
         /> */}
 
-        <h1 className="font-outfit text-4xl sm:text-4xl lg:text-5xl text-white font-extrabold text-shadow-lg">
+        <h1 className="font-outfit text-4xl sm:text-4xl lg:text-6xl text-white font-extrabold text-shadow-lg">
           PALA MARATHON
         </h1>
-        <p className="font-outfit text-white mt-2 text-xl lg:text-xl font-light text-shadow-md">
+        <p className="font-outfit text-white mt-2 text-xl lg:text-2xl font-light text-shadow-md">
           19<sup className="text-sm">th</sup> January 2025
         </p>
       </div>
