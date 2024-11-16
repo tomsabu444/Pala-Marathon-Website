@@ -1,126 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
-    const footerNavs = [
-        {
-            label: "Company",
-            items: [
-                { href: '#', name: 'Partners' },
-                { href: '#', name: 'Blog' },
-                { href: '#', name: 'Team' },
-                { href: '#', name: 'Careers' },
-            ],
-        },
-        {
-            label: "Resources",
-            items: [
-                { href: '#', name: 'Contact' },
-                { href: '#', name: 'Support' },
-                { href: '#', name: 'Docs' },
-                { href: '#', name: 'Pricing' },
-            ],
-        },
-        {
-            label: "About",
-            items: [
-                { href: '#', name: 'Terms' },
-                { href: '#', name: 'License' },
-                { href: '#', name: 'Privacy' },
-                { href: '#', name: 'About Us' },
-            ],
-        },
-    ];
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
 
-    return (
-        <footer className="text-gray-500 bg-white px-4 py-5 max-w-screen-xl mx-auto md:px-8">
-            <div className="gap-6 justify-between md:flex">
-                <div className="flex-1">
-                    <div className="max-w-xs">
-                        <img src="/runninglogo.svg" className="w-32" alt="Logo" />
-                        <p className="leading-relaxed mt-2 text-[15px]">
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                    <form onSubmit={(e) => e.preventDefault()}>
-                        <label className="block pt-4 pb-2">Stay up to date</label>
-                        <div className="max-w-sm flex items-center border rounded-md p-1">
-                            <input 
-                                type="email"
-                                placeholder="Enter your email"
-                                className="w-full p-2.5 outline-none"
-                            />
-                            <button
-                                className="p-2.5 rounded-md text-white bg-indigo-600 outline-none shadow-md focus:shadow-none sm:px-5"
-                            >
-                                Subscribe
-                            </button>
-                        </div>
-                    </form>
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setError(''); 
+  };
+
+  const handleSubmit = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address.');
+    } else {
+      setError('');
+      alert(`Thank you for subscribing with: ${email}`);
+      setEmail(''); // Clear input after submission
+    }
+  };
+
+  return (
+    <footer className="bg-gradient-to-r from-[#2D1140] to-[#84185F] text-white py-12">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          {/* Social Media Section */}
+          <div className="md:col-span-3">
+            <h3 className="text-xl font-bold mb-6">SOCIAL MEDIA</h3>
+            <div className="flex space-x-6">
+              <a href="#" className="hover:opacity-80">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <FaFacebookF className="text-[#2D1140]" />
                 </div>
-                <div className="flex-1 mt-10 space-y-6 items-center justify-between sm:flex md:space-y-0 md:mt-0">
-                    {footerNavs.map((nav, idx) => (
-                        <ul className="space-y-4" key={idx}>
-                            <h4 className="text-gray-800 font-medium">{nav.label}</h4>
-                            {nav.items.map((item, index) => (
-                                <li key={index}>
-                                    <a 
-                                        href={item.href} 
-                                        className="hover:underline hover:text-indigo-600"
-                                    >
-                                        {item.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    ))}
+              </a>
+              <a href="#" className="hover:opacity-80">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <FaTwitter className="text-[#2D1140]" />
                 </div>
+              </a>
+              <a href="#" className="hover:opacity-80">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <FaInstagram className="text-[#2D1140]" />
+                </div>
+              </a>
             </div>
-            <div className="mt-8 py-6 border-t items-center justify-between sm:flex">
-                <div className="mt-4 sm:mt-0">
-                    &copy; 2022 Float UI All rights reserved.
-                </div>
-                <div className="mt-6 sm:mt-0">
-                    <ul className="flex items-center space-x-4">
-                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
-                            <a href="#">
-                                <svg className="svg-icon w-6 h-6 text-blue-400" viewBox="0 0 20 20">
-                                    <path fill="none" d="M18.258,3.266c..."></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
-                            <a href="#">
-                                <svg className="svg-icon w-6 h-6 text-blue-700" viewBox="0 0 20 20">
-                                    <path fill="none" d="M11.344,5.71c..."></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
-                            <a href="#">
-                                <svg className="svg-icon w-6 h-6 text-blue-500" viewBox="0 0 20 20">
-                                    <path fill="none" d="M10,2.531c..."></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li className="w-10 h-10 border rounded-full flex items-center justify-center">
-                            <a href="#">
-                                <svg className="svg-icon w-6 h-6 text-red-600" viewBox="0 0 20 20">
-                                    <path fill="none" d="M9.797,2.214c..."></path>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+          </div>
+
+          {/* Center Links Section */}
+          <div className="md:col-span-6 grid grid-cols-2 gap-8">
+            {/* Left Column */}
+            <div className="space-y-3">
+              <a href="#" className="block text-xl font-bold mb-6">HOME</a>
+              <a href="#" className="block text-sm">PARTICIPANT INFO</a>
+              <a href="#" className="block text-sm">FAQ</a>
+              <a href="#" className="block text-sm">TERMS&CONDITIONS</a>
             </div>
-            <style jsx>{`
-                .svg-icon path,
-                .svg-icon polygon,
-                .svg-icon rect {
-                    fill: currentColor;
-                }
-            `}</style>
-        </footer>
-    );
+
+            {/* Right Column */}
+            <div className="space-y-3">
+              <a href="#" className="block text-xl font-bold mb-6">RESULTS</a>
+              <a href="#" className="block text-sm">SPONSORS</a>
+              <a href="#" className="block text-sm">DISCLAIMER</a>
+              <a href="#" className="block text-sm">PRIVACY POLICIES</a>
+            </div>
+          </div>
+
+          {/* Stay Up To Date Section */}
+          <div className="md:col-span-3">
+            <h3 className="text-xl font-bold mb-6">STAY UP TO DATE</h3>
+            <div className="flex h-10">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={handleEmailChange}
+                className="w-full px-3 py-2 bg-transparent border border-white rounded-l text-sm focus:outline-none"
+              />
+              <button
+                onClick={handleSubmit}
+                className="px-6 bg-white text-[#2D1140] rounded-r text-sm hover:bg-gray-100 transition-colors"
+              >
+                Submit
+              </button>
+            </div>
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
