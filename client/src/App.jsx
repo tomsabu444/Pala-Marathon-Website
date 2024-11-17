@@ -6,6 +6,7 @@ import RegisterPage from "./pages/RegisterPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 import PrivacyPolicyPage  from "./pages/PrivacyPolicyPage";
 import DisclaimerPage from "./pages/DisclaimerPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/disclaimer" element={<DisclaimerPage />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
