@@ -37,8 +37,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full z-20 top-0 start-0 border-b border-gray-200 bg-custom-purple-1000 ${
-        location.pathname === "/" ? "sticky" : "static"
+      className={`w-full z-20 top-0 start-0 border-b border-gray-200 bg-[#FFC1E2]  ${
+        location.pathname === "/register" ?  "static" : "sticky"
       }`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-end  mx-auto p-4 md:justify-between">
@@ -60,7 +60,7 @@ const Navbar = () => {
           </Link>
 
           {/* Menu Button - Now properly hidden on larger screens */}
-          <div className="block md:hidden text-white">
+          <div className="block md:hidden text-[#330A48]">
             <IconButton
               onClick={toggleDrawer}
               className="text-gray-500 rounded-lg dark:text-gray-400"
@@ -80,8 +80,8 @@ const Navbar = () => {
                   to={link.path}
                   className={`py-2 px-3 ${
                     link.path === "/"
-                      ? "text-white dark:text-white"
-                      : "text-white dark:text-white"
+                      ? "text-[#330A48]"
+                      : "text-[#330A48]"
                   }`}
                 >
                   {link.label}
