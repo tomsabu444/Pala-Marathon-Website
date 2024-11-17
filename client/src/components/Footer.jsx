@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Twitter, Instagram } from '@mui/icons-material';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -30,13 +32,13 @@ const Footer = () => {
             <h3 className="text-md font-thin mt-5">SOCIAL MEDIA</h3>
             <div className="flex space-x-6 mt-2">
               <a href="#" className="hover:opacity-80">
-                  <FacebookRoundedIcon fontSize='large'  />
+                <FacebookRoundedIcon fontSize="large" />
               </a>
               <a href="#" className="hover:opacity-80">
-                  <Twitter fontSize='large' />
+                <Twitter fontSize="large" />
               </a>
               <a href="#" className="hover:opacity-80">
-                  <Instagram  fontSize='large'  />
+                <Instagram fontSize="large" />
               </a>
             </div>
           </div>
@@ -45,20 +47,20 @@ const Footer = () => {
           <div className="md:col-span-6 grid grid-cols-2 gap-8">
             {/* Left Column */}
             <div className="space-y-3 font-outfit">
-              <a href="#" className="block text-md">HOME</a>
-              <a href="#" className="block text-sm">PARTICIPANT INFO</a>
-              <a href="#" className="block text-sm">FAQ</a>
-              <a href="#" className="block text-sm">RESULTS</a>
-              <a href="#" className="block text-sm">FEEDBACK</a>
+              <Link to="/" className="block text-md">HOME</Link>
+              <Link to="/participant-info" className="block text-sm">PARTICIPANT INFO</Link>
+              <Link to="/faq" className="block text-sm">FAQ</Link>
+              <Link to="/results" className="block text-sm">RESULTS</Link>
+              <Link to="/feedback" className="block text-sm">FEEDBACK</Link>
             </div>
 
             {/* Right Column */}
             <div className="space-y-3 font-outfit">
-              <a href="#" className="block text-md">CONTACT US</a>
-              <a href="#" className="block  text-sm">TERMS & CONDITIONS</a>
-              <a href="#" className="block text-sm">DISCLAIMER</a>
-              <a href="#" className="block text-sm">PRIVACY POLICIES</a>
-              <a href="#" className="block text-sm">SPONSORS</a>
+              <Link to="/contact-us" className="block text-md">CONTACT US</Link>
+              <Link to="/terms" className="block text-sm">TERMS & CONDITIONS</Link>
+              <Link to="/disclaimer" className="block text-sm">DISCLAIMER</Link>
+              <Link to="/privacy-policies" className="block text-sm">PRIVACY POLICIES</Link>
+              <Link to="/sponsors" className="block text-sm">SPONSORS</Link>
             </div>
           </div>
 
