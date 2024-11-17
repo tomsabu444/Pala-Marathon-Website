@@ -57,9 +57,9 @@ const Footer = () => {
             {/* Right Column */}
             <div className="space-y-3 font-outfit">
               <Link to="/contact-us" className="block text-md">CONTACT US</Link>
-              <Link to="/terms" className="block text-sm">TERMS & CONDITIONS</Link>
+              <Link to="/terms-conditions" className="block text-sm">TERMS & CONDITIONS</Link>
               <Link to="/disclaimer" className="block text-sm">DISCLAIMER</Link>
-              <Link to="/privacy-policies" className="block text-sm">PRIVACY POLICIES</Link>
+              <Link to="/privacy-policy" className="block text-sm">PRIVACY POLICIES</Link>
               <Link to="/sponsors" className="block text-sm">SPONSORS</Link>
             </div>
           </div>
