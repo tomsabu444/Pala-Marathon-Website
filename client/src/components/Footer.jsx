@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-
+import { Twitter, Instagram } from '@mui/icons-material';
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setError(''); 
+    setError('');
   };
 
   const handleSubmit = () => {
@@ -27,22 +27,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Social Media Section */}
           <div className="md:col-span-3">
-            <h3 className="text-xl font-bold mb-6">SOCIAL MEDIA</h3>
-            <div className="flex space-x-6">
+            <h3 className="text-md font-thin mt-5">SOCIAL MEDIA</h3>
+            <div className="flex space-x-6 mt-2">
               <a href="#" className="hover:opacity-80">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <FaFacebookF className="text-[#2D1140]" />
-                </div>
+                  <FacebookRoundedIcon fontSize='large'  />
               </a>
               <a href="#" className="hover:opacity-80">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <FaTwitter className="text-[#2D1140]" />
-                </div>
+                  <Twitter fontSize='large' />
               </a>
               <a href="#" className="hover:opacity-80">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <FaInstagram className="text-[#2D1140]" />
-                </div>
+                  <Instagram  fontSize='large'  />
               </a>
             </div>
           </div>
@@ -50,19 +44,21 @@ const Footer = () => {
           {/* Center Links Section */}
           <div className="md:col-span-6 grid grid-cols-2 gap-8">
             {/* Left Column */}
-            <div className="space-y-3">
-              <a href="#" className="block text-xl font-bold mb-6">HOME</a>
+            <div className="space-y-3 font-outfit">
+              <a href="#" className="block text-md">HOME</a>
               <a href="#" className="block text-sm">PARTICIPANT INFO</a>
               <a href="#" className="block text-sm">FAQ</a>
-              <a href="#" className="block text-sm">TERMS&CONDITIONS</a>
+              <a href="#" className="block text-sm">RESULTS</a>
+              <a href="#" className="block text-sm">FEEDBACK</a>
             </div>
 
             {/* Right Column */}
-            <div className="space-y-3">
-              <a href="#" className="block text-xl font-bold mb-6">RESULTS</a>
-              <a href="#" className="block text-sm">SPONSORS</a>
+            <div className="space-y-3 font-outfit">
+              <a href="#" className="block text-md">CONTACT US</a>
+              <a href="#" className="block  text-sm">TERMS & CONDITIONS</a>
               <a href="#" className="block text-sm">DISCLAIMER</a>
               <a href="#" className="block text-sm">PRIVACY POLICIES</a>
+              <a href="#" className="block text-sm">SPONSORS</a>
             </div>
           </div>
 
