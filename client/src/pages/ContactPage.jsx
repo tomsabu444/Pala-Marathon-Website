@@ -66,7 +66,7 @@ function ContactPage() {
           <MapContainer
             center={position}
             zoom={16}
-            className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] rounded-full shadow-2xl border"
+            className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[480px] md:h-[480px] rounded-full shadow-2xl border"
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
