@@ -62,7 +62,7 @@ function ContactPage() {
 
         {/* Contact Information Section */}
         <div className="flex flex-col justify-center md:w-full px-2 sm:px-4">
-          <h1 className="text-2xl xs:text-3xl sm:text-4xl mb-4 sm:mb-5 font-light text-[#330A48] tracking-wide sm:text-left">
+          <h1 className="text-2xl xs:text-3xl sm:text-4xl mb-4 mt-4 sm:mb-5 font-light text-[#330A48] tracking-wide sm:text-left">
             CONTACT <span className="font-semibold">US</span>
           </h1>
           <p className="text-sm xs:text-base sm:text-lg leading-relaxed text-gray-700">
