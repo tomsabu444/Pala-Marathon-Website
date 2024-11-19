@@ -1,28 +1,93 @@
 import React from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+// Import the running man icon and shadow
+import runningManIcon from "../assets/runninglogo.svg";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+//? svg pattern
+import dots_Pattern from "../assets/dots_Pattern.svg";
+import rectangle_bar from "../assets/rectangle_bar.svg";
+
+// Custom Icon with Shadow
+const runningManMarker = L.divIcon({
+  html: `
+    <div style="position: relative; display: inline-block;">
+      <img
+        src="${runningManIcon}"
+        alt="Running Man"
+        style="width: 69px; height: 60px; display: block;"
+      />
+      <div
+        style="
+          width: 6px;
+          height: 6px;
+          background-color: #330A48;
+          border-radius: 50%;
+          position: absolute;
+          bottom: -5px;
+          left: 50%;
+          transform: translateX(-50%);
+        "
+      ></div>
+    </div>
+  `,
+  iconSize: [69, 60],
+  className: "custom-icon", // Optional custom class for further styling
+});
 
 function ContactPage() {
+  const position = [9.70126, 76.664652]; // Coordinates for St. Thomas College Palai
+
+  const handleMarkerClick = () => {
+    // Open Google Maps with the given location
+    window.open(
+      `https://www.google.com/maps?q=${position[0]},${position[1]}`,
+      "_blank"
+    );
+  };
+
   return (
-    <div className="font-outfit text-gray-800 p-8">
+    <div className=" relative font-outfit text-gray-800 ">
+      {/*//! Dots Pattern */}
+      <div className="hidden md:block absolute bottom-8 ">
+        <img src={dots_Pattern} alt="Dots Pattern" />
+      </div>
+      {/*//! Rectangle Bar */}
+      <div className=" hidden md:block absolute right-0">
+        <img src={rectangle_bar} alt="Rectangle Bar" />
+      </div>
       {/* Main Container */}
-      <div className="flex flex-col md:flex-row  gap-16">
+      <div className="flex flex-col md:flex-row gap-10  p-8 md:p-20 ">
         {/* Map Section */}
         <div className="flex justify-center md:w-full">
-          <div className="md:h-auto rounded-full overflow-hidden  border-custom-purple-1001 shadow-2xl">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26043.47934630407!2d76.67163689046029!3d9.693258625916231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07cdbe6ffc82cf%3A0xb84a5f15951ef74a!2sSt.%20Thomas%20College%20Palai%20(Autonomous)!5e0!3m2!1sen!2sin!4v1731837162667!5m2!1sen!2sin"
-             className=" w-[300px] h-[300px] md:w-[450px] md:h-[450px] "
-              style={{ border:  0 }}
-           
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
+          <MapContainer
+            center={position}
+            zoom={16}
+            className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] rounded-full shadow-2xl border"
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker
+              position={position}
+              icon={runningManMarker}
+              eventHandlers={{ click: handleMarkerClick }}
+            >
+              <Popup>
+                St. Thomas College Palai <br /> Assembly Point for the Marathon
+              </Popup>
+            </Marker>
+          </MapContainer>
         </div>
 
         {/* Contact Information Section */}
         <div className="flex flex-col justify-center md:w-full">
-          <h1 className="text-4xl text-[#330A48]">
-            CONTACT <span className=" font-bold">US</span>
+          <h1 className="text-4xl mb-5 font-light text-[#330A48]">
+            CONTACT <span className="fomt font-semibold">US</span>
           </h1>
           <p className="text-lg leading-relaxed">
             For any questions or assistance regarding the Pala Marathon 2024,
@@ -44,7 +109,7 @@ function ContactPage() {
                 href="mailto:info@palamarathon2024.com"
                 className="text-purple-800 hover:underline"
               >
-                info@palamarathon2024.com
+                palamarathon@gmail.com
               </a>
             </li>
             <li>
