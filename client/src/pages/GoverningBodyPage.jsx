@@ -1,7 +1,7 @@
 import React from 'react';
 
 //? images
-import Dr_Siby_James from '../assets/Dr-Siby-James.webp';
+import Dr_Siby_James from '../assets/Dr-Siby-James.jpg';
 import R_Venkitchalam from '../assets/DGs-photo.jpg';
 import Cpt_Babu_Joseph from '../assets/Gp-Capt-Babu-Joseph.png';
 
