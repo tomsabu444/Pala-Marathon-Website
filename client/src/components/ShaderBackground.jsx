@@ -5,22 +5,25 @@ import * as THREE from "three";
 
 function TextureMesh() {
   const mesh = useRef();
-  const { size } = useThree(); //! Access viewport size here
+  const { viewport } = useThree(); // Access viewport dimensions
 
   useFrame((state) => {
-    const { clock, mouse } = state;
+    const { clock, pointer, size } = state;
     if (mesh.current) {
       mesh.current.material.uniforms.u_mouse.value = [
-        mouse.x / 2 + 0.5,
-        mouse.y / 2 + 0.5,
+        pointer.x / 2 + 0.5,
+        pointer.y / 2 + 0.5,
       ];
       mesh.current.material.uniforms.u_time.value = clock.getElapsedTime();
-      mesh.current.material.uniforms.u_resolution.value = [size.width, size.height];
+      mesh.current.material.uniforms.u_resolution.value = [
+        size.width + 1000,
+        size.height + 200,
+      ];
     }
   });
 
   return (
-    <mesh ref={mesh} scale={[size.width, size.height, 1]}>
+    <mesh ref={mesh} scale={[viewport.width, viewport.height, 1]}>
       <planeGeometry args={[1, 1]} />
       <shaderMaterial
         fragmentShader={`
@@ -66,7 +69,7 @@ function TextureMesh() {
         `}
         vertexShader={`void main() { gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`}
         uniforms={{
-          u_color: { value: new THREE.Color(0.3137254901960784, 0, 1) },
+          u_color: { value: new THREE.Color(1.3137254901960784, 0, 1) },
           u_background: { value: new THREE.Vector4(0, 0, 0, 1) },
           u_speed: { value: 1.4 },
           u_detail: { value: 0.4 },
