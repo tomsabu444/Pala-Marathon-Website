@@ -52,7 +52,7 @@ function ContactPage() {
   return (
     <div className=" relative font-outfit text-gray-800 ">
       {/*//! Dots Pattern */}
-      <div className="hidden md:block absolute bottom-8 ">
+      <div className="hidden lg:block absolute bottom-8 ">
         <img src={dots_Pattern} alt="Dots Pattern" />
       </div>
       {/*//! Rectangle Bar */}
@@ -60,7 +60,7 @@ function ContactPage() {
         <img src={rectangle_bar} alt="Rectangle Bar" />
       </div>
       {/* Main Container */}
-      <div className="flex flex-col md:flex-row gap-10  p-8 md:p-20 ">
+      <div className="flex flex-col lg:flex-row gap-10  p-8 lg:p-20 ">
         {/* Map Section */}
         <div className="flex justify-center md:w-full">
           <MapContainer
