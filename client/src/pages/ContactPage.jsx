@@ -35,11 +35,11 @@ const runningManMarker = L.divIcon({
     </div>
   `,
   iconSize: [69, 60],
-  className: "custom-icon", // Optional custom class for further styling
+  className: "custom-icon",
 });
 
 function ContactPage() {
-  const position = [9.70126, 76.664652]; // Coordinates for St. Thomas College Palai
+  const position = [9.70126, 76.664652]; // Coordinates for St. Thomas College Palai , Ground
 
   const handleMarkerClick = () => {
     // Open Google Maps with the given location
@@ -70,7 +70,7 @@ function ContactPage() {
           >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
             <Marker
               position={position}
