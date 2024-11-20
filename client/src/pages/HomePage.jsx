@@ -56,6 +56,8 @@ function HomePage() {
         </div>
 
       </div>
+      {/* Vison */}
+      <VisionPage />
       {/* Governing Body */}
       <GoverningBodyPage />
 
