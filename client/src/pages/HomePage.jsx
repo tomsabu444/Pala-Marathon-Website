@@ -13,7 +13,7 @@ function HomePage() {
     <>
       <div className=" relative h-screen bg-gradient-to-b from-[#FFC1E2] via-[#FFC1E2] to-[#FFFFFF] font-outfit">
         {/*//! Dots Pattern */}
-        <div className="hidden lg:block absolute top-44 ">
+        <div className=" absolute top-44 ">
           <img src={dots_Pattern} alt="Dots Pattern" />
         </div>
         <div className="flex flex-col items-center justify-center gap-3 h-full">
