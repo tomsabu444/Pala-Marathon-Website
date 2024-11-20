@@ -36,7 +36,7 @@ function ContactPage() {
         <img src={rectangle_bar} alt="Rectangle Bar" className="w-full h-full" />
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-32 p-4 sm:p-6 lg:p-20 mx-auto">
+      <div className="flex flex-col lg:flex-row gap-6 p-4 sm:p-6 lg:p-20 mx-auto">
         {/* Map Section */}
         <div className="flex justify-center items-center md:w-full">
           <div className="relative">
