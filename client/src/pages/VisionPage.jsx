@@ -1,5 +1,4 @@
 import React from 'react';
-import runningManIcon from '../assets/runninglogo.svg';
 import dots_Pattern from '../assets/dots_Pattern.svg';
 import rectangle_Bar from '../assets/rectangle_bar.svg';
 
