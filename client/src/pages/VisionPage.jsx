@@ -39,4 +39,4 @@ const VisionPage = () => {
   );
 };
 
-export default VisionPge;
+export default VisionPage;
