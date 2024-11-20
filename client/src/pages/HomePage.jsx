@@ -24,6 +24,7 @@ function HomePage() {
           <p className="text-lg">Contact No: 9784586721</p>
         </div>
 
+        {/* //! Main Content */}
         <div className="flex flex-col justify-items-center h-full">
           <div className="flex flex-col items-center justify-center mt-10 pt-16 gap-4 h-4/6">
             <img
@@ -53,6 +54,7 @@ function HomePage() {
             />
           </div>
         </div>
+
       </div>
       {/* Governing Body */}
       <GoverningBodyPage />
