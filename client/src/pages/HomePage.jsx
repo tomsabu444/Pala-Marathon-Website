@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import dots_Pattern from "../assets/dots_Pattern.svg";
 import CountdownTimer from "../components/CountdownTimer";
 
+import bg_img_homepage from '../assets/bg-homepage.png'
+
 function HomePage() {
   return (
     <>
@@ -25,36 +27,42 @@ function HomePage() {
         </div>
 
         {/* //! Main Content */}
-        <div className="flex flex-col justify-items-center h-full">
-          <div className="flex flex-col items-center justify-center mt-10 pt-16 gap-4 h-4/6">
-            <img
-              src={PalaMarathon}
-              alt="PalaMarathon"
-              className="h-40 mb-2 drop-shadow-lg"
-            />
-            <h1 className="text-xl font-bold text-[#8B0A1E]">
-              19th JANUARY 2025
-            </h1>
+        <div className="lg:flex lg:justify-between h-full">
+          <div className="flex flex-col justify-items-center h-full lg:pl-44">
+            <div className="flex flex-col items-center justify-center mt-10 pt-16 gap-4 h-4/6 ">
+              <img
+                src={PalaMarathon}
+                alt="PalaMarathon"
+                className="h-40 md:h-44 lg:h-52 mb-2 drop-shadow-lg"
+              />
+              <h1 className="text-xl lg:text-2xl font-bold text-[#8B0A1E]">
+                19th JANUARY 2025
+              </h1>
 
-            <Link
-              to="/register"
-              className="px-8 py-3 mt-4 text-white bg-[#330A48] rounded-full"
-            >
-              REGISTER NOW
-            </Link>
+              <Link
+                to="/register"
+                className="px-8 py-3 mt-4 text-white bg-[#330A48] rounded-full lg:text-xl"
+              >
+                REGISTER NOW
+              </Link>
+            </div>
+
+            <div className="flex flex-col">
+              <h1 className=" text-center text-xl lg:text-2xl text-custom-pink mb-5">
+                COUNTDOWN TO PALA MARATHON
+              </h1>
+              {/* Countdown Timer */}
+              <CountdownTimer
+                eventDate={new Date("2025-01-19T00:00:00").getTime()}
+              />
+            </div>
           </div>
 
-          <div className="flex flex-col">
-            <h1 className=" text-center text-xl lg:text-2xl text-custom-pink mb-5">
-              COUNTDOWN TO PALA MARATHON
-            </h1>
-            {/* Countdown Timer */}
-            <CountdownTimer
-              eventDate={new Date("2025-01-19T00:00:00").getTime()}
-            />
+          {/* img container */}
+          <div className=" hidden max-w-6xl lg:block lg:pt-44">
+          <img src={bg_img_homepage}/>
           </div>
         </div>
-
       </div>
       {/* Governing Body */}
       <GoverningBodyPage />
