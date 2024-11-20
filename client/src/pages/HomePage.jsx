@@ -13,10 +13,10 @@ function HomePage() {
     <>
       <div className=" relative h-screen bg-gradient-to-b from-[#FFC1E2] via-[#FFC1E2] to-[#FFFFFF] font-outfit">
         {/*//! Dots Pattern */}
-        <div className=" absolute top-44 ">
+        <div className=" absolute top-24 ">
           <img src={dots_Pattern} alt="Dots Pattern" />
         </div>
-        <div className="flex flex-col items-center justify-center gap-3 h-full">
+        <div className="flex flex-col items-center justify-center gap-3 h-5/6">
           <img
             src={PalaMarathon}
             alt="PalaMarathon"
@@ -32,6 +32,9 @@ function HomePage() {
             REGISTER NOW
           </Link>
         </div>
+        
+        {/* CountDown */}
+        <div></div>
       </div>
 
       {/* Governing Body */}
