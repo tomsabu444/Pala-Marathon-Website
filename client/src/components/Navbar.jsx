@@ -52,11 +52,11 @@ const Navbar = () => {
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src="runninglogo.svg" className="h-11" alt="Running Logo" />
+          <img src="runninglogo.svg" className="h-10 md:h-11" alt="Running Logo" />
           <img
             src={PalaMarathon}
             alt="PalaMarathon"
-            className="h-12 mb-2 drop-shadow-lg"
+            className="h-9 md:h-11 mb-2 drop-shadow-lg"
           />
         </Link>
 
