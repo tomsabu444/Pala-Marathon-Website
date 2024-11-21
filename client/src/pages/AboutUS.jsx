@@ -23,7 +23,7 @@ function AboutUS() {
           <img src={lions_currespond_img} alt="lions_currespond_img" />
         </div>
         <div className="max-w-[600px]">
-          <h2 className="text-2xl text-center font-bold">
+          <h2 className="text-2xl text-center font-bold mb-4">
             Lions Clubs International District 318B
           </h2>
           <p className="text-lg text-center text-gray-600">
@@ -39,7 +39,7 @@ function AboutUS() {
       </section>
 
       {/* // section 2 */}
-      <section className="flex p-10 font-outfit  items-center gap-2 flex-col">
+      <section className="flex p-10 font-outfit  bg-[#FFC1E2] items-center gap-2 flex-col">
         <div className=" bg-contain max-w-[550px]">
           <img src={st_thomas_currespond_img} alt="lions_currespond_img" />
         </div>
