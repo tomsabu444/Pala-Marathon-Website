@@ -22,11 +22,15 @@ const SecondVision = () => {
             
             {/* Paragraph with mobile border and responsive padding */}
             <div className="p-4 md:p-0 border-2 border-purple-150 bg-purple-50/50 md:border-none rounded-lg">
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                Pala, a town rich in culture and community spirit, presents a 
-                great opportunity to start a running club, bringing together 
-                people of all ages to promote health, fitness, and camaraderie. 
-                We aim to revive the spirit of Pala!
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed text-left md:text-left">
+                <b>Pala:</b> A Community of Health and Fitness. Pala, a town rich in culture and community spirit, envisions a running club to unite people of all ages in the pursuit of health and camaraderie. <br /><br />
+              
+                <b>Building a Fitness-Aware Generation:</b> A running club can foster fitness through group runs, training, and workshops, promoting teamwork, discipline, and resilience among the youth.<br /><br />
+
+                <b>The Spark for an Annual Marathon:</b> With support, this initiative could grow into a cherished tradition, showcasing the vitality of our community.<br /><br />
+
+                <b>A Lasting Legacy:</b> Inspiring families to embrace fitness, Pala can become a beacon of health, creating a vibrant, active future for all.
+                Let’s run toward a healthier tomorrow!
               </p>
             </div>
           </div>
@@ -39,7 +43,7 @@ const SecondVision = () => {
         </div>
         
         {/* Right Section - Responsive Collage Image */}
-        <div className="relative w-full mt-3 md:mt-0 md:pl-16">
+        <div className="relative w-full mt-6 md:mt-12 md:mt-0 md:pl-16">
           <img
             src={collageImg}
             alt="Collage of Running Events"
