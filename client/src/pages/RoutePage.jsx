@@ -124,7 +124,7 @@ const RoutePage = () => {
             <img
               src={road}
               alt="Route Map or Road Image"
-              className="w-full h-[65vh] rotate-35 object-cover z-30 mt-[-275px] lg:block hidden"
+              className="w-full h-[65vh] rotate-35 object-cover z-30 mt-[-276px] lg:block hidden"
             />
           </div>
 
