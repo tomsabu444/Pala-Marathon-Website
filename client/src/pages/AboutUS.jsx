@@ -18,11 +18,11 @@ function AboutUS() {
         </h1>
       </div>
       {/* // section 1 */}
-      <section className="flex p-10  flex-col  font-outfit  items-center gap-2">
+      <section className="flex p-10  flex-col  font-outfit  items-center gap-2 lg:flex-row md:justify-evenly">
         <div className=" bg-contain max-w-[550px]">
           <img src={lions_currespond_img} alt="lions_currespond_img" />
         </div>
-        <div className="max-w-[600px]">
+        <div className="max-w-[550px] md:max-w-[480px]">
           <h2 className="text-2xl text-center font-bold mb-4">
             Lions Clubs International District 318B
           </h2>
@@ -39,11 +39,11 @@ function AboutUS() {
       </section>
 
       {/* // section 2 */}
-      <section className="flex p-10 font-outfit  bg-[#FFC1E2] items-center gap-2 flex-col">
+      <section className="flex p-10 font-outfit  bg-[#FFC1E2] items-center gap-2 flex-col lg:flex-row-reverse md:justify-evenly">
         <div className=" bg-contain max-w-[550px]">
           <img src={st_thomas_currespond_img} alt="lions_currespond_img" />
         </div>
-        <div className="max-w-[600px]">
+        <div className="max-w-[550px] md:max-w-[480px]">
           <h2 className="text-2xl text-center font-bold mb-4">
             St. Thomas College, Palai - 75th Jubilee Celebrations
           </h2>
@@ -61,12 +61,12 @@ function AboutUS() {
       </section>
 
       {/* // section 3 */}
-      <section className="flex p-10  font-outfit  items-center flex-col gap-2 w-full">
+      <section className="flex p-10  font-outfit  items-center flex-col gap-2 lg:flex-row md:justify-evenly">
         <div className=" bg-contain max-w-[550px]">
           <img src={Engineers_Forum_img} alt="lions_currespond_img" />
         </div>
 
-        <div className="max-w-[600px]">
+        <div className="max-w-[550px] md:max-w-[480px]">
           <h2 className="text-2xl text-center font-bold mb-4 ">
             Engineers' Forum, Pala
           </h2>
