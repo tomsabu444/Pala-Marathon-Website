@@ -13,7 +13,7 @@ const FAQPage = () => {
   return (
     <>
       <MarathonBanner />
-    <div className="flex justify-center my-auto min-h-screen bg-gray-100">
+    <div className="flex justify-center mt-8 min-h-screen bg-gray-100">
       <div className="w-full max-w-2xl">
         <div className="space-y-2">
           <div>
