@@ -15,23 +15,23 @@ const FAQPage = () => {
     <>
       {/* FAQ Banner */}
       <div
-        className="text-center flex justify-center items-center h-28 w-full bg-cover bg-center"
+        className="text-center flex justify-center items-center h-28 sm:h-36 w-full bg-cover bg-center"
         style={{ backgroundImage: `url(${faqimg})` }}
       >
-        <h1 className="text-4xl font-outfit font-bold mb-4 text-white">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-bold text-white px-4">
           FREQUENTLY ASKED QUESTIONS
         </h1>
       </div>
       <MarathonBanner />
 
       {/* FAQ Section */}
-      <div className="flex justify-center my-12 h-auto bg-gray-100">
-        <div className="w-full max-w-7xl">
-          <div className="space-y-2">
+      <div className="flex justify-center my-8 lg:my-12 bg-gray-100">
+        <div className="w-full max-w-screen-lg px-4 sm:px-8 lg:px-12">
+          <div className="space-y-4">
             {/* Registration Section */}
             <div>
               <button
-                className={`w-full flex justify-between items-center p-4 text-base font-semibold ${
+                className={`w-full flex justify-between items-center p-4 text-sm sm:text-base font-semibold ${
                   openSection === "registration"
                     ? "bg-purple-900 text-white"
                     : "bg-pink-200 text-black"
@@ -51,11 +51,14 @@ const FAQPage = () => {
               </button>
               <div
                 className={`overflow-hidden transition-all duration-500 ${
-                  openSection === "registration" ? "max-h-40 p-4" : "max-h-0"
+                  openSection === "registration" ? "max-h-44 p-4" : "max-h-0"
                 } bg-purple-900 text-white text-sm`}
               >
                 <p>
-                  <strong>When is the last date to register for Ageas Federal Pala Marathon?</strong>
+                  <strong>
+                    When is the last date to register for Ageas Federal Pala
+                    Marathon?
+                  </strong>
                 </p>
                 <p>The last date of registration is October 13, 2024.</p>
                 <p className="mt-2">
@@ -80,7 +83,7 @@ const FAQPage = () => {
             ].map((section, index) => (
               <div key={index}>
                 <button
-                  className={`w-full flex justify-between items-center p-4 text-base font-semibold ${
+                  className={`w-full flex justify-between items-center p-4 text-sm sm:text-base font-semibold ${
                     openSection === section.toLowerCase().replace(/\s/g, "")
                       ? "bg-purple-900 text-white"
                       : "bg-pink-200 text-black"
