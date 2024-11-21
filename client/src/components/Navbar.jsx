@@ -39,11 +39,15 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`font-outfit w-full z-20 top-0 start-0 bg-[#FFC1E2] ${
-        location.pathname === "/register" ? "static" : "fixed"
+      className={`font-outfit w-full z-50 top-0 start-0 bg-[#FFC1E2] ${
+        location.pathname === "/register"
+          ? "static"
+          : location.pathname === "/"
+          ? "fixed"
+          : "static"
       }`}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center mx-auto p-2 justify-between">
+      <div className="max-w-screen-xl flex flex-wrap items-center mx-auto px-2 py-1 justify-between">
         <Link
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -58,7 +62,10 @@ const Navbar = () => {
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
           <div className="flex items-center justify-center h-full">
-            <Link to="/" className="h-auto text-center font-light text-base tracking-widee">
+            <Link
+              to="/"
+              className="h-auto text-center font-light text-base tracking-widee"
+            >
               CONTACT US
             </Link>
           </div>

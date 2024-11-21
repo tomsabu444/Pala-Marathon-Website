@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 import dots_Pattern from "../assets/dots_Pattern.svg";
 import CountdownTimer from "../components/CountdownTimer";
 
-import bg_img_homepage from '../assets/bg-homepage.png'
+import bg_img_homepage from "../assets/bg-homepage.png";
+import bg_mobile from "../assets/bg-for-mobile.png";
 
 function HomePage() {
   return (
@@ -20,14 +21,24 @@ function HomePage() {
         <div className="absolute top-24">
           <img src={dots_Pattern} alt="Dots Pattern" />
         </div>
-          {/*//! Dots Pattern right */}
-          <div className=" hidden sm:block absolute right-0 bottom-14 rotate-180">
+        {/*//! Dots Pattern right */}
+        <div className=" hidden sm:block absolute right-0 bottom-14 rotate-180">
           <img src={dots_Pattern} alt="Dots Pattern" />
         </div>
 
+        {/* //! Mobile Background */}
+        <div className="block absolute bg-contain w-full h-full bottom-0 lg:hidden">
+          <img
+            src={bg_mobile}
+            className="w-full h-full object-cover"
+            alt="Background Image"
+          />
+        </div>
         {/* //! contact No */}
         <div className=" hidden md:block absolute bottom-24 -left-16 transform -rotate-90 text-[#330A48] transform-origin-left">
-          <p className="text-lg font-light">Contact No: <span className="font-medium">9784586721  </span> </p>
+          <p className="text-lg font-light">
+            Contact No: <span className="font-medium">9784586721 </span>{" "}
+          </p>
         </div>
 
         {/* //! Main Content */}
@@ -64,7 +75,7 @@ function HomePage() {
 
           {/* img container */}
           <div className=" hidden lg:flex absolute  right-0 bottom-5">
-          <img src={bg_img_homepage} className=" lg:w-[1100px]"/>
+            <img src={bg_img_homepage} className=" lg:w-[1100px]" />
           </div>
         </div>
       </div>
