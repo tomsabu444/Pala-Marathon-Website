@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MarathonBanner from "../components/MarathonBanner2.0";
+import faqimg from "Pala-Marathon-Website/client/src/assets/Faq-img.png";
 
 const FAQPage = () => {
   const [openSection, setOpenSection] = useState(null);
@@ -12,7 +13,15 @@ const FAQPage = () => {
 
   return (
     <>
-      <MarathonBanner />
+    <div
+        className="text-center flex justify-center items-center h-36 w-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${faqimg})` }}
+      >
+        <h1 className="text-4xl font-outfit font-bold mb-4 text-white">
+        FREQUENTLY ASKED QUESTIONS
+        </h1>
+      </div>
+      <MarathonBanner/>
     <div className="flex justify-center mt-8 min-h-screen bg-gray-100">
       <div className="w-full max-w-2xl">
         <div className="space-y-2">
