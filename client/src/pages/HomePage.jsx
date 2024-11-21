@@ -55,10 +55,10 @@ function HomePage() {
               </h1>
 
               <Link
-                to="/register"
+                to="/"
                 className="px-8 py-3 mt-4 text-white bg-[#330A48] rounded-full md:text-xl"
               >
-                REGISTER NOW
+                REGISTRATION OPENING SOON
               </Link>
             </div>
 
