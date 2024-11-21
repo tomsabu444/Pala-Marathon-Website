@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import MarathonBanner from "../components/MarathonBanner2.0";
 
 const FAQPage = () => {
   const [openSection, setOpenSection] = useState(null);
@@ -10,11 +11,11 @@ const FAQPage = () => {
   };
 
   return (
+    <>
+      <MarathonBanner />
     <div className="flex justify-center my-auto min-h-screen bg-gray-100">
       <div className="w-full max-w-2xl">
-        {/* FAQ Section */}
         <div className="space-y-2">
-          {/* Registration Section */}
           <div>
             <button
               className={`w-full flex justify-between items-center p-4 text-base font-semibold ${
@@ -54,8 +55,6 @@ const FAQPage = () => {
               </p>
             </div>
           </div>
-
-          {/* Other Sections */}
           {["Race Expo", "Getting to the Race", "About the Race Course", "Travel and Accommodation", "Results and Prizes", "Behind the Scenes"].map(
             (section, index) => (
               <div key={index}>
@@ -98,6 +97,7 @@ const FAQPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
