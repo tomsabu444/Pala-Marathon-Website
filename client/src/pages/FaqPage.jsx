@@ -29,7 +29,7 @@ const FAQPage = () => {
             <button
               className={`w-full flex justify-between items-center p-4 text-base font-semibold ${
                 openSection === "registration"
-                  ? "bg-purple-700 text-white"
+                  ? "bg-purple-900 text-white"
                   : "bg-pink-200 text-black"
               }`}
               onClick={() => toggleSection("registration")}
@@ -48,7 +48,7 @@ const FAQPage = () => {
             <div
               className={`overflow-hidden transition-all duration-500 ${
                 openSection === "registration" ? "max-h-40 p-4" : "max-h-0"
-              } bg-purple-700 text-white text-sm`}
+              } bg-purple-900 text-white text-sm`}
             >
               <p>
                 <strong>When is the last date to register for Ageas Federal Pala Marathon?</strong>
