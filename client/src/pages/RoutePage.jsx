@@ -1,6 +1,7 @@
 import React from 'react';
 import rectangle from 'Pala-Marathon-Website/client/src/assets/rectangle.png';
 import road from 'Pala-Marathon-Website/client/src/assets/road.png';
+import smRoad from 'Pala-Marathon-Website/client/src/assets/s-road.png'; // Small screen road image
 
 const RoutePage = () => {
   return (
@@ -116,13 +117,28 @@ const RoutePage = () => {
           </div>
         </div>
 
-        {/* Right Section - Image */}
+        {/* Right Section - Images */}
         <div className="relative w-full mt-6 md:mt-0 md:pl-16">
-          <img
-            src={road}
-            alt="Route Map or Road Image"
-            className="w-full h-[30vh] rotate-25 object-cover z-30 mt-[-100px] right-0"
-          />
+          {/* Image for large screens */}
+          <div className="hidden md:block md:absolute md:right-[-64px] md:w-[calc(100%+64px)]">
+            <img
+              src={road}
+              alt="Route Map or Road Image"
+              className="w-full h-[65vh] rotate-35 object-cover z-30 mt-[-280px]"
+            />
+          </div>
+
+          {/* Image for small screens */}
+          <div className="block md:hidden">
+            <img
+              src={smRoad}
+              alt="Route Map or Road Image (Small)"
+              className="w-full object-cover z-30 -mt-3"
+              style={{
+                height:'60px',
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
