@@ -3,13 +3,14 @@ import dot from 'Pala-Marathon-Website/client/src/assets/dot.png';
 import collageImg from 'Pala-Marathon-Website/client/src/assets/palaimg.png';
 import imageold from 'Pala-Marathon-Website/client/src/assets/palaimg1.png';
 import mobileImage from 'Pala-Marathon-Website/client/src/assets/mobileImage.png';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const SecondVision = () => {
   return (
     <div className="relative py-12 md:py-16 px-4 md:px-16 z-10 lg:-mt-24">
       <style>
         {`
-          /* Hide imageold on screens below 1180px */
+          /* Hide imageold on screens below 1300px */
           @media (max-width: 1300px) {
             .hide-imageold {
               display: none;
@@ -41,7 +42,6 @@ const SecondVision = () => {
               <p className="text-base md:text-lg text-gray-700 leading-relaxed text-left md:text-left">
                 <b>Pala:</b> A Community of Health and Fitness. Pala, a town rich in culture and community spirit, envisions a running club to unite people of all ages in the pursuit of health and camaraderie. <br /><br />
               
-
                 <b>Building a Fitness-Aware Generation:</b> A running club can foster fitness through group runs, training, and workshops, promoting teamwork, discipline, and resilience among the youth.<br /><br />
 
                 <b>The Spark for an Annual Marathon:</b> With support, this initiative could grow into a cherished tradition, showcasing the vitality of our community.<br /><br />
@@ -49,12 +49,18 @@ const SecondVision = () => {
                 <b>A Lasting Legacy:</b> Inspiring families to embrace fitness, Pala can become a beacon of health, creating a vibrant, active future for all.
                 Let’s run toward a healthier tomorrow!
               </p>
+              <a
+                className="flex items-center text-2xl font-bold text-violet-900 mt-4"
+                href="/"
+              >
+                About Us <ArrowForwardIosIcon className="ml-2" />
+              </a>
             </div>
           </div>
         </div>
         
         {/* Right Section - Responsive Collage Image */}
-        <div className="relative w-full mt-6 md:mt-12 md:mt-0 md:pl-16 left-20 ">
+        <div className="relative w-full mt-6 md:mt-12 md:mt-0 md:pl-16 left-20">
           {/* Visible only on larger screens */}
           <img
             src={collageImg}
