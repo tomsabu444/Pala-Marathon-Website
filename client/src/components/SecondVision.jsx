@@ -1,45 +1,47 @@
-import React from "react";
-import M1 from "Pala-Marathon-Website/client/src/assets/m1.png";
-import M2 from "Pala-Marathon-Website/client/src/assets/m2.png";
-import M3 from "Pala-Marathon-Website/client/src/assets/m3.png";
-import M4 from "Pala-Marathon-Website/client/src/assets/m4.png";
+import React from 'react';
+import dot from 'Pala-Marathon-Website/client/src/assets/dot.png';
+import collageImg from 'Pala-Marathon-Website/client/src/assets/palaimg.png'; // Single image for the collage
 
-function SecondVision() {
+const SecondVision = () => {
   return (
-    <div className="relative py-36">
-      <div className="dot absolute"></div>
-      <div className="main flex justify-between relative w-full">
-        <div className="writing ml-[5rem]">
-          <h1 className="text-4xl font-bold mb-4">Our Vision</h1>
-          <p className="max-w-[500px] text-lg">
-            Pala, a town rich in culture and community spirit, presents a great 
-            opportunity to start a running club, bringing together people of all 
-            ages to promote health, fitness, and camaraderie. We aim to revive 
-            the spirit of Pala!
-          </p>
+    <div className="relative py-16 px-6 md:px-16">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Left Section */}
+        <div className="relative flex justify-center md:justify-start">
+          {/* Dot Image */}
+          <img
+            src={dot}
+            alt="Dots"
+            className="absolute top-[-40px] left-[-50px] md:left-[-70px] w-16 h-16 md:w-20 md:h-20"
+          />
+          <div className="ml-0 md:ml-24 max-w-lg text-center md:text-left">
+            <h1 className="text-4xl font-extrabold text-purple-900 mb-6">
+              OUR <span className="text-black">VISION</span>
+            </h1>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Pala, a town rich in culture and community spirit, presents a
+              great opportunity to start a running club, bringing together
+              people of all ages to promote health, fitness, and camaraderie. We
+              aim to revive the spirit of Pala!
+            </p>
+          </div>
+          {/* Contact Text */}
+          <div className="absolute left-[-115px] top-[300px] rotate-90 text-purple-900 text-sm font-bold">
+            CONTACT: 9784 - 586 - 721
+          </div>
         </div>
-        <div className="image relative w-[800px]">
-          <div 
-            className="img1 absolute z-10 -mt-24 ml-[15rem] w-[364px] h-[392px] bg-cover bg-center border-[10px] border-white"
-            style={{backgroundImage: `url(${M1})`}}
-          ></div>
-          <div 
-            className="img2 absolute z-10 mt-[19rem] -ml-[15rem] w-[451px] h-[275px] bg-cover bg-center border-t-[10px] border-r-[10px] border-white"
-            style={{backgroundImage: `url(${M2})`}}
-          ></div>
-          <div 
-            className="img3 absolute z-0 mt-[10rem] w-[385px] h-[408px] bg-cover bg-center"
-            style={{backgroundImage: `url(${M3})`}}
-          ></div>
-          <div 
-            className="img4 absolute right-0 top-[9rem] z-0 w-[365px] h-[408px] bg-cover bg-center"
-            style={{backgroundImage: `url(${M4})`}}
-          ></div>
-          <div className="img5 absolute"></div>
+
+        {/* Right Section - Single Collage Image */}
+        <div className="relative w-full md:pl-16">
+          <img
+            src={collageImg}
+            alt="Collage of Running Events"
+            className="w-full h-auto  object-cover md:object-right md:w-[150%]"
+          />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default SecondVision;
