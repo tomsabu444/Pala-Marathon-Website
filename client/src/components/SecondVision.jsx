@@ -10,7 +10,7 @@ const SecondVision = () => {
       <style>
         {`
           /* Hide imageold on screens below 1180px */
-          @media (max-width: 1180px) {
+          @media (max-width: 1300px) {
             .hide-imageold {
               display: none;
             }

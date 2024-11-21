@@ -120,11 +120,11 @@ const RoutePage = () => {
         {/* Right Section - Images */}
         <div className="relative w-full mt-6 md:mt-0 md:pl-16">
           {/* Image for large screens */}
-          <div className="hidden md:block md:absolute md:right-[-64px] md:w-[calc(100%+64px)]">
+          <div className="hidden lg:block md:absolute md:right-[-64px] md:w-[calc(100%+64px)]">
             <img
               src={road}
               alt="Route Map or Road Image"
-              className="w-full h-[65vh] rotate-35 object-cover z-30 mt-[-280px]"
+              className="w-full h-[65vh] rotate-35 object-cover z-30 mt-[-275px] lg:block hidden"
             />
           </div>
 
