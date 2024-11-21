@@ -6,7 +6,7 @@ import mobileImage from 'Pala-Marathon-Website/client/src/assets/mobileImage.png
 
 const SecondVision = () => {
   return (
-    <div className="relative py-12 md:py-16 px-4 md:px-16 z-10">
+    <div className="relative py-12 md:py-16 px-4 md:px-16 z-10 lg:-mt-24">
       <style>
         {`
           /* Hide imageold on screens below 1180px */
@@ -54,12 +54,12 @@ const SecondVision = () => {
         </div>
         
         {/* Right Section - Responsive Collage Image */}
-        <div className="relative w-full mt-6 md:mt-12 md:mt-0 md:pl-16 left-20">
+        <div className="relative w-full mt-6 md:mt-12 md:mt-0 md:pl-16 left-20 ">
           {/* Visible only on larger screens */}
           <img
             src={collageImg}
             alt="Collage of Running Events"
-            className="w-full h-auto object-cover mt-[150px] md:mt-[200px] lg:mt-[280px] hidden lg:block"
+            className="w-full h-auto object-cover mt-[150px] md:mt-[200px] lg:mt-[280px] hidden md:block"
           />
         </div>
 
@@ -74,7 +74,7 @@ const SecondVision = () => {
         <img 
           src={mobileImage}
           alt="Mobile Collage of Running Events"
-          className="lg:hidden w-full h-auto object-cover mt-6"
+          className="md:hidden w-full h-auto object-cover mx-auto -mt-12"  // Added mx-auto and margin-top to center the image
         />
       </div>
     </div>
