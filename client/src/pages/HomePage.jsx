@@ -27,7 +27,7 @@ function HomePage() {
         </div>
 
         {/* //! Mobile Background */}
-        <div className="block absolute bg-contain w-full h-full bottom-0 lg:hidden">
+        <div className="block absolute bg-contain w-full h-full -bottom-1 lg:hidden">
           <img
             src={bg_mobile}
             className="w-full h-full object-cover"
