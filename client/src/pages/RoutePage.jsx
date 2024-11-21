@@ -18,7 +18,7 @@ const RoutePage = () => {
           <div className="w-full max-w-lg text-center md:text-left md:ml-24">
             {/* Heading with Transparent Text and Outline */}
             <h1
-              className="text-4xl md:text-5xl font-extrabold mb-4 md:mb-6 text-transparent"
+              className="text-3xl md:text-5xl font-extrabold mb-4 md:mb-6 text-transparent"
               style={{
                 WebkitTextStroke: '1.5px #330A48',
                 WebkitTextFillColor: 'transparent',
@@ -33,16 +33,21 @@ const RoutePage = () => {
             </p>
 
             {/* Marathon Details Section */}
-            <div className="flex justify-center md:justify-start gap-12 mt-8">
+            <div className="flex flex-col md:flex-row justify-center md:justify-start gap-6 md:gap-12 mt-8">
               {/* Half Marathon */}
-              <div className="text-center">
-                <h2 className="text-4xl md:text-base font-bold "
-                style={{
-                  color:'#330A48',
-                }}
-                >HALF MARATHON</h2>
+              <div
+                className="text-center border border-purple-300 rounded-lg p-4 md:p-0 md:border-none"
+              >
+                <h2
+                  className="text-lg md:text-base font-bold"
+                  style={{
+                    color: '#330A48',
+                  }}
+                >
+                  HALF MARATHON
+                </h2>
                 <h3
-                  className="text-lg md:text-3xl font-bold mt-1"
+                  className="text-xl md:text-3xl font-bold mt-1"
                   style={{
                     color: '#8D1455',
                   }}
@@ -52,17 +57,22 @@ const RoutePage = () => {
               </div>
 
               {/* Vertical Divider */}
-              <div className="border-l-2 border-orange-300 h-24"></div>
+              <div className="hidden md:block border-l-2 border-orange-300 h-24"></div>
 
               {/* 10K Marathon */}
-              <div className="text-center">
-                <h2 className="text-sm md:text-base font-bold "
-                style={{
-                  color:'#330A48',
-                }}
-                >10K MARATHON</h2>
+              <div
+                className="text-center border border-purple-300 rounded-lg p-4 md:p-0 md:border-none"
+              >
+                <h2
+                  className="text-lg md:text-base font-bold"
+                  style={{
+                    color: '#330A48',
+                  }}
+                >
+                  10K MARATHON
+                </h2>
                 <h3
-                  className="text-lg md:text-3xl font-bold mt-1"
+                  className="text-xl md:text-3xl font-bold mt-1"
                   style={{
                     color: '#8D1455',
                   }}
@@ -72,17 +82,22 @@ const RoutePage = () => {
               </div>
 
               {/* Vertical Divider */}
-              <div className="border-l-2 border-orange-300 h-24"></div>
+              <div className="hidden md:block border-l-2 border-orange-300 h-24"></div>
 
               {/* Fun Run */}
-              <div className="text-center">
-                <h2 className="text-sm md:text-base font-bold "
-                style={{
-                  color:'#330A48',
-                }}
-                >FUN RUN</h2>
+              <div
+                className="text-center border border-purple-300 rounded-lg p-4 md:p-0 md:border-none"
+              >
+                <h2
+                  className="text-lg md:text-base font-bold"
+                  style={{
+                    color: '#330A48',
+                  }}
+                >
+                  FUN RUN
+                </h2>
                 <h3
-                  className="text-lg md:text-3xl font-bold mt-1"
+                  className="text-xl md:text-3xl font-bold mt-1"
                   style={{
                     color: '#8D1455',
                   }}
@@ -93,18 +108,16 @@ const RoutePage = () => {
             </div>
 
             {/* Register Button */}
-            <div className="flex justify-center">
             <div className="mt-12 flex justify-center md:justify-start">
-              <button className="px-8 py-3 text-base md:text-lg font-semibold text-purple-900 border-2 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white transition duration-300">
+              <button className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-lg font-semibold text-purple-900 border-2 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white transition duration-300">
                 REGISTER NOW
               </button>
-            </div>
             </div>
           </div>
         </div>
 
         {/* Right Section - Image */}
-        <div className="relative w-full mt-3 md:mt-0 md:pl-16">
+        <div className="relative w-full mt-6 md:mt-0 md:pl-16">
           <img
             src={road}
             alt="Route Map or Road Image"
