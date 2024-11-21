@@ -4,8 +4,8 @@ import road from 'Pala-Marathon-Website/client/src/assets/road.png';
 
 const RoutePage = () => {
   return (
-    <div className="relative py-12 md:py-16 px-4 md:px-16 bg-gray-50">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+    <div className="relative py-12 md:py-16 px-4 md:px-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center z-10">
         {/* Left Section */}
         <div className="relative flex flex-col items-center md:items-start">
           {/* Decorative Rectangle */}
@@ -36,7 +36,7 @@ const RoutePage = () => {
             <div className="flex flex-col md:flex-row justify-center md:justify-start gap-6 md:gap-12 mt-8">
               {/* Half Marathon */}
               <div
-                className="text-center border border-purple-300 rounded-lg p-4 md:p-0 md:border-none"
+                className="text-center border border-purple-300 bg-purple-50/50 rounded-lg p-4 md:p-0 md:border-none"
               >
                 <h2
                   className="text-lg md:text-base font-bold"
@@ -61,7 +61,7 @@ const RoutePage = () => {
 
               {/* 10K Marathon */}
               <div
-                className="text-center border border-purple-300 rounded-lg p-4 md:p-0 md:border-none"
+                className="text-center border border-purple-300 bg-purple-50/50 rounded-lg p-4 md:p-0 md:border-none"
               >
                 <h2
                   className="text-lg md:text-base font-bold"
@@ -86,7 +86,7 @@ const RoutePage = () => {
 
               {/* Fun Run */}
               <div
-                className="text-center border border-purple-300 rounded-lg p-4 md:p-0 md:border-none"
+                className="text-center border border-purple-300 bg-purple-50/50 rounded-lg p-4 md:p-0 md:border-none"
               >
                 <h2
                   className="text-lg md:text-base font-bold"
@@ -121,7 +121,7 @@ const RoutePage = () => {
           <img
             src={road}
             alt="Route Map or Road Image"
-            className="w-full h-auto object-cover"
+            className="w-full h-[30vh] rotate-25 object-cover z-30 mt-[-100px] right-0"
           />
         </div>
       </div>
