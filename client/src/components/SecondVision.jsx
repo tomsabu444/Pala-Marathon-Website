@@ -49,11 +49,13 @@ const SecondVision = () => {
                 <b>A Lasting Legacy:</b> Inspiring families to embrace fitness, Pala can become a beacon of health, creating a vibrant, active future for all.
                 Let’s run toward a healthier tomorrow!
               </p>
+              {/* About Us Link */}
               <a
-                className="flex items-center text-2xl font-bold text-violet-900 mt-4"
+                className="flex items-center text-lg md:text-xl font-bold text-violet-900 mt-4 md:mt-6 "
                 href="/"
               >
-                About Us <ArrowForwardIosIcon className="ml-2" />
+                About Us
+                <ArrowForwardIosIcon className="ml-2 text-violet-900" />
               </a>
             </div>
           </div>
