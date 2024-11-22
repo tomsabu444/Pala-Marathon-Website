@@ -1,14 +1,24 @@
 import React from "react";
 import MarathonBanner from "../components/MarathonBanner2.0";
+import terms_condition_banner from "../assets/terms-condition-banner.png";
 
 const DisclaimerPage = () => {
   return (
     <>
-      <MarathonBanner />
-      <div className="flex font-outfit mx-auto flex-col p-8 w-full max-w-7xl ">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 text-shadow">
+      <div
+        className="text-center flex justify-center items-center h-28 sm:h-36 w-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${terms_condition_banner})` }}
+      >
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-bold text-white px-4 text-shadow">
           DISCLAIMER
         </h1>
+      </div>
+
+      <MarathonBanner />
+      <div className="flex font-outfit mx-auto flex-col p-8 w-full max-w-7xl ">
+        {/* <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 text-shadow">
+          DISCLAIMER
+        </h1> */}
 
         <section className="mb-4">
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
