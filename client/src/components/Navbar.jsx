@@ -39,12 +39,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`font-outfit w-full z-50 top-0 start-0 bg-[#FFC1E2] ${
-        location.pathname === "/register"
-          ? "static"
-          : location.pathname === "/"
-          ? "fixed"
-          : "static"
+      className={`font-outfit w-full z-50 top-0 start-0 ${
+        location.pathname === "/"
+          ? "bg-[#FFC1E2] fixed"
+          : location.pathname === "/register" ? "bg-[#FFC1E2] static"
+          : location.pathname === "/about-us" ? "bg-white static"
+          : "bg-[#FFC1E2] static"
       }`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center mx-auto px-2 py-1 justify-between">
@@ -52,7 +52,11 @@ const Navbar = () => {
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src="runninglogo.svg" className="h-10 md:h-11" alt="Running Logo" />
+          <img
+            src="runninglogo.svg"
+            className="h-10 md:h-11"
+            alt="Running Logo"
+          />
           <img
             src={PalaMarathon}
             alt="PalaMarathon"
