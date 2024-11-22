@@ -2,6 +2,8 @@ import React from "react";
 
 import ContactPage from "./ContactPage";
 import GoverningBodyPage from "./GoverningBodyPage";
+import VisionPage from "./VisionPage";
+import RoutePage from "./RoutePage";
 
 import PalaMarathon from "../assets/PalaMarathon.svg";
 import { Link } from "react-router-dom";
@@ -79,6 +81,10 @@ function HomePage() {
           </div>
         </div>
       </div>
+      {/* Vison */}
+      <VisionPage />
+      {/* Route */}
+      <RoutePage />
       {/* Governing Body */}
       <GoverningBodyPage />
 
