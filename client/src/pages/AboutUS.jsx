@@ -1,7 +1,7 @@
 import React from "react";
 
 import about_us_bg from "../assets/about-us-bg.png";
-
+import dots_Pattern from "../assets/dots_Pattern.svg";
 import lions_currespond_img from "../assets/Lions-Clubs-container-img.png";
 import st_thomas_currespond_img from "../assets/st-thomas-container-img.png";
 import Engineers_Forum_img from "../assets/Engineers-Forum-container.png";
@@ -10,15 +10,20 @@ function AboutUS() {
   return (
     <>
       <div
-        className="text-center flex justify-center items-center h-24 w-full bg-cover bg-center"
+        className="text-center flex justify-center items-center h-28 sm:h-36 w-full bg-cover bg-center"
         style={{ backgroundImage: `url(${about_us_bg})` }}
       >
-        <h1 className="text-2xl font-outfit font-bold mb-4 text-white">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-bold text-white px-4">
           ABOUT US
         </h1>
       </div>
       {/* // section 1 */}
-      <section className="flex p-10  flex-col  font-outfit  items-center gap-10 lg:flex-row md:justify-evenly">
+      <section className=" relative flex p-10  flex-col  font-outfit  items-center gap-10 lg:flex-row md:justify-evenly">
+        {/*//! Dots Pattern left */}
+        <div className="hidden sm:block  absolute left-0 -bottom-14">
+          <img src={dots_Pattern} alt="Dots Pattern" />
+        </div>
+
         <div className=" bg-contain max-w-[550px]">
           <img src={lions_currespond_img} alt="lions_currespond_img" />
         </div>
@@ -61,7 +66,11 @@ function AboutUS() {
       </section>
 
       {/* // section 3 */}
-      <section className="flex p-10  font-outfit  items-center flex-col gap-10 lg:flex-row md:justify-evenly">
+      <section className=" relative flex p-10  font-outfit  items-center flex-col gap-10 lg:flex-row md:justify-evenly">
+        {/*//! Dots Pattern right */}
+        <div className="hidden sm:block absolute right-0  -z-10 rotate-180">
+          <img src={dots_Pattern} alt="Dots Pattern" />
+        </div>
         <div className=" bg-contain max-w-[550px]">
           <img src={Engineers_Forum_img} alt="lions_currespond_img" />
         </div>
