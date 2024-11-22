@@ -44,7 +44,7 @@ const RoutePage = () => {
                   HALF MARATHON
                 </h2>
                 <h3
-                  className="text-2xl md:text-3xl text-[#8D1455] font-bold mt-1  text-shadow-md"
+                  className="text-2xl md:text-3xl text-[#8D1455] font-bold mt-1"
                 >
                   21KM
                 </h3>
@@ -60,7 +60,7 @@ const RoutePage = () => {
                 >
                   10K MARATHON
                 </h2>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#8D1455] mt-1 text-shadow-md">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#8D1455] mt-1">
                   10KM
                 </h3>
               </div>
@@ -77,7 +77,7 @@ const RoutePage = () => {
                   FUN RUN
                 </h2>
                 <h3
-                  className="text-2xl md:text-3xl text-[#8D1455] font-bold mt-1 text-shadow-md"
+                  className="text-2xl md:text-3xl text-[#8D1455] font-bold mt-1"
                 >
                   3KM
                 </h3>
