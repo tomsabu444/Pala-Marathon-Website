@@ -36,7 +36,7 @@ const committeeMembers = [
 function OrganisingCommittee() {
   return (
     <div className="flex font-outfit flex-col items-center w-full p-10">
-      <h1 className="text-2xl text-center md:text-4xl font-semibold mb-14">
+      <h1 className="text-2xl text-center md:text-4xl font-semibold text-[#330A48] mb-14">
         ORGANISING COMMITTEE
       </h1>
       <div className="flex flex-col items-center text-center space-y-8">
