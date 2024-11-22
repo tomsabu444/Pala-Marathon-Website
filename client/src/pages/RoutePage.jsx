@@ -35,7 +35,7 @@ const RoutePage = () => {
             </p>
 
             {/* Marathon Details Section */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start   md:gap-10 mt-8">
+            <div className="flex flex-wrap md:flex-nowrap items-center justify-center md:justify-start   md:gap-10 mt-8">
               {/* Half Marathon */}
               <div className="text-center p-4 md:p-0 md:border-none">
                 <h2
