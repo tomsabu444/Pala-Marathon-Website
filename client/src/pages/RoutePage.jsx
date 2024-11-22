@@ -1,7 +1,7 @@
-import React from 'react';
-import rectangle from 'Pala-Marathon-Website/client/src/assets/rectangle.png';
-import road from 'Pala-Marathon-Website/client/src/assets/road.png';
-import smRoad from 'Pala-Marathon-Website/client/src/assets/s-road.png'; // Small screen road image
+import React from "react";
+import rectangle from "../assets/rectangle_bar.svg";
+import road from "Pala-Marathon-Website/client/src/assets/road.png";
+import smRoad from "Pala-Marathon-Website/client/src/assets/s-road.png"; // Small screen road image
 
 const RoutePage = () => {
   return (
@@ -21,8 +21,8 @@ const RoutePage = () => {
             <h1
               className="text-3xl md:text-5xl font-extrabold mb-4 md:mb-6 text-transparent"
               style={{
-                WebkitTextStroke: '1.5px #330A48',
-                WebkitTextFillColor: 'transparent',
+                WebkitTextStroke: "1.5px #330A48",
+                WebkitTextFillColor: "transparent",
               }}
             >
               THE ROUTE
@@ -30,78 +30,54 @@ const RoutePage = () => {
 
             {/* Paragraph */}
             <p className="text-sm md:text-lg text-gray-700 leading-relaxed mb-10">
-              Experience the scenic beauty and vibrant spirit of Pala as you race through our thoughtfully designed marathon route for 2024!
+              Experience the scenic beauty and vibrant spirit of Pala as you
+              race through our thoughtfully designed marathon route for 2024!
             </p>
 
             {/* Marathon Details Section */}
-            <div className="flex flex-col md:flex-row justify-center md:justify-start gap-6 md:gap-12 mt-8">
+            <div className="flex flex-wrap items-center justify-center md:justify-start   md:gap-10 mt-8">
               {/* Half Marathon */}
-              <div
-                className="text-center border border-purple-300 bg-purple-50/50 rounded-lg p-4 md:p-0 md:border-none"
-              >
+              <div className="text-center p-4 md:p-0 md:border-none">
                 <h2
-                  className="text-lg md:text-base font-bold"
-                  style={{
-                    color: '#330A48',
-                  }}
+                  className="text-base text-[#330A48] font-bold"
                 >
                   HALF MARATHON
                 </h2>
                 <h3
-                  className="text-xl md:text-3xl font-bold mt-1"
-                  style={{
-                    color: '#8D1455',
-                  }}
+                  className="text-2xl md:text-3xl text-[#8D1455] font-bold mt-1  text-shadow-md"
                 >
                   21KM
                 </h3>
               </div>
 
               {/* Vertical Divider */}
-              <div className="hidden md:block border-l-2 border-orange-300 h-24"></div>
+              <div className=" border-l-2 border-orange-300 h-24"></div>
 
               {/* 10K Marathon */}
-              <div
-                className="text-center border border-purple-300 bg-purple-50/50 rounded-lg p-4 md:p-0 md:border-none"
-              >
+              <div className="text-center  p-4 md:p-0  md:border-none">
                 <h2
-                  className="text-lg md:text-base font-bold"
-                  style={{
-                    color: '#330A48',
-                  }}
+                  className="text-base text-[#330A48] font-bold"
                 >
                   10K MARATHON
                 </h2>
-                <h3
-                  className="text-xl md:text-3xl font-bold mt-1"
-                  style={{
-                    color: '#8D1455',
-                  }}
-                >
+                <h3 className="text-2xl md:text-3xl font-bold text-[#8D1455] mt-1 text-shadow-md">
                   10KM
                 </h3>
               </div>
 
               {/* Vertical Divider */}
-              <div className="hidden md:block border-l-2 border-orange-300 h-24"></div>
+              <div className=" hidden sm:block border-l-2 border-orange-300 h-24"></div>
 
               {/* Fun Run */}
-              <div
-                className="text-center border border-purple-300 bg-purple-50/50 rounded-lg p-4 md:p-0 md:border-none"
-              >
+              <div className="text-center  rounded-lg p-4   md:p-0 md:border-none">
                 <h2
-                  className="text-lg md:text-base font-bold"
-                  style={{
-                    color: '#330A48',
-                  }}
+                  className="text-base text-[#330A48] font-bold"
+
                 >
                   FUN RUN
                 </h2>
                 <h3
-                  className="text-xl md:text-3xl font-bold mt-1"
-                  style={{
-                    color: '#8D1455',
-                  }}
+                  className="text-2xl md:text-3xl text-[#8D1455] font-bold mt-1 text-shadow-md"
                 >
                   3KM
                 </h3>
@@ -133,10 +109,7 @@ const RoutePage = () => {
             <img
               src={smRoad}
               alt="Route Map or Road Image (Small)"
-              className="w-full object-cover z-30 -mt-3"
-              style={{
-                height:'60px',
-              }}
+              className="w-full h-20 object-cover  -mt-3"
             />
           </div>
         </div>
