@@ -15,7 +15,7 @@ const PrivacyPolicyPage = () => {
       </div>
 
       <MarathonBanner />
-      <div className="flex font-outfit mx-auto flex-col p-8 w-full max-w-7xl">
+      <div className="flex font-outfit mx-auto flex-col p-8 w-full max-w-7xl md:text-lg ">
         {/* <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 text-shadow">
           Privacy Policy
         </h1> */}

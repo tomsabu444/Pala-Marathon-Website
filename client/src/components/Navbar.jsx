@@ -44,6 +44,7 @@ const Navbar = () => {
           ? "bg-[#FFC1E2] fixed"
           : location.pathname === "/register" ? "bg-[#FFC1E2] static"
           : location.pathname === "/about-us" ? "bg-white static"
+          : location.pathname === "/terms-conditions" ? "bg-white static"
           : "bg-[#FFC1E2] static"
       }`}
     >
