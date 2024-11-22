@@ -37,8 +37,8 @@ const VisionPage = () => {
           />
 
           <div className="w-full max-w-xl text-center md:text-left p-4 md:ml-24">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-purple-900 mb-4 md:mb-6">
-              OUR <span className="text-black">VISION</span>
+            <h1 className="text-3xl text-center  w-full md:text-5xl font-extrabold text-purple-900 mb-4 md:mb-6">
+              OUR <span className="text-black ">VISION</span>
             </h1>
 
             {/* Paragraph with mobile border and responsive padding */}
@@ -76,12 +76,12 @@ const VisionPage = () => {
         </div>
 
         {/* Right Section - Responsive Collage Image */}
-        <div className="relative w-full   md:pl-16 left-20">
+        <div className="relative w-full   md:pl-16 left-14">
           {/* Visible only on larger screens */}
           <img
             src={collageImg}
             alt="Collage of Running Events"
-            className="w-full h-auto object-cover mt-[150px]   hidden md:block"
+            className="h-auto object-cover mt-[150px]   hidden md:block"
           />
         </div>
 
