@@ -105,13 +105,13 @@ const RoutePage = () => {
           </div>
 
           {/* Image for small screens */}
-          <div className="block md:hidden">
+          {/* <div className="block md:hidden">
             <img
               src={smRoad}
               alt="Route Map or Road Image (Small)"
               className="w-full h-20 object-cover  -mt-3"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
