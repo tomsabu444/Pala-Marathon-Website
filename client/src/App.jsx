@@ -8,6 +8,7 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import DisclaimerPage from "./pages/DisclaimerPage";
 import Footer from "./components/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
+import AboutUS from "./pages/AboutUS";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/terms-conditions" element={<TermsConditionsPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/disclaimer" element={<DisclaimerPage />} />
+        <Route path="/about-us" element={<AboutUS />} />
       </Routes>
       <Footer />
     </BrowserRouter>
