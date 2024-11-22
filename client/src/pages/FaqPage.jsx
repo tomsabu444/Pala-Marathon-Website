@@ -29,7 +29,7 @@ const FAQPage = () => {
           question:
             "I tried to register. The registration amount was deducted from my bank account, but I haven’t received a confirmation email. What should I do?",
           answer:
-            "If you are facing issues with your online registration, please write to scm@solesofcochin.org.",
+            "If you are facing issues with your online registration, please write to support@hultinfo.tech",
         },
         {
           question:
@@ -136,7 +136,7 @@ const FAQPage = () => {
           question:
             "Where can I find information regarding becoming a Spice Coast Marathon sponsor?",
           answer:
-            "Please contact info@solesofochin.org for sponsorship details.",
+            "Please contact support@hultinfo.tech for sponsorship details.",
         },
       ],
     },
