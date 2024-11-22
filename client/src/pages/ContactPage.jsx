@@ -32,7 +32,7 @@ function ContactPage() {
         <img src={dots_Pattern} alt="Dots Pattern" className="w-16 h-auto" />
       </div>
       {/* Rectangle Bar */}
-      <div className="hidden lg:block absolute right-0 top-0 w-24 h-auto opacity-80">
+      <div className="hidden md:block absolute right-0 top-0 w-20 lg:w-24 h-auto ">
         <img src={rectangle_bar} alt="Rectangle Bar" className="w-full h-full" />
       </div>
 

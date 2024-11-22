@@ -5,6 +5,8 @@ import dots_Pattern from "../assets/dots_Pattern.svg";
 import lions_currespond_img from "../assets/Lions-Clubs-container-img.png";
 import st_thomas_currespond_img from "../assets/st-thomas-container-img.png";
 import Engineers_Forum_img from "../assets/Engineers-Forum-container.png";
+import GoverningBodyPage from "./GoverningBodyPage";
+import OrganisingCommittee from "../components/OrganisingCommittee";
 
 function AboutUS() {
   return (
@@ -91,6 +93,12 @@ function AboutUS() {
           </p>
         </div>
       </section>
+
+      {/* Governing Body */}
+      <GoverningBodyPage />
+
+      {/* Organising Committee */}
+      <OrganisingCommittee/>
     </>
   );
 }
