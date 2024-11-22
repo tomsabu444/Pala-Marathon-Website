@@ -1,13 +1,13 @@
 import React from "react";
 import MarathonBanner from "../components/MarathonBanner2.0";
-import terms_condition_banner from "../assets/terms-condition-banner.png";
+import disclaimer_banner from "../assets/about-us-bg.png";
 
 const DisclaimerPage = () => {
   return (
     <>
       <div
         className="text-center flex justify-center items-center h-28 sm:h-36 w-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${terms_condition_banner})` }}
+        style={{ backgroundImage: `url(${disclaimer_banner})` }}
       >
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-bold text-white px-4 text-shadow">
           DISCLAIMER
