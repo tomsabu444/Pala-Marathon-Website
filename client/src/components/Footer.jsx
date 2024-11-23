@@ -25,7 +25,7 @@ const Footer = () => {
 
   const location = useLocation();
 
-  // Hide footer if the path is "/404"
+  //* Hide footer if the path is "/404"
   if (location.pathname === "/404") {
     return null;
   }
