@@ -9,6 +9,7 @@ import DisclaimerPage from "./pages/DisclaimerPage";
 import Footer from "./components/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import AboutUS from "./pages/AboutUS";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/disclaimer" element={<DisclaimerPage />} />
         <Route path="/about-us" element={<AboutUS />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
