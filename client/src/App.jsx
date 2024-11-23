@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
 import RegisterPage from "./pages/RegisterPage";
@@ -9,6 +9,7 @@ import DisclaimerPage from "./pages/DisclaimerPage";
 import Footer from "./components/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import AboutUS from "./pages/AboutUS";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/disclaimer" element={<DisclaimerPage />} />
         <Route path="/about-us" element={<AboutUS />} />
+        <Route path="/404" element={<NotFoundPage />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
       <Footer />
     </BrowserRouter>

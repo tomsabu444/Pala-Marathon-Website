@@ -107,6 +107,8 @@ const Navbar = () => {
           ? "bg-white sticky"
           : location.pathname === "/terms-conditions"
           ? "bg-white sticky"
+           : location.pathname === "/404"
+          ? "bg-transparent fixed"
           : "bg-[#FFC1E2] sticky"
       }`}
       variants={navBarVariants}
