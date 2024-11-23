@@ -1,11 +1,8 @@
-// ShaderBackground.js
-import React, { useRef } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import * as THREE from "three";
+import React, { useRef, useEffect } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 
-function TextureMesh() {
+const ShaderMesh = () => {
   const mesh = useRef();
-  const { viewport } = useThree(); // Access viewport dimensions
 
   useFrame((state) => {
     const { clock, pointer, size } = state;
@@ -16,16 +13,25 @@ function TextureMesh() {
       ];
       mesh.current.material.uniforms.u_time.value = clock.getElapsedTime();
       mesh.current.material.uniforms.u_resolution.value = [
-        size.width + 1000,
-        size.height + 200,
+        size.width + 900,
+        size.height + 250,
       ];
     }
   });
 
   return (
-    <mesh ref={mesh} scale={[viewport.width, viewport.height, 1]}>
-      <planeGeometry args={[1, 1]} />
+    <mesh ref={mesh}>
+      <planeGeometry args={[1024, 1024]} />
       <shaderMaterial
+        uniforms={{
+          u_color: { value: [1.3137254901960784, 0, 1] },
+          u_background: { value: [0, 0, 0, 1] },
+          u_speed: { value: 1.4 },
+          u_detail: { value: 0.4 },
+          u_time: { value: 0 },
+          u_mouse: { value: [0, 0] },
+          u_resolution: { value: [1, 1] },
+        }}
         fragmentShader={`
           uniform vec2 u_resolution;
           uniform float u_time;
@@ -67,25 +73,38 @@ function TextureMesh() {
             gl_FragColor = color;
           }
         `}
-        vertexShader={`void main() { gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`}
-        uniforms={{
-          u_color: { value: new THREE.Color(1.3137254901960784, 0, 1) },
-          u_background: { value: new THREE.Vector4(0, 0, 0, 1) },
-          u_speed: { value: 1.4 },
-          u_detail: { value: 0.4 },
-          u_time: { value: 0 },
-          u_mouse: { value: [0, 0] },
-          u_resolution: { value: [24, 24] },
-        }}
+        vertexShader={`
+          void main() {
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `}
+        
+        wireframe={false}
+        dithering={false}
+        flatShading={true}
       />
     </mesh>
   );
-}
+};
 
-function ShaderBackground() {
+const ShaderBackground = () => {
   return (
     <Canvas
-      style={{
+      gl={{
+        preserveDrawingBuffer: true,
+        premultipliedAlpha: false,
+        alpha: true,
+        antialias: true,
+        precision: "highp",
+        powerPreference: "high-performance",
+      }}
+      camera={{
+        fov: 75,
+        near: 0.1,
+        far: 1000,
+        position: [0, 0, 5],
+      }}
+     style={{
         position: "absolute",
         top: 0,
         left: 0,
@@ -94,11 +113,10 @@ function ShaderBackground() {
         zIndex: -11,
         borderRadius: "16px",
       }}
-      camera={{ fov: 75, position: [0, 0, 1] }}
     >
-      <TextureMesh />
+      <ShaderMesh />
     </Canvas>
   );
-}
+};
 
 export default ShaderBackground;

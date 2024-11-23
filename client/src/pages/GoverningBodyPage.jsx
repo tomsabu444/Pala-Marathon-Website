@@ -25,8 +25,8 @@ export default function GoverningBodyPage() {
   ];
 
   return (
-    <div className="flex font-outfit flex-col items-center w-full p-16">
-      <h1 className="text-3xl text-center  md:text-4xl font-semibold mb-14">GOVERNING BODY</h1>
+    <div className="flex font-outfit flex-col items-center w-full p-16 pt-6">
+      <h1 className="text-2xl text-center  md:text-4xl font-semibold text-[#330A48] mb-14">GOVERNING BODY</h1>
       <div className="flex flex-col md:flex-row justify-evenly gap-12 lg:w-5/6">
         {governingBodyMembers.map((member, index) => (
           <div key={index} className="flex flex-col items-center text-center">

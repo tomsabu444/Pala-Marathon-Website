@@ -32,7 +32,7 @@ function ContactPage() {
         <img src={dots_Pattern} alt="Dots Pattern" className="w-16 h-auto" />
       </div>
       {/* Rectangle Bar */}
-      <div className="hidden lg:block absolute right-0 top-0 w-24 h-auto opacity-80">
+      <div className="hidden md:block absolute right-0 top-0 w-20 lg:w-24 h-auto ">
         <img src={rectangle_bar} alt="Rectangle Bar" className="w-full h-full" />
       </div>
 
@@ -43,7 +43,7 @@ function ContactPage() {
             <div className="absolute -inset-1 rounded-full bg-purple-600/20 blur-xl" />
             <MapContainer
               center={position}
-              zoom={16}
+              zoom={14}
               className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[480px] md:h-[480px] rounded-full border-[4px] border-[#3A0945] overflow-hidden relative z-10"
             >
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -73,8 +73,8 @@ function ContactPage() {
               <span className="text-lg sm:text-xl">📞</span>
               <div className="text-sm xs:text-base sm:text-lg">
                 <span className="font-bold">Phone:</span>{" "}
-                <a href="tel:+917896567697" className="text-purple-800 hover:underline hover:text-purple-900">
-                  +91 7896 567 697
+                <a href="tel:+919846566483" className="text-purple-800 hover:underline hover:text-purple-900">
+                  +919846566483
                 </a>
               </div>
             </li>
@@ -82,7 +82,7 @@ function ContactPage() {
               <span className="text-lg sm:text-xl">📧</span>
               <div className="text-sm xs:text-base sm:text-lg">
                 <span className="font-bold">Email:</span>{" "}
-                <a href="mailto:info@palamarathon2024.com" className="text-purple-800 hover:underline hover:text-purple-900">
+                <a href="mailto:palamarathon@gmail.com" className="text-purple-800 hover:underline hover:text-purple-900">
                   palamarathon@gmail.com
                 </a>
               </div>
