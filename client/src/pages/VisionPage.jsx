@@ -5,11 +5,12 @@ import imageold from "Pala-Marathon-Website/client/src/assets/palaimg1.png";
 import mobileImage from "Pala-Marathon-Website/client/src/assets/mobileImage.png";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
+import HomeBanner from "../components/HomeBanner";
 
 const VisionPage = () => {
   return (
     <>
-    {/* <MarathonBanner /> */}
+    <HomeBanner />
     
     <div className="relative font-outfit pb-10 md:py-16  md:px-16 z-10 lg:-mt-20">
       <style>
