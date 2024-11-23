@@ -238,10 +238,13 @@ const FAQPage = () => {
 >
   {categoryData.questions.map((questionData, qIndex) => (
     <div key={qIndex} className="mb-4 p-4">
-      <h4 className="font-medium text-white text-center text-sm sm:text-base md:text-lg mb-2">
+      <h4 className="font-medium font-montserrat text-left text-sm sm:text-base md:text-lg mb-2"
+      style={{
+        color:'grey',
+      }}>
         {questionData.question}
       </h4>
-      <p className="text-white text-center text-sm md:text-base">
+      <p className="text-white text-left text-sm md:text-base">
         {questionData.answer}
       </p>
     </div>
