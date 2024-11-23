@@ -5,6 +5,7 @@ import MarathonBanner from "../components/MarathonBanner2.0";
 import faqimg from "Pala-Marathon-Website/client/src/assets/Faq-img.png";
 import { motion } from "framer-motion";
 
+
 const FAQPage = () => {
   const [openCategory, setOpenCategory] = useState(null);
 
@@ -26,11 +27,13 @@ const FAQPage = () => {
         },
         {
           question: "Is group registration available?",
-          answer: "Yes, group registrations are available for groups of 10 or more participants. Please contact us at palamarathon@gmail.com for group registration details.",
+          answer:
+            "Yes, group registrations are available for groups of 10 or more participants. Please contact us at palamarathon@gmail.com for group registration details.",
         },
         {
           question: "What should I do if I don’t receive a confirmation email after registering?",
-          answer: "If the registration fee has been deducted but you haven’t received a confirmation email, please contact us at palamarathon@gmail.com with a screenshot of your transaction details.",
+          answer:
+            "If the registration fee has been deducted but you haven’t received a confirmation email, please contact us at palamarathon@gmail.com with a screenshot of your transaction details.",
         },
         {
           question: "Can I cancel my registration and get a refund?",
@@ -38,11 +41,13 @@ const FAQPage = () => {
         },
         {
           question: "Can I change my race category after registering?",
-          answer: "Yes, you can change your race category by re-registering for the desired category. Please inform the organisers about the change at the venue.",
+          answer:
+            "Yes, you can change your race category by re-registering for the desired category. Please inform the organisers about the change at the venue.",
         },
         {
           question: "What are the registration fees for each category?",
-          answer: "Registration fees vary by category. Please refer to the official registration page for the latest fee structure.",
+          answer:
+            "Registration fees vary by category. Please refer to the official registration page for the latest fee structure.",
         },
       ],
     },
@@ -51,7 +56,8 @@ const FAQPage = () => {
       questions: [
         {
           question: "What are the different race categories?",
-          answer: "The Pala Marathon includes the following categories: Half Marathon (21 km), 10K Run (10 km), Fun Run (3 km).",
+          answer:
+            "The Pala Marathon includes the following categories: Half Marathon (21 km), 10K Run (10 km), Fun Run (3 km).",
         },
         {
           question: "Is there an age limit for participants?",
@@ -59,7 +65,8 @@ const FAQPage = () => {
         },
         {
           question: "Who organises the marathon?",
-          answer: "The marathon is organised by the Engineers Forum Palai, St. Thomas Palai, Lions Club.",
+          answer:
+            "The marathon is organised by the Engineers Forum Palai, St. Thomas Palai, Lions Club.",
         },
         {
           question: "When will the Pala Marathon take place?",
@@ -67,11 +74,13 @@ const FAQPage = () => {
         },
         {
           question: "Is there a time limit to complete the race?",
-          answer: "Half Marathon: 6 hours, 10K Run: 4 hours, Fun Run: No time limit.",
+          answer:
+            "Half Marathon: 6 hours, 10K Run: 4 hours, Fun Run: No time limit.",
         },
         {
           question: "What time should participants report at the venue?",
-          answer: "Participants should arrive by 6:30 AM for check-in and warm-up activities. The marathon will begin promptly at 7:00 AM.",
+          answer:
+            "Participants should arrive by 6:30 AM for check-in and warm-up activities. The marathon will begin promptly at 7:00 AM.",
         },
       ],
     },
@@ -80,7 +89,8 @@ const FAQPage = () => {
       questions: [
         {
           question: "Is parking available at the venue?",
-          answer: "Yes, parking is available near both the start and finish lines.",
+          answer:
+            "Yes, parking is available near both the start and finish lines.",
         },
         {
           question: "When and where will bib distribution take place?",
@@ -88,29 +98,10 @@ const FAQPage = () => {
         },
         {
           question: "What are the transportation options to reach the venue?",
-          answer: "The venue is easily accessible by bus, train, and nearby roads.",
+          answer:
+            "The venue is easily accessible by bus, train, and nearby roads.",
         },
-      ],
-    },
-    {
-      category: "About the Race Course",
-      questions: [
-        {
-          question: "Are pets or animals allowed on the course?",
-          answer: "No, pets or animals are not allowed on the race course for safety reasons.",
-        },
-        {
-          question: "Can I run with headphones?",
-          answer: "Yes, you can use headphones during the race, but we recommend staying aware of your surroundings for safety purposes.",
-        },
-        {
-          question: "How many aid stations will there be on the course?",
-          answer: "Aid stations will be available every 5 km, stocked with water, energy drinks, and light snacks.",
-        },
-        {
-          question: "Will there be medical support on the course?",
-          answer: "Yes, medical teams and ambulances will be stationed along the route to assist participants if needed.",
-        },
+        
       ],
     },
     {
@@ -174,7 +165,6 @@ const FAQPage = () => {
       ],
     },
   ];
-  
 
   return (
     <>
@@ -192,7 +182,7 @@ const FAQPage = () => {
       <MarathonBanner />
 
       {/* FAQ Section */}
-      <div className="flex justify-center my-8 lg:my-12 ">
+      <div className="flex justify-center my-8 lg:my-12">
         <div className="w-full max-w-screen-2xl px-4 sm:px-8 lg:px-12">
           <div className="space-y-2 md:space-y-4">
             {faqData.map((categoryData, index) => (
@@ -205,7 +195,7 @@ const FAQPage = () => {
                         ? "20px 20px 0 0"
                         : "20px 20px 20px 20px",
                   }}
-                  className={`w-full flex justify-between  items-center p-6 text-base md:text-xl font-semibold ${
+                  className={`w-full flex justify-between items-center p-6 text-base md:text-xl font-semibold ${
                     openCategory === categoryData.category
                       ? "bg-[#330A48] text-white"
                       : "bg-pink-200 text-black"
@@ -221,36 +211,45 @@ const FAQPage = () => {
                     <ExpandMoreIcon />
                   )}
                 </button>
+
                 {/* Questions */}
                 <motion.div
-  initial={{ height: 0, opacity: 0 }}
-  animate={
-    openCategory === categoryData.category
-      ? { height: "auto", opacity: 1 }
-      : { height: 0, opacity: 0 }
-  }
-  transition={{ duration: 0.5, ease: "easeInOut" }}
-  style={{
-    overflow: "hidden",
-    borderRadius: "0 0 20px 20px",
-    backgroundColor: "#330A48",
-  }}
->
-  {categoryData.questions.map((questionData, qIndex) => (
-    <div key={qIndex} className="mb-4 p-4">
-      <h4 className="font-medium font-montserrat text-left text-sm sm:text-base md:text-lg mb-2"
-      style={{
-        color:'grey',
-      }}>
-        {questionData.question}
-      </h4>
-      <p className="text-white text-left text-sm md:text-base">
-        {questionData.answer}
-      </p>
-    </div>
-  ))}
-</motion.div>
-
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={
+                    openCategory === categoryData.category
+                      ? { height: "auto", opacity: 1 }
+                      : { height: 0, opacity: 0 }
+                  }
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  style={{
+                    overflow: "hidden",
+                    borderRadius: "0 0 20px 20px",
+                    backgroundColor: "#330A48",
+                  }}
+                >
+                                  {categoryData.questions.map((questionData, qIndex) => (
+                  <div key={qIndex} className="mb-4 p-4">
+                    <h4
+                      className="font-normal text-left text-sm sm:text-base md:text-lg mb-2"
+                      style={{
+                        color: "grey",  // Correct hex color
+                      }}
+                    >
+                        {questionData.question}
+                      </h4>
+                      <p className="text-white text-montserrat text-left text-sm md:text-base">
+                        {questionData.answer}
+                      </p>
+                      <hr
+                        style={{
+                          border: "0.5px solid grey",
+                          opacity: 0.6,
+                          marginTop: "16px",
+                        }}
+                      />
+                    </div>
+                  ))}
+                </motion.div>
               </div>
             ))}
           </div>
