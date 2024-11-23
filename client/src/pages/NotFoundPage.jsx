@@ -3,7 +3,7 @@ import error from 'Pala-Marathon-Website/client/src/assets/404.png';
 
 const NotFoundPage = () => {
   return (
-    <div className="h-[calc(100vh-64px)] bg-gradient-to-b from-[#f8eded] to-[#c28e8e] flex items-center justify-center p-4">
+    <div className="h-screen bg-gradient-to-b from-[#f8eded] to-[#c28e8e] flex items-center justify-center p-4">
       <div className="text-center w-full max-w-3xl mx-auto px-4">
         <div className="mb-6 sm:mb-8">
           <img 
