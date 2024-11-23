@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import error from 'Pala-Marathon-Website/client/src/assets/404.png';
 
 const NotFoundPage = () => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   return (
-    <div className="h-[calc(100vh-64px)] bg-gradient-to-b from-[#f8eded] to-[#c28e8e] flex items-center justify-center p-4">
+    <div className="h-[100vh] bg-gradient-to-b from-[#f8eded] to-[#c28e8e] flex items-center justify-center p-4">
       <div className="text-center w-full max-w-3xl mx-auto px-4">
         <div className="mb-6 sm:mb-8">
           <img 
@@ -25,9 +33,7 @@ const NotFoundPage = () => {
           Sorry! The page you are looking for does not exist
         </p>
         <button 
-          className="px-6 py-2 bg-gradient-to-r from-[#8D1455] to-[#573859] text-white rounded-md ] 
-                     transition-colors duration-300 text-base sm:text-lg font-medium
-                     shadow-md hover:shadow-lg"
+          className="px-6 py-2 bg-gradient-to-r from-[#8D1455] to-[#573859] text-white rounded-md transition-colors duration-300 text-base sm:text-lg font-medium shadow-md hover:shadow-lg"
           onClick={() => window.location.href = '/'}
         >
           GO HOME

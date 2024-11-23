@@ -106,7 +106,7 @@ const Navbar = () => {
           : location.pathname === "/about-us"
           ? "bg-white sticky"
           : location.pathname === "/404"
-          ? "bg-white sticky"
+          ? "bg-white fixed"
           : location.pathname === "/terms-conditions"
           ? "bg-white sticky"
           : "bg-[#FFC1E2] sticky"
