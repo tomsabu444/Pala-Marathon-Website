@@ -14,7 +14,7 @@ const ShaderMesh = () => {
       mesh.current.material.uniforms.u_time.value = clock.getElapsedTime();
       mesh.current.material.uniforms.u_resolution.value = [
         size.width + 900,
-        size.height + 100,
+        size.height + 250,
       ];
     }
   });
