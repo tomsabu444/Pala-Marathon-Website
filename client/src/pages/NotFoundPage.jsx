@@ -3,7 +3,7 @@ import error from 'Pala-Marathon-Website/client/src/assets/404.png';
 
 const NotFoundPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f8eded] to-[#c28e8e] flex items-center justify-center p-4">
+    <div className="h-[calc(100vh-64px)] bg-gradient-to-b from-[#f8eded] to-[#c28e8e] flex items-center justify-center p-4">
       <div className="text-center w-full max-w-3xl mx-auto px-4">
         {/* 404 Image */}
         <div className="mb-6 sm:mb-8">
@@ -22,7 +22,7 @@ const NotFoundPage = () => {
           PAGE NOT FOUND!
         </h2>
         <p 
-          className="text-[#8F1757] text-base sm:text-lg md:text-xl mb-6"
+          className="text-[#8F1757] text-base sm:text-lg md:text-2xl mb-6"
           style={{ fontFamily: 'Mynerve, sans-serif' }}
         >
           Sorry! The page you are looking for does not exist
