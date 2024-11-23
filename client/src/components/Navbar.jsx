@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Drawer, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { motion, AnimatePresence } from "framer-motion";
 
 import PalaMarathon from "../assets/PalaMarathon.svg";
 
@@ -13,7 +14,66 @@ const Navbar = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  // Define the navigation links and dropdowns
+  const location = useLocation();
+
+  //*function to handle scrolling to the ContactPage
+  const handleContactClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact-section");
+      if (contactSection) {
+        const isMobile = window.innerWidth <= 768; //? Define "mobile" as screens <= 768px
+        const yOffset = isMobile ? -80 : 0; //? Offset only on mobile screens
+        const yPosition =
+          contactSection.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: yPosition, behavior: "smooth" });
+      }
+    }, 100);
+  };
+
+  // Animation Variants
+  const navBarVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  const drawerVariants = {
+    hidden: { x: "100%" },
+    visible: {
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+    exit: {
+      x: "100%",
+      transition: { duration: 0.4, ease: "easeIn" },
+    },
+  };
+
+  const drawerItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut", staggerChildren: 0.2 },
+    },
+  };
+
+  // Navigation links
   const navLinks = [
     { path: "/", label: "HOME" },
     {
@@ -35,63 +95,80 @@ const Navbar = () => {
     },
   ];
 
-  const location = useLocation();
-
   return (
-    <nav
+    <motion.nav
       className={`font-outfit w-full z-50 top-0 start-0 ${
         location.pathname === "/"
           ? "bg-[#FFC1E2] fixed"
-          : location.pathname === "/register" ? "bg-[#FFC1E2] static"
-          : location.pathname === "/about-us" ? "bg-white static"
-          : location.pathname === "/terms-conditions" ? "bg-white static"
+          : location.pathname === "/register"
+          ? "bg-[#FFC1E2] static"
+          : location.pathname === "/about-us"
+          ? "bg-white static"
+          : location.pathname === "/terms-conditions"
+          ? "bg-white static"
           : "bg-[#FFC1E2] static"
       }`}
+      variants={navBarVariants}
+      initial="hidden"
+      animate="visible"
     >
       <div className="max-w-screen-xl flex flex-wrap items-center mx-auto px-2 py-1 justify-between">
         <Link
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
+          <motion.img
             src="runninglogo.svg"
             className="h-10 md:h-11"
             alt="Running Logo"
+            variants={menuItemVariants}
           />
-          <img
+          <motion.img
             src={PalaMarathon}
             alt="PalaMarathon"
             className="h-9 md:h-11 mb-2 drop-shadow-lg"
+            variants={menuItemVariants}
           />
         </Link>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
-          <div className="flex items-center justify-center h-full">
-            <Link
-              to="/"
-              className="h-auto text-center font-light text-base tracking-widee"
+          <motion.div
+            className="flex items-center justify-center h-full"
+            variants={menuItemVariants}
+          >
+            <motion.button
+              onClick={handleContactClick}
+              className=" text-[#330A48] h-auto text-center font-light text-base tracking-wide"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               CONTACT US
-            </Link>
-          </div>
+            </motion.button>
+          </motion.div>
 
-          {/* Menu Button - Now properly hidden on larger screens */}
-          <div className="block md:hidden text-[#330A48]">
+          <motion.div
+            className="block md:hidden text-[#330A48]"
+            variants={menuItemVariants}
+          >
             <IconButton
               onClick={toggleDrawer}
-              className="text-gray-500 rounded-lg "
+              className="text-gray-500 rounded-lg"
               aria-label="menu"
             >
               <MenuIcon fontSize="large" style={{ color: "#330A48" }} />
             </IconButton>
-          </div>
+          </motion.div>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <motion.div
+          className="hidden md:flex md:w-auto md:order-1"
+          id="navbar-sticky"
+          variants={navBarVariants}
+        >
           <ul className="flex flex-row items-center space-x-8 font-normal">
             {navLinks.map((link) => (
-              <li key={link.label}>
+              <motion.li key={link.label} variants={menuItemVariants}>
                 <Link
                   to={link.path}
                   className={`py-2 px-3 ${
@@ -102,38 +179,57 @@ const Navbar = () => {
                 >
                   {link.label}
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       </div>
 
       {/* Drawer for Smaller Screens */}
-      <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer}>
-        <div className="w-max p-4 flex flex-col items-end bg-gray-50 h-full">
-          <IconButton onClick={toggleDrawer} aria-label="close drawer">
-            <CloseIcon fontSize="large" style={{ color: "#330A48" }} />
-          </IconButton>
-          <ul className="w-screen md:w-96 flex flex-col items-center justify-around font-medium text-xl h-1/2 mt-4 space-y-4">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <Link
-                  to={link.path}
-                  onClick={toggleDrawer}
-                  className={`block ${
-                    location.pathname === link.path
-                      ? "text-gray-900 underline  underline-offset-4 font-semibold"
-                      : "text-gray-900"
-                  }`}
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <motion.div
+            className="fixed top-0 right-0 w-full max-w-sm bg-gray-50 h-full z-50"
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={drawerVariants}
+          >
+            <div className="flex flex-col items-end p-4">
+              <IconButton onClick={toggleDrawer} aria-label="close drawer">
+                <CloseIcon fontSize="large" style={{ color: "#330A48" }} />
+              </IconButton>
+            </div>
+            <motion.ul
+              className="flex flex-col items-center justify-around font-medium text-xl h-1/2 mt-4 space-y-4"
+              variants={drawerItemVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {navLinks.map((link) => (
+                <motion.li
+                  key={link.label}
+                  variants={drawerItemVariants}
+                  whileHover={{ scale: 1.1 }}
                 >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Drawer>
-    </nav>
+                  <Link
+                    to={link.path}
+                    onClick={toggleDrawer}
+                    className={`block ${
+                      location.pathname === link.path
+                        ? "text-gray-900 underline underline-offset-4 font-semibold"
+                        : "text-gray-900"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   );
 };
 
