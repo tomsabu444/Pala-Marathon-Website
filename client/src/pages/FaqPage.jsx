@@ -202,9 +202,9 @@ const FAQPage = () => {
                   }`}
                   onClick={() => toggleCategory(categoryData.category)}
                 >
-                  <span className="w-full">
+                  <h3 className="w-full">
                     {categoryData.category.toUpperCase()}
-                  </span>
+                  </h3>
                   {openCategory === categoryData.category ? (
                     <ExpandLessIcon />
                   ) : (
@@ -227,14 +227,13 @@ const FAQPage = () => {
                     backgroundColor: "#330A48",
                   }}
                 >
-                                  {categoryData.questions.map((questionData, qIndex) => (
-                  <div key={qIndex} className="mb-4 p-4">
-                    <h4
-                      className="font-normal text-left text-sm sm:text-base md:text-lg mb-2"
-                      style={{
-                        color: "grey",  // Correct hex color
-                      }}
-                    >
+                  {categoryData.questions.map((questionData, qIndex) => (
+                    <div key={qIndex} className="mb-4 p-4">
+                      <h4
+                        className="font-medium text-white text-left text-sm sm:text-base md:text-xl mb-2"
+                        role="heading"
+                        aria-level="4"
+                      >
                         {questionData.question}
                       </h4>
                       <p className="text-white text-montserrat text-left text-sm md:text-base">
