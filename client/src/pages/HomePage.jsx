@@ -77,7 +77,7 @@ function HomePage() {
 
           {/* img container */}
           <div className=" hidden lg:flex absolute  right-0 bottom-5">
-            <img src={bg_img_homepage} className=" lg:w-[900px] 2xl:w-[1200px]" />
+            <img src={bg_img_homepage} className=" lg:w-[900px] 2xl:w-[1200px]" alt="Home Page Image" />
           </div>
         </div>
       </div>
