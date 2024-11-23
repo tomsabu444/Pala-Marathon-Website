@@ -3,6 +3,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MarathonBanner from "../components/MarathonBanner2.0";
 import faqimg from "Pala-Marathon-Website/client/src/assets/Faq-img.png";
+import { motion } from "framer-motion";
 
 const FAQPage = () => {
   const [openCategory, setOpenCategory] = useState(null);
@@ -221,25 +222,32 @@ const FAQPage = () => {
                   )}
                 </button>
                 {/* Questions */}
-                <div
-                  style={{ borderRadius: "0 0 20px 20px " }}
-                  className={`overflow-hidden  transition-all bg-[#330A48] text-white duration-500 ${
-                    openCategory === categoryData.category
-                      ? "max-h-full p-4"
-                      : "max-h-0"
-                  }`}
-                >
-                  {categoryData.questions.map((questionData, qIndex) => (
-                    <div key={qIndex} className="mb-4">
-                      <h4 className="font-medium text-center text-sm sm:text-base md:text-lg mb-2">
-                        {questionData.question}
-                      </h4>
-                      <p className="text-white text-center text-sm md:text-base">
-                        {questionData.answer}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                <motion.div
+  initial={{ height: 0, opacity: 0 }}
+  animate={
+    openCategory === categoryData.category
+      ? { height: "auto", opacity: 1 }
+      : { height: 0, opacity: 0 }
+  }
+  transition={{ duration: 0.5, ease: "easeInOut" }}
+  style={{
+    overflow: "hidden",
+    borderRadius: "0 0 20px 20px",
+    backgroundColor: "#330A48",
+  }}
+>
+  {categoryData.questions.map((questionData, qIndex) => (
+    <div key={qIndex} className="mb-4 p-4">
+      <h4 className="font-medium text-white text-center text-sm sm:text-base md:text-lg mb-2">
+        {questionData.question}
+      </h4>
+      <p className="text-white text-center text-sm md:text-base">
+        {questionData.answer}
+      </p>
+    </div>
+  ))}
+</motion.div>
+
               </div>
             ))}
           </div>
