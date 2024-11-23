@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
@@ -15,6 +15,7 @@ const Navbar = () => {
   };
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   //*function to handle scrolling to the ContactPage
   const handleContactClick = () => {
@@ -103,10 +104,10 @@ const Navbar = () => {
           : location.pathname === "/register"
           ? "bg-[#FFC1E2] static"
           : location.pathname === "/about-us"
-          ? "bg-white static"
+          ? "bg-white sticky"
           : location.pathname === "/terms-conditions"
-          ? "bg-white static"
-          : "bg-[#FFC1E2] static"
+          ? "bg-white sticky"
+          : "bg-[#FFC1E2] sticky"
       }`}
       variants={navBarVariants}
       initial="hidden"
