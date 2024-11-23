@@ -73,7 +73,7 @@ function ContactPage() {
               <span className="text-lg sm:text-xl">📞</span>
               <div className="text-sm xs:text-base sm:text-lg">
                 <span className="font-bold">Phone:</span>{" "}
-                <a href="tel:+917896567697" className="text-purple-800 hover:underline hover:text-purple-900">
+                <a href="tel:+919846566483" className="text-purple-800 hover:underline hover:text-purple-900">
                   +919846566483
                 </a>
               </div>
@@ -82,7 +82,7 @@ function ContactPage() {
               <span className="text-lg sm:text-xl">📧</span>
               <div className="text-sm xs:text-base sm:text-lg">
                 <span className="font-bold">Email:</span>{" "}
-                <a href="mailto:info@palamarathon2024.com" className="text-purple-800 hover:underline hover:text-purple-900">
+                <a href="mailto:palamarathon@gmail.com" className="text-purple-800 hover:underline hover:text-purple-900">
                   palamarathon@gmail.com
                 </a>
               </div>
