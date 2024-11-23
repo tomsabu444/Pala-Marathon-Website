@@ -144,7 +144,7 @@ function HomePage() {
           >
             <img
               src={bg_img_homepage}
-              className="lg:w-[900px] 2xl:w-[1200px]"
+              className="lg:w-[900px] 2xl:w-[1000px]"
               alt="Home Page Image"
             />
           </motion.div>
