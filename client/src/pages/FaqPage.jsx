@@ -16,47 +16,61 @@ const FAQPage = () => {
       category: "Registration",
       questions: [
         {
-          question:
-            "When is the last date to register for Ageas Federal Kochi Spice Coast Marathon?",
-          answer: "The last date of registration is October 13, 2024.",
+          question: "When is the last date to register for the Pala Marathon?",
+          answer: "The last date for registration is 2025 January 10.",
         },
         {
-          question: "Can I register offline or as a group?",
-          answer: `Group registrations are only available for 25 or above participants. 
-                   If you are the group administrator of such a group, then please fill your group details here.`,
+          question: "Is spot registration available?",
+          answer: "Yes, spot registration is available at the venue.",
         },
         {
-          question:
-            "I tried to register. The registration amount was deducted from my bank account, but I haven’t received a confirmation email. What should I do?",
-          answer:
-            "If you are facing issues with your online registration, please write to support@hultinfo.tech",
+          question: "Is group registration available?",
+          answer: "Yes, group registrations are available for groups of 10 or more participants. Please contact us at palamarathon@gmail.com for group registration details.",
         },
         {
-          question:
-            "What is the Registration Fee for Full Marathon, Half Marathon, and Family Fun Run?",
-          answer: `Registration fees vary:
-            - Early Bird Offer (till August 15th): Marathon ₹1000, Half Marathon ₹1000, Fun Run ₹550.
-            - After August 15th: Marathon ₹1200, Half Marathon ₹1200, Fun Run ₹600.
-            Includes GST, gateway charges, and an optional ₹200 discount for opting out of the complimentary T-shirt.`,
+          question: "What should I do if I don’t receive a confirmation email after registering?",
+          answer: "If the registration fee has been deducted but you haven’t received a confirmation email, please contact us at palamarathon@gmail.com with a screenshot of your transaction details.",
         },
         {
-          question: "Can I pick up my race kit on the same day as the race?",
-          answer:
-            "No, race kits must be collected the day prior to the race at the expo. They will NOT be provided on race day.",
+          question: "Can I cancel my registration and get a refund?",
+          answer: "Registrations are non-refundable.",
+        },
+        {
+          question: "Can I change my race category after registering?",
+          answer: "Yes, you can change your race category by re-registering for the desired category. Please inform the organisers about the change at the venue.",
+        },
+        {
+          question: "What are the registration fees for each category?",
+          answer: "Registration fees vary by category. Please refer to the official registration page for the latest fee structure.",
         },
       ],
     },
     {
-      category: "Race Expo",
+      category: "Marathon Details",
       questions: [
         {
-          question: "When and where is the bib distribution?",
-          answer: `Bib distribution will be held at Water Metro station, Vyttila, Ernakulam on Saturday, 26th October, 10:00 AM to 05:00 PM.`,
+          question: "What are the different race categories?",
+          answer: "The Pala Marathon includes the following categories: Half Marathon (21 km), 10K Run (10 km), Fun Run (3 km).",
         },
         {
-          question: "Can I authorize another person to pick up my race packet?",
-          answer:
-            "Yes, the authorized person must produce a copy of your photo ID and an authorization letter to collect your race kit.",
+          question: "Is there an age limit for participants?",
+          answer: "Yes, participants must be between 18 to 65 years old.",
+        },
+        {
+          question: "Who organises the marathon?",
+          answer: "The marathon is organised by the Engineers Forum Palai, St. Thomas Palai, Lions Club.",
+        },
+        {
+          question: "When will the Pala Marathon take place?",
+          answer: "The marathon will take place on January 22.",
+        },
+        {
+          question: "Is there a time limit to complete the race?",
+          answer: "Half Marathon: 6 hours, 10K Run: 4 hours, Fun Run: No time limit.",
+        },
+        {
+          question: "What time should participants report at the venue?",
+          answer: "Participants should arrive by 6:30 AM for check-in and warm-up activities. The marathon will begin promptly at 7:00 AM.",
         },
       ],
     },
@@ -64,29 +78,37 @@ const FAQPage = () => {
       category: "Getting to the Race",
       questions: [
         {
-          question: "Will there be space for car parking?",
-          answer:
-            "Limited parking is available. Carpooling or public transport is recommended to avoid congestion.",
+          question: "Is parking available at the venue?",
+          answer: "Yes, parking is available near both the start and finish lines.",
+        },
+        {
+          question: "When and where will bib distribution take place?",
+          answer: "Bib distribution will be held at the venue.",
+        },
+        {
+          question: "What are the transportation options to reach the venue?",
+          answer: "The venue is easily accessible by bus, train, and nearby roads.",
         },
       ],
     },
     {
-      category: "About The Race Course",
+      category: "About the Race Course",
       questions: [
         {
-          question: "Are pets allowed on the course?",
-          answer: "No, pets or animals are not allowed to participate.",
+          question: "Are pets or animals allowed on the course?",
+          answer: "No, pets or animals are not allowed on the race course for safety reasons.",
         },
         {
-          question:
-            "Are skates, skateboards, bikes, or carriages of any kind allowed on the course?",
-          answer:
-            "No, external assistance or vehicles are prohibited and may result in disqualification.",
+          question: "Can I run with headphones?",
+          answer: "Yes, you can use headphones during the race, but we recommend staying aware of your surroundings for safety purposes.",
         },
         {
-          question: "Is there food available on the course?",
-          answer:
-            "Aid stations provide electrolyte, water, oranges, bananas, biscuits, and salt.",
+          question: "How many aid stations will there be on the course?",
+          answer: "Aid stations will be available every 5 km, stocked with water, energy drinks, and light snacks.",
+        },
+        {
+          question: "Will there be medical support on the course?",
+          answer: "Yes, medical teams and ambulances will be stationed along the route to assist participants if needed.",
         },
       ],
     },
@@ -94,16 +116,12 @@ const FAQPage = () => {
       category: "Travel & Accommodation",
       questions: [
         {
-          question: "What is the distance from the airport to the race start?",
-          answer:
-            "The Start/Finish Point is 42 km from the airport. Consider it your warm-up marathon!",
+          question: "Are there accommodations available for participants?",
+          answer: "No, the organisers are not providing accommodation facilities. Participants can book their stay at nearby hotels or lodges.",
         },
         {
-          question: "How do I get to the city?",
-          answer: `Cochin is well connected by:
-            - Railroad: Ernakulam North (ERN) and Ernakulam South (ERS).
-            - Air: Cochin International Airport at Nedumbassery.
-            - Road: NH 47 and MC Road.`,
+          question: "Are there any travel facilities for participants?",
+          answer: "No, participants need to arrange their own transportation to and from the venue.",
         },
       ],
     },
@@ -111,36 +129,51 @@ const FAQPage = () => {
       category: "Results and Prizes",
       questions: [
         {
-          question: "What are the different award categories?",
-          answer: `Awards are presented for both Men and Women in these age categories:
-            - Open
-            - Young (Under 45 Years)
-            - Veteran (45-54 Years)
-            - Senior (55-64 Years)
-            - Super Senior (65 and above).`,
+          question: "How can I check my race results?",
+          answer: "Race results will be published on our website within 24 hours after the event. You can search for your results using your bib number.",
         },
         {
-          question: "What is the prize money for podium finishers?",
-          answer: `The marathon has no prize money to emphasize the joy of running. All finishers receive a unique medal.`,
+          question: "Is there prize money for winners?",
+          answer: "Yes, cash prizes will be awarded to the top three winners in each race category.",
+        },
+        {
+          question: "I am unable to download my participation certificate. What should I do?",
+          answer: "If you face issues downloading your certificate, please contact us at palamarathon@gmail.com with your bib number.",
+        },
+        {
+          question: "Are there finisher medals for all participants?",
+          answer: "Yes, all participants who complete the race will receive a finisher medal.",
         },
       ],
     },
     {
-      category: "Behind the Scenes",
+      category: "Volunteering & Sponsorship",
       questions: [
         {
-          question: "I’d like to volunteer, where do I sign up?",
-          answer: `Email scm@solesofcochin.org with your name, age, contact number, email address, and why you'd like to volunteer.`,
+          question: "Can I volunteer for the Pala Marathon?",
+          answer: "Yes, volunteers are welcome! Please email us at palamarathon@gmail.com with your name, age, contact details, and a brief description of why you want to volunteer.",
         },
         {
-          question:
-            "Where can I find information regarding becoming a Spice Coast Marathon sponsor?",
-          answer:
-            "Please contact support@hultinfo.tech for sponsorship details.",
+          question: "How can I become a sponsor for the Pala Marathon?",
+          answer: "If you are interested in sponsorship opportunities, please contact us at palamarathon@gmail.com for more details.",
+        },
+      ],
+    },
+    {
+      category: "Sustainability and Guidelines",
+      questions: [
+        {
+          question: "How is the Pala Marathon eco-friendly?",
+          answer: "The event promotes sustainability by minimising single-use plastics, providing recycling bins at the venue, and encouraging participants to bring reusable water bottles.",
+        },
+        {
+          question: "Are there any safety guidelines I should follow?",
+          answer: "Follow all instructions from race officials, stay aware of your surroundings, and inform the nearest volunteer in case of an emergency.",
         },
       ],
     },
   ];
+  
 
   return (
     <>
@@ -198,10 +231,10 @@ const FAQPage = () => {
                 >
                   {categoryData.questions.map((questionData, qIndex) => (
                     <div key={qIndex} className="mb-4">
-                      <h4 className="font-medium text-sm sm:text-base md:text-lg mb-2">
+                      <h4 className="font-medium text-center text-sm sm:text-base md:text-lg mb-2">
                         {questionData.question}
                       </h4>
-                      <p className="text-white text-sm">
+                      <p className="text-white text-center text-sm md:text-base">
                         {questionData.answer}
                       </p>
                     </div>
