@@ -27,11 +27,8 @@ function ContactPage() {
   };
 
   return (
-    <motion.div
-      className="relative font-outfit text-gray-800 bg-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+    <div
+      className="relative font-outfit text-gray-800 bg-white "
     >
       {/* Dots Pattern - Reduced size */}
       <motion.div
@@ -144,7 +141,7 @@ function ContactPage() {
           </div>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
