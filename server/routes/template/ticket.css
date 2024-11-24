@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body,
+html {
+	height: 100vh;
+	display: grid;
+	font-family: "Staatliches", cursive;
+	color: #eac285;
+	font-size: 14px;
+	letter-spacing: 0.1em;
+	opacity: 1;
+}
+
+.ticket {
+	margin: auto;
+	display: flex;
+	background:  #083928 url(./assets/5442249.svg);
+	background-blend-mode: multiply;
+	background-size: cover;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.left {
+	display: flex;
+}
+
+.image {
+	height: 250px;
+	width: 250px;
+	background-image: url("./assets/runners-img.webp");
+	background-size: cover;
+	opacity: 0.95;
+}
+
+.admit-one {
+	position: absolute;
+	color: darkgray;
+	height: 250px;
+	padding: 0 10px;
+	letter-spacing: 0.15em;
+	display: flex;
+	text-align: center;
+	justify-content: space-around;
+	writing-mode: vertical-rl;
+	transform: rotate(-180deg);
+}
+
+.admit-one span:nth-child(2) {
+	color: white;
+	font-weight: 700;
+}
+
+.left .ticket-number {
+	height: 250px;
+	width: 250px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 5px;
+}
+
+.ticket-info {
+	padding: 10px 30px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: space-between;
+	align-items: start;
+}
+
+.date {
+	margin: 2px 5px;
+	border-top: 1px solid #eac285;
+	border-bottom: 1px solid #eac285;
+	font-size: medium;
+	padding: 5px 0;
+	font-family: "Outfit", sans-serif;
+	font-weight: 300;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 90%;
+}
+
+
+.date span:first-child {
+	text-align: left;
+}
+
+.date span:last-child {
+	text-align: right;
+}
+
+.date .june-29 {
+	color: #eac285;
+
+}
+
+.show-name {
+	width: 100%;
+	font-size: 56px;
+	font-family: "Outfit", sans-serif;
+	color: #eac285;
+	text-align: start;
+
+}
+
+.show-name h1 {
+	font-size: 76px;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	color: #eac285;
+	transform: scaley(1.2);
+}
+
+.time {
+	width: 100%;
+	padding-bottom: 6px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-weight: 400;
+}
+
+.time span {
+	font-weight: 400;
+}
+
+.time hr {
+	width: 25%;
+	border-color: #eac285;
+}
+
+.left .time {
+	font-size: 16px;
+	letter-spacing: 2px;
+}
+
+
+.location {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	padding-top: 8px;
+	border-top: 1px solid gray;
+}
+
+.location .separator {
+	font-size: 20px;
+}
+
+.right {
+	width: 180px;
+	border-left: 2px dashed #eac285;
+}
+
+.right .admit-one {
+	color: darkgray;
+}
+
+.right .admit-one span:nth-child(2) {
+	color: gray;
+}
+
+.right .right-info-container {
+	height: 250px;
+	padding: 10px 10px 10px 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.right .show-name {
+	padding-left: 10px;
+}
+
+.right .show-name h1 {
+	font-size: 18px;
+}
+
+.right .show-name h2 {
+	font-size: 18px;
+}
+
+.barcode {
+	height: 120px;
+}
+
+.barcode img {
+	height: 100%;
+}
+
+.right .ticket-number {
+	color: gray;
+}
