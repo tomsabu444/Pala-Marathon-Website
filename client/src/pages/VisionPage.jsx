@@ -73,17 +73,19 @@ const VisionPage = () => {
                   <br />
                   <b>Building a Fitness-Aware Generation:</b> A running club can
                   foster fitness through group runs, training, and workshops,
-                  promoting teamwork, discipline, and resilience among the youth.
+                  promoting teamwork, discipline, and resilience among the
+                  youth.
                   <br />
                   <br />
                   <b>The Spark for an Annual Marathon:</b> With support, this
-                  initiative could grow into a cherished tradition, showcasing the
-                  vitality of our community.
+                  initiative could grow into a cherished tradition, showcasing
+                  the vitality of our community.
                   <br />
                   <br />
-                  <b>A Lasting Legacy:</b> Inspiring families to embrace fitness,
-                  Pala can become a beacon of health, creating a vibrant, active
-                  future for all. Let’s run toward a healthier tomorrow!
+                  <b>A Lasting Legacy:</b> Inspiring families to embrace
+                  fitness, Pala can become a beacon of health, creating a
+                  vibrant, active future for all. Let’s run toward a healthier
+                  tomorrow!
                 </motion.p>
 
                 {/* About Us Link */}
@@ -96,7 +98,10 @@ const VisionPage = () => {
                 >
                   <Link to="/about-us">
                     ABOUT<span className="font-medium">&nbsp;US</span>
-                    <ArrowForwardIosIcon sx={{ width: "15px" }} className="ml-2" />
+                    <ArrowForwardIosIcon
+                      sx={{ width: "15px" }}
+                      className="ml-2"
+                    />
                   </Link>
                 </motion.div>
               </div>
@@ -106,8 +111,8 @@ const VisionPage = () => {
           {/* Right Section */}
           <motion.div
             className="relative w-full md:pl-16 left-14"
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >

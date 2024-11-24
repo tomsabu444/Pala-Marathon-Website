@@ -44,8 +44,8 @@ function ContactPage() {
       {/* Rectangle Bar */}
       <motion.div
         className="hidden md:block absolute right-0 top-0 w-20 lg:w-24 h-auto"
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0}}
+        whileInView={{ opacity: 1}}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >

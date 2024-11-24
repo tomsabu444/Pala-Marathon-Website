@@ -90,7 +90,7 @@ function HomePage() {
           animate="visible"
         >
           <p className="text-lg font-light transform -rotate-90">
-            Contact No: <span className="font-medium">9784586721</span>
+            Contact No: <span className="font-medium">9846566483</span>
           </p>
         </motion.div>
 
