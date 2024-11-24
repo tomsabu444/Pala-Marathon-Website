@@ -151,16 +151,8 @@ function HomePage() {
         </motion.div>
       </motion.div>
 
-      {/* Sections with Scroll Animations */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={containerVariants}
-        viewport={{ once: true, amount: 0.2 }}
-      >
         {/* Vision */}
         <VisionPage />
-      </motion.div>
 
       {/* Route */}
       <motion.div
@@ -183,15 +175,9 @@ function HomePage() {
       </motion.div>
 
       {/* Contact Us */}
-      <motion.div
-        id="contact-section"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true }}
-      >
+      <div id="contact-section">
         <ContactPage />
-      </motion.div>
+      </div>
     </>
   );
 }

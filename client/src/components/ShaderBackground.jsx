@@ -21,12 +21,12 @@ const ShaderMesh = () => {
 
   return (
     <mesh ref={mesh}>
-      <planeGeometry args={[1024, 1024]} />
+      <planeGeometry args={[512, 512]} />
       <shaderMaterial
         uniforms={{
           u_color: { value: [1.3137254901960784, 0, 1] },
           u_background: { value: [0, 0, 0, 1] },
-          u_speed: { value: 1.4 },
+          u_speed: { value: 1.0 },
           u_detail: { value: 0.4 },
           u_time: { value: 0 },
           u_mouse: { value: [0, 0] },
