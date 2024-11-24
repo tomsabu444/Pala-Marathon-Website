@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
 import RegisterPage from "./pages/RegisterPage";
+import FaqPage from "./pages/FaqPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import DisclaimerPage from "./pages/DisclaimerPage";
@@ -21,6 +22,7 @@ function App() {
         {/* <Route path="/register" element={<RegisterPage />} /> */}
 
         <Route path="/terms-conditions" element={<TermsConditionsPage />} />
+       {/* <Route path="/faq" element={<FaqPage />} />*/}
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/disclaimer" element={<DisclaimerPage />} />
         <Route path="/about-us" element={<AboutUS />} />
