@@ -1,8 +1,8 @@
 import React from "react";
 import dots_Pattern from "../assets/dots_Pattern.svg";
-import collageImg from "Pala-Marathon-Website/client/src/assets/palaimg.png";
-import imageold from "Pala-Marathon-Website/client/src/assets/palaimg1.png";
-import mobileImage from "Pala-Marathon-Website/client/src/assets/mobileImage.png";
+import collageImg from "../assets/palaimg.png";
+import imageold from "../assets/palaimg1.png";
+import mobileImage from "../assets/mobileImage.png";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
 import HomeBanner from "../components/HomeBanner";
