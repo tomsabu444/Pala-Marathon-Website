@@ -18,9 +18,6 @@ jobs:
       with:
         node-version: '20'  # Explicitly using Node.js 20
 
-    - name: Install dependencies
-      run: npm ci  # Using 'ci' instead of 'install' for more reliable builds
-
     - name: Configure SSH
       env:
         LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
@@ -47,10 +44,7 @@ jobs:
           git fetch origin deploy
           git checkout deploy
           git reset --hard origin/deploy
-          
-          # Install dependencies (if needed)
-          npm ci
-          
+                
           # Run the deploy script
           npm run deploy
           
