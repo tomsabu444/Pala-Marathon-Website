@@ -3,7 +3,7 @@ name: Deploy to AWS Lightsail - Pala Marathon Website
 on:
   push:
     branches:
-      - deploy
+      - main
 
 jobs:
   deploy:
