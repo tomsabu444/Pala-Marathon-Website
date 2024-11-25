@@ -1,0 +1,51 @@
+name: Deploy to AWS Lightsail - Pala Marathon Website
+
+on:
+  push:
+    branches:
+      - deploy  #//* Trigger deployment when pushing to the 'deploy' branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    #//* Step 1: Check out the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    #//* Step 2: Configure SSH
+    - name: Configure SSH
+      env:
+        LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+        LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
+      run: |
+        # Create the .ssh directory and save the private key
+        mkdir -p ~/.ssh
+        echo "${{ secrets.LIGHTSAIL_KEY }}" > ~/.ssh/lightsail_key
+        chmod 600 ~/.ssh/lightsail_key
+
+        # Add the Lightsail host to known_hosts
+        ssh-keyscan -H ${{ secrets.LIGHTSAIL_HOST }} >> ~/.ssh/known_hosts
+        chmod 600 ~/.ssh/known_hosts
+
+    #//* Step 3: Deploy to Lightsail
+    - name: Deploy to Lightsail
+      run: |
+        ssh -i ~/.ssh/lightsail_key ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
+          # Navigate to repository directory
+          cd /ubuntu/repository/Pala-Marathon-Website
+
+          # Pull the latest changes
+          git reset --hard
+          git pull origin deploy
+
+          # Run the deploy script
+          npm run deploy
+        EOF
+
+    #//* Step 4: Cleanup sensitive files
+    - name: Cleanup
+      run: |
+        rm -f ~/.ssh/lightsail_key
+        rm -f ~/.ssh/known_hosts
