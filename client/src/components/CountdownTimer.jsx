@@ -44,7 +44,8 @@ function CountdownTimer({ eventDate }) {
     const width = window.innerWidth;
     if (width > 1024) return 95; // Large screen
     if (width > 768) return 85; // Medium screen
-    return 75; // Small screen
+    if (width > 320) return 75; 
+    return 68; // Small screen
   }
 
   return (

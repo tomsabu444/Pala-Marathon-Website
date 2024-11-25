@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
-import { Twitter, Instagram } from '@mui/icons-material';
-import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import React, { useState } from "react";
+import { Twitter, Instagram } from "@mui/icons-material";
+import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    setError('');
+    setError("");
   };
 
   const handleSubmit = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address.');
+      setError("Please enter a valid email address.");
     } else {
-      setError('');
+      setError("");
       alert(`Thank you for subscribing with: ${email}`);
-      setEmail(''); // Clear input after submission
+      setEmail(""); // Clear input after submission
     }
   };
 
+  const location = useLocation();
+
+  //* Hide footer if the path is "/404"
+  if (location.pathname === "/404") {
+    return null;
+  }
+
   return (
-    <footer className="bg-gradient-to-r from-[#2D1140] to-[#84185F] text-white py-12">
+    <footer
+      className={`bg-gradient-to-r from-[#2D1140] to-[#84185F] text-white py-12 `}
+    >
       <div className="max-w-7xl mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Social Media Section */}
@@ -47,20 +56,40 @@ const Footer = () => {
           <div className="md:col-span-6 grid grid-cols-2 gap-8">
             {/* Left Column */}
             <div className="space-y-3 font-outfit">
-              <Link to="/" className="block text-md">HOME</Link>
-              <Link to="/participant-info" className="block text-sm">PARTICIPANT INFO</Link>
-              <Link to="/faq" className="block text-sm">FAQ</Link>
-              <Link to="/results" className="block text-sm">RESULTS</Link>
-              <Link to="/feedback" className="block text-sm">FEEDBACK</Link>
+              <Link to="/" className="block text-md">
+                HOME
+              </Link>
+              <Link to="/participant-info" className="block text-sm">
+                PARTICIPANT INFO
+              </Link>
+              <Link to="/faq" className="block text-sm">
+                FAQ
+              </Link>
+              <Link to="/results" className="block text-sm">
+                RESULTS
+              </Link>
+              <Link to="/feedback" className="block text-sm">
+                FEEDBACK
+              </Link>
             </div>
 
             {/* Right Column */}
             <div className="space-y-3 font-outfit">
-              <Link to="/contact-us" className="block text-md">CONTACT US</Link>
-              <Link to="/terms-conditions" className="block text-sm">TERMS & CONDITIONS</Link>
-              <Link to="/disclaimer" className="block text-sm">DISCLAIMER</Link>
-              <Link to="/privacy-policy" className="block text-sm">PRIVACY POLICIES</Link>
-              <Link to="/sponsors" className="block text-sm">SPONSORS</Link>
+              <Link to="/about-us" className="block text-md">
+                ABOUT US
+              </Link>
+              <Link to="/terms-conditions" className="block text-sm">
+                TERMS & CONDITIONS
+              </Link>
+              <Link to="/disclaimer" className="block text-sm">
+                DISCLAIMER
+              </Link>
+              <Link to="/privacy-policy" className="block text-sm">
+                PRIVACY POLICIES
+              </Link>
+              <Link to="/sponsors" className="block text-sm">
+                SPONSORS
+              </Link>
             </div>
           </div>
 

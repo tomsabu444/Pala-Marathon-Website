@@ -1,7 +1,9 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 import ContactPage from "./ContactPage";
 import GoverningBodyPage from "./GoverningBodyPage";
+import VisionPage from "./VisionPage";
+import RoutePage from "./RoutePage";
 
 import PalaMarathon from "../assets/PalaMarathon.svg";
 import { Link } from "react-router-dom";
@@ -14,76 +16,182 @@ import bg_img_homepage from "../assets/bg-homepage.png";
 import bg_mobile from "../assets/bg-for-mobile.png";
 
 function HomePage() {
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1.8, ease: "easeOut", staggerChildren: 0.3 },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const fadeInVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1.2, ease: "easeOut" } },
+  };
+
   return (
     <>
-      <div className="relative h-dvh bg-gradient-to-b from-[#FFC1E2] via-[#FFC1E2] to-[#FFFFFF] font-outfit">
+      <motion.div
+        className="relative h-dvh bg-gradient-to-b from-[#FFC1E2] via-[#FFC1E2] to-[#FFFFFF] font-outfit"
+        initial="hidden"
+        animate="visible"
+        variants={fadeInVariants}
+      >
         {/*//! Dots Pattern left */}
-        <div className="absolute top-24">
+        <motion.div
+          className="absolute top-24"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
           <img src={dots_Pattern} alt="Dots Pattern" />
-        </div>
+        </motion.div>
+
         {/*//! Dots Pattern right */}
-        <div className=" hidden sm:block absolute right-0 bottom-14 rotate-180">
-          <img src={dots_Pattern} alt="Dots Pattern" />
-        </div>
+        <motion.div
+          className="hidden sm:block absolute right-0 bottom-14 "
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <img src={dots_Pattern} className="rotate-180" alt="Dots Pattern" />
+        </motion.div>
 
         {/* //! Mobile Background */}
-        <div className="block absolute bg-contain w-full h-full -bottom-1 lg:hidden">
+        <motion.div
+          className="block absolute bg-contain w-full h-full -bottom-1 lg:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+        >
           <img
             src={bg_mobile}
             className="w-full h-full object-cover"
             alt="Background Image"
           />
-        </div>
+        </motion.div>
+
         {/* //! contact No */}
-        <div className=" hidden md:block absolute bottom-24 -left-16 transform -rotate-90 text-[#330A48] transform-origin-left">
-          <p className="text-lg font-light">
-            Contact No: <span className="font-medium">9784586721 </span>{" "}
+        <motion.div
+          className="hidden md:block absolute bottom-24 -left-16  text-[#330A48] transform-origin-left"
+          variants={childVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <p className="text-lg font-light transform -rotate-90">
+            Contact No: <span className="font-medium">9784586721</span>
           </p>
-        </div>
+        </motion.div>
 
         {/* //! Main Content */}
-        <div className="lg:flex lg:justify-between h-full">
+        <motion.div
+          className="lg:flex lg:justify-between h-full"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="flex relative z-20 flex-col justify-items-center h-full lg:pl-20 xl:pl-44">
-            <div className="flex flex-col items-center justify-center mt-10 pt-16 gap-4 h-4/6 ">
-              <img
+            <motion.div
+              className="flex flex-col items-center justify-center mt-10 pt-16 gap-4 h-4/6"
+              variants={childVariants}
+            >
+              <motion.img
                 src={PalaMarathon}
                 alt="PalaMarathon"
                 className="h-40 md:h-48 lg:h-52 mb-2 drop-shadow-lg"
+                variants={childVariants}
               />
               <h1 className="text-xl md:text-2xl font-bold text-[#8B0A1E]">
                 19th JANUARY 2025
               </h1>
 
               <Link
-                to="/register"
+                to="/"
                 className="px-8 py-3 mt-4 text-white bg-[#330A48] rounded-full md:text-xl"
               >
-                REGISTER NOW
+                REGISTRATION OPENING SOON
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col">
-              <h1 className=" text-center text-xl lg:text-2xl text-custom-pink mb-5">
+            <motion.div className="flex flex-col" variants={childVariants}>
+              <h1 className="text-center text-xl lg:text-2xl text-custom-pink mb-5">
                 COUNTDOWN TO PALA MARATHON
               </h1>
               {/* Countdown Timer */}
               <CountdownTimer
                 eventDate={new Date("2025-01-19T00:00:00").getTime()}
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* img container */}
-          <div className=" hidden lg:flex absolute  right-0 bottom-5">
-            <img src={bg_img_homepage} className=" lg:w-[1100px]" />
-          </div>
-        </div>
-      </div>
-      {/* Governing Body */}
-      <GoverningBodyPage />
+          <motion.div
+            className="hidden lg:flex absolute right-0 bottom-5"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.2 }}
+          >
+            <img
+              src={bg_img_homepage}
+              className="lg:w-[900px] 2xl:w-[1000px]"
+              alt="Home Page Image"
+            />
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
-      {/* Contact US */}
-      <ContactPage />
+      {/* Sections with Scroll Animations */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={containerVariants}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {/* Vision */}
+        <VisionPage />
+      </motion.div>
+
+      {/* Route */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={containerVariants}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <RoutePage />
+      </motion.div>
+
+      {/* Governing Body */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={containerVariants}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <GoverningBodyPage />
+      </motion.div>
+
+      {/* Contact Us */}
+      <motion.div
+        id="contact-section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <ContactPage />
+      </motion.div>
     </>
   );
 }
