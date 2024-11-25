@@ -8,7 +8,6 @@
     "start:frontend": "npm --prefix client run dev",
     "start:backend": "npm --prefix server run dev",
     "ci:all": "npm ci --prefix client && npm ci --prefix server"
-
   },
   "keywords": [],
   "author": "",
