@@ -34,7 +34,7 @@ jobs:
       run: |
         ssh -i ~/.ssh/lightsail_key ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
           # Navigate to repository directory
-          cd /ubuntu/repository/Pala-Marathon-Website
+          cd repository/Pala-Marathon-Website
 
           # Pull the latest changes
           git reset --hard
