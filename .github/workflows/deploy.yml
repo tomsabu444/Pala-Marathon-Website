@@ -3,49 +3,63 @@ name: Deploy to AWS Lightsail - Pala Marathon Website
 on:
   push:
     branches:
-      - deploy  #//* Trigger deployment when pushing to the 'deploy' branch
+      - deploy
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    #//* Step 1: Check out the repository
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # Updated to v4 to address Node.js deprecation warning
 
-    #//* Step 2: Configure SSH
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'  # Explicitly using Node.js 20
+
+    - name: Install dependencies
+      run: npm ci  # Using 'ci' instead of 'install' for more reliable builds
+
     - name: Configure SSH
       env:
         LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
         LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
       run: |
-        # Create the .ssh directory and save the private key
         mkdir -p ~/.ssh
         echo "${{ secrets.LIGHTSAIL_KEY }}" > ~/.ssh/lightsail_key
         chmod 600 ~/.ssh/lightsail_key
-
-        # Add the Lightsail host to known_hosts
-        ssh-keyscan -H ${{ secrets.LIGHTSAIL_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H $LIGHTSAIL_HOST >> ~/.ssh/known_hosts
         chmod 600 ~/.ssh/known_hosts
 
-    #//* Step 3: Deploy to Lightsail
     - name: Deploy to Lightsail
+      env:
+        LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+        LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
       run: |
-        ssh -i ~/.ssh/lightsail_key ${{ secrets.LIGHTSAIL_USER }}@${{ secrets.LIGHTSAIL_HOST }} << 'EOF'
+        ssh -i ~/.ssh/lightsail_key -o StrictHostKeyChecking=accept-new $LIGHTSAIL_USER@$LIGHTSAIL_HOST << 'EOF'
+          set -e  # Exit immediately if a command exits with a non-zero status
+          
           # Navigate to repository directory
-          cd repository/Pala-Marathon-Website
-
-          # Pull the latest changes
-          git reset --hard
-          git pull origin deploy
-
+          cd repository/Pala-Marathon-Website || exit 1
+          
+          # Ensure we're on the right branch
+          git fetch origin deploy
+          git checkout deploy
+          git reset --hard origin/deploy
+          
+          # Install dependencies (if needed)
+          npm ci
+          
           # Run the deploy script
           npm run deploy
-        EOF
+          
+          # Log the deployment
+          echo "Deployment completed at $(date)"
+EOF
 
-    #//* Step 4: Cleanup sensitive files
     - name: Cleanup
+      if: always()  # Ensure cleanup runs even if previous steps fail
       run: |
         rm -f ~/.ssh/lightsail_key
         rm -f ~/.ssh/known_hosts
