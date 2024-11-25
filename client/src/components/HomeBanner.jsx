@@ -9,7 +9,7 @@ const HomeBanner = () => {
     <div className="flex justify-center items-center w-full mx-auto font-outfit my-7 ">
       <div className="relative flex flex-col justify-center mx-5 items-center w-full max-w-screen-lg md:p-3 rounded-lg  shadow-lg">
         {/* Shader Background */}
-        <ShaderBackground />
+        <ShaderBackground  optimized={true}/>
 
         {/* Logos and Titles */}
         <div className="flex items-center flex-wrap justify-evenly md:justify-around w-full  sm:px-6 z-10">
