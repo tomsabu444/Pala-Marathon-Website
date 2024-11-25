@@ -10,50 +10,50 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4  # Updated to v4 to address Node.js deprecation warning
+      - name: Checkout code
+        uses: actions/checkout@v4  # Updated to v4 to address Node.js deprecation warning
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'  # Explicitly using Node.js 20
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Explicitly using Node.js 20
 
-    - name: Configure SSH
-      env:
-        LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
-        LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.LIGHTSAIL_KEY }}" > ~/.ssh/lightsail_key
-        chmod 600 ~/.ssh/lightsail_key
-        ssh-keyscan -H $LIGHTSAIL_HOST >> ~/.ssh/known_hosts
-        chmod 600 ~/.ssh/known_hosts
+      - name: Configure SSH
+        env:
+          LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+          LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.LIGHTSAIL_KEY }}" > ~/.ssh/lightsail_key
+          chmod 600 ~/.ssh/lightsail_key
+          ssh-keyscan -H $LIGHTSAIL_HOST >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
 
-    - name: Deploy to Lightsail
-      env:
-        LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
-        LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
-      run: |
-        ssh -i ~/.ssh/lightsail_key -o StrictHostKeyChecking=accept-new $LIGHTSAIL_USER@$LIGHTSAIL_HOST << 'EOF'
-          set -e  # Exit immediately if a command exits with a non-zero status
-          
-          # Navigate to repository directory
-          cd repository/Pala-Marathon-Website || exit 1
-          
-          # Ensure we're on the right branch
-          git fetch origin deploy
-          git checkout deploy
-          git reset --hard origin/deploy
-                
-          # Run the deploy script
-          npm run deploy
-          
-          # Log the deployment
-          echo "Deployment completed at $(date)"
+      - name: Deploy to Lightsail
+        env:
+          LIGHTSAIL_HOST: ${{ secrets.LIGHTSAIL_HOST }}
+          LIGHTSAIL_USER: ${{ secrets.LIGHTSAIL_USER }}
+        run: |
+          ssh -i ~/.ssh/lightsail_key -o StrictHostKeyChecking=accept-new $LIGHTSAIL_USER@$LIGHTSAIL_HOST << 'EOF'
+            set -e  # Exit immediately if a command exits with a non-zero status
+            
+            # Navigate to repository directory
+            cd repository/Pala-Marathon-Website || exit 1
+            
+            # Ensure we're on the right branch
+            git fetch origin deploy
+            git checkout deploy
+            git reset --hard origin/deploy
+                  
+            # Run the deploy script
+            npm run deploy
+            
+            # Log the deployment
+            echo "Deployment completed at $(date)"
 EOF
 
-    - name: Cleanup
-      if: always()  # Ensure cleanup runs even if previous steps fail
-      run: |
-        rm -f ~/.ssh/lightsail_key
-        rm -f ~/.ssh/known_hosts
+      - name: Cleanup
+        if: always()  # Ensure cleanup runs even if previous steps fail
+        run: |
+          rm -f ~/.ssh/lightsail_key
+          rm -f ~/.ssh/known_hosts
