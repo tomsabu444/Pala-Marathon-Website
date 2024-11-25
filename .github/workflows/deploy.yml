@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # Updated to v4 to address Node.js deprecation warning
+        uses: actions/checkout@v4 # Updated to v4 to address Node.js deprecation warning
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # Explicitly using Node.js 20
+          node-version: "20" # Explicitly using Node.js 20
 
       - name: Configure SSH
         env:
@@ -36,20 +36,25 @@ jobs:
         run: |
           ssh -i ~/.ssh/lightsail_key -o StrictHostKeyChecking=accept-new $LIGHTSAIL_USER@$LIGHTSAIL_HOST << 'EOF'
             set -e  # Exit immediately if a command exits with a non-zero status
-            
+
+            # Load NVM and Node.js
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm
+            nvm use 20  # Use Node.js version 20
+
             # Navigate to repository directory
             cd repository/Pala-Marathon-Website || exit 1
             
-            # Ensure we're on the right branch
-            git fetch origin deploy
-            git checkout deploy
-            git reset --hard origin/deploy
-                  
+            # Pull the latest changes
+            git reset --hard
+            git pull origin deploy
+            
             # Run the deploy script
             npm run deploy
             
             # Log the deployment
-            echo "Deployment completed at $(date)" EOF
+            echo "Deployment completed at $(date)"
+            EOF
 
       - name: Cleanup
         run: |
