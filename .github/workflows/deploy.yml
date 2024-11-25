@@ -53,7 +53,6 @@ jobs:
 EOF
 
       - name: Cleanup
-        if: always()  # Ensure cleanup runs even if previous steps fail
         run: |
           rm -f ~/.ssh/lightsail_key
           rm -f ~/.ssh/known_hosts
