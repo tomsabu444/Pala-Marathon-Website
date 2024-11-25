@@ -7,7 +7,11 @@
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "npm --prefix client run dev",
     "start:backend": "npm --prefix server run dev",
-    "ci:all": "npm ci --prefix client && npm ci --prefix server"
+    "ci:all": "npm ci --prefix client && npm ci --prefix server",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "npm --prefix client run build",
+    "build:backend": "echo \"No backend build step needed\"",
+    "deploy": "npm run ci:all && npm run build && pm2 restart Pala-Marathon || pm2 start server/server.js --name Pala-Marathon"
   },
   "keywords": [],
   "author": "",
