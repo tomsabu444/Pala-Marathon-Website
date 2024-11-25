@@ -1,5 +1,5 @@
 import React from "react";
-import error from "Pala-Marathon-Website/client/src/assets/404.png";
+import notFoundImage from "../assets/404.png";
 import { useNavigate } from "react-router-dom";
 
 const NotFoundPage = () => {
@@ -10,7 +10,7 @@ const NotFoundPage = () => {
       <div className="text-center w-full max-w-3xl mx-auto px-4">
         <div className="mb-6 sm:mb-8">
           <img
-            src={error}
+            src={notFoundImage}
             alt="404 Error Illustration"
             className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] h-auto mx-auto"
           />
