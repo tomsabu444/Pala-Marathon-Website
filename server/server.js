@@ -9,7 +9,7 @@ const app = express();
 // Middleware and routes
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: 'https://palamarathon.hultinfo.tech' }));
 
 connectDB(); //! Initialize MongoDB connection
 
