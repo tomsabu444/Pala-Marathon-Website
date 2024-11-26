@@ -1,7 +1,7 @@
 import React from "react";
 import rectangle from "../assets/rectangle_bar.svg";
-import road from "Pala-Marathon-Website/client/src/assets/road.png";
-import smRoad from "Pala-Marathon-Website/client/src/assets/s-road.png"; // Small screen road image
+import road from "../assets/road.png";
+import smRoad from "../assets/s-road.png"; // Small screen road image
 
 const RoutePage = () => {
   return (

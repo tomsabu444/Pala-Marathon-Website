@@ -2,6 +2,7 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { motion } from "framer-motion";
 
 import runningManIcon from "../assets/runninglogo.svg";
 import dots_Pattern from "../assets/dots_Pattern.svg";
@@ -26,19 +27,40 @@ function ContactPage() {
   };
 
   return (
-    <div className="relative font-outfit text-gray-800 bg-white">
+    <div
+      className="relative font-outfit text-gray-800 bg-white "
+    >
       {/* Dots Pattern - Reduced size */}
-      <div className="hidden lg:block absolute bottom-8 left-0 opacity-70">
+      <motion.div
+        className="hidden lg:block absolute bottom-8 left-0 opacity-70"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <img src={dots_Pattern} alt="Dots Pattern" className="w-16 h-auto" />
-      </div>
+      </motion.div>
+
       {/* Rectangle Bar */}
-      <div className="hidden md:block absolute right-0 top-0 w-20 lg:w-24 h-auto ">
+      <motion.div
+        className="hidden md:block absolute right-0 top-0 w-20 lg:w-24 h-auto"
+        initial={{ opacity: 0}}
+        whileInView={{ opacity: 1}}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <img src={rectangle_bar} alt="Rectangle Bar" className="w-full h-full" />
-      </div>
+      </motion.div>
 
       <div className="flex flex-col lg:flex-row gap-6 p-4 sm:p-6 lg:p-20 mx-auto">
         {/* Map Section */}
-        <div className="flex justify-center items-center md:w-full">
+        <motion.div
+          className="flex justify-center items-center md:w-full"
+          initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <div className="relative">
             <div className="absolute -inset-1 rounded-full bg-purple-600/20 blur-xl" />
             <MapContainer
@@ -58,10 +80,16 @@ function ContactPage() {
               </Marker>
             </MapContainer>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Information Section */}
-        <div className="flex flex-col justify-center md:w-full px-2 sm:px-4">
+        <motion.div
+          className="flex flex-col justify-center md:w-full px-2 sm:px-4"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <h1 className="text-2xl xs:text-3xl sm:text-4xl mb-4 mt-4 sm:mb-5 font-light text-[#330A48] tracking-wide sm:text-left">
             CONTACT <span className="font-semibold">US</span>
           </h1>
@@ -111,7 +139,7 @@ function ContactPage() {
               The marathon will begin promptly at 7:00 AM.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
