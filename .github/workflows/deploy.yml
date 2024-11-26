@@ -53,8 +53,7 @@ jobs:
             npm run deploy
             
             # Log the deployment
-            echo "Deployment completed at $(date)"
-            EOF
+            echo "Deployment completed at $(date)" EOF
 
       - name: Cleanup
         run: |
