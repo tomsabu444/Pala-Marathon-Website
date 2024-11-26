@@ -9,14 +9,14 @@ const app = express();
 // Middleware and routes
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors({ origin: 'https://palamarathon.hultinfo.tech' }));
+app.use(cors());
 
 connectDB(); //! Initialize MongoDB connection
 
 //* Define routes
 const registrationRoutes = require('./routes/Registration');
 //? API routes
-app.use('/api', registrationRoutes);
+app.use('/', registrationRoutes);
 
 // const emailNotificationRouter = require('./routes/EmailNotification');
 // app.use('/email', emailNotificationRouter);
