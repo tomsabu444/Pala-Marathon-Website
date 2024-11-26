@@ -11,7 +11,7 @@
     "build": "npm run build:frontend && npm run build:backend",
     "build:frontend": "npm --prefix client run build",
     "build:backend": "echo \"No backend build step needed\"",
-    "deploy": "npm ci --prefix server && pm2 restart Pala-Marathon || pm2 start server/server.js --name Pala-Marathon --watch"
+    "deploy": "npm ci --prefix server && pm2 restart Pala-Marathon"
   },
   "keywords": [],
   "author": "",
