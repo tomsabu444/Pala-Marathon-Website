@@ -117,10 +117,10 @@ function HomePage() {
               </h1>
 
               <Link
-                to="/"
+                to="/register"
                 className="px-8 py-3 mt-4 text-white bg-[#330A48] rounded-full md:text-xl"
               >
-                REGISTRATION OPENING SOON
+                REGISTER NOW
               </Link>
             </motion.div>
 
