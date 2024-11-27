@@ -19,7 +19,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/register" element={<RegisterPage />} /> */}
+        <Route path="/register" element={<RegisterPage />} />
 
         <Route path="/terms-conditions" element={<TermsConditionsPage />} />
        {/* <Route path="/faq" element={<FaqPage />} />*/}

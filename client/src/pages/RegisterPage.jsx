@@ -62,7 +62,7 @@ function RegisterPage() {
           <span className="font-semibold">E-ticket</span> will be sent to this
           email address. Additionally, double-check all registration details to
           avoid any mistakes. For race rules and regulations, please{" "}
-          <Link to="/rules" className="text-purple-600 underline">
+          <Link to="/terms-conditions" className="text-purple-600 underline">
             click here
           </Link>
           . Please note that registration fees are non-refundable and

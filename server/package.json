@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  
   "scripts": {
     "dev": "nodemon server.js",
     "start": "nodemon server.js"
@@ -14,7 +15,11 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "mongoose": "^8.7.2",
-    "pala-marathon-website": "file:.."
+    "nanoid": "^5.0.8",
+    "nodemailer": "^6.9.16",
+    "nodemailer-express-handlebars": "^7.0.0",
+    "pala-marathon-website": "file:..",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

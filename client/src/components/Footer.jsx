@@ -59,16 +59,16 @@ const Footer = () => {
               <Link to="/" className="block text-md">
                 HOME
               </Link>
-              <Link to="/participant-info" className="block text-sm">
+              <Link  className="block text-sm">
                 PARTICIPANT INFO
               </Link>
-              <Link to="/faq" className="block text-sm">
+              <Link  className="block text-sm">
                 FAQ
               </Link>
-              <Link to="/results" className="block text-sm">
+              <Link  className="block text-sm">
                 RESULTS
               </Link>
-              <Link to="/feedback" className="block text-sm">
+              <Link  className="block text-sm">
                 FEEDBACK
               </Link>
             </div>
@@ -87,7 +87,7 @@ const Footer = () => {
               <Link to="/privacy-policy" className="block text-sm">
                 PRIVACY POLICIES
               </Link>
-              <Link to="/sponsors" className="block text-sm">
+              <Link  className="block text-sm">
                 SPONSORS
               </Link>
             </div>

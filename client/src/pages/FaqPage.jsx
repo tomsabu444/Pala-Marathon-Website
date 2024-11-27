@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import MarathonBanner from "../components/MarathonBanner2.0";
-import faqimg from "Pala-Marathon-Website/client/src/assets/Faq-img.png";
+import faqimg from "../assets/Faq-img.png";
 import { motion } from "framer-motion";
 
 
