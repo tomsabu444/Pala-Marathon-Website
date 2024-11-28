@@ -31,8 +31,12 @@ function MarathonBanner() {
             19<sup className="text-sm">th</sup> January 2025
           </p>
         </div>
-        {location.pathname !== "/register" && (
-          <div className="flex md:flex w-3/6 h-full mx-auto items-center">
+        <div
+          className={`flex md:flex w-3/6 h-full mx-auto items-center ${
+            location.pathname !== "/register" ? "" : "hidden md:flex"
+          }`}
+        >
+          {location.pathname !== "/register" && (
             <Link
               to="/register"
               className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
@@ -43,8 +47,8 @@ function MarathonBanner() {
             >
               REGISTER NOW
             </Link>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
