@@ -17,7 +17,7 @@ function MarathonBanner() {
             <img src={runners_img} alt="Runners img" />
           </div>
         </div>
-        <div className="w-full mt-6 md:mt-0 text-center">
+        <div className="w-full justify-center flex flex-col items-center  h-full mt-6 md:mt-0 text-center">
           {/* <img
           src="https://placehold.co/150x40?text=Title+Sponsor+Logo"
           alt="Title Sponsor Logo"
@@ -31,8 +31,8 @@ function MarathonBanner() {
             19<sup className="text-sm">th</sup> January 2025
           </p>
         </div>
-        <div className="flex md:flex w-3/6 h-full mx-auto items-center">
-          {location.pathname !== "/register" && (
+        {location.pathname !== "/register" && (
+          <div className="flex md:flex w-3/6 h-full mx-auto items-center">
             <Link
               to="/register"
               className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
@@ -43,8 +43,8 @@ function MarathonBanner() {
             >
               REGISTER NOW
             </Link>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
