@@ -1,17 +1,21 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import dots_Pattern from "../assets/dots_Pattern.svg";
 import collageImg from "../assets/palaimg.png";
 import imageold from "../assets/palaimg1.png";
 import mobileImage from "../assets/mobileImage.png";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Link } from "react-router-dom";
-import HomeBanner from "../components/HomeBanner";
 import { motion } from "framer-motion";
+import Loading from "../components/Loading";
+
+const HomeBanner = lazy(() => import("../components/HomeBanner"));
 
 const VisionPage = () => {
   return (
     <>
-      <HomeBanner />
+      <Suspense fallback={<Loading />}>
+        <HomeBanner />
+      </Suspense>
 
       <motion.div
         className="relative font-outfit pb-10 md:py-16 md:px-16 z-10 lg:-mt-20"
@@ -118,6 +122,7 @@ const VisionPage = () => {
           >
             {/* Collage Image */}
             <img
+              loading="lazy"
               src={collageImg}
               alt="Collage of Running Events"
               className="h-auto object-cover mt-[150px] hidden md:block"
@@ -126,6 +131,7 @@ const VisionPage = () => {
 
           {/* Last Image */}
           <motion.img
+            loading="lazy"
             src={imageold}
             alt="Collage of Running Events"
             className="absolute w-[50%] md:w-[30%] h-auto top-[30%] mx-0 left-[10%] object-cover ml-[460px] mt-[400px] border-t-8 border-r-8 border-white hide-imageold"
@@ -137,6 +143,7 @@ const VisionPage = () => {
 
           {/* Mobile Image */}
           <motion.img
+            loading="lazy"
             src={mobileImage}
             alt="Mobile Collage of Running Events"
             className="md:hidden w-full h-auto object-cover mx-auto -mt-12"

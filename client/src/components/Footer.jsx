@@ -40,13 +40,13 @@ const Footer = () => {
           <div className="md:col-span-3">
             <h3 className="text-md font-thin mt-5">SOCIAL MEDIA</h3>
             <div className="flex space-x-6 mt-2">
-              <a href="#" className="hover:opacity-80">
+              <a href="#" className="hover:opacity-80" aria-label="Facebook">
                 <FacebookRoundedIcon fontSize="large" />
               </a>
-              <a href="#" className="hover:opacity-80">
+              <a href="#" className="hover:opacity-80" aria-label="Twitter">
                 <Twitter fontSize="large" />
               </a>
-              <a href="#" className="hover:opacity-80">
+              <a href="#" className="hover:opacity-80" aria-label="Instagram">
                 <Instagram fontSize="large" />
               </a>
             </div>
@@ -59,18 +59,10 @@ const Footer = () => {
               <Link to="/" className="block text-md">
                 HOME
               </Link>
-              <Link  className="block text-sm">
-                PARTICIPANT INFO
-              </Link>
-              <Link  className="block text-sm">
-                FAQ
-              </Link>
-              <Link  className="block text-sm">
-                RESULTS
-              </Link>
-              <Link  className="block text-sm">
-                FEEDBACK
-              </Link>
+              <Link className="block text-sm">PARTICIPANT INFO</Link>
+              <Link className="block text-sm">FAQ</Link>
+              <Link className="block text-sm">RESULTS</Link>
+              <Link className="block text-sm">FEEDBACK</Link>
             </div>
 
             {/* Right Column */}
@@ -87,9 +79,7 @@ const Footer = () => {
               <Link to="/privacy-policy" className="block text-sm">
                 PRIVACY POLICIES
               </Link>
-              <Link  className="block text-sm">
-                SPONSORS
-              </Link>
+              <Link className="block text-sm">SPONSORS</Link>
             </div>
           </div>
 
