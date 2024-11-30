@@ -8,6 +8,7 @@ import { IconButton } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 
 import PalaMarathon from "../assets/PalaMarathon.svg";
+import HULT from "../assets/HULT-1.png";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -91,13 +92,11 @@ const Navbar = () => {
         { path: "/disclaimer", label: "Disclaimer" },
       ],
     },
-    { path: "/sponsors", label: "SPONSORS" },
     {
       label: "CONNECT",
       dropdown: [
         { path: "/media", label: "Services" },
         { path: "/feedback", label: "Feedback" },
-        // { path: "/contact-us", label: "Contact" },
       ],
     },
   ];
@@ -200,9 +199,10 @@ const Navbar = () => {
                   <Link
                     to={link.path || "#"}
                     className={`py-2 px-3 ${
-                      location.pathname === link.path
+                      (location.pathname === link.path) || 
+                      (link.dropdown && link.dropdown.some(item => location.pathname === item.path))
                         ? "text-[#330A48] underline underline-offset-4 font-semibold"
-                        : "text-[#330A48]"
+                        : "text-[#330A48] hover:font-semibold"
                     }`}
                   >
                     {link.label}
@@ -226,7 +226,11 @@ const Navbar = () => {
                       <Link
                         key={dropdownItem.path}
                         to={dropdownItem.path}
-                        className="block px-4 py-2 text-sm text-[#330A48] hover:bg-gray-100"
+                        className={`block px-4 py-2 text-sm text-[#330A48] hover:bg-gray-100 ${
+                          location.pathname === dropdownItem.path
+                            ? "font-semibold bg-gray-100"
+                            : ""
+                        }`}
                       >
                         {dropdownItem.label}
                       </Link>
@@ -243,19 +247,19 @@ const Navbar = () => {
       <AnimatePresence>
         {isDrawerOpen && (
           <motion.div
-            className="fixed top-0 right-0 w-full max-w-sm bg-gray-50 h-full z-50"
+            className="fixed top-0 right-0 w-full max-w-sm bg-gray-50 h-full z-50 flex flex-col justify-center items-center"
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={drawerVariants}
           >
-            <div className="flex flex-col items-end p-4">
+            <div className="flex flex-col items-end p-4 absolute top-0 right-0">
               <IconButton onClick={toggleDrawer} aria-label="close drawer">
                 <CloseIcon fontSize="large" style={{ color: "#330A48" }} />
               </IconButton>
             </div>
             <motion.ul
-              className="flex flex-col items-center justify-around font-medium text-xl h-auto mt-4 space-y-4"
+              className="flex flex-col items-center justify-around font-medium text-2xl h-auto mt-4 space-y-6 w-full px-8"
               variants={drawerItemVariants}
               initial="hidden"
               animate="visible"
@@ -264,17 +268,18 @@ const Navbar = () => {
                 <motion.li
                   key={link.label}
                   variants={drawerItemVariants}
-                  className="w-full px-4"
+                  className="w-full text-center"
                 >
                   {link.dropdown ? (
                     <div>
                       <div 
-                        className="flex justify-between items-center cursor-pointer"
+                        className="flex justify-center items-center cursor-pointer"
                         onClick={() => toggleMobileDropdown(link.label)}
                       >
                         <span 
                           className={`block ${
-                            location.pathname === link.path
+                            (location.pathname === link.path) || 
+                            (link.dropdown && link.dropdown.some(item => location.pathname === item.path))
                               ? "text-gray-900 underline underline-offset-4 font-semibold"
                               : "text-gray-900"
                           }`}
@@ -282,9 +287,9 @@ const Navbar = () => {
                           {link.label}
                         </span>
                         {mobileActiveDropdown === link.label ? (
-                          <ExpandLessIcon className="text-gray-900" />
+                          <ExpandLessIcon className="text-gray-900 ml-2" />
                         ) : (
-                          <ExpandMoreIcon className="text-gray-900" />
+                          <ExpandMoreIcon className="text-gray-900 ml-2" />
                         )}
                       </div>
                       
@@ -304,13 +309,17 @@ const Navbar = () => {
                             }}
                             className="overflow-hidden"
                           >
-                            <div className="mt-2 space-y-2 pl-4">
+                            <div className="mt-2 space-y-4 text-xl">
                               {link.dropdown.map((dropdownItem) => (
                                 <Link
                                   key={dropdownItem.path}
                                   to={dropdownItem.path}
                                   onClick={toggleDrawer}
-                                  className="block text-base text-gray-700 hover:text-gray-900 py-2"
+                                  className={`block text-gray-700 hover:text-gray-900 py-2 ${
+                                    location.pathname === dropdownItem.path
+                                      ? "text-gray-900 underline underline-offset-4 font-semibold"
+                                      : ""
+                                  }`}
                                 >
                                   {dropdownItem.label}
                                 </Link>
@@ -336,6 +345,14 @@ const Navbar = () => {
                 </motion.li>
               ))}
             </motion.ul>
+            <div className="absolute bottom-8 text-center w-full flex justify-center items-center text-sm text-gray-600">
+              <span className="mr-2">Powered by</span>
+                <img 
+                  src={HULT} 
+                  alt="HULT" 
+                  className="h-4 object-contain" 
+                />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
