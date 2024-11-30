@@ -1,7 +1,7 @@
 import React from "react";
 import rectangle from "../assets/rectangle_bar.svg";
 import road from "../assets/road.png";
-import smRoad from "../assets/s-road.png"; // Small screen road image
+import smRoad from "../assets/mobile-road.svg"; // Small screen road image
 import { Link } from "react-router-dom";
 
 const RoutePage = () => {
@@ -106,13 +106,13 @@ const RoutePage = () => {
           </div>
 
           {/* Image for small screens */}
-          {/* <div className="block md:hidden">
+          <div className="block md:hidden">
             <img
               src={smRoad}
               alt="Route Map or Road Image (Small)"
-              className="w-full h-20 object-cover  -mt-3"
+              className="w-full h-30 object-cover  mt-[-150px] mx-auto"
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
