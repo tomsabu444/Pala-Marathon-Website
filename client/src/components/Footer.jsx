@@ -87,7 +87,9 @@ const Footer = () => {
           <div className="md:col-span-3">
             <h3 className="text-xl font-bold mb-6">STAY UP TO DATE</h3>
             <div className="flex h-10">
-              <input
+              <input id="mail"
+                name="mail"
+                autoComplete="true"
                 type="email"
                 placeholder="Enter your email"
                 value={email}
