@@ -7,8 +7,10 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { IconButton } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Import your logo and powered by images
 import PalaMarathon from "../assets/PalaMarathon.svg";
 import HULT from "../assets/HULT-1.png";
+import RunningLogo from "../assets/runninglogo.svg";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -101,6 +103,7 @@ const Navbar = () => {
     },
   ];
 
+  // Desktop Dropdown Interaction Handlers
   const handleMouseEnter = (label) => {
     setActiveDropdown(label);
   };
@@ -109,6 +112,16 @@ const Navbar = () => {
     setActiveDropdown(null);
   };
 
+  // New method to toggle dropdown on click
+  const handleDropdownClick = (label) => {
+    setActiveDropdown(activeDropdown === label ? null : label);
+  };
+
+  const handleDropdownAreaEnter = (label) => {
+    setActiveDropdown(label);
+  };
+
+  // Mobile Dropdown Toggle
   const toggleMobileDropdown = (label) => {
     setMobileActiveDropdown(mobileActiveDropdown === label ? null : label);
   };
@@ -138,7 +151,7 @@ const Navbar = () => {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <motion.img
-            src="runninglogo.svg"
+            src={RunningLogo}
             className="h-10 md:h-11"
             alt="Running Logo"
             variants={menuItemVariants}
@@ -182,23 +195,24 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <motion.div
-          className="hidden md:flex md:w-auto md:order-1 relative"
-          id="navbar-sticky"
-          variants={navBarVariants}
-        >
-          <ul className="flex flex-row items-center space-x-8 font-normal">
-            {navLinks.map((link) => (
-              <motion.li 
-                key={link.label} 
-                variants={menuItemVariants}
-                className="relative"
-                onMouseEnter={() => handleMouseEnter(link.label)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <div className="flex items-center">
-                  <Link
-                    to={link.path || "#"}
-                    className={`py-2 px-3 ${
+        className="hidden md:flex md:w-auto md:order-1 relative"
+        id="navbar-sticky"
+        variants={navBarVariants}
+      >
+        <ul className="flex flex-row items-center space-x-8 font-normal">
+          {navLinks.map((link) => (
+            <motion.li 
+              key={link.label} 
+              variants={menuItemVariants}
+              className="relative"
+              onMouseEnter={() => handleMouseEnter(link.label)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="flex items-center">
+                {link.dropdown ? (
+                  <button
+                    onClick={() => handleDropdownClick(link.label)}
+                    className={`flex items-center py-2 px-3 ${
                       (location.pathname === link.path) || 
                       (link.dropdown && link.dropdown.some(item => location.pathname === item.path))
                         ? "text-[#330A48] underline underline-offset-4 font-semibold"
@@ -206,41 +220,62 @@ const Navbar = () => {
                     }`}
                   >
                     {link.label}
-                  </Link>
-                  {link.dropdown && (
-                    <ExpandMoreIcon 
-                      className="text-[#330A48] cursor-pointer" 
-                      fontSize="small" 
-                    />
-                  )}
-                </div>
-                
-                {link.dropdown && activeDropdown === link.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md py-2 min-w-[200px] z-50"
+                    {activeDropdown === link.label ? (
+                      <ExpandLessIcon 
+                        className="text-[#330A48] ml-1" 
+                        fontSize="small" 
+                      />
+                    ) : (
+                      <ExpandMoreIcon 
+                        className="text-[#330A48] ml-1" 
+                        fontSize="small" 
+                      />
+                    )}
+                  </button>
+                ) : (
+                  <Link
+                    to={link.path}
+                    className={`py-2 px-3 ${
+                      location.pathname === link.path
+                        ? "text-[#330A48] underline underline-offset-4 font-semibold"
+                        : "text-[#330A48] hover:font-semibold"
+                    }`}
                   >
-                    {link.dropdown.map((dropdownItem) => (
-                      <Link
-                        key={dropdownItem.path}
-                        to={dropdownItem.path}
-                        className={`block px-4 py-2 text-sm text-[#330A48] hover:bg-gray-100 ${
-                          location.pathname === dropdownItem.path
-                            ? "font-semibold bg-gray-100"
-                            : ""
-                        }`}
-                      >
-                        {dropdownItem.label}
-                      </Link>
-                    ))}
-                  </motion.div>
+                    {link.label}
+                  </Link>
                 )}
-              </motion.li>
-            ))}
-          </ul>
-        </motion.div>
+              </div>
+              
+              {link.dropdown && activeDropdown === link.label && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md py-2 min-w-[200px] z-50"
+                  style={{ 
+                    padding: '20px 0', 
+                    marginTop: '-20px'
+                  }}
+                >
+                  {link.dropdown.map((dropdownItem) => (
+                    <Link
+                      key={dropdownItem.path}
+                      to={dropdownItem.path}
+                      className={`block px-4 py-2 text-sm text-[#330A48] hover:bg-gray-100 ${
+                        location.pathname === dropdownItem.path
+                          ? "font-semibold bg-gray-100"
+                          : ""
+                      }`}
+                    >
+                      {dropdownItem.label}
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
       </div>
 
       {/* Drawer for Smaller Screens */}
