@@ -1,20 +1,20 @@
 import React from "react";
 import rectangle from "../assets/rectangle_bar.svg";
 import road from "../assets/road.png";
-import smRoad from "../assets/s-road.png"; // Small screen road image
+import smRoad from "../assets/mobile-road.svg"; // Small screen road image
 import { Link } from "react-router-dom";
 
 const RoutePage = () => {
   return (
-    <div className="relative pt-12  md:py-16 px-4 md:px-16">
+    <div className="relative pt-12  md:py-16 md:px-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center z-10">
         {/* Left Section */}
-        <div className="relative flex flex-col items-center md:items-start">
+        <div className="relative flex px-4 flex-col items-center md:items-start">
           {/* Decorative Rectangle */}
           <img
             src={rectangle}
             alt="Decorative dots"
-            className="absolute top-[-30px] left-[-30px] md:left-[-70px] w-12 h-12 md:w-20 md:h-20 z-10"
+            className="absolute top-[-30px]  left-[-10px] md:left-[-70px] w-12 h-12 md:w-20 md:h-20 z-10"
           />
 
           <div className="w-full max-w-lg text-center md:text-left md:ml-24">
@@ -106,13 +106,13 @@ const RoutePage = () => {
           </div>
 
           {/* Image for small screens */}
-          {/* <div className="block md:hidden">
+          <div className="block md:hidden">
             <img
               src={smRoad}
               alt="Route Map or Road Image (Small)"
-              className="w-full h-20 object-cover  -mt-3"
+              className="w-full h-30 object-cover  mt-[-170px] mx-auto"
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
