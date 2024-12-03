@@ -13,6 +13,7 @@ const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const DisclaimerPage = lazy(() => import("./pages/DisclaimerPage"));
 const AboutUS = lazy(() => import("./pages/AboutUS"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const RefundPage = lazy(() => import("./pages/RefundPage"));
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/about-us" element={<AboutUS />} />
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
+          <Route path="/refund-policy" element={<RefundPage />} />
         </Routes>
         <Footer />
       </Suspense>
