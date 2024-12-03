@@ -170,7 +170,7 @@ function RegistrationForm() {
       setError("There was an error processing your payment. Please try again.");
     } finally {
       setLoading(false); // Always stop loading after request completes
-      setDialogOpen(false);
+      // setDialogOpen(false);
     }
   };
 
