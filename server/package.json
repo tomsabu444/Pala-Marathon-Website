@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  
   "scripts": {
     "dev": "nodemon server.js",
     "start": "nodemon server.js"
@@ -19,6 +18,7 @@
     "nodemailer": "^6.9.16",
     "nodemailer-express-handlebars": "^7.0.0",
     "pala-marathon-website": "file:..",
+    "razorpay": "^2.9.5",
     "zod": "^3.23.8"
   },
   "devDependencies": {
