@@ -104,7 +104,9 @@ function RegistrationForm() {
     setLoading(true);
     setError("");
 
-    const isScriptLoaded = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
+    const isScriptLoaded = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
 
     if (!isScriptLoaded) {
       alert("Failed to load Razorpay SDK. Please check your connection.");
@@ -113,17 +115,17 @@ function RegistrationForm() {
 
     try {
       console.log("Form Data:", formData); //! For TESTING
-  
+
       // Single request to register user and create Razorpay order
       const response = await axios.post(
-        `${SERVER_BASE_URL}/payment/order`, 
+        `${SERVER_BASE_URL}/payment/order`,
         formData
       );
-  
+
       const { registrationId, orderId, amount } = response.data;
       console.log("Registration ID:", registrationId); //! For TESTING
       console.log("Order ID:", orderId); //! For TESTING
-  
+
       // Configure Razorpay options
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
@@ -134,25 +136,33 @@ function RegistrationForm() {
         order_id: orderId,
         handler: async function (response) {
           console.log("Payment Success Response:", response); //! For TESTING
-  
-          // Verify payment on backend
-          const verificationResponse = await axios.post(
-            `${SERVER_BASE_URL}/payment/verify`,
-            {
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-              registrationId,
+
+          try {
+            // Verify payment on the backend
+            const verificationResponse = await axios.post(
+              `${SERVER_BASE_URL}/payment/verify`,
+              {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                registrationId,
+              }
+            );
+
+            if (verificationResponse.data.success) {
+              alert("Payment Successful! You are registered for the event.");
+              // Redirect to success page
+            } else {
+              alert("Payment verification failed. Please contact support.");
             }
-          );
-  
-          if (verificationResponse.data.success) {
-            alert("Payment Successful! You are registered for the event.");
-            // Navigate to confirmation page or update UI
-          } else {
-            alert("Payment verification failed. Please contact support.");
+          } catch (error) {
+            console.error("Error during payment verification:", error);
+            alert(
+              "An error occurred during payment verification. Please try again."
+            );
           }
         },
+
         prefill: {
           name: formData.name,
           email: formData.email,
@@ -162,7 +172,7 @@ function RegistrationForm() {
           color: "#FFC1E2",
         },
       };
-  
+
       const paymentObject = new window.Razorpay(options);
       paymentObject.open();
     } catch (error) {
@@ -170,7 +180,7 @@ function RegistrationForm() {
       setError("There was an error processing your payment. Please try again.");
     } finally {
       setLoading(false); // Always stop loading after request completes
-      // setDialogOpen(false);
+      setDialogOpen(false);
     }
   };
 
