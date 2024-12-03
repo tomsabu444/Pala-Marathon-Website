@@ -96,19 +96,19 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
       FamilyFunRun: 500,
     };
 
-    // const razorpayOrder = await razorpay.orders.create({
-    //   amount: PRICING[category] * 100,
-    //   currency: "INR",
-    //   receipt: register_id,
-    // });
+    const razorpayOrder = await razorpay.orders.create({
+      amount: PRICING[category] * 100,
+      currency: "INR",
+      receipt: register_id,
+    });
 
     // Respond with registration ID and Razorpay order details
     res.status(201).json({
       message: "Order created successfully!",
       register_id,
-      // orderId: razorpayOrder.id,
-      // amount: razorpayOrder.amount,
-      // currency: razorpayOrder.currency,
+      orderId: razorpayOrder.id,
+      amount: razorpayOrder.amount,
+      currency: razorpayOrder.currency,
     });
   } catch (error) {
     console.error(error);
