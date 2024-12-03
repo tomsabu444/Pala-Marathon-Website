@@ -10,125 +10,83 @@ const RefundPage = () => {
         style={{ backgroundImage: `url(${terms_condition_banner})` }}
       >
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-outfit font-bold text-white px-4 text-shadow">
-          PRIVACY POLICY
+          REFUND POLICY
         </h1>
       </div>
 
       <MarathonBanner />
       <div className="flex font-outfit mx-auto flex-col p-8 w-full max-w-7xl md:text-lg ">
-        {/* <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 text-shadow">
-          Privacy Policy
-        </h1> */}
-
         <section className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Introduction
-          </h2>
           <p className="text-gray-600">
-            This Privacy Policy outlines how the Pala Marathon (organized by
-            Lions Clubs International District 318B, St. Thomas College, Pala,
-            and Engineers' Forum, Pala) collects, uses, and protects your
-            personal information when you register for the event or interact
-            with our website (palamarathon.efpala.org).
+            The Pala Marathon, organized by the Lions Clubs International District 318B in partnership with St. Thomas College, Palai, and the Engineers' Forum, Pala, is committed to ensuring a fair and transparent refund process for all participants.
           </p>
         </section>
 
         <section className="mb-4">
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Information Collection
+            Refund Eligibility
+          </h2>
+          <ul className="list-disc list-inside text-gray-600">
+            <li>
+              Event Cancellation: Refunds will be issued if the Pala Marathon is canceled due to unforeseen circumstances.
+            </li>
+            <li>
+              Duplicate Transactions: Refunds are available for duplicate registrations or payments.
+            </li>
+            <li>
+              Exceptional Cases: Specific cases, such as medical emergencies, will be reviewed and approved by the event organizers.
+            </li>
+          </ul>
+        </section>
+
+        <section className="mb-4">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            Refund Process
           </h2>
           <p className="text-gray-600">
-            We collect personal information provided directly by you during
-            event registration, including your name, contact details, date of
-            birth, and emergency contact information. Additional information
-            such as your preferred marathon category may also be collected to
-            enhance your event experience.
+            To request a refund, participants must provide the necessary details, including proof of registration and any supporting documents for exceptional cases, such as medical emergencies. Refund requests will be reviewed by the organizing committee and processed within a reasonable timeframe.
+          </p>
+          <p className="text-gray-600 mt-2">
+            Refunds will be issued through the original payment method. Please allow up to 7–10 business days after approval for the refund to reflect in your account.
           </p>
         </section>
 
         <section className="mb-4">
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Use of Information
+            Non-Refundable Conditions
+          </h2>
+          <ul className="list-disc list-inside text-gray-600">
+            <li>Participant withdrawal due to personal reasons or change of plans.</li>
+            <li>Refund requests made after the specified eligibility period.</li>
+            <li>Failure to participate in the event without prior notice.</li>
+          </ul>
+        </section>
+
+        <section className="mb-4">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+            Transfer of Registration
           </h2>
           <p className="text-gray-600">
-            The information we collect is used solely for organizing the
-            marathon event, including processing registrations, assigning bib
-            numbers, and contacting participants regarding event updates. We may
-            also use your information for internal analysis and to improve
-            future events.
-          </p>
-          <p className="text-gray-600">
-            By registering, you consent to receiving occasional communications
-            from us about this and future events related to the Pala Marathon.
+            Participants unable to attend the event may transfer their registration to another eligible individual. This transfer must be initiated and completed at least one week before the event date. Transfers are subject to verification and approval by the organizing team.
           </p>
         </section>
 
         <section className="mb-4">
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Information Sharing and Disclosure
+            Important Notes
           </h2>
-          <p className="text-gray-600">
-            We do not sell, rent, or share your personal information with third
-            parties except as necessary to conduct the event, such as sharing
-            participant lists with timing partners or emergency response teams.
-            All third parties involved in the event are required to handle your
-            data securely and in compliance with this policy.
-          </p>
-        </section>
-
-        <section className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Data Security
-          </h2>
-          <p className="text-gray-600">
-            We prioritize the security of your personal information. Our website
-            and event management systems implement industry-standard security
-            measures to protect your data. However, please be aware that no
-            method of transmission over the internet is completely secure.
-          </p>
-        </section>
-
-        <section className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Cookies and Tracking Technologies
-          </h2>
-          <p className="text-gray-600">
-            Our website uses cookies to enhance your browsing experience and
-            gather usage statistics. Cookies are small data files that your
-            browser stores on your device. You can control or disable cookies
-            through your browser settings, though this may affect certain
-            functionalities of our website.
-          </p>
-        </section>
-
-        <section className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Your Rights
-          </h2>
-          <p className="text-gray-600">
-            You have the right to access, update, or delete your personal
-            information held by us. If you wish to exercise any of these rights,
-            please contact us at privacy@palamarathon.org. We will respond to
-            your request within a reasonable timeframe.
-          </p>
-        </section>
-
-        <section className="mb-4">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
-            Changes to This Policy
-          </h2>
-          <p className="text-gray-600">
-            We may update this Privacy Policy periodically to reflect changes in
-            our practices or for legal, regulatory, or operational reasons. Any
-            changes will be posted on this page, and we encourage you to review
-            our policy periodically.
-          </p>
+          <ul className="list-disc list-inside text-gray-600">
+            <li>Refunds for international payments may be subject to currency conversion rates and additional processing fees.</li>
+            <li>
+              The organizers reserve the right to make decisions on refund eligibility in exceptional cases, ensuring fairness and transparency for all participants.
+            </li>
+            <li>All refund requests and registration transfers must be completed before the event date.</li>
+          </ul>
         </section>
 
         <section className="mt-6 text-center">
           <p className="text-sm text-gray-500">
-            If you have any questions or concerns about this Privacy Policy,
-            please contact us at privacy@palamarathon.org.
+            Thank you for your understanding and cooperation. We look forward to seeing you at the Pala Marathon.
           </p>
         </section>
       </div>
