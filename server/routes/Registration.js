@@ -7,7 +7,7 @@ const {
 const Razorpay = require("razorpay");
 
 const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID_TEST,
+  key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
@@ -105,7 +105,7 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
     // Respond with registration ID and Razorpay order details
     res.status(201).json({
       message: "Order created successfully!",
-      register_id,
+      registrationId: register_id,
       orderId: razorpayOrder.id,
       amount: razorpayOrder.amount,
       currency: razorpayOrder.currency,

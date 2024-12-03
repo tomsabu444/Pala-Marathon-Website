@@ -133,11 +133,11 @@ function RegistrationForm() {
         description: `${formData.category} Registration`,
         order_id: orderId,
         handler: async function (response) {
-          console.log("Payment Success Response:", response);
+          console.log("Payment Success Response:", response); //! For TESTING
   
           // Verify payment on backend
           const verificationResponse = await axios.post(
-            `${SERVER_BASE_URL}/api/payment/verify`,
+            `${SERVER_BASE_URL}/payment/verify`,
             {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
@@ -170,7 +170,7 @@ function RegistrationForm() {
       setError("There was an error processing your payment. Please try again.");
     } finally {
       setLoading(false); // Always stop loading after request completes
-      //! setDialogOpen(false);
+      setDialogOpen(false);
     }
   };
 
