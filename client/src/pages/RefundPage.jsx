@@ -1,6 +1,6 @@
 import React from "react";
-import MarathonBanner from "./MarathonBanner2.0";
-import terms_condition_banner from "../assets/terms-condition-banner.png";
+import MarathonBanner from "../components/MarathonBanner2.0";
+import terms_condition_banner from "../assets/about-us-bg.png";
 
 const RefundPage = () => {
   return (
