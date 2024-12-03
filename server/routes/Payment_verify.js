@@ -41,7 +41,7 @@ router.post("/payment/verify", async (req, res) => {
     );
 
     if (!registration) {
-      return res.status(404).json({ error: "Registration not found" });
+      return res.status(404).json({ error: "Registration user not found" });
     }
 
     // Step 5: Respond with success

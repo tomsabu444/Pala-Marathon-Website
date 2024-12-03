@@ -326,6 +326,7 @@ function RegistrationForm() {
               onClick={handleProceedToPayment}
               color="primary"
               variant="contained"
+              disabled={loading}
             >
               Pay Now
             </Button>
