@@ -15,7 +15,7 @@ router.post("/payment/verify", async (req, res) => {
 
     // Step 2: Generate the expected signature
     const generatedSignature = crypto
-      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRETt)
+      .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
       .update(razorpay_order_id + "|" + razorpay_payment_id)
       .digest("hex");
 
