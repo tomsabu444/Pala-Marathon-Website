@@ -38,6 +38,20 @@ function RegistrationForm() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
+  // ? Countdown for Payment Success Dialog
+  const [PaymentSuccessCountdown, setPaymentSuccessCountdown] = useState(3);
+  useEffect(() => {
+    let timer;
+  
+    if (success) {
+      timer = setInterval(() => {
+        setPaymentSuccessCountdown((prev) => (prev > 0 ? prev - 1 : 0));
+      }, 1000);
+    }
+  
+    return () => clearInterval(timer); // Cleanup interval on component unmount or success state change
+  }, [success])
+  console.log("Countdown:", PaymentSuccessCountdown);
   const navigate = useNavigate();
 
   const methods = useForm({
@@ -306,7 +320,8 @@ function RegistrationForm() {
           {loading
             ? "Processing Payment..."
             : success
-            ? "Payment Successful"
+            ? ""
+            : error ? "Payment Failed"
             : "Proceed to Payment"}
         </DialogTitle>
         <DialogContent
@@ -321,9 +336,41 @@ function RegistrationForm() {
           {loading ? (
             <Loading />
           ) : success ? (
-            <div>
-              <p className="text-green-500 mt-1 text-lg">
-                Payment successfully verified! Redirecting to receipt page...
+            <div className="flex flex-col justify-center items-center text-center">
+              {/* Success SVG */}
+              <svg
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 130.2 130.2"
+                className="w-20 h-20"
+              >
+                <circle
+                  className="path circle"
+                  fill="none"
+                  stroke="#189e14"
+                  strokeWidth="6"
+                  strokeMiterlimit="10"
+                  cx="65.1"
+                  cy="65.1"
+                  r="62.1"
+                />
+                <polyline
+                  className="path check"
+                  fill="none"
+                  stroke="#189e14"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                  strokeMiterlimit="10"
+                  points="100.2,40.2 51.5,88.8 29.8,67.5"
+                />
+              </svg>
+              {/* Heading */}
+              <h4 className="text-green-600 text-xl font-semibold mt-3">
+                Payment Successful
+              </h4>
+              {/* Success Message */}
+              <p className="text-gray-700 mt-3">
+                Payment successfully verified! Redirecting to receipt page in <span className=" text-custom-purple-1001 font-bold">  {PaymentSuccessCountdown}</span>...
               </p>
             </div>
           ) : (
