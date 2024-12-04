@@ -166,18 +166,18 @@ function RegistrationForm() {
             if (verificationResponse.data.success) {
               setSuccess(true); // Set success state
               setDialogOpen(true); // Keep the dialog open to show the success message
-              // setTimeout(() => {
-              //   navigate("/order-receipt", {
-              //     state: {
-              //       registrationId,
-              //       orderId,
-              //       amount,
-              //       category: formData.category,
-              //       name: formData.name,
-              //       email: formData.email,
-              //     },
-              //   });
-              // }, 3000); //? Redirect to /order-receipt page in 3 seconds delay
+              setTimeout(() => {
+                navigate("/order-receipt", {
+                  state: {
+                    registrationId,
+                    orderId,
+                    amount,
+                    category: formData.category,
+                    name: formData.name,
+                    email: formData.email,
+                  },
+                });
+              }, 3000); //? Redirect to /order-receipt page in 3 seconds delay
             } else {
               throw new Error("Payment verification failed.");
             }
