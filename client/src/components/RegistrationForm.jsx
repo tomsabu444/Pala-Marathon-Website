@@ -109,7 +109,8 @@ function RegistrationForm() {
     );
 
     if (!isScriptLoaded) {
-      alert("Failed to load Razorpay SDK. Please check your connection.");
+      setError("Failed to load Razorpay SDK. Please check your connection.");
+      setLoading(false);
       return;
     }
 
@@ -123,8 +124,6 @@ function RegistrationForm() {
       );
 
       const { registrationId, orderId, amount } = response.data;
-      console.log("Registration ID:", registrationId); //! For TESTING
-      console.log("Order ID:", orderId); //! For TESTING
 
       // Configure Razorpay options
       const options = {
@@ -135,8 +134,6 @@ function RegistrationForm() {
         description: `${formData.category} Registration`,
         order_id: orderId,
         handler: async function (response) {
-          console.log("Payment Success Response:", response); //! For TESTING
-
           try {
             // Verify payment on the backend
             const verificationResponse = await axios.post(
@@ -150,19 +147,18 @@ function RegistrationForm() {
             );
 
             if (verificationResponse.data.success) {
-              alert("Payment Successful! You are registered for the event.");
-              // Redirect to success page
+              // alert("Payment Successful! You are registered for the event.");
+              navigate("/order-receipt"); // Redirect to success page
             } else {
-              alert("Payment verification failed. Please contact support.");
+              throw new Error("Payment verification failed.");
             }
           } catch (error) {
             console.error("Error during payment verification:", error);
-            alert(
-              "An error occurred during payment verification. Please try again."
+            setError(
+              "We encountered an issue while verifying your payment. This could be due to a network problem or an issue with the payment gateway. Please try again or contact our support team at support@hultinfo.tech for assistance. We apologize for the inconvenience."
             );
           }
         },
-
         prefill: {
           name: formData.name,
           email: formData.email,
@@ -171,16 +167,24 @@ function RegistrationForm() {
         theme: {
           color: "#FFC1E2",
         },
+        modal: {
+          ondismiss: () => {
+            setError("Payment was cancelled by the user.");
+            setLoading(false);
+          },
+        },
       };
 
       const paymentObject = new window.Razorpay(options);
       paymentObject.open();
     } catch (error) {
       console.error("Error during registration or payment:", error);
-      setError("There was an error processing your payment. Please try again.");
+      setError(
+        "There was an error processing your payment. This could be due to a network issue or a problem with the payment gateway.Please try again. If the issue persists, you can contact support for further assistance. We apologize for the inconvenience."
+      );
     } finally {
       setLoading(false); // Always stop loading after request completes
-      setDialogOpen(false);
+      setDialogOpen(true); // Ensure dialog stays open
     }
   };
 
@@ -293,13 +297,7 @@ function RegistrationForm() {
           ) : (
             <div>
               {error ? (
-                <p className="text-red-500 mt-1  text-lg">
-                  There was an error processing your payment. This could be due
-                  to a network issue or a problem with the payment gateway.
-                  Please try again. If the issue persists, you can contact
-                  support for further assistance. We apologize for the
-                  inconvenience.
-                </p>
+                <p className="text-red-500 mt-1  text-lg">{error}</p>
               ) : (
                 <p>
                   You're almost done! Please confirm that all provided
