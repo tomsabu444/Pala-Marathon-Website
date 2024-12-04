@@ -148,7 +148,16 @@ function RegistrationForm() {
 
             if (verificationResponse.data.success) {
               // alert("Payment Successful! You are registered for the event.");
-              navigate("/order-receipt"); // Redirect to success page
+              navigate("/order-receipt", {
+                state: {
+                  registrationId,
+                  orderId,
+                  amount,
+                  category: formData.category,
+                  name: formData.name,
+                  email: formData.email,
+                },
+              }); // Redirect to success page
             } else {
               throw new Error("Payment verification failed.");
             }
