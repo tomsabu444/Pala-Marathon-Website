@@ -36,6 +36,8 @@ function RegistrationForm() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
   const navigate = useNavigate();
 
   const methods = useForm({
@@ -98,6 +100,7 @@ function RegistrationForm() {
   const handleDialogClose = () => {
     setDialogOpen(false);
     setError("");
+    setSuccess(false);
   };
 
   const handleProceedToPayment = async () => {
@@ -147,17 +150,20 @@ function RegistrationForm() {
             );
 
             if (verificationResponse.data.success) {
-              // alert("Payment Successful! You are registered for the event.");
-              navigate("/order-receipt", {
-                state: {
-                  registrationId,
-                  orderId,
-                  amount,
-                  category: formData.category,
-                  name: formData.name,
-                  email: formData.email,
-                },
-              }); // Redirect to success page
+              setSuccess(true); // Set success state
+              setDialogOpen(true); // Keep the dialog open to show the success message
+              // setTimeout(() => {
+              //   navigate("/order-receipt", {
+              //     state: {
+              //       registrationId,
+              //       orderId,
+              //       amount,
+              //       category: formData.category,
+              //       name: formData.name,
+              //       email: formData.email,
+              //     },
+              //   });
+              // }, 3000); //? Redirect to /order-receipt page in 3 seconds delay
             } else {
               throw new Error("Payment verification failed.");
             }
@@ -288,9 +294,20 @@ function RegistrationForm() {
       </div>
 
       {/* //! Dialog for Proceeding to Payment */}
-      <Dialog open={dialogOpen} onClose={loading ? null : handleDialogClose}>
+      <Dialog
+        open={dialogOpen}
+        onClose={(event, reason) => {
+          if (reason !== "backdropClick" && reason !== "escapeKeyDown") {
+            handleDialogClose();
+          }
+        }}
+      >
         <DialogTitle>
-          {loading ? "Processing Payment..." : "Proceed to Payment"}
+          {loading
+            ? "Processing Payment..."
+            : success
+            ? "Payment Successful"
+            : "Proceed to Payment"}
         </DialogTitle>
         <DialogContent
           sx={{
@@ -303,10 +320,16 @@ function RegistrationForm() {
         >
           {loading ? (
             <Loading />
+          ) : success ? (
+            <div>
+              <p className="text-green-500 mt-1 text-lg">
+                Payment successfully verified! Redirecting to receipt page...
+              </p>
+            </div>
           ) : (
             <div>
               {error ? (
-                <p className="text-red-500 mt-1  text-lg">{error}</p>
+                <p className="text-red-500 mt-1 text-lg">{error}</p>
               ) : (
                 <p>
                   You're almost done! Please confirm that all provided
@@ -332,6 +355,7 @@ function RegistrationForm() {
               onClick={handleDialogClose}
               color="secondary"
               variant="outlined"
+              disabled={loading || success} // Disable if loading or success state is active
             >
               Cancel
             </Button>
@@ -343,7 +367,7 @@ function RegistrationForm() {
               onClick={handleProceedToPayment}
               color="primary"
               variant="contained"
-              disabled={loading}
+              disabled={loading || success} // Disable if loading or success state is active
             >
               Pay Now
             </Button>
