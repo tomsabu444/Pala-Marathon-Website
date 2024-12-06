@@ -1,5 +1,7 @@
 import React from 'react';
 import MarathonBanner from "../components/MarathonBanner2.0";
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import qrcode from "Pala-Marathon-Website/client/src/assets/bi_qr-code.png";
 
 const RegistrationConfirmation = () => {
   return (
@@ -40,17 +42,17 @@ const RegistrationConfirmation = () => {
         <div className="mt-4">
           <h3 className="text-lg font-medium mb-2">Your QR Code:</h3>
           <div className="flex justify-center">
-            <img src="/api/placeholder/200/200" alt="QR Code" />
+            <img src={qrcode} alt="QR Code" />
           </div>
           <p className="text-center text-sm">Scan this QR code at the event for a quick check-in.</p>
         </div>
 
         <div className="mt-4 text-center">
-          <a href="#" className="text-purple-600 px-4 py-2 border border-purple-600 rounded hover:bg-purple-600 hover:text-white">Download your ticket</a>
+          <a href="#" className="text-white px-4 py-2 border border-purple-600 rounded bg-purple-600 ">Download your ticket</a>
         </div>
 
         <div className="mt-4 text-right">
-          <button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded">Back</button>
+          <button className=" text-grey border border-[black] px-4 py-2 rounded"><KeyboardArrowLeftIcon/>Back</button>
         </div>
       </div>
 
