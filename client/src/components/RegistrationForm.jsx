@@ -175,6 +175,7 @@ function RegistrationForm() {
                     category: formData.category,
                     name: formData.name,
                     email: formData.email,
+                    phone: formData.phone,
                     qrCodeData: verificationResponse.data.qrCodeData,
                   },
                 });
