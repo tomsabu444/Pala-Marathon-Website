@@ -44,7 +44,7 @@ const RegistrationConfirmation = () => {
               <p>{phone}</p>
               <p className="font-medium">Amount Paid:</p>
               <p>₹{amount/100}/-</p>
-              <p className="font-medium">Order ID:</p>
+              <p className="font-medium">Registration ID:</p>
               <p>{registrationId}</p>
               <p className="font-medium">Order ID:</p>
               <p>{orderId}</p>
