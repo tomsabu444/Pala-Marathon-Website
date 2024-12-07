@@ -27,35 +27,35 @@
         <h2>Your Marathon Registration Confirmation</h2>
       </div>
       <div class="content">
-        <h1>Thank You for Registering, [Participant’s First Name]!</h1>
-        <p>We’re thrilled to have you join us for the [Marathon Name]!</p>
+        <h1>Thank You for Registering, {{name}}!</h1>
+        <p>We’re thrilled to have you join us for the {{marathonName}}!</p>
 
         <div class="section">
           <h2>Registration Details</h2>
           <table>
             <tr>
               <th>Race Category</th>
-              <td>[Category Name, e.g., Full Marathon, Half Marathon, 10K]</td>
+              <td>{{category}}</td>
             </tr>
             <tr>
               <th>Phone Number</th>
-              <td>[Participant's Phone Number]</td>
+              <td>{{phone}}</td>
             </tr>
             <tr>
               <th>Amount Paid</th>
-              <td class="amount">[Total Amount Paid]</td>
+              <td class="amount">{{amountPaid}}</td>
             </tr>
             <tr>
               <th>Payment Type</th>
-              <td>[Payment Method]</td>
+              <td>{{paymentType}}</td>
             </tr>
             <tr>
               <th>Transaction ID</th>
-              <td>[Transaction ID]</td>
+              <td>{{transactionId}}</td>
             </tr>
             <tr>
               <th>Order ID</th>
-              <td>[Order ID]</td>
+              <td>{{orderId}}</td>
             </tr>
           </table>
         </div>
@@ -63,18 +63,18 @@
         <div class="section">
           <h2>Your QR Code</h2>
           <p>Scan this QR code at the event for a quick check-in:</p>
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=[QR Code Data]" alt="QR Code for Check-In" style="width:150px; height:150px; border:1px solid #ddd;" />
+          <img src="cid:{{qrCodeCid}}" alt="QR Code for Check-In" style="width:150px; height:150px; border:1px solid #ddd;" />
         </div>
 
         <div class="section">
           <h2>Download Your Ticket</h2>
           <p>Click the link below to download your ticket as a PDF:</p>
-          <a href="[Ticket PDF URL]" class="btn" download>Download Ticket PDF</a>
+          <a href="{{ticketPdfUrl}}" class="btn" download>Download Ticket PDF</a>
         </div>
       </div>
 
       <div class="footer">
-        <p>Thank you for being part of the Pala Marathon community. We look forward to seeing you on race day!</p>
+        <p>Thank you for being part of the {{marathonName}} community. We look forward to seeing you on race day!</p>
         <p>Follow us on social media for updates and more: [Facebook, Instagram, Twitter]</p>
       </div>
     </div>

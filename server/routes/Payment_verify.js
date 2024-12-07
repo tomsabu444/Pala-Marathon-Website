@@ -1,7 +1,8 @@
 const express = require("express");
 const crypto = require("crypto");
 const Registration = require("../models/RegistrationSchema");
-const QRCode = require("qrcode"); // Import the qrcode library
+const QRCode = require("qrcode");
+const EmailNotification = require("./EmailNotification");
 
 const router = express.Router();
 
@@ -48,12 +49,27 @@ router.post("/payment/verify", async (req, res) => {
     // Step 5: Generate QR code for the registrationId
     const qrCodeData = await QRCode.toDataURL(registrationId); // Generate a QR code for registrationId
 
+    
     // Step 6: Respond with success and send QR code to the frontend
     res.status(200).json({
       success: true,
       message: "Payment verified successfully",
       qrCodeData, // Sending the QR code data URL to the frontend
     });
+    
+    // Step 7: Send receipt email
+    const emailResult = await EmailNotification.sendEmail({
+     registration,
+     qrCodeData,
+   });
+
+   if (!emailResult.success) {
+     console.error("Email sending failed:", emailResult.error);
+     return res.status(500).json({
+       success: false,
+       message: "Payment verified but failed to send email",
+     });
+   }
   } catch (error) {
     console.error("Error during payment verification:", error);
     res.status(500).json({ error: "Internal server error during verification" });
