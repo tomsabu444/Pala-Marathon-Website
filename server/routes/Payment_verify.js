@@ -1,6 +1,7 @@
 const express = require("express");
 const crypto = require("crypto");
 const Registration = require("../models/RegistrationSchema");
+const QRCode = require("qrcode"); // Import the qrcode library
 
 const router = express.Router();
 
@@ -44,8 +45,15 @@ router.post("/payment/verify", async (req, res) => {
       return res.status(404).json({ error: "Registration user not found" });
     }
 
-    // Step 5: Respond with success
-    res.status(200).json({ success: true, message: "Payment verified successfully" });
+    // Step 5: Generate QR code for the registrationId
+    const qrCodeData = await QRCode.toDataURL(registrationId); // Generate a QR code for registrationId
+
+    // Step 6: Respond with success and send QR code to the frontend
+    res.status(200).json({
+      success: true,
+      message: "Payment verified successfully",
+      qrCodeData, // Sending the QR code data URL to the frontend
+    });
   } catch (error) {
     console.error("Error during payment verification:", error);
     res.status(500).json({ error: "Internal server error during verification" });

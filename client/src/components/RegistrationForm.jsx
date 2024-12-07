@@ -175,6 +175,7 @@ function RegistrationForm() {
                     category: formData.category,
                     name: formData.name,
                     email: formData.email,
+                    qrCodeData: verificationResponse.data.qrCodeData,
                   },
                 });
               }, 3000); //? Redirect to /order-receipt page in 3 seconds delay
@@ -310,11 +311,7 @@ function RegistrationForm() {
       {/* //! Dialog for Proceeding to Payment */}
       <Dialog
         open={dialogOpen}
-        onClose={(event, reason) => {
-          if (reason !== "backdropClick" && reason !== "escapeKeyDown") {
-            handleDialogClose();
-          }
-        }}
+
       >
         <DialogTitle>
           {loading
