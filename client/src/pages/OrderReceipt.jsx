@@ -40,7 +40,7 @@ const RegistrationConfirmation = () => {
               <p>{category}</p>
               <p className="font-medium">Name:</p>
               <p>{name}</p>
-              <p className="font-medium">Phone <Number></Number>:</p>
+              <p className="font-medium">Phone Number:</p>
               <p>{phone}</p>
               <p className="font-medium">Amount Paid:</p>
               <p>₹{amount/100}/-</p>
