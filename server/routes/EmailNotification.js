@@ -57,7 +57,7 @@ async function sendEmail({ registration }) {
     category: data.category,
     phone: data.phone,
     amountPaid: PRICING[data.category], 
-    paymentType: "", // Replace with actual payment type if stored
+    paymentType: "N/A", // Replace with actual payment type if stored
     transactionId: razorpay_payment_id,
     orderId: razorpay_order_id,
     qrCodeCid: "qrcode_cid",
