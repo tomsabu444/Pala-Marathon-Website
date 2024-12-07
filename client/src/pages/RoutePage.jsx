@@ -2,7 +2,6 @@ import React from "react";
 import rectangle from "../assets/rectangle_bar.svg";
 import road from "../assets/road.png";
 import smRoad from "../assets/s-road.png"; // Small screen road image
-import { Link } from "react-router-dom";
 
 const RoutePage = () => {
   return (
@@ -87,9 +86,9 @@ const RoutePage = () => {
 
             {/* Register Button */}
             <div className="mt-12 flex justify-center md:justify-start">
-              <Link to='/register' className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-lg font-semibold text-purple-900 border-2 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white transition duration-300">
+              <button className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-lg font-semibold text-purple-900 border-2 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white transition duration-300">
                 REGISTER NOW
-              </Link>
+              </button>
             </div>
           </div>
         </div>

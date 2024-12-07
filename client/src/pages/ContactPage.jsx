@@ -23,14 +23,13 @@ function ContactPage() {
   const position = [9.70126, 76.664652];
 
   const handleMarkerClick = () => {
-    window.open(
-      `https://www.google.com/maps?q=${position[0]},${position[1]}`,
-      "_blank"
-    );
+    window.open(`https://www.google.com/maps?q=${position[0]},${position[1]}`, "_blank");
   };
 
   return (
-    <div className="relative font-outfit text-gray-800 bg-white ">
+    <div
+      className="relative font-outfit text-gray-800 bg-white "
+    >
       {/* Dots Pattern - Reduced size */}
       <motion.div
         className="hidden lg:block absolute bottom-8 left-0 opacity-70"
@@ -45,16 +44,12 @@ function ContactPage() {
       {/* Rectangle Bar */}
       <motion.div
         className="hidden md:block absolute right-0 top-0 w-20 lg:w-24 h-auto"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0}}
+        whileInView={{ opacity: 1}}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <img
-          src={rectangle_bar}
-          alt="Rectangle Bar"
-          className="w-full h-full"
-        />
+        <img src={rectangle_bar} alt="Rectangle Bar" className="w-full h-full" />
       </motion.div>
 
       <div className="flex flex-col lg:flex-row gap-6 p-4 sm:p-6 lg:p-20 mx-auto">
@@ -80,8 +75,7 @@ function ContactPage() {
                 eventHandlers={{ click: handleMarkerClick }}
               >
                 <Popup className="text-sm sm:text-base font-medium">
-                  St. Thomas College Palai <br /> Assembly Point for the
-                  Marathon
+                  St. Thomas College Palai <br /> Assembly Point for the Marathon
                 </Popup>
               </Marker>
             </MapContainer>
@@ -100,18 +94,14 @@ function ContactPage() {
             CONTACT <span className="font-semibold">US</span>
           </h1>
           <p className="text-sm xs:text-base sm:text-lg leading-relaxed text-gray-700">
-            For any questions or assistance regarding the Pala Marathon 2024,
-            feel free to reach out:
+            For any questions or assistance regarding the Pala Marathon 2024, feel free to reach out:
           </p>
           <ul className="mt-4 space-y-3">
             <li className="flex items-center gap-2">
               <span className="text-lg sm:text-xl">📞</span>
               <div className="text-sm xs:text-base sm:text-lg">
                 <span className="font-bold">Phone:</span>{" "}
-                <a
-                  href="tel:+919846566483"
-                  className="text-purple-800 hover:underline hover:text-purple-900"
-                >
+                <a href="tel:+919846566483" className="text-purple-800 hover:underline hover:text-purple-900">
                   +919846566483
                 </a>
               </div>
@@ -120,10 +110,7 @@ function ContactPage() {
               <span className="text-lg sm:text-xl">📧</span>
               <div className="text-sm xs:text-base sm:text-lg">
                 <span className="font-bold">Email:</span>{" "}
-                <a
-                  href="mailto:palamarathon@gmail.com"
-                  className="text-purple-800 hover:underline hover:text-purple-900"
-                >
+                <a href="mailto:palamarathon@gmail.com" className="text-purple-800 hover:underline hover:text-purple-900">
                   palamarathon@gmail.com
                 </a>
               </div>
@@ -145,13 +132,10 @@ function ContactPage() {
           </ul>
 
           <div className="mt-6 sm:mt-8 bg-purple-50/50 p-3 sm:p-4 rounded-lg border border-purple-150">
-            <h2 className="font-bold text-lg sm:text-xl text-purple-900 mb-2">
-              Assembly Point:
-            </h2>
+            <h3 className="font-bold text-lg sm:text-xl text-purple-900 mb-2">Assembly Point:</h3>
             <p className="text-sm xs:text-base sm:text-lg leading-relaxed text-gray-700">
               Starting Location: Pala Community Park, Main Entrance <br />
-              Please arrive by 6:30 AM for check-in and warm-up activities.{" "}
-              <br />
+              Please arrive by 6:30 AM for check-in and warm-up activities. <br />
               The marathon will begin promptly at 7:00 AM.
             </p>
           </div>

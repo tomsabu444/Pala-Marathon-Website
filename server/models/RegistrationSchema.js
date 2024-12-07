@@ -35,24 +35,17 @@ const RegistrationSchema = new mongoose.Schema(
         bloodPressureMedication: { type: String, default: null },
         otherReason: { type: String, default: null },
       },
-      category: { type: String, required: true },
+      category: {
+        type: String,
+        required: true,
+      },
       nameOnBib: { type: String, required: true },
       clubParticipation: { type: String, default: null },
       couponCode: { type: String, default: null },
       consent: { type: Boolean, required: true },
-    },
-    paymentStatus: {
-      type: String,
-      enum: ["Pending", "Paid", "Failed"],
-      default: "Pending",
-    },
-    razorpayDetails: {
-      razorpay_order_id: { type: String },
-      razorpay_payment_id: { type: String },
-      razorpay_signature: { type: String },
-    },
+    }
   },
-  { versionKey: false, timestamps: true } // Enable timestamps for createdAt and updatedAt
+  { versionKey: false }
 );
 
 module.exports = mongoose.model("Registration", RegistrationSchema);

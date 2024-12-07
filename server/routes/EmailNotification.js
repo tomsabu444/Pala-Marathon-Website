@@ -1,95 +1,64 @@
-const nodemailer = require("nodemailer");
-const QRCode = require("qrcode");
-const path = require("path");
-require("dotenv").config();
+const express = require('express');
+const nodemailer = require('nodemailer');
+const path = require('path');
+require('dotenv').config();
 
+const router = express.Router();
+
+// Nodemailer transporter configuration
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USERNAME,
-    pass: process.env.EMAIL_PASSWORD,
-  },
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+    },
 });
 
 // Async function to configure handlebars
 async function configureHandlebars() {
-  const { default: hbs } = await import("nodemailer-express-handlebars");
+    // Dynamically import nodemailer-express-handlebars
+    const { default: hbs } = await import('nodemailer-express-handlebars');
 
-  const handlebarsOptions = {
-    viewEngine: {
-      partialsDir: path.resolve("./routes/template/"),
-      defaultLayout: false,
-    },
-    viewPath: path.resolve("./routes/template/"),
-    extName: ".hbs",
-  };
+    const handlebarsOptions = {
+        viewEngine: {
+            partialsDir: path.resolve('./routes/template/'),
+            defaultLayout: false,
+        },
+        viewPath: path.resolve('./routes/template/'),
+        extName: '.hbs',
+    };
 
-  transporter.use("compile", hbs(handlebarsOptions));
+    // Use handlebars with the transporter
+    transporter.use('compile', hbs(handlebarsOptions));
 }
 
-// Call the configuration function
+// Call the async function to configure handlebars
 configureHandlebars();
 
-// Pricing based on category
-const PRICING = {
-  HalfMarathon: 900,
-  "10KmMarathon": 700,
-  FamilyFunRun: 500,
-};
+// Define the email route
+router.post('/send-email', (req, res) => {
+    const { to, subject, ticketNumber, barcodeURL } = req.body; 
 
-/**
- * Sends an email notification with QR code as an inline attachment.
- * @param {Object} options - Email options.
- * @param {Object} options.registration - Registration data from the database.
- * @returns {Promise<Object>} Result of the email operation.
- */
-async function sendEmail({ registration }) {
-  const { data, razorpayDetails } = registration;
-  const { razorpay_payment_id, razorpay_order_id } = razorpayDetails;
-
-  // Generate QR code as a buffer
-  const qrCodeBuffer = await QRCode.toBuffer(registration.register_id);
-
-  // Email context for the Handlebars template
-  const emailContext = {
-    name: data.name,
-    marathonName: "Pala Marathon", // Replace with your event name
-    category: data.category,
-    phone: data.phone,
-    amountPaid: PRICING[data.category], 
-    paymentType: "N/A", // Replace with actual payment type if stored
-    transactionId: razorpay_payment_id,
-    orderId: razorpay_order_id,
-    qrCodeCid: "qrcode_cid",
-  };
-
-  return new Promise((resolve) => {
     const mailOptions = {
-      from: process.env.EMAIL_USERNAME,
-      to: data.email,
-      subject: "Marathon Registration Confirmation",
-      template: "ticket",
-      context: emailContext,
-      attachments: [
-        {
-          filename: "QRCode.png",
-          content: qrCodeBuffer,
-          contentType: "image/png",
-          cid: "qrcode_cid",
+        from: process.env.EMAIL_USER,
+        to,
+        subject,
+        template: 'ticket',
+        context: {
+            ticketNumber,
+            barcodeURL,
         },
-      ],
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Error sending email:", error);
-        resolve({ success: false, error });
-      } else {
-        console.log("Email sent: " + info.response);
-        resolve({ success: true, response: info.response });
-      }
+        if (error) {
+            console.log(error);
+            res.status(500).send({ message: 'Error sending email' });
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.status(200).send({ message: 'Email sent successfully!' });
+        }
     });
-  });
-}
+});
 
-module.exports = { sendEmail };
+module.exports = router;

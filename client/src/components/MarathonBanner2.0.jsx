@@ -17,7 +17,7 @@ function MarathonBanner() {
             <img src={runners_img} alt="Runners img" />
           </div>
         </div>
-        <div className="w-full justify-center flex flex-col items-center  h-full mt-6 md:mt-0 text-center">
+        <div className="w-full mt-6 md:mt-0 text-center">
           {/* <img
           src="https://placehold.co/150x40?text=Title+Sponsor+Logo"
           alt="Title Sponsor Logo"
@@ -31,11 +31,7 @@ function MarathonBanner() {
             19<sup className="text-sm">th</sup> January 2025
           </p>
         </div>
-        <div
-          className={`flex md:flex w-3/6 h-full mx-auto items-center ${
-            location.pathname !== "/register" ? "" : "hidden md:flex"
-          }`}
-        >
+        <div className="flex md:flex w-3/6 h-full mx-auto items-center">
           {location.pathname !== "/register" && (
             <Link
               to="/register"

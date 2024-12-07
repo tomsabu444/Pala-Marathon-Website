@@ -14,11 +14,10 @@ app.use(cors());
 connectDB(); //! Initialize MongoDB connection
 
 //* Define routes
-const registrationRoute = require('./routes/Registration');
-const PaymentverifyRoute = require('./routes/Payment_verify');
+const registrationRoutes = require('./routes/Registration');
 //? API routes
-app.use('/', registrationRoute);
-app.use('/', PaymentverifyRoute);
+app.use('/', registrationRoutes);
+
 // const emailNotificationRouter = require('./routes/EmailNotification');
 // app.use('/email', emailNotificationRouter);
 
