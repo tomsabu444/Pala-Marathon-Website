@@ -1,10 +1,5 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import ContactPage from "./ContactPage";
-import GoverningBodyPage from "./GoverningBodyPage";
-import VisionPage from "./VisionPage";
-import RoutePage from "./RoutePage";
-
 import PalaMarathon from "../assets/PalaMarathon.svg";
 import { Link } from "react-router-dom";
 
@@ -14,6 +9,12 @@ import CountdownTimer from "../components/CountdownTimer";
 
 import bg_img_homepage from "../assets/bg-homepage.png";
 import bg_mobile from "../assets/bg-for-mobile.png";
+import Loading from "../components/Loading";
+
+const VisionPage = lazy(() => import("./VisionPage"));
+const RoutePage = lazy(() => import("./RoutePage"));
+const GoverningBodyPage = lazy(() => import("./GoverningBodyPage"));
+const ContactPage = lazy(() => import("./ContactPage"));
 
 function HomePage() {
   // Animation Variants
@@ -117,10 +118,10 @@ function HomePage() {
               </h1>
 
               <Link
-                to="/"
+                to="/register"
                 className="px-8 py-3 mt-4 text-white bg-[#330A48] rounded-full md:text-xl"
               >
-                REGISTRATION OPENING SOON
+                REGISTER NOW
               </Link>
             </motion.div>
 
@@ -151,33 +152,41 @@ function HomePage() {
         </motion.div>
       </motion.div>
 
-        {/* Vision */}
+      {/* Vision */}
+      <Suspense fallback={<Loading />}>
         <VisionPage />
+      </Suspense>
 
       {/* Route */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={containerVariants}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <RoutePage />
-      </motion.div>
+      <Suspense fallback={<Loading />}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <RoutePage />
+        </motion.div>
+      </Suspense>
 
       {/* Governing Body */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={containerVariants}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <GoverningBodyPage />
-      </motion.div>
+      <Suspense fallback={<Loading />}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <GoverningBodyPage />
+        </motion.div>
+      </Suspense>
 
       {/* Contact Us */}
-      <div id="contact-section">
-        <ContactPage />
-      </div>
+      <Suspense fallback={<Loading />}>
+        <div id="contact-section">
+          <ContactPage />
+        </div>
+      </Suspense>
     </>
   );
 }
