@@ -50,7 +50,7 @@ const RegistrationConfirmation = () => {
         </p>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="w-full lg:w-2/5">
+          <div className="w-full lg:w-2/5 lg:ml-24">
             <h3 className="text-lg sm:text-xl font-bold text-[#330A48] mb-4">REGISTRATION DETAILS:</h3>
             <div className="text-[#330A48] space-y-2 text-base sm:text-lg">
               <p><strong className="font-medium">Race Category:</strong> {category}</p>
@@ -60,7 +60,7 @@ const RegistrationConfirmation = () => {
               <p><strong className="font-medium">Transaction ID:</strong> 2346754</p>
               <p><strong className="font-medium">Order ID:</strong> {orderId}</p>
             </div>
-            <hr className="border-t border-[#9D356D] my-4" />
+            <hr className="border-t-2 border-[#9D356D] my-4" />
             <div className="text-center sm:text-left">
               <h3 className="text-lg sm:text-xl font-semibold text-black mb-4">Your QR Code:</h3>
               <div className="flex justify-center sm:block">
