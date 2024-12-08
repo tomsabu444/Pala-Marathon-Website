@@ -32,23 +32,23 @@ function MarathonBanner() {
           </p>
         </div>
         <div
-          className={`flex md:flex w-3/6 h-full mx-auto items-center ${
-            location.pathname !== "/register" ? "" : "hidden md:flex"
-          }`}
-        >
-          {location.pathname !== "/register" && (
-            <Link
-              to="/register"
-              className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
-              style={{
-                backgroundImage: `url(${registern_now_bg})`,
-                filter: "sepia(0.3) hue-rotate(30deg) brightness(1.1)",
-              }}
-            >
-              REGISTER NOW
-            </Link>
-          )}
-        </div>
+  className={`flex md:flex w-3/6 h-full mx-auto items-center ${
+    location.pathname !== "/register" && location.pathname !== "/order-receipt" ? "" : "hidden md:flex"
+  }`}
+>
+  {location.pathname !== "/register" && location.pathname !== "/order-receipt" && (
+    <Link
+      to="/register"
+      className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${registern_now_bg})`,
+        filter: "sepia(0.3) hue-rotate(30deg) brightness(1.1)",
+      }}
+    >
+      REGISTER NOW
+    </Link>
+  )}
+</div>
       </div>
     </div>
   );
