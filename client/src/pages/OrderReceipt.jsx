@@ -4,7 +4,29 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import { useLocation, useNavigate } from "react-router-dom";
+
+// Add print-specific styles
+const printStyles = `
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-section, .print-section * {
+    visibility: visible;
+  }
+  .print-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  @page {
+    margin: 10mm;
+  }
+}
+`;
 
 const RegistrationConfirmation = () => {
   const location = useLocation();
@@ -23,10 +45,15 @@ const RegistrationConfirmation = () => {
     navigate(-1); 
   };
 
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
     <>
+      <style>{printStyles}</style>
       <MarathonBanner />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 print-section">
         <div className="flex flex-col sm:flex-row gap-3 items-center mb-4">
           <div className="flex items-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-black mr-3">Registration Confirmed</h2>
@@ -73,10 +100,19 @@ const RegistrationConfirmation = () => {
               <p className="text-xs sm:text-sm text-[#444444] mt-2 text-center sm:text-left">
                 Scan this QR code at the event for a quick check-in.
               </p>
+              <div className="flex justify-center sm:justify-start mt-4 print:hidden">
+                <button 
+                  onClick={handlePrint}
+                  className="flex items-center text-white bg-[#330A48] px-4 py-2 rounded-md hover:bg-purple-900"
+                >
+                  <PrintOutlinedIcon className="mr-2" />
+                  Print Ticket
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="w-full lg:w-1/3 max-w-sm mx-auto">
+          <div className="w-full lg:w-1/3 max-w-sm mx-auto print:hidden">
             <div className="border border-[#330A48] rounded-md bg-pink-50">
               <a
                 href="tel:9858683445"
@@ -103,7 +139,7 @@ const RegistrationConfirmation = () => {
           </div>
         </div>
 
-        <div className='flex justify-center mt-8'>
+        <div className='flex justify-center mt-8 print:hidden'>
           <button 
             onClick={handleBack}
             className="flex items-center text-[#4A4A4A] border border-[#4A4A4A] px-4 py-2 rounded-md hover:bg-gray-100"
