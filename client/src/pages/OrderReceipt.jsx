@@ -20,7 +20,7 @@ const RegistrationConfirmation = () => {
   } = location.state || {};
 
   const handleBack = () => {
-    navigate(-1); // Navigate to the previous page
+    navigate(-1); 
   };
 
   return (
