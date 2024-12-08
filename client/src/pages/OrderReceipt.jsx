@@ -7,7 +7,6 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
 import { useLocation, useNavigate } from "react-router-dom";
 
-// Add print-specific styles
 const printStyles = `
 @media print {
   body * {
