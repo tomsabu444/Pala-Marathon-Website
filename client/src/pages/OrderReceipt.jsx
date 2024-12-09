@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MarathonBanner from "../components/MarathonBanner2.0";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
@@ -40,6 +40,13 @@ const RegistrationConfirmation = () => {
     phone,
     qrCodeData 
   } = location.state || {};
+
+    // Check if the required data is missing the goto 404 page
+    useEffect(() => {
+      if (!registrationId || !orderId || !amount || !category || !name || !email) {
+        navigate("/404");
+      }
+    }, [registrationId, orderId, amount, category, name, email, navigate]);
 
   const handleBack = () => {
     navigate(-1); 
