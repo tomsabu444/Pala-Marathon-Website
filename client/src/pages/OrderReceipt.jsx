@@ -31,13 +31,14 @@ const RegistrationConfirmation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const {
-    registrationId,
-    orderId,
-    amount,
-    category,
+    registrationId, 
+    orderId, 
+    amount, 
+    category, 
+    name, 
     email,
     phone,
-    qrCodeData,
+    qrCodeData 
   } = location.state || {};
 
   const handleBack = () => {
@@ -80,10 +81,10 @@ const RegistrationConfirmation = () => {
             <h3 className="text-lg sm:text-xl font-bold text-[#330A48] mb-4">REGISTRATION DETAILS:</h3>
             <div className="text-[#330A48] space-y-2 text-base sm:text-lg">
               <p><strong className="font-medium">Race Category:</strong> {category}</p>
+              <p><strong className="font-medium">Name:</strong> {name}</p>
               <p><strong className="font-medium">Phone Number:</strong> {phone}</p>
               <p><strong className="font-medium">Amount Paid:</strong> ₹{amount / 100}/-</p>
-              <p><strong className="font-medium">Payment type:</strong> UPI</p>
-              <p><strong className="font-medium">Transaction ID:</strong> 2346754</p>
+              <p><strong className="font-medium">Registration ID:</strong> {registrationId}</p>
               <p><strong className="font-medium">Order ID:</strong> {orderId}</p>
             </div>
             <hr className="border-t-2 border-[#9D356D] my-4" />
