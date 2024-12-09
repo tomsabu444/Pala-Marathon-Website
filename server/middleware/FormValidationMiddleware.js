@@ -76,7 +76,7 @@ const formSchema = z.object({
   nameOnBib: z
     .string()
     .min(1, "Name on BIB is required")
-    .max(4, "Name on BIB should be less than 4 characters"),
+    .max(12, "Name on BIB should be less than 4 characters"),
   clubParticipation: z.string().optional(),
   couponCode: z.string().optional(),
   consent: z.boolean().refine((val) => val === true, "Consent is required"),
