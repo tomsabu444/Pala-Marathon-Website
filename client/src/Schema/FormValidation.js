@@ -94,7 +94,7 @@ const categoryConsentSchema = z.object({
   nameOnBib: z
     .string()
     .min(1, "Name on BIB is required")
-    .max(12, "Name on BIB should be less than 4 characters"),
+    .max(12, "Name on BIB should be less than 12 characters"),
   clubParticipation: z.string().optional(),
   couponCode: z.string().optional(),
 });
