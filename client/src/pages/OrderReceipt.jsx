@@ -122,22 +122,24 @@ const RegistrationConfirmation = () => {
           <div className="w-full lg:w-1/3 max-w-sm mx-auto print:hidden">
             <div className="border border-[#330A48] rounded-md bg-pink-50">
               <a
-                href="tel:9858683445"
+                href="tel:+919846566483"
                 className="flex items-center p-4 border-b border-[#330A48] text-[#330A48] hover:bg-purple-100"
               >
                 <PhoneOutlinedIcon className="mr-3 text-base sm:text-lg"/> 
-                <span className="text-sm sm:text-base">985868 3445</span>
+                <span className="text-sm sm:text-base">+91 9846566483</span>
               </a>
               <a
-                href="mailto:EMAIL US"
+                href="mailto:palamarathon@gmail.com"
                 className="flex items-center p-4 border-b border-[#330A48] text-[#330A48] hover:bg-purple-100"
               >
                 <MailOutlinedIcon className="mr-3 text-base sm:text-lg"/> 
                 <span className="text-sm sm:text-base">EMAIL US</span>
               </a>
               <a
-                href="#"
+                href="https://wa.me/919846566483"
                 className="flex items-center p-4 text-[#330A48] hover:bg-purple-100"
+                target="_blank"
+                rel="noopener noreferrer"  
               >
                 <ChatBubbleOutlineOutlinedIcon className="mr-3 text-base sm:text-lg"/> 
                 <span className="text-sm sm:text-base">CHAT WITH US</span>
