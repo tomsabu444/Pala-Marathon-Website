@@ -171,7 +171,7 @@ function RegistrationForm() {
                   state: {
                     registrationId,
                     orderId,
-                    amount,
+                    amount:verificationResponse.data.totalamount,
                     category: formData.category,
                     name: formData.name,
                     email: formData.email,

@@ -30,12 +30,6 @@ async function configureHandlebars() {
 // Call the configuration function
 configureHandlebars();
 
-// Pricing based on category
-const PRICING = {
-  HalfMarathon: 900,
-  "10KmMarathon": 700,
-  FamilyFunRun: 500,
-};
 
 /**
  * Sends an email notification with QR code as an inline attachment.
@@ -53,11 +47,11 @@ async function sendEmail({ registration }) {
   // Email context for the Handlebars template
   const emailContext = {
     name: data.name,
-    marathonName: "Pala Marathon", // Replace with your event name
+    marathonName: "Pala Marathon", 
     category: data.category,
     phone: data.phone,
-    amountPaid: PRICING[data.category], 
-    paymentType: "N/A", // Replace with actual payment type if stored
+    amountPaid: razorpayDetails.amount, 
+    paymentType: razorpayDetails.paymentMethod,
     transactionId: razorpay_payment_id,
     orderId: razorpay_order_id,
     qrCodeCid: "qrcode_cid",
