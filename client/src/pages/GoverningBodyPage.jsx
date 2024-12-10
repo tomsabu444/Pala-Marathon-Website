@@ -34,6 +34,7 @@ export default function GoverningBodyPage() {
               src={member.image}
               alt={member.name}
               className="w-40 h-40 lg:w-48 lg:h-48 object-cover rounded-full border-2 border-custom-pink shadow-2xl"
+              draggable="false"
             />
 
             <h2 className="text-xl font-semibold mt-4 md:text-2xl">

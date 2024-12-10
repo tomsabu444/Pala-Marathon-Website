@@ -56,7 +56,7 @@ function HomePage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <img src={dots_Pattern} alt="Dots Pattern" />
+          <img src={dots_Pattern} alt="Dots Pattern" draggable="false" />
         </motion.div>
 
         {/*//! Dots Pattern right */}
@@ -66,7 +66,7 @@ function HomePage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <img src={dots_Pattern} className="rotate-180" alt="Dots Pattern" />
+          <img src={dots_Pattern} className="rotate-180" alt="Dots Pattern" draggable="false" />
         </motion.div>
 
         {/* //! Mobile Background */}
@@ -80,6 +80,7 @@ function HomePage() {
             src={bg_mobile}
             className="w-full h-full object-cover"
             alt="Background Image"
+            draggable="false"
           />
         </motion.div>
 
@@ -112,6 +113,7 @@ function HomePage() {
                 alt="PalaMarathon"
                 className="h-40 md:h-48 lg:h-52 mb-2 drop-shadow-lg"
                 variants={childVariants}
+                draggable="false"
               />
               <h1 className="text-xl md:text-2xl font-bold text-[#8B0A1E]">
                 19th JANUARY 2025
@@ -119,7 +121,7 @@ function HomePage() {
 
               <Link
                 to="/register"
-                className="px-8 py-3 mt-4 text-white bg-[#330A48] rounded-full md:text-xl"
+                className="px-8 z-30 text-lg py-3 mt-4  bg-[#330A48] rounded-full text-white relative  after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[#8F1757] after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700  md:text-xl"
               >
                 REGISTER NOW
               </Link>
@@ -147,6 +149,7 @@ function HomePage() {
               src={bg_img_homepage}
               className="lg:w-[900px] 2xl:w-[1000px]"
               alt="Home Page Image"
+              draggable="false"
             />
           </motion.div>
         </motion.div>

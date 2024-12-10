@@ -4,13 +4,19 @@ const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
   phone: z
     .string()
-    .regex(/^\+91\d{10}$/, "Phone number must be in format +91xxxxxxxxxx"),
+    .min(10, "Phone number must be at least 10 characters")
+    .max(15, "Phone number must be at most 15 characters")
+    .regex(
+      /^\+?\d+$/,
+      "Phone number must contain only digits, and optionally start with '+'"
+    ), // Allows an optional '+' at the start
   email: z.string().email("Invalid email address"),
   gender: z.enum(["male", "female", "other"], {
     required_error: "Please select your gender",
   }),
   dateOfBirth: z
-    .string().date("Invalid date format")
+    .string()
+    .date("Invalid date format")
     .min(1, "Date of Birth is required")
     .refine(
       (date) => {
@@ -34,10 +40,11 @@ const formSchema = z.object({
     contactNumber: z
       .string()
       .regex(
-        /^\+91\d{10}$/,
-        "Emergency Contact Number must be in format +91xxxxxxxxxx"
+        /^(\+91)?\d{10}$/,
+        "Emergency Contact Number must be Indian No 10-digit number or start with +91 followed by 10 digits"
       ),
   }),
+
   medicalInfo: z.string().optional(),
   questions: z.object({
     heartCondition: z.enum(["yes", "no"], {

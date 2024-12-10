@@ -59,16 +59,19 @@ const Footer = () => {
               <Link to="/" className="block text-md">
                 HOME
               </Link>
-              <Link className="block text-sm">PARTICIPANT INFO</Link>
-              <Link className="block text-sm">FAQ</Link>
+              <Link to="/faq" className="block text-sm">FAQ</Link>
               <Link className="block text-sm">RESULTS</Link>
               <Link className="block text-sm">FEEDBACK</Link>
+              <Link className="block text-sm">SPONSORS</Link>
             </div>
 
             {/* Right Column */}
             <div className="space-y-3 font-outfit">
               <Link to="/about-us" className="block text-md">
                 ABOUT US
+              </Link>
+              <Link to="/refund-policy" className="block text-sm">
+                REFUND POLICY
               </Link>
               <Link to="/terms-conditions" className="block text-sm">
                 TERMS & CONDITIONS
@@ -79,7 +82,6 @@ const Footer = () => {
               <Link to="/privacy-policy" className="block text-sm">
                 PRIVACY POLICIES
               </Link>
-              <Link className="block text-sm">SPONSORS</Link>
             </div>
           </div>
 
@@ -87,7 +89,8 @@ const Footer = () => {
           <div className="md:col-span-3">
             <h3 className="text-xl font-bold mb-6">STAY UP TO DATE</h3>
             <div className="flex h-10">
-              <input id="mail"
+              <input
+                id="mail"
                 name="mail"
                 autoComplete="true"
                 type="email"

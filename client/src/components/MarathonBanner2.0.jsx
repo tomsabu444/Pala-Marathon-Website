@@ -14,7 +14,7 @@ function MarathonBanner() {
 
         <div className="hidden w-2/4 md:block">
           <div className="  w-80 absolute -z-10 bottom-0 -left-8">
-            <img src={runners_img} alt="Runners img" />
+            <img src={runners_img} alt="Runners img" draggable="false" />
           </div>
         </div>
         <div className="w-full justify-center flex flex-col items-center  h-full mt-6 md:mt-0 text-center">
@@ -32,23 +32,27 @@ function MarathonBanner() {
           </p>
         </div>
         <div
-  className={`flex md:flex w-3/6 h-full mx-auto items-center ${
-    location.pathname !== "/register" && location.pathname !== "/order-receipt" ? "" : "hidden md:flex"
-  }`}
->
-  {location.pathname !== "/register" && location.pathname !== "/order-receipt" && (
-    <Link
-      to="/register"
-      className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${registern_now_bg})`,
-        filter: "sepia(0.3) hue-rotate(30deg) brightness(1.1)",
-      }}
-    >
-      REGISTER NOW
-    </Link>
-  )}
-</div>
+          className={`flex md:flex w-3/6 h-full mx-auto items-center ${
+            location.pathname !== "/register" &&
+            location.pathname !== "/order-receipt"
+              ? ""
+              : "hidden md:flex"
+          }`}
+        >
+          {location.pathname !== "/register" &&
+            location.pathname !== "/order-receipt" && (
+              <Link
+                to="/register"
+                className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url(${registern_now_bg})`,
+                  filter: "sepia(0.3) hue-rotate(30deg) brightness(1.1)",
+                }}
+              >
+                REGISTER NOW
+              </Link>
+            )}
+        </div>
       </div>
     </div>
   );
