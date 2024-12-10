@@ -8,6 +8,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function CategoryConsent() {
   const {
@@ -93,10 +94,10 @@ function CategoryConsent() {
           },
         }}
       >
-        <MenuItem value="no">No</MenuItem>
-        <MenuItem value="club1">Club 1</MenuItem>
+        <MenuItem value="no">Not Available</MenuItem>
+        {/* <MenuItem value="club1">Club 1</MenuItem>
         <MenuItem value="club2">Club 2</MenuItem>
-        <MenuItem value="club3">Club 3</MenuItem>
+        <MenuItem value="club3">Club 3</MenuItem> */}
         {/* Add more club options as needed */}
       </TextField>
 
@@ -161,7 +162,6 @@ function CategoryConsent() {
             </p>
           )}
         </label>
-
         <div className="flex items-start">
           <Controller
             name="consent"
@@ -186,14 +186,63 @@ function CategoryConsent() {
             )}
           />
         </div>
-
         {/* Scrollable Terms and Conditions */}
         <div className="mt-4 p-4 border border-[#9D356D] rounded-sm h-36 overflow-y-scroll bg-[#f7e7eb] text-[#9D356D]">
           <p className="text-sm leading-relaxed">
-            By registering for the <b> Pala Marathon</b>, the participant agrees
-            to abide by the conditions of entry listed below, as well as any
-            instructions given by the race organizer and officials of the race.
-            {/* Add the rest of your Terms & Conditions here */}
+            By registering for the <b>Pala Marathon</b>, the participant agrees
+            to abide by the following conditions of entry, as well as any
+            instructions given by the race organizer and officials of the race:{" "}
+          </p>
+          <ul className="list-disc ml-5 mt-2">
+            <li>
+              Participants must be in good health and physically prepared to
+              undertake the race. Medical clearance is advised for those with
+              pre-existing conditions.
+            </li>
+            <li>
+              The registration fee is non-refundable and non-transferable unless
+              specified in the{" "}
+              <Link to="/refund-policy" className="underline font-semibold">
+                Refund Policy
+              </Link>
+              .
+            </li>
+            <li>
+              Participants must adhere to all safety guidelines and race
+              instructions provided by the organizers. Failure to do so may
+              result in disqualification.
+            </li>
+            <li>
+              Race bibs must be worn visibly at all times during the event, and
+              any alteration or tampering with the bib is prohibited.
+            </li>
+            <li>
+              The race organizers reserve the right to modify the route, timing,
+              or other event details in case of unforeseen circumstances.
+            </li>
+            <li>
+              By registering, participants consent to the use of their images,
+              video, or other media for promotional purposes by the organizers.
+            </li>
+            <li>
+              Participants agree to the terms outlined in our{" "}
+              <Link to="/terms-conditions" className="underline font-semibold">
+                Terms & Conditions
+              </Link>
+              ,{" "}
+              <Link to="/privacy-policy" className="underline font-semibold">
+                Privacy Policy
+              </Link>
+              , and{" "}
+              <Link to="/disclaimer" className="underline font-semibold">
+                Disclaimer
+              </Link>
+              .
+            </li>
+          </ul>
+          <p>
+            Please ensure you review all terms before completing your
+            registration. Contact us for any questions or clarifications.
           </p>
         </div>
       </div>

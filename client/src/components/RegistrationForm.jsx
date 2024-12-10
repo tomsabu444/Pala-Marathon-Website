@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Step,
   StepLabel,
@@ -220,7 +220,27 @@ function RegistrationForm() {
       setDialogOpen(true); // Ensure dialog stays open
     }
   };
+ 
+  //! scroll top of the form on step change
+  const formRef = useRef(null);
+  const [ActiveStepChanged, setActiveStepChanged] = useState(false);
+  useEffect(() => {
+    if (!ActiveStepChanged) {
+      setActiveStepChanged(true); // Mark step change as detected after the first render
+      return; //? Skip scrolling on initial render
+    }
 
+    if (formRef.current) {
+      const yOffset = -150; 
+      const yPosition = formRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+  
+      window.scrollTo({
+        top: yPosition,
+        behavior: "smooth", // Smooth scrolling
+      });
+    }
+  }, [activeStep]);
+  
   return (
     <div className="py-7 mx-auto">
       {/* Stepper */}
@@ -274,7 +294,7 @@ function RegistrationForm() {
         ))}
       </Stepper>
 
-      <div className="mx-6 md:px-10 lg:mx-auto max-w-screen-2xl ">
+      <div ref={formRef} className="mx-6 md:px-10 lg:mx-auto max-w-screen-2xl ">
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
             {activeStep === 0 && <BasicDetails />}
