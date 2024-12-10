@@ -88,7 +88,7 @@ const Navbar = () => {
       label: "DETAILS",
       dropdown: [
         { path: "/about-us", label: "About Us" },
-        { path: "/participant-info", label: "Participant Info" },
+        { path: "/refund-policy", label: "Refund Policy" },
         { path: "/faq", label: "FAQ" },
         { path: "/privacy-policy", label: "Privacy Policy" },
         { path: "/terms-conditions", label: "Terms & Conditions" },
