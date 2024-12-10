@@ -48,7 +48,7 @@ async function sendEmail({ registration }) {
   const emailContext = {
     name: data.name,
     marathonName: "Pala Marathon", 
-    category: data.category,
+    category: data.description, //!!@ Use the description as the category
     phone: data.phone,
     amountPaid: razorpayDetails.amount, 
     paymentType: razorpayDetails.paymentMethod,

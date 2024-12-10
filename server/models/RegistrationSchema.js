@@ -40,6 +40,7 @@ const RegistrationSchema = new mongoose.Schema(
       clubParticipation: { type: String, default: null },
       couponCode: { type: String, default: null },
       consent: { type: Boolean, required: true },
+      description: { type: String },
     },
     paymentStatus: {
       type: String,
