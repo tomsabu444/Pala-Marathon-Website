@@ -36,7 +36,7 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
       couponCode,
       consent,
     } = req.body;
-
+    
     //! Generate the `register_id` based on category and unique ID
     const categoryCodes = {
       HalfMarathon: "HALF",
@@ -46,6 +46,13 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
     const categoryCode = categoryCodes[category];
     const uniqueId = nanoid(10);
     const register_id = `PALAMARATHON-${categoryCode}-${uniqueId}`;
+    
+    // Pricing based on category
+    const PRICING = {
+      HalfMarathon: { amount: 900, description: "Half Marathon (21 Kms)" },
+      "10KmMarathon": { amount: 700, description: "10 Km Marathon (10 Kms)" },
+      FamilyFunRun: { amount: 500, description: "Family Fun Run (3 Kms)" },
+    };
 
     //! Format the data according to the schema
     const formattedData = {
@@ -79,6 +86,7 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
           otherReason: questions?.otherReason || null,
         },
         category,
+        description: PRICING[category].description,
         nameOnBib,
         clubParticipation: clubParticipation || null,
         couponCode: couponCode || null,
@@ -86,22 +94,17 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
       },
     };
 
-    const registration = new Registration(formattedData);
-    await registration.save();
-
-    // Pricing based on category
-    const PRICING = {
-      HalfMarathon: 900,
-      "10KmMarathon": 700,
-      FamilyFunRun: 500,
-    };
-
+    
+    
     const razorpayOrder = await razorpay.orders.create({
-      amount: PRICING[category] * 100,
+      amount: PRICING[category].amount * 100,
       currency: "INR",
       receipt: register_id,
     });
 
+    const registration = new Registration(formattedData);
+    await registration.save();
+    
     // Respond with registration ID and Razorpay order details
     res.status(201).json({
       message: "Order created successfully!",
@@ -109,6 +112,7 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
       orderId: razorpayOrder.id,
       amount: razorpayOrder.amount,
       currency: razorpayOrder.currency,
+      description: PRICING[category].description,
     });
   } catch (error) {
     console.error(error);

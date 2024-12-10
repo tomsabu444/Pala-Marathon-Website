@@ -140,7 +140,7 @@ function RegistrationForm() {
         formData
       );
 
-      const { registrationId, orderId, amount } = response.data;
+      const { registrationId, orderId, amount , description } = response.data;
 
       // Configure Razorpay options
       const options = {
@@ -148,10 +148,11 @@ function RegistrationForm() {
         amount: amount, // Amount in paise
         currency: "INR",
         name: "Pala Marathon Event",
-        description: `${formData.category} Registration`,
+        description: `${description} Registration`,
         order_id: orderId,
         handler: async function (response) {
           try {
+            setLoading(true);
             // Verify payment on the backend
             const verificationResponse = await axios.post(
               `${SERVER_BASE_URL}/payment/verify`,
@@ -164,15 +165,16 @@ function RegistrationForm() {
             );
 
             if (verificationResponse.data.success) {
-              setSuccess(true); // Set success state
-              setDialogOpen(true); // Keep the dialog open to show the success message
+              setLoading(false); //? Stop loading
+              setSuccess(true); //? Set success state
+              setDialogOpen(true); //? Keep the dialog open to show the success message
               setTimeout(() => {
                 navigate("/order-receipt", {
                   state: {
                     registrationId,
                     orderId,
                     amount:verificationResponse.data.totalamount,
-                    category: formData.category,
+                    category: description, //!!@ Use the description as the category
                     name: formData.name,
                     email: formData.email,
                     phone: formData.phone,
