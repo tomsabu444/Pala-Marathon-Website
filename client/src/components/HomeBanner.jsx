@@ -19,6 +19,7 @@ const HomeBanner = () => {
               src={emblem_st_thomascollege}
               alt="St. Thomas College, Pala 75th Jubilee Celebrations"
               className="w-23 h-16"
+              draggable="false"
             />
             <h1 className=" text-sm font-medium text-center mt-2 text-white md:text-lg">
               St. Thomas College, Palai
@@ -31,6 +32,7 @@ const HomeBanner = () => {
               src={Lions_Clubs_International_logo}
               alt="Lions Clubs International District 318B"
               className="w-23 h-16 object-cover"
+              draggable="false"
             />
             <h1 className="text-sm  font-medium text-center mt-2 text-white md:text-lg">
               Lions Clubs International
@@ -43,6 +45,7 @@ const HomeBanner = () => {
               src={EfPalalogo}
               alt="Engineers' Forum, Pala"
               className="w-23 h-16 mix-blend-multiply"
+              draggable="false"
             />
             <h1 className="text-sm  font-medium text-center mt-2 text-white md:text-lg">
               Engineers' Forum, Pala

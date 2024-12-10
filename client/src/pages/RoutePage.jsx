@@ -15,6 +15,7 @@ const RoutePage = () => {
             src={rectangle}
             alt="Decorative dots"
             className="absolute top-[-30px] left-[-30px] md:left-[-70px] w-12 h-12 md:w-20 md:h-20 z-10"
+            draggable="false"
           />
 
           <div className="w-full max-w-lg text-center md:text-left md:ml-24">
@@ -102,6 +103,7 @@ const RoutePage = () => {
               src={road}
               alt="Route Map or Road Image"
               className="w-full h-[65vh] rotate-35 object-cover z-30 mt-[-276px] lg:block hidden"
+              draggable="false"
             />
           </div>
 

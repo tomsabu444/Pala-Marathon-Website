@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
 import Loading from "./components/Loading";
-import OrderReceipt from "./pages/OrderReceipt";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -13,7 +13,7 @@ const TermsConditionsPage = lazy(() => import("./pages/TermsConditionsPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
 const DisclaimerPage = lazy(() => import("./pages/DisclaimerPage"));
 const AboutUS = lazy(() => import("./pages/AboutUS"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const OrderReceipt = lazy(() => import("./pages/OrderReceipt"));
 const RefundPage = lazy(() => import("./pages/RefundPage"));
 
 function App() {

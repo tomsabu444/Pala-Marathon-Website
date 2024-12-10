@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import MarathonBanner from "../components/MarathonBanner2.0";
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
-import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import PrintOutlinedIcon from '@mui/icons-material/PrintOutlined';
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
+import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import { useLocation, useNavigate } from "react-router-dom";
+import NavigationAlert from "../utils/RegistrationConfirmationAlert";
+import RegistrationConfirmationAlert from "../utils/RegistrationConfirmationAlert";
 
 const printStyles = `
 @media print {
@@ -31,22 +33,29 @@ const RegistrationConfirmation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const {
-    registrationId, 
-    orderId, 
-    amount, 
-    category, 
-    name, 
+    registrationId,
+    orderId,
+    amount,
+    category,
+    name,
     email,
     phone,
-    qrCodeData 
+    qrCodeData,
   } = location.state || {};
 
-    // Check if the required data is missing the goto 404 page
-    useEffect(() => {
-      if (!registrationId || !orderId || !amount || !category || !name || !email) {
-        navigate("/404");
-      }
-    }, [registrationId, orderId, amount, category, name, email, navigate]);
+  // Check if the required data is missing the goto 404 page
+  useEffect(() => {
+    if (
+      !registrationId ||
+      !orderId ||
+      !amount ||
+      !category ||
+      !name ||
+      !email
+    ) {
+      navigate("/404");
+    }
+  }, [registrationId, orderId, amount, category, name, email, navigate]);
 
   const handlePrint = () => {
     window.print();
@@ -54,12 +63,15 @@ const RegistrationConfirmation = () => {
 
   return (
     <>
+      <RegistrationConfirmationAlert />  {/* reload prevention alert */}
       <style>{printStyles}</style>
       <MarathonBanner />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 print-section">
         <div className="flex flex-col sm:flex-row gap-3 items-center mb-4">
           <div className="flex items-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black mr-3">Registration Confirmed</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-black mr-3">
+              Registration Confirmed
+            </h2>
             <svg
               className="text-green-500 w-6 h-6 sm:w-7 sm:h-7"
               viewBox="0 0 24 24"
@@ -74,37 +86,59 @@ const RegistrationConfirmation = () => {
           </div>
         </div>
         <p className="text-[#330A48] text-base sm:text-lg mb-6">
-          Your payment was successful. Thank you for registering for Pala Marathon 2025. 
-          Your registration number is: <span className="font-semibold">#{registrationId}</span>. 
-          We have sent a mail to <span className="font-semibold">{email}</span> with your ticket and payment receipt.
+          Your payment was successful. Thank you for registering for Pala
+          Marathon 2025. Your registration number is:{" "}
+          <span className="font-semibold">#{registrationId}</span>. We have sent
+          a mail to <span className="font-semibold">{email}</span> with your
+          ticket and payment receipt.
         </p>
 
         <div className="flex flex-col lg:flex-row gap-6">
           <div className="w-full lg:w-2/5 lg:ml-24">
-            <h3 className="text-lg sm:text-xl font-bold text-[#330A48] mb-4">REGISTRATION DETAILS:</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-[#330A48] mb-4">
+              REGISTRATION DETAILS:
+            </h3>
             <div className="text-[#330A48] space-y-2 text-base sm:text-lg">
-              <p><strong className="font-medium">Race Category:</strong> {category}</p>
-              <p><strong className="font-medium">Name:</strong> {name}</p>
-              <p><strong className="font-medium">Phone Number:</strong> {phone}</p>
-              <p><strong className="font-medium">Amount Paid:</strong> ₹ {amount}/-</p>
-              <p><strong className="font-medium">Registration ID:</strong> {registrationId}</p>
-              <p><strong className="font-medium">Order ID:</strong> {orderId}</p>
+              <p>
+                <strong className="font-medium">Race Category:</strong>{" "}
+                {category}
+              </p>
+              <p>
+                <strong className="font-medium">Name:</strong> {name}
+              </p>
+              <p>
+                <strong className="font-medium">Phone Number:</strong> {phone}
+              </p>
+              <p>
+                <strong className="font-medium">Amount Paid:</strong> ₹ {amount}
+                /-
+              </p>
+              <p>
+                <strong className="font-medium">Registration ID:</strong>{" "}
+                {registrationId}
+              </p>
+              <p>
+                <strong className="font-medium">Order ID:</strong> {orderId}
+              </p>
             </div>
             <hr className="border-t-2 border-[#9D356D] my-4" />
             <div className="text-center sm:text-left">
-              <h3 className="text-lg sm:text-xl font-semibold text-black mb-4">Your QR Code:</h3>
+              <h3 className="text-lg sm:text-xl font-semibold text-black mb-4">
+                Your QR Code:
+              </h3>
               <div className="flex justify-center sm:block">
                 <img
                   src={qrCodeData || "https://via.placeholder.com/150"}
                   alt="QR Code"
                   className="h-32 w-32 sm:h-40 sm:w-40"
+                  draggable="false"
                 />
               </div>
               <p className="text-xs sm:text-sm text-[#444444] mt-2 text-center sm:text-left">
                 Scan this QR code at the event for a quick check-in.
               </p>
               <div className="flex justify-center sm:justify-start mt-4 print:hidden">
-                <button 
+                <button
                   onClick={handlePrint}
                   className="flex items-center text-white bg-[#330A48] px-4 py-2 rounded-md hover:bg-purple-900"
                 >
@@ -121,23 +155,23 @@ const RegistrationConfirmation = () => {
                 href="tel:+919846566483"
                 className="flex items-center p-4 border-b border-[#330A48] text-[#330A48] hover:bg-purple-100"
               >
-                <PhoneOutlinedIcon className="mr-3 text-base sm:text-lg"/> 
+                <PhoneOutlinedIcon className="mr-3 text-base sm:text-lg" />
                 <span className="text-sm sm:text-base">+91 9846566483</span>
               </a>
               <a
                 href="mailto:palamarathon@gmail.com"
                 className="flex items-center p-4 border-b border-[#330A48] text-[#330A48] hover:bg-purple-100"
               >
-                <MailOutlinedIcon className="mr-3 text-base sm:text-lg"/> 
+                <MailOutlinedIcon className="mr-3 text-base sm:text-lg" />
                 <span className="text-sm sm:text-base">EMAIL US</span>
               </a>
               <a
                 href="https://wa.me/919846566483"
                 className="flex items-center p-4 text-[#330A48] hover:bg-purple-100"
                 target="_blank"
-                rel="noopener noreferrer"  
+                rel="noopener noreferrer"
               >
-                <ChatBubbleOutlineOutlinedIcon className="mr-3 text-base sm:text-lg"/> 
+                <ChatBubbleOutlineOutlinedIcon className="mr-3 text-base sm:text-lg" />
                 <span className="text-sm sm:text-base">CHAT WITH US</span>
               </a>
             </div>
