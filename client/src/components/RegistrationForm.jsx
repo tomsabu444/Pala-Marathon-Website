@@ -152,6 +152,7 @@ function RegistrationForm() {
         order_id: orderId,
         handler: async function (response) {
           try {
+            setLoading(true);
             // Verify payment on the backend
             const verificationResponse = await axios.post(
               `${SERVER_BASE_URL}/payment/verify`,
@@ -164,8 +165,9 @@ function RegistrationForm() {
             );
 
             if (verificationResponse.data.success) {
-              setSuccess(true); // Set success state
-              setDialogOpen(true); // Keep the dialog open to show the success message
+              setLoading(false); //? Stop loading
+              setSuccess(true); //? Set success state
+              setDialogOpen(true); //? Keep the dialog open to show the success message
               setTimeout(() => {
                 navigate("/order-receipt", {
                   state: {
