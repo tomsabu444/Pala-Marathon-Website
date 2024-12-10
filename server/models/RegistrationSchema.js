@@ -40,6 +40,7 @@ const RegistrationSchema = new mongoose.Schema(
       clubParticipation: { type: String, default: null },
       couponCode: { type: String, default: null },
       consent: { type: Boolean, required: true },
+      description: { type: String },
     },
     paymentStatus: {
       type: String,
@@ -50,6 +51,8 @@ const RegistrationSchema = new mongoose.Schema(
       razorpay_order_id: { type: String },
       razorpay_payment_id: { type: String },
       razorpay_signature: { type: String },
+      amount: { type: Number },
+      paymentMethod: { type: String },
     },
   },
   { versionKey: false, timestamps: true } // Enable timestamps for createdAt and updatedAt

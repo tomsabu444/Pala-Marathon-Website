@@ -48,10 +48,6 @@ const RegistrationConfirmation = () => {
       }
     }, [registrationId, orderId, amount, category, name, email, navigate]);
 
-  const handleBack = () => {
-    navigate(-1); 
-  };
-
   const handlePrint = () => {
     window.print();
   };
@@ -90,7 +86,7 @@ const RegistrationConfirmation = () => {
               <p><strong className="font-medium">Race Category:</strong> {category}</p>
               <p><strong className="font-medium">Name:</strong> {name}</p>
               <p><strong className="font-medium">Phone Number:</strong> {phone}</p>
-              <p><strong className="font-medium">Amount Paid:</strong> ₹{amount / 100}/-</p>
+              <p><strong className="font-medium">Amount Paid:</strong> ₹ {amount}/-</p>
               <p><strong className="font-medium">Registration ID:</strong> {registrationId}</p>
               <p><strong className="font-medium">Order ID:</strong> {orderId}</p>
             </div>
@@ -148,7 +144,7 @@ const RegistrationConfirmation = () => {
           </div>
         </div>
 
-        <div className='flex justify-center mt-8 print:hidden'>
+        {/* <div className='flex justify-center mt-8 print:hidden'>
           <button 
             onClick={handleBack}
             className="flex items-center text-[#4A4A4A] border border-[#4A4A4A] px-4 py-2 rounded-md hover:bg-gray-100"
@@ -156,7 +152,7 @@ const RegistrationConfirmation = () => {
             <KeyboardArrowLeftIcon />
             Back
           </button>
-        </div>
+        </div> */}
       </div>
     </>
   );
