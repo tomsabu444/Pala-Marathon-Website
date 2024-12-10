@@ -2,7 +2,14 @@ import { z } from "zod";
 
 const basicDetailsSchema = z.object({
   name: z.string().min(1, "Name is required"),
-  phone: z.string().regex(/^\+91\d{10}$/, "Phone number be +91xxxxxxxxxx"),
+  phone: z
+    .string()
+    .min(10, "Phone number must be at least 10 characters")
+    .max(15, "Phone number must be at most 15 characters")
+    .regex(
+      /^\+?\d+$/,
+      "Phone number must contain only digits, and optionally start with '+'"
+    ),
   email: z.string().email("Invalid email address"),
   gender: z
     .enum(["male", "female", "other"], {
@@ -13,7 +20,8 @@ const basicDetailsSchema = z.object({
       message: "Gender selection is required",
     }),
   dateOfBirth: z
-    .string().date("Date of Birth is required")
+    .string()
+    .date("Date of Birth is required")
     .min(1, "Date of Birth is required")
     .refine(
       (date) => {
@@ -51,10 +59,11 @@ const medicalDetailsSchema = z.object({
     contactNumber: z
       .string()
       .regex(
-        /^\+91\d{10}$/,
-        "Emergency Contact Number Phone number be +91xxxxxxxxxx"
+        /^(\+91)?\d{10}$/,
+        "Emergency Contact Number must be Indian No 10-digit number or start with +91 followed by 10 digits"
       ),
   }),
+
   medicalInfo: z.string().optional(),
   questions: z.object({
     heartCondition: z.enum(["yes", "no"], {
