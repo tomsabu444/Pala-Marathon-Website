@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./utils/ScrollToTop";
 import Loading from "./components/Loading";
+import OrderReceipt from "./pages/OrderReceipt";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Footer = lazy(() => import("./components/Footer"));
@@ -32,6 +33,7 @@ function App() {
           <Route path="/404" element={<NotFoundPage />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
           <Route path="/refund-policy" element={<RefundPage />} />
+          <Route path="/order-receipt" element={<OrderReceipt />} />
         </Routes>
         <Footer />
       </Suspense>

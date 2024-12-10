@@ -50,6 +50,18 @@ const Navbar = () => {
     },
   };
 
+  const drawerVariants = {
+    hidden: { x: "100%" },
+    visible: {
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+    exit: {
+      x: "100%",
+      transition: { duration: 0.5, ease: "easeIn" },
+    },
+  };
+
   const menuItemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: {
@@ -59,24 +71,13 @@ const Navbar = () => {
     },
   };
 
-  const drawerVariants = {
-    hidden: { x: "100%" },
-    visible: {
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-    exit: {
-      x: "100%",
-      transition: { duration: 0.4, ease: "easeIn" },
-    },
-  };
-
-  const drawerItemVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const mobileDropdownVariants = {
+    hidden: { opacity: 0, height: 0, overflow: "hidden" },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut", staggerChildren: 0.2 },
+      height: "auto",
+      overflow: "hidden",
+      transition: { duration: 0.5, ease: "easeOut" },
     },
   };
 
@@ -195,202 +196,185 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <motion.div
-        className="hidden md:flex md:w-auto md:order-1 relative"
-        id="navbar-sticky"
-        variants={navBarVariants}
-      >
-        <ul className="flex flex-row items-center space-x-8 font-normal">
-          {navLinks.map((link) => (
-            <motion.li 
-              key={link.label} 
-              variants={menuItemVariants}
-              className="relative"
-              onMouseEnter={() => handleMouseEnter(link.label)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="flex items-center">
-                {link.dropdown ? (
-                  <button
-                    onClick={() => handleDropdownClick(link.label)}
-                    className={`flex items-center py-2 px-3 ${
-                      (location.pathname === link.path) || 
-                      (link.dropdown && link.dropdown.some(item => location.pathname === item.path))
-                        ? "text-[#330A48] underline underline-offset-4 font-semibold"
-                        : "text-[#330A48] hover:font-semibold"
-                    }`}
-                  >
-                    {link.label}
-                    {activeDropdown === link.label ? (
-                      <ExpandLessIcon 
-                        className="text-[#330A48] ml-1" 
-                        fontSize="small" 
-                      />
-                    ) : (
-                      <ExpandMoreIcon 
-                        className="text-[#330A48] ml-1" 
-                        fontSize="small" 
-                      />
-                    )}
-                  </button>
-                ) : (
-                  <Link
-                    to={link.path}
-                    className={`py-2 px-3 ${
-                      location.pathname === link.path
-                        ? "text-[#330A48] underline underline-offset-4 font-semibold"
-                        : "text-[#330A48] hover:font-semibold"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </div>
-              
-              {link.dropdown && activeDropdown === link.label && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md py-2 min-w-[200px] z-50"
-                  style={{ 
-                    padding: '20px 0', 
-                    marginTop: '-20px'
-                  }}
-                >
-                  {link.dropdown.map((dropdownItem) => (
-                    <Link
-                      key={dropdownItem.path}
-                      to={dropdownItem.path}
-                      className={`block px-4 py-2 text-sm text-[#330A48] hover:bg-gray-100 ${
-                        location.pathname === dropdownItem.path
-                          ? "font-semibold bg-gray-100"
-                          : ""
+          className="hidden md:flex md:w-auto md:order-1 relative"
+          id="navbar-sticky"
+          variants={navBarVariants}
+        >
+          <ul className="flex flex-row items-center space-x-8 font-normal">
+            {navLinks.map((link) => (
+              <motion.li
+                key={link.label}
+                variants={menuItemVariants}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(link.label)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="flex items-center">
+                  {link.dropdown ? (
+                    <button
+                      onClick={() => handleDropdownClick(link.label)}
+                      className={`flex items-center py-2 px-3 ${
+                        location.pathname === link.path ||
+                        (link.dropdown &&
+                          link.dropdown.some(
+                            (item) => location.pathname === item.path
+                          ))
+                          ? "text-[#330A48] underline underline-offset-4 font-semibold"
+                          : "text-[#330A48] hover:font-semibold"
                       }`}
                     >
-                      {dropdownItem.label}
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </motion.li>
-          ))}
-        </ul>
-      </motion.div>
-      </div>
-
-      {/* Drawer for Smaller Screens */}
-      <AnimatePresence>
-        {isDrawerOpen && (
-          <motion.div
-            className="fixed top-0 right-0 w-full max-w-sm bg-gray-50 h-full z-50 flex flex-col justify-center items-center"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={drawerVariants}
-          >
-            <div className="flex flex-col items-end p-4 absolute top-0 right-0">
-              <IconButton onClick={toggleDrawer} aria-label="close drawer">
-                <CloseIcon fontSize="large" style={{ color: "#330A48" }} />
-              </IconButton>
-            </div>
-            <motion.ul
-              className="flex flex-col items-center justify-around font-medium text-2xl h-auto mt-4 space-y-6 w-full px-8"
-              variants={drawerItemVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              {navLinks.map((link) => (
-                <motion.li
-                  key={link.label}
-                  variants={drawerItemVariants}
-                  className="w-full text-center"
-                >
-                  {link.dropdown ? (
-                    <div>
-                      <div 
-                        className="flex justify-center items-center cursor-pointer"
-                        onClick={() => toggleMobileDropdown(link.label)}
-                      >
-                        <span 
-                          className={`block ${
-                            (location.pathname === link.path) || 
-                            (link.dropdown && link.dropdown.some(item => location.pathname === item.path))
-                              ? "text-gray-900 underline underline-offset-4 font-semibold"
-                              : "text-gray-900"
-                          }`}
-                        >
-                          {link.label}
-                        </span>
-                        {mobileActiveDropdown === link.label ? (
-                          <ExpandLessIcon className="text-gray-900 ml-2" />
-                        ) : (
-                          <ExpandMoreIcon className="text-gray-900 ml-2" />
-                        )}
-                      </div>
-                      
-                      <AnimatePresence>
-                        {mobileActiveDropdown === link.label && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ 
-                              opacity: 1, 
-                              height: 'auto',
-                              transition: { duration: 0.3 }
-                            }}
-                            exit={{ 
-                              opacity: 0, 
-                              height: 0,
-                              transition: { duration: 0.2 }
-                            }}
-                            className="overflow-hidden"
-                          >
-                            <div className="mt-2 space-y-4 text-xl">
-                              {link.dropdown.map((dropdownItem) => (
-                                <Link
-                                  key={dropdownItem.path}
-                                  to={dropdownItem.path}
-                                  onClick={toggleDrawer}
-                                  className={`block text-gray-700 hover:text-gray-900 py-2 ${
-                                    location.pathname === dropdownItem.path
-                                      ? "text-gray-900 underline underline-offset-4 font-semibold"
-                                      : ""
-                                  }`}
-                                >
-                                  {dropdownItem.label}
-                                </Link>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                      {link.label}
+                      {activeDropdown === link.label ? (
+                        <ExpandLessIcon
+                          className="text-[#330A48] ml-1"
+                          fontSize="small"
+                        />
+                      ) : (
+                        <ExpandMoreIcon
+                          className="text-[#330A48] ml-1"
+                          fontSize="small"
+                        />
+                      )}
+                    </button>
                   ) : (
                     <Link
                       to={link.path}
-                      onClick={toggleDrawer}
-                      className={`block ${
+                      className={`py-2 px-3 ${
                         location.pathname === link.path
-                          ? "text-gray-900 underline underline-offset-4 font-semibold"
-                          : "text-gray-900"
+                          ? "text-[#330A48] underline underline-offset-4 font-semibold"
+                          : "text-[#330A48] hover:font-semibold"
                       }`}
                     >
                       {link.label}
                     </Link>
                   )}
-                </motion.li>
-              ))}
-            </motion.ul>
-            <div className="absolute bottom-8 text-center w-full flex justify-center items-center text-sm text-gray-600">
-              <span className="mr-2">Powered by</span>
-                <img 
-                  src={HULT} 
-                  alt="HULT" 
-                  className="h-4 object-contain" 
-                />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </div>
+
+                {link.dropdown && activeDropdown === link.label && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full left-0 bg-white shadow-lg p-0 rounded-md min-w-[200px] z-50"
+                  >
+                    {link.dropdown.map((dropdownItem) => (
+                      <Link
+                        key={dropdownItem.path}
+                        to={dropdownItem.path}
+                        className={`block px-4 py-2 text-sm text-[#330A48] hover:bg-gray-100 hover:rounded-md  ${
+                          location.pathname === dropdownItem.path
+                            ? "font-semibold bg-gray-100"
+                            : ""
+                        }`}
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+
+      {/* Drawer for Smaller Screens */}
+      {isDrawerOpen && (
+        <motion.div
+          className="fixed top-0 right-0 w-full max-w-sm bg-gray-50 h-full z-50 flex flex-col justify-center items-center shadow-lg"
+          variants={drawerVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          {/* Drawer Close Button */}
+          <div className="flex flex-col items-end p-4 absolute top-0 right-0">
+            <IconButton onClick={toggleDrawer} aria-label="close drawer">
+              <CloseIcon fontSize="large" style={{ color: "#330A48" }} />
+            </IconButton>
+          </div>
+
+          {/* Drawer Links */}
+          <ul className="flex flex-col items-center justify-around font-medium text-2xl h-auto mt-4 space-y-6 w-full px-8">
+            {navLinks.map((link) => (
+              <li key={link.label} className="w-full text-center">
+                {link.dropdown ? (
+                  <div>
+                    <div
+                      className="flex justify-center items-center cursor-pointer"
+                      onClick={() => toggleMobileDropdown(link.label)}
+                    >
+                      <span
+                        className={`block ${
+                          location.pathname === link.path ||
+                          (link.dropdown &&
+                            link.dropdown.some(
+                              (item) => location.pathname === item.path
+                            ))
+                            ? "text-gray-900 underline underline-offset-4 font-semibold"
+                            : "text-gray-900"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                      {mobileActiveDropdown === link.label ? (
+                        <ExpandLessIcon className="text-gray-900 ml-2" />
+                      ) : (
+                        <ExpandMoreIcon className="text-gray-900 ml-2" />
+                      )}
+                    </div>
+
+                    <AnimatePresence>
+                      {mobileActiveDropdown === link.label && (
+                        <motion.div
+                          initial="hidden"
+                          animate="visible"
+                          exit="hidden"
+                          variants={mobileDropdownVariants}
+                          className="overflow-hidden mt-2 space-y-4 text-xl"
+                        >
+                          {link.dropdown.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.path}
+                              to={dropdownItem.path}
+                              onClick={toggleDrawer}
+                              className={`block text-gray-700 hover:text-gray-900 py-2 ${
+                                location.pathname === dropdownItem.path
+                                  ? "text-gray-900 underline underline-offset-4 font-semibold"
+                                  : ""
+                              }`}
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    to={link.path}
+                    onClick={toggleDrawer}
+                    className={`block ${
+                      location.pathname === link.path
+                        ? "text-gray-900 underline underline-offset-4 font-semibold"
+                        : "text-gray-900"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+
+          {/* Footer Section */}
+          <div className="absolute bottom-8 text-center w-full flex justify-center items-center text-sm text-gray-600">
+            <span className="mr-2">Powered by</span>
+            <img src={HULT} alt="HULT" className="h-4 object-contain" />
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 };
