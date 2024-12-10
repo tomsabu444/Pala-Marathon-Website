@@ -59,7 +59,7 @@ async function sendEmail({ registration }) {
 
   return new Promise((resolve) => {
     const mailOptions = {
-      from: process.env.EMAIL_USERNAME,
+      from: `"Pala Marathon Team" <${process.env.EMAIL_USERNAME}>`,
       to: data.email,
       subject: "Marathon Registration Confirmation",
       template: "ticket",
