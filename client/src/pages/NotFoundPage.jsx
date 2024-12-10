@@ -13,6 +13,7 @@ const NotFoundPage = () => {
             src={notFoundImage}
             alt="404 Error Illustration"
             className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] h-auto mx-auto"
+            draggable="false"
           />
         </div>
         <h2

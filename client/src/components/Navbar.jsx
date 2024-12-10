@@ -156,12 +156,14 @@ const Navbar = () => {
             className="h-10 md:h-11"
             alt="Running Logo"
             variants={menuItemVariants}
+            draggable="false"
           />
           <motion.img
             src={PalaMarathon}
             alt="PalaMarathon"
             className="h-9 md:h-11 mb-2 drop-shadow-lg"
             variants={menuItemVariants}
+            draggable="false"
           />
         </Link>
 
@@ -371,7 +373,7 @@ const Navbar = () => {
           {/* Footer Section */}
           <div className="absolute bottom-8 text-center w-full flex justify-center items-center text-sm text-gray-600">
             <span className="mr-2">Powered by</span>
-            <img src={HULT} alt="HULT" className="h-4 object-contain" />
+            <img src={HULT} alt="HULT" className="h-4 object-contain"  draggable="false"/>
           </div>
         </motion.div>
       )}

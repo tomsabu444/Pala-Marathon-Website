@@ -98,6 +98,7 @@ const RegistrationConfirmation = () => {
                   src={qrCodeData || "https://via.placeholder.com/150"}
                   alt="QR Code"
                   className="h-32 w-32 sm:h-40 sm:w-40"
+                  draggable="false"
                 />
               </div>
               <p className="text-xs sm:text-sm text-[#444444] mt-2 text-center sm:text-left">

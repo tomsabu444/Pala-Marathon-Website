@@ -20,7 +20,7 @@ const runningManMarker = L.divIcon({
 });
 
 function ContactPage() {
-  const position = [9.70126, 76.664652];
+  const position = [9.702459555480223, 76.66529965775262];
 
   const handleMarkerClick = () => {
     window.open(
@@ -54,6 +54,7 @@ function ContactPage() {
           src={rectangle_bar}
           alt="Rectangle Bar"
           className="w-full h-full"
+          draggable="false"
         />
       </motion.div>
 

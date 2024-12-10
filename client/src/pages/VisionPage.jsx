@@ -54,6 +54,7 @@ const VisionPage = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
+              draggable="false"
             />
 
             <div className="w-full max-w-xl text-center md:text-left p-4 md:ml-24">
@@ -126,6 +127,7 @@ const VisionPage = () => {
               src={collageImg}
               alt="Collage of Running Events"
               className="h-auto object-cover mt-[150px] hidden md:block"
+              draggable="false"
             />
           </motion.div>
 
@@ -139,6 +141,7 @@ const VisionPage = () => {
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
+            draggable="false"
           />
 
           {/* Mobile Image */}
@@ -151,6 +154,7 @@ const VisionPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            draggable="false"
           />
         </div>
       </motion.div>
