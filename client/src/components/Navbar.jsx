@@ -51,16 +51,14 @@ const Navbar = () => {
   };
 
   const drawerVariants = {
-    hidden: { x: "100%", opacity: 0 }, // Off-screen to the right
+    hidden: { x: "100%"},
     visible: {
-      x: 0, // Slide in
-      opacity: 1,
+      x: 0,
       transition: { duration: 0.5, ease: "easeOut" },
     },
     exit: {
-      x: "100%", // Slide out
-      opacity: 0,
-      transition: { duration: 0.4, ease: "easeIn" },
+      x: "100%",
+      transition: { duration: 0.5, ease: "easeIn" },
     },
   };
   
@@ -282,8 +280,8 @@ const Navbar = () => {
       </div>
 
       {/* Drawer for Smaller Screens */}
+      <AnimatePresence>
       {isDrawerOpen && (
-  <AnimatePresence>
     <motion.div
       className="fixed top-0 right-0 w-full max-w-sm bg-gray-50 h-full z-50 flex flex-col justify-center items-center shadow-lg"
       variants={drawerVariants}
@@ -378,8 +376,8 @@ const Navbar = () => {
         <img src={HULT} alt="HULT" className="h-4 object-contain" />
       </div>
     </motion.div>
-  </AnimatePresence>
 )}
+</AnimatePresence>
       
     </motion.nav>
   );
