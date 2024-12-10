@@ -306,6 +306,7 @@ const Navbar = () => {
                         <ExpandMoreIcon className="text-gray-900 ml-2" />
                       )}
                     </div>
+                    <AnimatePresence>
                     {mobileActiveDropdown === link.label && (
                       <motion.div
                         initial="hidden"
@@ -329,7 +330,7 @@ const Navbar = () => {
                           </Link>
                         ))}
                       </motion.div>
-                    )}
+                    )}</AnimatePresence>
                   </div>
                 ) : (
                   <Link
