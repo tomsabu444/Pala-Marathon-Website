@@ -15,7 +15,7 @@ function RegisterPage() {
           Registration Form
         </h1>
         <p className="text-gray-600 text-lg mb-4">
-          <b>Pala Marathon</b> will be held on <b>19th January 2024</b>. This
+          <b>Pala Marathon</b> will be held on <b>19th January 2025</b>. This
           annual running event is organized by Lions Club International district
           318b, St. Thomas College Palai (Autonomous) 75th jubilee celebrations
           and Engineer's Forum, Pala. There are three categories that the
