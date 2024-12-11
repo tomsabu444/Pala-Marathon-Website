@@ -150,10 +150,26 @@ function ContactPage() {
               Assembly Point:
             </h2>
             <p className="text-sm xs:text-base sm:text-lg leading-relaxed text-gray-700">
-              Starting Location: Pala Community Park, Main Entrance <br />
-              Please arrive by 6:30 AM for check-in and warm-up activities.{" "}
+              <strong>Starting Location:</strong>{" "}
+              <span className="text-purple-900 font-semibold">
+                St. Thomas College, Pala Gate II
+              </span>{" "}
               <br />
-              The marathon will begin promptly at 7:00 AM.
+              <strong>Event Date:</strong>{" "}
+              <span className="text-purple-900 font-semibold">
+                19 January 2025
+              </span>{" "}
+              <br />
+              Please arrive <strong> 30 minutes before </strong> your respective
+              start time for check-in and warm-up activities. <br />
+              <strong>The marathon start times are as follows:</strong>
+               <br />
+              <span className="text-purple-900 font-semibold">• 21 km:</span> 5:00
+              AM <br />
+              <span className="text-purple-900 font-semibold">• 10 km:</span> 6:00
+              AM <br />
+              <span className="text-purple-900 font-semibold">• 3 km:</span> 6:30
+              AM
             </p>
           </div>
         </motion.div>
