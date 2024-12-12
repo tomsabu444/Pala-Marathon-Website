@@ -30,12 +30,11 @@ const RoutePage = () => {
               THE ROUTE
             </h1>
 
-            {/* Paragraph */}
-            <p className="text-sm md:text-lg text-gray-700 leading-relaxed mb-10">
-              Experience the scenic beauty and vibrant spirit of Pala as you
-              race through our thoughtfully designed marathon route for 2024!
-            </p>
-
+            <p className="relative font-outfit md:text-md text-gray-700 leading-relaxed mb-10">
+    <b>Half Marathon (21.1 km):</b> Starts at <b>St. Thomas College Pala Gate 2</b> and goes via Pala town, Chethimattam, Moonnani, Edappadi and Bharananganam till <b>Melambara Sree Dharma Sastha temple Gopuram</b> and turns back to finish at <b>St. Thomas College Pala Gate 2 itself</b>.<br/><br/>
+    <b>10K Run (10 km):</b> Starts at <b>St. Thomas College Pala Gate 2</b> and goes via Pala town, Chethimattam, Moonnani till <b>IMA Junction, Moonnani</b> and turns back to finish at <b>St. Thomas College Pala Gate 2 itself</b>.<br/><br/>
+    <b>Fun Run (3 km):</b> Starts at <b>Arunapuram-Manalelpadi road</b> (near St. Thomas College Pala Gate 2) and goes to Andoor Junction and turns back to finish at <b>St. Thomas College Pala Gate 2</b>.<br/><br/>
+  </p>
             {/* Marathon Details Section */}
             <div className="flex flex-wrap md:flex-nowrap items-center justify-center md:justify-start   md:gap-10 mt-8">
               {/* Half Marathon */}
@@ -87,7 +86,7 @@ const RoutePage = () => {
             </div>
 
             {/* Register Button */}
-            <div className="mt-12 flex justify-center md:justify-start">
+            <div className="mt-12 flex justify-center md:justify-center">
               <Link to='/register' className="px-6 md:px-8 py-2 md:py-3 text-sm md:text-lg font-semibold text-purple-900 border-2 border-purple-900 rounded-full hover:bg-purple-900 hover:text-white transition duration-300">
                 REGISTER NOW
               </Link>
@@ -97,15 +96,14 @@ const RoutePage = () => {
 
         {/* Right Section - Images */}
         <div className="relative w-full mt-6 md:mt-0 md:pl-16">
-          {/* Image for large screens */}
-          <div className="hidden lg:block md:absolute md:right-[-64px] md:w-[calc(100%+64px)]">
-            <img
-              src={road}
-              alt="Route Map or Road Image"
-              className="w-full h-[65vh] rotate-35 object-cover z-30 mt-[-276px] lg:block hidden"
-              draggable="false"
-            />
-          </div>
+    <div className="hidden lg:block md:absolute md:right-[-64px] md:w-[calc(100%+64px)]">
+      <img
+        src={road}
+        alt="Route Map or Road Image"
+        className="w-full h-[80vh] rotate-35 object-cover z-30 mt-[-409px]  lg:block hidden"
+        draggable="false"
+      />
+    </div>
 
           {/* Image for small screens */}
           {/* <div className="block md:hidden">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Twitter, Instagram } from "@mui/icons-material";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import { Link, useLocation } from "react-router-dom";
+import HULT from "../assets/HULT-1.png";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -32,7 +33,7 @@ const Footer = () => {
 
   return (
     <footer
-      className={`bg-gradient-to-r from-[#2D1140] to-[#84185F] text-white py-12 `}
+      className={`bg-gradient-to-r from-[#2D1140] to-[#84185F] text-white py-12 pb-4`}
     >
       <div className="max-w-7xl mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -108,6 +109,16 @@ const Footer = () => {
             </div>
             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
           </div>
+        </div>
+        
+        {/* HULT Logo Section */}
+        <div className="mt-8 flex justify-center items-center text-sm">
+          Powered by
+          <img 
+            src={HULT} 
+            alt="HULT" 
+            className="h-4 object-contain ml-2"
+          />
         </div>
       </div>
     </footer>

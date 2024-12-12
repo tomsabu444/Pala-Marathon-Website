@@ -19,21 +19,19 @@ const FAQPage = () => {
       questions: [
         {
           question: "When is the last date to register for the Pala Marathon?",
-          answer: "The last date for registration is 2025 January 10.",
+          answer: "The last date for registration is 2024 December 31.",
         },
         {
           question: "Is spot registration available?",
-          answer: "Yes, spot registration is available at the venue.",
+          answer: "No, spot registration is not available at the venue.",
         },
         {
           question: "Is group registration available?",
-          answer:
-            "Yes, group registrations are available for groups of 10 or more participants. Please contact us at palamarathon@gmail.com for group registration details.",
+          answer: "Yes, group registrations are available for groups of 10 or more participants. Please contact us at palamarathon@gmail.com for group registration details.",
         },
         {
-          question: "What should I do if I don’t receive a confirmation email after registering?",
-          answer:
-            "If the registration fee has been deducted but you haven’t received a confirmation email, please contact us at palamarathon@gmail.com with a screenshot of your transaction details.",
+          question: "What should I do if I don't receive a confirmation email after registering?",
+          answer: "If the registration fee has been deducted but you haven't received a confirmation email, please contact us at palamarathon@gmail.com with a screenshot of your transaction details.",
         },
         {
           question: "Can I cancel my registration and get a refund?",
@@ -41,13 +39,11 @@ const FAQPage = () => {
         },
         {
           question: "Can I change my race category after registering?",
-          answer:
-            "Yes, you can change your race category by re-registering for the desired category. Please inform the organisers about the change at the venue.",
+          answer: "No, you cannot change your race category. You may re-register for the desired category, though. Original amount will not be refunded.",
         },
         {
           question: "What are the registration fees for each category?",
-          answer:
-            "Registration fees vary by category. Please refer to the official registration page for the latest fee structure.",
+          answer: "Registration fees vary by category. Please refer to the official registration page for the latest fee structure.",
         },
       ],
     },
@@ -56,31 +52,27 @@ const FAQPage = () => {
       questions: [
         {
           question: "What are the different race categories?",
-          answer:
-            "The Pala Marathon includes the following categories: Half Marathon (21 km), 10K Run (10 km), Fun Run (3 km).",
+          answer: "The Pala Marathon includes the following categories:\nHalf Marathon (21.1 km): Starts at St. Thomas College Pala Gate 2 and goes via Pala town, Chethimattam, Moonnani, Edappadi and Bharananganam till Melambara Sree Dharma Sastha temple Gopuram and turns back to finish at St. Thomas College Pala Gate 2 itself.\n10K Run (10 km): Starts at St. Thomas College Pala Gate 2 and goes via Pala town, Chethimattam, Moonnani till IMA Junction, Moonnani and turns back to finish at St. Thomas College Pala Gate 2 itself.\nFun Run (3 km): Starts at Arunapuram-Manalelpadi road (near St. Thomas College Pala Gate 2) and goes to Andoor Junction and turns back to finish at St. Thomas College Pala Gate 2.",
         },
         {
           question: "Is there an age limit for participants?",
-          answer: "Yes, participants must be between 18 to 65 years old.",
+          answer: "Yes, participants must be between 16 years old to participate in Half Marathon, 12 years for 10km and 5 years for 3km. No upper limit though, If you are ready and the doctor says OK, You are in.",
         },
         {
           question: "Who organises the marathon?",
-          answer:
-            "The marathon is organised by the Engineers Forum Palai, St. Thomas Palai, Lions Club.",
+          answer: "The marathon is organised by the St. Thomas College Palai (Autonomous), Lions Clubs International District 318B and Engineers Forum Pala.",
         },
         {
           question: "When will the Pala Marathon take place?",
-          answer: "The marathon will take place on January 22.",
+          answer: "The marathon will take place on January 19.",
         },
         {
           question: "Is there a time limit to complete the race?",
-          answer:
-            "Half Marathon: 6 hours, 10K Run: 4 hours, Fun Run: No time limit.",
+          answer: "Half Marathon: 4 hours, 10K Run: 3 hours, Fun Run: No time limit.",
         },
         {
           question: "What time should participants report at the venue?",
-          answer:
-            "Participants should arrive by 6:30 AM for check-in and warm-up activities. The marathon will begin promptly at 7:00 AM.",
+          answer: "Participants should arrive at least half an hour before the starting time for check-in and warm-up activities. The marathon will begin promptly at starting time specified.",
         },
       ],
     },
@@ -89,8 +81,7 @@ const FAQPage = () => {
       questions: [
         {
           question: "Is parking available at the venue?",
-          answer:
-            "Yes, parking is available near both the start and finish lines.",
+          answer: "Yes, parking is available.",
         },
         {
           question: "When and where will bib distribution take place?",
@@ -98,10 +89,29 @@ const FAQPage = () => {
         },
         {
           question: "What are the transportation options to reach the venue?",
-          answer:
-            "The venue is easily accessible by bus, train, and nearby roads.",
+          answer: "The venue is easily accessible.\nBy Bus: Get down at St. Thomas College bus stop.\nBy Train: The nearest railway station is Kottayam.",
         },
-        
+      ],
+    },
+    {
+      category: "About the Race Course",
+      questions: [
+        {
+          question: "Are pets or animals allowed on the course?",
+          answer: "No, pets or animals are not allowed on the race course for safety reasons.",
+        },
+        {
+          question: "Can I run with headphones?",
+          answer: "Yes, you can use headphones during the race, but we recommend staying aware of your surroundings for safety purposes.",
+        },
+        {
+          question: "How many aid stations will there be on the course?",
+          answer: "Aid stations will be available every 2.5 km, stocked with water, energy drinks, and light snacks.",
+        },
+        {
+          question: "Will there be medical support on the course?",
+          answer: "Yes, medical teams and ambulances will be stationed along the route to assist participants if needed.",
+        },
       ],
     },
     {
@@ -126,15 +136,11 @@ const FAQPage = () => {
         },
         {
           question: "Is there prize money for winners?",
-          answer: "Yes, cash prizes will be awarded to the top three winners in each race category.",
+          answer: "Yes, cash prizes will be awarded to the top two winners in each race category.",
         },
         {
           question: "I am unable to download my participation certificate. What should I do?",
           answer: "If you face issues downloading your certificate, please contact us at palamarathon@gmail.com with your bib number.",
-        },
-        {
-          question: "Are there finisher medals for all participants?",
-          answer: "Yes, all participants who complete the race will receive a finisher medal.",
         },
       ],
     },
@@ -156,11 +162,11 @@ const FAQPage = () => {
       questions: [
         {
           question: "How is the Pala Marathon eco-friendly?",
-          answer: "The event promotes sustainability by minimising single-use plastics, providing recycling bins at the venue, and encouraging participants to bring reusable water bottles.",
+          answer: "The event promotes sustainability by:\nMinimising single-use plastics.\nProviding recycling bins at the venue.\nEncouraging participants to bring reusable water bottles.",
         },
         {
           question: "Are there any safety guidelines I should follow?",
-          answer: "Follow all instructions from race officials, stay aware of your surroundings, and inform the nearest volunteer in case of an emergency.",
+          answer: "Follow all instructions from race officials.\nBe aware of your surroundings, especially if wearing headphones.\nInform the nearest volunteer in case of an emergency.",
         },
       ],
     },
@@ -236,7 +242,7 @@ const FAQPage = () => {
                       >
                         {questionData.question}
                       </h4>
-                      <p className="text-white text-montserrat text-left text-sm md:text-base">
+                      <p className="text-white text-montserrat text-left text-sm md:text-base whitespace-pre-line">
                         {questionData.answer}
                       </p>
                       <hr
