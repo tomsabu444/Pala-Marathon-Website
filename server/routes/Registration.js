@@ -11,7 +11,7 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
+router.post("/", FormValidationMiddleware, async (req, res) => {
   try {
     // Dynamically import nanoid within the route handler
     const { customAlphabet } = await import("nanoid");
