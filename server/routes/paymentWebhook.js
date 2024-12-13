@@ -30,6 +30,7 @@ router.post("/", async (req, res) => {
 
   if (event.event === "payment.captured") {
     try {
+      // Step 1: Extract payment details
       const {
         order_id,
         id: payment_id,
@@ -37,20 +38,18 @@ router.post("/", async (req, res) => {
         method,
       } = event.payload.payment.entity;
 
+      // Step 2: Check if the payment is already processed
       const existingPayment = await Registration.findOne({
         "razorpayDetails.razorpay_payment_id": payment_id,
       });
 
-      if (existingPayment) {
-        if (existingPayment.paymentStatus === "Paid") {
-          // Payment is already marked as Paid
-          return res
-            .status(400)
-            .json({ message: "Payment already processed and marked as Paid." });
-        }
+      if (existingPayment && existingPayment.paymentStatus === "Paid") {
+        return res
+          .status(400)
+          .json({ message: "Payment already processed and marked as Paid." });
       }
 
-      // Step 5: Update the registration/payment status in the database
+      // Step 3: Update payment status and save details
       const registration = await Registration.findOneAndUpdate(
         { "razorpayDetails.razorpay_order_id": order_id },
         {
@@ -71,9 +70,8 @@ router.post("/", async (req, res) => {
         return res.status(404).json({ error: "Registration user not found" });
       }
 
-      // Step 8: Generate QR code and send receipt email
+      // Step 4: Generate QR code and send email
       const qrCodeData = await QRCode.toDataURL(registration.register_id);
-
       const emailResult = await EmailNotification.sendEmail({
         registration,
         qrCodeData,
@@ -86,6 +84,7 @@ router.post("/", async (req, res) => {
         });
       }
 
+      // Step 5: Respond with success
       res.status(200).json({
         success: true,
         message: "Payment captured, registration updated, and email sent.",
