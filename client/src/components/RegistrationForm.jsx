@@ -51,7 +51,7 @@ function RegistrationForm() {
   
     return () => clearInterval(timer); // Cleanup interval on component unmount or success state change
   }, [success])
-  console.log("Countdown:", PaymentSuccessCountdown);
+  // console.log("Countdown:", PaymentSuccessCountdown);
   const navigate = useNavigate();
 
   const methods = useForm({
@@ -132,7 +132,7 @@ function RegistrationForm() {
     }
 
     try {
-      console.log("Form Data:", formData); //! For TESTING
+      // console.log("Form Data:", formData); //! For TESTING
 
       // Single request to register user and create Razorpay order
       const response = await axios.post(
