@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const QRCode = require("qrcode");
 const Registration = require("../models/RegistrationSchema");
 const EmailNotification = require("./EmailNotification");
+const addToGoogleSheet = require("./add_to_googlesheet");
 
 const router = express.Router();
 
@@ -84,12 +85,24 @@ router.post("/", async (req, res) => {
         });
       }
 
-      // Step 5: Respond with success
+      // Step 5: Add registration to Google Sheet
+      const googleSheetResult = await addToGoogleSheet(registration);
+
+      if (!googleSheetResult.success) {
+        return res.status(500).json({
+          success: false,
+          message: "Payment verified but failed to add to Google Sheet",
+        });
+      }
+
+      // Step 6: Respond with success
       res.status(200).json({
         success: true,
-        message: "Payment captured, registration updated, and email sent.",
+        message:
+          "Payment captured, registration updated, email sent, and added to Google Sheet.",
       });
     } catch (error) {
+      console.error("Error processing payment captured webhook:", error);
       res.status(500).json({
         error: "Internal server error while processing webhook.",
       });
