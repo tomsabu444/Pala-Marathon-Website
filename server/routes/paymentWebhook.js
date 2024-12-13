@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 
   if (event.event === "payment.captured") {
     try {
-      const { order_id, payment_id, amount, method } = event.payload.payment.entity;
+      const { order_id, id: payment_id, amount, method } = event.payload.payment.entity;
 
       // Step 5: Update the registration/payment status in the database
       const registration = await Registration.findOneAndUpdate(
