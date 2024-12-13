@@ -30,7 +30,25 @@ router.post("/", async (req, res) => {
 
   if (event.event === "payment.captured") {
     try {
-      const { order_id, id: payment_id, amount, method } = event.payload.payment.entity;
+      const {
+        order_id,
+        id: payment_id,
+        amount,
+        method,
+      } = event.payload.payment.entity;
+
+      const existingPayment = await Registration.findOne({
+        "razorpayDetails.razorpay_payment_id": payment_id,
+      });
+
+      if (existingPayment) {
+        if (existingPayment.paymentStatus === "Paid") {
+          // Payment is already marked as Paid
+          return res
+            .status(400)
+            .json({ message: "Payment already processed and marked as Paid." });
+        }
+      }
 
       // Step 5: Update the registration/payment status in the database
       const registration = await Registration.findOneAndUpdate(
