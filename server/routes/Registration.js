@@ -11,7 +11,7 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
+router.post("/", FormValidationMiddleware, async (req, res) => {
   try {
     // Dynamically import nanoid within the route handler
     const { customAlphabet } = await import("nanoid");
@@ -53,6 +53,13 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
       "10KmMarathon": { amount: 700, description: "10 Km Marathon (10 Kms)" },
       FamilyFunRun: { amount: 500, description: "Family Fun Run (3 Kms)" },
     };
+    
+    //! Create a Razorpay order for the registration
+    const razorpayOrder = await razorpay.orders.create({
+      amount: PRICING[category].amount * 100,
+      currency: "INR",
+      receipt: register_id,
+    });
 
     //! Format the data according to the schema
     const formattedData = {
@@ -92,15 +99,10 @@ router.post("/payment/order", FormValidationMiddleware, async (req, res) => {
         couponCode: couponCode || null,
         consent,
       },
+      razorpayDetails: {
+        razorpay_order_id: razorpayOrder.id,
+      },
     };
-
-    
-    
-    const razorpayOrder = await razorpay.orders.create({
-      amount: PRICING[category].amount * 100,
-      currency: "INR",
-      receipt: register_id,
-    });
 
     const registration = new Registration(formattedData);
     await registration.save();
