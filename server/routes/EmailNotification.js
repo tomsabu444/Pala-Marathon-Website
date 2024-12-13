@@ -79,7 +79,7 @@ async function sendEmail({ registration }) {
         console.error("Error sending email:", error);
         resolve({ success: false, error });
       } else {
-        console.log("Email sent: " + info.response);
+        console.log(`Email sent successfully for Register ID: ${registration.register_id}. Response: ${info.response}`);
         resolve({ success: true, response: info.response });
       }
     });
