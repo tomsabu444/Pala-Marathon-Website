@@ -94,6 +94,37 @@ router.post("/", async (req, res) => {
         error: "Internal server error while processing webhook.",
       });
     }
+  } else if (event.event === "payment.failed") {
+    try {
+      // Step 1: Extract payment details
+      const { order_id, id: payment_id } = event.payload.payment.entity;
+
+      // Step 2: Update payment status to "Failed"
+      const registration = await Registration.findOneAndUpdate(
+        { "razorpayDetails.razorpay_order_id": order_id },
+        {
+          $set: {
+            paymentStatus: "Failed",
+            "razorpayDetails.razorpay_payment_id": payment_id,
+          },
+        },
+        { new: true }
+      );
+
+      if (!registration) {
+        return res.status(404).json({ error: "Registration user not found" });
+      }
+
+      // Step 3: Respond with success for handling failed payment
+      res.status(200).json({
+        success: true,
+        message: "Payment failed status updated.",
+      });
+    } catch (error) {
+      res.status(500).json({
+        error: "Internal server error while processing payment failed webhook.",
+      });
+    }
   } else {
     res.status(200).json({ message: "Webhook received but not handled." });
   }
