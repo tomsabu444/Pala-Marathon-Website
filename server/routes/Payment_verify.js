@@ -7,7 +7,7 @@ const axios = require("axios");
 
 const router = express.Router();
 
-router.post("/payment/verify", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const {
       razorpay_order_id,
@@ -57,26 +57,26 @@ router.post("/payment/verify", async (req, res) => {
     const paymentMethod = razorpayPaymentDetails.data.method;
 
     // Step 5: Update the registration/payment status in the database
-    const registration = await Registration.findOneAndUpdate(
-      { register_id: registrationId },
-      {
-        $set: {
-          paymentStatus: "Paid",
-          razorpayDetails: {
-            razorpay_order_id,
-            razorpay_payment_id,
-            razorpay_signature,
-            amount: paymentAmount, // Convert amount from paisa to INR
-            paymentMethod,
-          },
-        },
-      },
-      { new: true }
-    );
+    // const registration = await Registration.findOneAndUpdate(
+    //   { register_id: registrationId },
+    //   {
+    //     $set: {
+    //       paymentStatus: "Paid",
+    //       razorpayDetails: {
+    //         razorpay_order_id,
+    //         razorpay_payment_id,
+    //         razorpay_signature,
+    //         amount: paymentAmount, // Convert amount from paisa to INR
+    //         paymentMethod,
+    //       },
+    //     },
+    //   },
+    //   { new: true }
+    // );
 
-    if (!registration) {
-      return res.status(404).json({ error: "Registration user not found" });
-    }
+    // if (!registration) {
+    //   return res.status(404).json({ error: "Registration user not found" });
+    // }
 
     // Step 6: Generate QR code for the registrationId
     const qrCodeData = await QRCode.toDataURL(registrationId); // Generate a QR code for registrationId
@@ -90,18 +90,18 @@ router.post("/payment/verify", async (req, res) => {
     });
 
     // Step 8: Send receipt email
-    const emailResult = await EmailNotification.sendEmail({
-      registration,
-      qrCodeData,
-    });
+    // const emailResult = await EmailNotification.sendEmail({
+    //   registration,
+    //   qrCodeData,
+    // });
 
-    if (!emailResult.success) {
-      console.error("Email sending failed:", emailResult.error);
-      return res.status(500).json({
-        success: false,
-        message: "Payment verified but failed to send email",
-      });
-    }
+    // if (!emailResult.success) {
+    //   console.error("Email sending failed:", emailResult.error);
+    //   return res.status(500).json({
+    //     success: false,
+    //     message: "Payment verified but failed to send email",
+    //   });
+    // }
   } catch (error) {
     console.error("Error during payment verification:", error);
     res
