@@ -96,24 +96,26 @@ const RoutePage = () => {
 
         {/* Right Section - Images */}
         <div className="relative w-full mt-6 md:mt-0 md:pl-16">
-    <div className="hidden lg:block md:absolute md:right-[-64px] md:w-[calc(100%+64px)]">
-      <img
-        src={road}
-        alt="Route Map or Road Image"
-        className="w-full h-[80vh] rotate-35 object-cover z-30 mt-[-409px]  lg:block hidden"
-        draggable="false"
-      />
-    </div>
+  {/* Image visible only on screens wider than 1024px */}
+  <div className="hidden xl:block xl:absolute lg:right-[-64px] lg:w-[calc(100%+64px)] ">
+    <img
+      src={road}
+      alt="Route Map or Road Image"
+      className="w-full h-[80vh] object-cover z-30 mt-[-415px]"
+      draggable="false"
+    />
+  </div>
 
-          {/* Image for small screens */}
-          {/* <div className="block md:hidden">
-            <img
-              src={smRoad}
-              alt="Route Map or Road Image (Small)"
-              className="w-full h-20 object-cover  -mt-3"
-            />
-          </div> */}
-        </div>
+  {/* Optionally retain the small screen image if required */}
+  {/* <div className="block lg:hidden">
+    <img
+      src={smRoad}
+      alt="Route Map or Road Image (Small)"
+      className="w-full h-20 object-cover -mt-3"
+    />
+  </div> */}
+</div>
+
       </div>
     </div>
   );

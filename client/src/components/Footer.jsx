@@ -112,15 +112,24 @@ const Footer = () => {
         </div>
         
         {/* HULT Logo Section */}
-        <div className="mt-8 flex justify-center items-center text-sm">
-          Powered by
-          <img 
-            src={HULT} 
-            alt="HULT" 
-            className="h-4 object-contain ml-2"
-          />
+        
+        <div className="mt-10 flex justify-center items-center text-sm flex-wrap">
+  <a 
+    href="https://hultinfo.tech" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center ml-2 transition sm:hover:brightness-75 sm:active:scale-95 sm:hover:cursor-pointer lg:hover:none"
+  >
+    <span className="mr-2">Powered by</span>
+    <img 
+      src={HULT} 
+      alt="HULT" 
+      className="h-4 object-contain"
+    />
+  </a>
+</div>
+
         </div>
-      </div>
     </footer>
   );
 };
