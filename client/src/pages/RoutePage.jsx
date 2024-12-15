@@ -101,7 +101,7 @@ const RoutePage = () => {
     <img
       src={road}
       alt="Route Map or Road Image"
-      className="w-full h-[80vh] object-cover z-30 mt-[-415px]"
+      className="w-full h-[80vh] object-cover z-30 mt-[-425px]"
       draggable="false"
     />
   </div>
