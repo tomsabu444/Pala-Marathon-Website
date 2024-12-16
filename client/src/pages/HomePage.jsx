@@ -147,7 +147,7 @@ function HomePage() {
           >
             <img
               src={bg_img_homepage}
-              className="lg:w-[900px] 2xl:w-[1000px]"
+              className="lg:w-[900px] 2xl:w-[1500px] "
               alt="Home Page Image"
               draggable="false"
             />
