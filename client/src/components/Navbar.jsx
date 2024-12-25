@@ -373,8 +373,11 @@ const Navbar = () => {
           {/* Footer Section */}
           <div className="absolute bottom-8 text-center w-full flex justify-center items-center text-sm text-gray-600">
             <span className="mr-2">Powered by</span>
-            <img src={HULT} alt="HULT" className="h-4 object-contain"  draggable="false"/>
+            <a href="https://hultinfo.tech" target="_blank" rel="noopener noreferrer">
+              <img src={HULT} alt="HULT" className="h-4 object-contain" draggable="false" />
+            </a>
           </div>
+
         </motion.div>
       )}
     </motion.nav>

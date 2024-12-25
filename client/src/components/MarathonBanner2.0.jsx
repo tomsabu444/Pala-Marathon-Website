@@ -41,8 +41,9 @@ function MarathonBanner() {
         >
           {location.pathname !== "/register" &&
             location.pathname !== "/order-receipt" && (
-              <Link
-                to="/register"
+              <a
+                href="https://play.decathlon.in/event-details/pala-marathon/e343f5ac-c07f-11ef-9efa-0780c7a7061a"
+                target="_blank noreferrer"
                 className="px-4 mx-auto md:mx-0 py-2 font-outfit text-md md:text-lg text-white font-semibold rounded-lg hover:opacity-80 transition border border-purple-600 duration-300 bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${registern_now_bg})`,
@@ -50,7 +51,7 @@ function MarathonBanner() {
                 }}
               >
                 REGISTER NOW
-              </Link>
+              </a>
             )}
         </div>
       </div>
