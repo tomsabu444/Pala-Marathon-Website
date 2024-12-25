@@ -7,7 +7,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 const Navbar = lazy(() => import("./components/Navbar"));
 const Footer = lazy(() => import("./components/Footer"));
 const HomePage = lazy(() => import("./pages/HomePage"));
-const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+// const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 const FaqPage = lazy(() => import("./pages/FaqPage"));
 const TermsConditionsPage = lazy(() => import("./pages/TermsConditionsPage"));
 const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
@@ -24,7 +24,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          {/* <Route path="/register" element={<RegisterPage />} /> */}
           <Route path="/terms-conditions" element={<TermsConditionsPage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
