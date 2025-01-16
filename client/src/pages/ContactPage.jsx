@@ -168,7 +168,7 @@ function ContactPage() {
               AM <br />
               <span className="text-purple-900 font-semibold">• 10 km:</span> 6:00
               AM <br />
-              <span className="text-purple-900 font-semibold">• 3 km:</span> 6:30
+              <span className="text-purple-900 font-semibold">• 3 km:</span> 7:00
               AM
             </p>
           </div>
