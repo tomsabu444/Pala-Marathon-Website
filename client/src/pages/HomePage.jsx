@@ -66,7 +66,12 @@ function HomePage() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <img src={dots_Pattern} className="rotate-180" alt="Dots Pattern" draggable="false" />
+          <img
+            src={dots_Pattern}
+            className="rotate-180"
+            alt="Dots Pattern"
+            draggable="false"
+          />
         </motion.div>
 
         {/* //! Mobile Background */}
@@ -119,13 +124,24 @@ function HomePage() {
                 19th JANUARY 2025
               </h1>
 
-              <a 
-                href="https://play.decathlon.in/event-details/pala-marathon/e343f5ac-c07f-11ef-9efa-0780c7a7061a"
-                className="px-8 z-30 text-lg py-3 mt-4  bg-[#330A48] rounded-full text-white relative  after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[#8F1757] after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700  md:text-xl"
-              target="_blank" rel="noreferrer"
-              >
-                REGISTER NOW
-              </a>
+              <div className="flex flex-col md:flex-row  gap-4 mt-4">
+                <a
+                  href="https://tinyurl.com/Palamarathon"
+                  className="px-14 z-30 text-center text-lg py-3 bg-[#330A48] rounded-full text-white relative after:-z-20 after:absolute after:h-1 after:w-1 after:bg-[#8F1757] after:left-5 overflow-hidden after:bottom-0 after:translate-y-full after:rounded-md after:hover:scale-[300] after:hover:transition-all after:hover:duration-700 after:transition-all after:duration-700 transition-all duration-700 md:text-xl"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  RESULTS
+                </a>
+                <a
+                  href="https://www.myracephotos.in/Event-Photos/2025/Pala-Marathon-2025"
+                  className="px-14 z-30 text-center text-lg py-3 text-[#330A48] border-2 border-[#330A48]  hover:bg-#330A48] hover:text-white transition duration-300 rounded-full   md:text-xl"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  PHOTOS
+                </a>
+              </div>
             </motion.div>
 
             <motion.div className="flex flex-col" variants={childVariants}>
